@@ -11,26 +11,26 @@ This is a work-in-progress project to provide a much more integrated experience 
 
 This project has two key components:
 
-1. UI - React Application for displaying the Chess Data
+1. UI - React Application for displaying the Chess data
 
 ```$ npm start```
 
-2. Backend - Node Server to monitor pgn file changes produced by the LiveChess Viewer application
+1. Backend - Node server to monitor pgn file changes produced by the `DGT LiveChess` application
 
 ```$ npm run server```
 
 
 ### DGT
 
-The initial intension was to entirely use the LiveChess WebSocket API to list for move changes and directly send these to the `chessboard` component, hand wrap this entire client websocket connect in a React custom hook ie.
+The initial intention _was_ to use the LiveChess WebSocket API to list for move changes and directly stream these to a `Chessboard` component using the `chess.js` methods `.fen()` or `.load_pgn()`. This could then be abstracted into a clean React custom hook, something like:
 
 ```
 const { moves, clockTimes, playerInfo } = useDGT();
 ```
 
-This being an ideal API interface for building a clean React Component for displaying the chess position.
+This would be an ideal API for building a UI component which is focused purely on move display and game information. 
 
-Unfortunately, this is far from easy to achieve. So a file reader intermit solution is currently in use, including an interval `fetch` to poll for pgn updates 🤢
+Unfortunately, this is far from easy to achieve after reading the documentation is being unable to attain the necessary data from the `feed` socket subscription. Therefore a file reader interm solution is currently in use, this includes an interval to `fetch` (poll) for pgn updates 🤢
 
 ### NEXT STEPS
 
