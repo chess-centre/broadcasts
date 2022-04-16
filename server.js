@@ -22,6 +22,10 @@ app.listen(port, () => {
 app.get("/favicon.ico", (req, res) => res.status(204));
 
 const getPgn = async (round, board) => {
+
+  // TODO: could introduce a cache here, and determine if a change has occurred
+  // Also, add any fs changes (as part of the Websocket solution)
+
   const path = `${BASE_PATH}/round-${round}/game-${board}.pgn`;
   const pgn = await fs.readFile(path, "utf-8").catch((error) => {
     console.log(error);

@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useInterval } from "../hooks";
 import BoardWrapper from "./Board";
 
-export default function ChessGame({ round, board }) {
+const BASE_PATH = "http://localhost:8080";
+
+export default function ChessGame({ round, board, interval = 1000 }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [pgn, setPGN] = useState("start");
 
@@ -10,16 +12,10 @@ export default function ChessGame({ round, board }) {
     const getPgnStr = async () => {
       let text = "";
       try {
-        const response = await fetch(
-          `http://localhost:8080/${round}/${board}`,
-          {
-            method: "get",
-            url: `http://localhost:8080`,
-          }
-        );
+        const response = await fetch(`${BASE_PATH}/${round}/${board}`);
         text = await response.text();
       } catch (error) {
-        console.log("exception thrown", error);
+        console.log(error);
       }
 
       if (text) {
@@ -28,7 +24,7 @@ export default function ChessGame({ round, board }) {
       }
     };
     getPgnStr();
-  }, 3000);
+  }, interval);
 
   return (
     <BoardWrapper

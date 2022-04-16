@@ -5,6 +5,7 @@ const IDS = {
   serials: 888, // arbitary value
 };
 
+// See: LiveChess Documentation under "DGT LiveChess 2.2.5 > Window > "About DGT LiveChess" (API docs)"
 const METHODS = {
   subscription: (id, feedId, serial) => JSON.stringify({
     call: "subscribe",
@@ -71,6 +72,7 @@ export const useDGT = () => {
       });
     }
     if(message.response === "feed") {
+      // TODO: this needs to be filtered as piece move (not just final placement) is included here:
       setLastMove(message.param);
     }
   };
