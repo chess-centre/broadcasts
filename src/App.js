@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./assets/logo.png";
+import ChessGame from "./components/Game";
 
 function App() {
+  const round = 1;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-slate-900 p-2">
+      <div className="grid grid-cols-3">
+        <div className="h-screen flex flex-col-reverse p-2">
+          <ChessGame round={round} board={2} />
+          <ChessGame round={round} board={1} />
+        </div>
+        <div className="flex flex-col">
+          <div className="text-center m-auto -mb-20 mt-10">
+            <img src={logo} className="w-52" alt="Chess Centre" />
+            <h2 className=" text-3xl text-brand-teal">Rapidplay</h2>
+          </div>  
+          <ChessGame round={round} board={1} />
+        </div>
+        <div className="h-screen flex flex-col-reverse p-2">
+          <ChessGame round={round} board={2} />
+          <ChessGame round={round} board={1} />
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+
+
