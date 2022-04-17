@@ -56,27 +56,31 @@ export default function BoardWrapper(props) {
   }, [pgn]);
 
   return (
-    <div className="bg-slate-800 text-white m-auto p-4 shadow-lg border-4 border-brand-orange rounded-lg">
-      <div className="grid grid-cols-10">
-        <div className="col-span-3">
-          <div className="grid grid-cols-1">
-            <p className="text-white font-medium pb-1 h-10">{name}</p>
-            <p className="text-sm">{info.black}</p>
-            <p className="text-white text-3xl font-bold my-36">{lastMove}</p>
-            <p className="text-sm">{info.white}</p>
-          </div>
-        </div>
-        <div className="col-span-7">
-          <div className="mx-auto">
+    <div className="bg-slate-900 text-black m-auto px-4 py-2 shadow-lg">
+      <div className="grid grid-cols-1">
+        <div className="mx-auto w-full">
+          <p className="font-bold text-white">
+            <span className="w-10 bg-orange-500 text-lg px-2 rounded-sm">
+              {name}
+            </span>
+          </p>
+          <p className="text-sm bg-slate-800 pb-1 pt-2 rounded-t-md text-white font-medium border-t-2 border-l-2 border-r-2 border-orange-400 -mt-2">
+            {info.black}
+          </p>
+          <div className="border-l border-r border-orange-400">
             <Chessboard
               showBoardNotation={true}
               customDarkSquareStyle={{ backgroundColor: "#067a87" }}
               customLightSquareStyle={{ backgroundColor: "#5499ab" }}
               id={1}
               position={fen}
-              boardWidth={410}
+              boardWidth={300}
             />
           </div>
+          <p className="text-sm bg-slate-800 pt-1 pb-2 rounded-b-md text-white font-medium border-b-2 border-l-2 border-r-2 border-orange-400">
+            {info.white}
+          </p>
+          <p className="text-white text-mg font-bold">{lastMove}</p>
         </div>
       </div>
     </div>

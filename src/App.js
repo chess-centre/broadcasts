@@ -1,32 +1,24 @@
-import logo from "./assets/logo.png";
-import ChessGame from "./components/Game";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ThemedSuspense from "./components/ThemedSuspense";
+import routes from "./routes";
+const Page404 = lazy(() => import("./views/Error/404"));
 
-function App() {
-  const round = 1;
+export default function App() {
   return (
-    <div className="bg-slate-900 p-2">
-      <div className="grid grid-cols-3">
-        <div className="h-screen flex flex-col-reverse p-2">
-          <ChessGame round={round} board={2} />
-          <ChessGame round={round} board={1} />
-        </div>
-        <div className="flex flex-col">
-          <div className="text-center m-auto -mb-20 mt-10">
-            <img src={logo} className="w-52" alt="Chess Centre" />
-            <h2 className=" text-3xl text-brand-teal">Rapidplay</h2>
-          </div>  
-          <ChessGame round={round} board={1} />
-        </div>
-        <div className="h-screen flex flex-col-reverse p-2">
-          <ChessGame round={round} board={2} />
-          <ChessGame round={round} board={1} />
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Suspense fallback={<ThemedSuspense />}>
+        <Routes>
+          <Route path="*" element={<Page404 />} />
+          {routes.map((route, index) => (
+            <Route
+              key={route.path + index}
+              path={route.path}
+              element={<route.element />}
+            />
+          ))}
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
-
-export default App;
-
-
-

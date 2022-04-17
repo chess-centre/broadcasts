@@ -31,5 +31,6 @@ const getPgn = async (round, board) => {
     console.log(error);
     return "";
   });
+  console.log(`GET: returning pgn for ROUND: ${round} BOARD: ${board}`);
   return pgn;
 };

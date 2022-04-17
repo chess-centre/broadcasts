@@ -4,7 +4,7 @@ import BoardWrapper from "./Board";
 
 const BASE_PATH = "http://localhost:8080";
 
-export default function ChessGame({ round, board, interval = 1000 }) {
+export default function ChessGame({ round, board, interval = 10000 }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [pgn, setPGN] = useState("start");
 
@@ -28,7 +28,7 @@ export default function ChessGame({ round, board, interval = 1000 }) {
 
   return (
     <BoardWrapper
-      name={`Board ${board.toString()}`}
+      name={`${board.toString()}`}
       pgn={pgn}
       ready={isLoaded}
     />
