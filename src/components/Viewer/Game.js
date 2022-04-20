@@ -11,8 +11,8 @@ export default function ChessGame({ round, board, interval = 1000 }) {
   const [fen, setFen] = useState("start");
   const [result, setResult] = useState(null);
   const [lastMove, setLastMove] = useState("");
-  const [whiteClock, setWhiteClock] = useState("");
-  const [blackClock, setBlackClock] = useState("");
+  const [whiteClock, setWhiteClock] = useState("00:00:00");
+  const [blackClock, setBlackClock] = useState("00:00:00");
   const [info, setInfo] = useState({
     whiteInfo: null,
     blackInfo: null
