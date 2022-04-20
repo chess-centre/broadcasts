@@ -4,7 +4,7 @@
 
 This is a work in-progress project to provide a fully integrated experience with **The Chess Centre** platform live events, bringing together player data, DGT broadcast data and event result details.
 
-<img src="./img/example-full.png" />
+<img src="./img/example-full-boards.png" />
 
 
 ### Getting started
