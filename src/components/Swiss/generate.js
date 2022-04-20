@@ -1,4 +1,4 @@
-import { generateGames } from "../Shared/ResultsChecker";
+import { generateGames } from "../Events/Shared/ResultsChecker";
 import {
   eventName,
   date,

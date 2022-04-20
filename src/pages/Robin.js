@@ -1,5 +1,5 @@
-import RoundRobin from "../components/Events/March/RoundRobin";
-import data from "../components/Events/March/meta.json";
+import RoundRobin from "../components/RoundRobin/RoundRobin";
+import data from "../components/RoundRobin/meta.json";
 
 const {
   name,

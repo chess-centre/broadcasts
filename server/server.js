@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const fs = require("fs").promises;
+const chessParser = require("./chessParsing");
 const port = 8080;
 // TODO: add to config
 const BASE_PATH = "C:/Users/user/Desktop/Live";
@@ -12,7 +13,7 @@ app.use(cors());
 app.get("/:round/:board", async (req, res) => {
   const { board, round } = req.params;
   const result = await getPgn(round, board);
-  res.send(result);
+  res.json(result);
 });
 
 app.listen(port, () => {
@@ -32,5 +33,9 @@ const getPgn = async (round, board) => {
     return "";
   });
   console.log(`GET: returning pgn for ROUND: ${round} BOARD: ${board}`);
-  return pgn;
+  const parsed = chessParser(pgn);
+
+  return parsed;
 };
+
+

@@ -1,5 +1,5 @@
 import logo from "../assets/logo.png";
-import ChessGame from "../components/Game";
+import ChessGame from "../components/Viewer/Game";
 
 function Games() {
   const round = 1;

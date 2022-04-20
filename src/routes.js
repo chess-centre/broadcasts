@@ -3,19 +3,19 @@ import { lazy } from "react";
 const routes = [
   {
     path: "/",
-    element: lazy(() => import("./views/Home")),
+    element: lazy(() => import("./pages/Home")),
   },
   {
     path: "/games",
-    element: lazy(() => import("./views/Games")),
+    element: lazy(() => import("./pages/Games")),
   },
   {
     path: "/swiss",
-    element: lazy(() => import("./views/Swiss")),
+    element: lazy(() => import("./pages/Swiss")),
   },
   {
     path: "/robin",
-    element: lazy(() => import("./views/Robin")),
+    element: lazy(() => import("./pages/Robin")),
   }
 ];
 

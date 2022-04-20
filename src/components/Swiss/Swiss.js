@@ -2,11 +2,7 @@ import React from "react";
 import { Standings } from "../Shared/Standings";
 import { MiniPairingsTable } from "../Shared/MiniPairing";
 import { resultCheck } from "../Shared/ResultsChecker";
-import ChessGame from "../../Game";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import ChessGame from "../Viewer/Game";
 
 const addSeeding = (players) =>
   players.map((player, idx) => ({ ...player, seed: idx + 1 }));
@@ -89,16 +85,16 @@ function RoundTimes({ icon, title, settings }) {
 }
 
 function GamesGrid() {
-  const round = 1;
+  const round = 2;
   return (
     <div className="bg-slate-900 border-2 border-cyan-600">
       <div className="grid grid-cols-3">
         <ChessGame round={round} board={1} />
-        <ChessGame round={round} board={2} />
+        {/* <ChessGame round={round} board={2} />
         <ChessGame round={round} board={1} />
         <ChessGame round={round} board={2} />
         <ChessGame round={round} board={1} />
-        <ChessGame round={round} board={2} />
+        <ChessGame round={round} board={2} /> */}
       </div>
     </div>
   );

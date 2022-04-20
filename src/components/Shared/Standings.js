@@ -105,16 +105,18 @@ export const Standings = ({ roundByRound, settings }) => {
                           1;
 
                         return (
-                          <ResultCell
-                            idx={idx}
-                            result={r}
-                            isLive={isLive}
-                            isFutureRound={isFutureRound}
-                            opponent={opponentPosition}
-                            color={color}
-                            showPairing={showOpponents}
-                            showColors={showPairingColors}
-                          />
+                          <div key={idx}>
+                            <ResultCell
+                              idx={idx}
+                              result={r}
+                              isLive={isLive}
+                              isFutureRound={isFutureRound}
+                              opponent={opponentPosition}
+                              color={color}
+                              showPairing={showOpponents}
+                              showColors={showPairingColors}
+                            />
+                          </div>
                         );
                       })}
                   </div>
@@ -169,14 +171,14 @@ function ResultCell({
 }) {
   const OpponentPairing = () =>
     showPairing && (
-      <span className="absolute text-xxs -mt-1 text-slate-100 right-2">
+      <span className="absolute text-xs -mt-1 text-slate-100 right-2">
         {opponent}
       </span>
     );
 
   const PairingColor = () =>
     showColors && (
-      <span className="absolute text-xxs -mt-1 text-slate-100 left-2">
+      <span className="absolute text-xs -mt-1 text-slate-100 left-2">
         {color}
       </span>
     );
@@ -207,7 +209,7 @@ function ResultCell({
     return (
       <div key={idx} className="relative px-2 w-12">
         <PairingColor />
-        <span className="text-blue-500">½</span>
+        <span className="text-cyan-500">½</span>
         <OpponentPairing />
       </div>
     );
