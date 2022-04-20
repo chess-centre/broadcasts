@@ -34,7 +34,7 @@ Unfortunately, this is far from easy to achieve. After reading the documentation
 
 _* the data does appear to be there but the instantiation call to retreive the correct data is not documented_
 
-### NEXT STEPS
+### Next Steps
 
 The most logical next steps here include:
 
