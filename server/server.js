@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
+const ws = require("express-ws")(app);
+const chokidar = require("chokidar");
 const cors = require("cors");
 const fs = require("fs").promises;
-const chessParser = require("./chessParsing");
+const parseGame = require("./parse-game");
+
 const port = 8080;
 // TODO: add to config
 const BASE_PATH = "C:/Users/user/Desktop/Live";
@@ -10,32 +13,60 @@ const BASE_PATH = "C:/Users/user/Desktop/Live";
 // require for react app requests
 app.use(cors());
 
+app.get("/favicon.ico", (req, res) => res.status(204));
+
 app.get("/:round/:board", async (req, res) => {
   const { board, round } = req.params;
   const result = await getPgn(round, board);
   res.json(result);
 });
 
-app.listen(port, () => {
-  console.log(`PGN API started on port ${port}`);
+app.ws("/", async (s, req) => {
+  console.log("Websocket Connection: Ready");
+
+  try {
+    const files = await getFiles(1);
+    files
+      .filter((f) => f.endsWith(".pgn") && f.includes("game-"))
+      .forEach((f) => {
+        watchFile(1, f, async (file) => {
+          const data = await getPgn(file);
+          s.send(JSON.stringify(data));
+        });
+      });
+  } catch (error) {
+    console.log("Error", error);
+    s.send("Error: oops, something went wrong!");
+  }
 });
 
-app.get("/favicon.ico", (req, res) => res.status(204));
+app.listen(port, () => {
+  console.log(`File Reader: pgn API started on port ${port}`);
+});
 
-const getPgn = async (round, board) => {
-
-  // TODO: could introduce a cache here, and determine if a change has occurred
-  // Also, add any fs changes (as part of the Websocket solution)
-
-  const path = `${BASE_PATH}/round-${round}/game-${board}.pgn`;
-  const pgn = await fs.readFile(path, "utf-8").catch((error) => {
-    console.log(error);
-    return "";
-  });
-  console.log(`GET: returning pgn for ROUND: ${round} BOARD: ${board}`);
-  const parsed = chessParser(pgn);
-
+const getPgn = async (path) => {
+  console.log(`GET: returning pgn for ${path}`);
+  const pgn = await fs.readFile(path, "utf-8").catch(console.error);
+  const parsed = parseGame(pgn);
+  console.log(`GET: ${parsed}`);
   return parsed;
 };
 
+const getFiles = async (round) => {
+  return await fs.readdir(`${BASE_PATH}/round-${round}`, (err, files) => {
+    if (err) return [];
+    return files.filter((file) => file.endsWith(".pgn"));
+  });
+};
 
+const watchFile = async (round, file, cb) => {
+  const path = `${BASE_PATH}/round-${round}/${file}`;
+  const watcher = chokidar.watch(path, {
+    persistent: true,
+  });
+  watcher.on("change", (path, stats) => {
+    if (stats) {
+      cb(path);
+    }
+  });
+};

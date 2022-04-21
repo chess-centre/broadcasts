@@ -90,11 +90,11 @@ function GamesGrid() {
     <div className="bg-slate-900 border-2 border-cyan-600">
       <div className="grid grid-cols-3">
         <ChessGame round={round} board={1} />
-        <ChessGame round={round} board={2} />
+        {/* <ChessGame round={round} board={2} />
         <ChessGame round={round} board={1} />
         <ChessGame round={round} board={2} />
         <ChessGame round={round} board={1} />
-        <ChessGame round={round} board={2} />
+        <ChessGame round={round} board={2} /> */}
       </div>
     </div>
   );
