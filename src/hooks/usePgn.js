@@ -3,9 +3,9 @@ const URL = "ws://localhost:8080";
 const connection = new WebSocket(URL);
 export const PGNContext = createContext(connection);
 
-export const PGNProvider = (props) => (
-  <PGNContext.Provider value={connection}>{props.children}</PGNContext.Provider>
-);
+export const PGNProvider = (props) => {
+  return (<PGNContext.Provider value={connection}>{props.children}</PGNContext.Provider>)
+};
 
 export const usePGN = () => {
   const [active, setActive] = useState(false);
@@ -33,6 +33,10 @@ export const usePGN = () => {
       setGameState(game);
     }
   };
+
+  connection.onerror = (error) => {
+    console.log("connection error!");
+  }
 
   const close = () => connection.close();
 

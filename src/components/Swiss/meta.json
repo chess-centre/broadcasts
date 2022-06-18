@@ -1,11 +1,11 @@
 {
-  "name": "April Rapidplay 2022",
+  "name": "June Rapidplay 2022",
   "eventId": "9e55455d-0f3e-422c-b1ea-c8e690dbfb0a",
-  "eventName": "April Rapidplay",
-  "date": "2022-04-16",
+  "eventName": "June Rapidplay",
+  "date": "2022-06-16",
   "settings": {
     "type": "Swiss",
-    "currentRound": 4,
+    "currentRound": 5,
     "totalRounds": 5,
     "roundLive": false,
     "showAll": false,
@@ -15,9 +15,9 @@
     "nextRoundTime": {
       "1": "10:00am",
       "2": "11:00am",
-      "3": "12:30pm",
-      "4": "1:30pm",
-      "5": "2:30pm"
+      "3": "12:15pm",
+      "4": "1:15pm",
+      "5": "2:15pm"
     },
     "prizeGiving": "3:30pm"
   },
@@ -29,97 +29,64 @@
       "entries": [
         {
           "id": 1,
-          "memberId": "cebccea3-ad03-4846-ab1d-aa1dfbb90299",
-          "name": "Mariana Mosnegutu",
-          "title": "WIM",
+          "memberId": "0f0d3477-a213-4291-ab45-7c9eb6882995",
+          "name": "Peter Shaw",
           "ratingInfo": {
-            "rating": 2266
-          }
-        },
-        {
-          "id": 2,
-          "memberId": "c47067a0-f28c-4f5e-bdf6-5cb2fcb35007",
-          "name": "Klauss Mosnegutu",
-          "ratingInfo": {
-            "rating": 2218
-          }
-        },
-        {
-          "id": 3,
-          "memberId": "153e4afd-1921-49d4-817e-ab0e13d5a50a",
-          "name": "George Turner",
-          "ratingInfo": {
-            "rating": 1926
-          }
-        },
-        {
-          "id": 4,
-          "memberId": "7d686b62-383e-4858-b90c-07e5e1bdbe12",
-          "name": "Matthew Webb",
-          "ratingInfo": {
-            "rating": 1834
-          }
-        },
-        {
-          "id": 5,
-          "memberId": "47449d84-f98a-406a-ae47-e9d19ff32a84",
-          "name": "Paul Butterworth",
-          "ratingInfo": {
-            "rating": 1742
-          }
-        },
-        {
-          "id": 6,
-          "memberId": "1a5cfa53-ff39-462b-b1ec-95c73e4e44f3",
-          "name": "Andrew Wainwright",
-          "ratingInfo": {
-            "rating": 1725
-          }
-        },
-        {
-          "id": 7,
-          "memberId": "d85171ad-e483-4a48-bc31-0a765882248f",
-          "name": "John Tate",
-          "ratingInfo": {
-            "rating": 1590
+            "rating": 2253
           }
         },
         {
           "id": 8,
-          "memberId": "f623246a-96e1-4217-accb-b090042557cf",
-          "name": "John Moxham",
-          "ratingInfo": {
-            "rating": 1443
-          }
-        },
-        {
-          "id": 9,
-          "memberId": "53f09ff3-9d80-4e09-b5db-ba59e6128eeb",
-          "name": "John Light",
-          "ratingInfo": {
-            "rating": 1428
-          }
-        },
-        {
-          "id": 10,
-          "memberId": "4f7097e8-c76b-47a4-acaf-bb09d2ccaf9b",
-          "name": "Steve Collins",
-          "ratingInfo": {
-            "rating": 1400
-          }
-        },
-        {
-          "id": 11,
-          "memberId": "f46e34f3-497d-4a26-bab5-a9d91533d3a3",
-          "name": "Donna Chadwick",
-          "ratingInfo": {
-            "rating": 1382
-          }
-        },
-        {
-          "id": 12,
           "memberId": "02082368-677b-432c-95da-7021a9985f1d",
           "name": "Andy Mata",
+          "ratingInfo": {
+            "rating": 1841
+          }
+        },
+        {
+          "id": 3,
+          "memberId": "fba30b99-eac5-4e1a-9f21-b4eccae20f61",
+          "name": "Dale Cullum",
+          "ratingInfo": {
+            "rating": 1743
+          }
+        },
+        {
+          "id": 2,
+          "memberId": "1f412825-2ed3-4662-bfb2-8235aa0c7054",
+          "name": "Greg Billenness",
+          "ratingInfo": {
+            "rating": 1619
+          }
+        },
+        {
+          "id": 4,
+          "memberId": "4d7454d1-4d37-495f-ad4f-0bfcd3206cb6",
+          "name": "Elliott Barnett",
+          "ratingInfo": {
+            "rating": 1543
+          }
+        },
+        {
+          "id": 5,
+          "memberId": "d5b08b39-6e67-44b5-97ba-cce63d9e828c",
+          "name": "Emlyn Hauber",
+          "ratingInfo": {
+            "rating": 1399
+          }
+        },
+        {
+          "id": 6,
+          "memberId": "c655db9b-1297-4969-97c1-08c7d7644013",
+          "name": "David Halpin",
+          "ratingInfo": {
+            "rating": 1173
+          }
+        },
+        {
+          "id": 7,
+          "memberId": "3204e4a4-3677-4086-8cbe-56d985084fe6",
+          "name": "Peter Procter",
           "ratingInfo": {
             "rating": ""
           }
@@ -131,56 +98,46 @@
     {
       "round": 1,
       "pairings": [
-        [1, 7],
-        [8, 2],
-        [3, 9],
-        [10, 4],
-        [5, 11],
-        [12, 6]
+        [1, 5],
+        [6, 2],
+        [3, 7],
+        [8, 4]
       ]
     },
     {
       "round": 2,
       "pairings": [
-        [2, 3],
-        [4, 1],
-        [12, 5],
-        [6, 10],
-        [7, 8],
-        [9, 11]
+        [4,1],
+        [2,3],
+        [7,6],
+        [5,8]
       ]
     },
     {
       "round": 3,
       "pairings": [
-        [3, 12],
-        [5, 4],
-        [1, 6],
-        [7, 2],
-        [10, 9],
-        [11, 8]
+        [1,2],
+        [3,5],
+        [6,4],
+        [8,7]
       ]
     },
     {
       "round": 4,
       "pairings": [
-        [4, 12],
-        [2, 1],
-        [6, 3],
-        [8, 5],
-        [9, 7],
-        [11, 10]
+        [2,4],
+        [1,3],
+        [5,7],
+        [8,6]
       ]
     },
     {
       "round": 5,
       "pairings": [
-        [2, 4],
-        [12, 1],
-        [3, 5],
-        [9, 6],
-        [10, 8],
-        [7, 11]
+        [5,2],
+        [6,1],
+        [3,8],
+        [4,7]
       ]
     }
   ],
@@ -191,56 +148,46 @@
         {
           "round": 1,
           "pairResults": [
-            [1, 0],
-            [0, 1],
-            [1, 0],
-            [0, 1],
-            [1, 0],
-            [1, 0]
+            [1,0],
+            [0,1],
+            [1,0],
+            [0,1]
           ]
         },
         {
           "round": 2,
           "pairResults": [
-            [0, 1],
-            [1, 0],
-            [1, 0],
-            [1, 0],
-            [1, 0],
-            [1, 0]
+            [0,1],
+            [0.5,0.5],
+            [0.5,0.5],
+            [1,0]
           ]
         },
         {
           "round": 3,
           "pairResults": [
-            [0, 1],
-            [0, 1],
-            [1, 0],
-            [0, 1],
-            [1, 0],
-            [0, 1]
+            [0,1],
+            [1,0],
+            [0,1],
+            [0,1]
           ]
         },
         {
           "round": 4,
           "pairResults": [
-            [1, 0],
-            [0.5, 0.5],
-            [0.5, 0.5],
-            [0, 1],
-            [1, 0],
-            [1, 0]
+            [1,0],
+            [1,0],
+            [1,0],
+            [0,1]
           ]
         },
         {
           "round": 5,
           "pairResults": [
-            [0, 1],
-            [0, 1],
-            [0.5, 0.5],
-            [0, 1],
-            [0, 1],
-            [1, 0]
+            [0,1],
+            [0,1],
+            [1,0],
+            [1,0]
           ]
         }
       ]

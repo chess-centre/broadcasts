@@ -24,7 +24,7 @@ export default function Swiss({
       <div className="col-span-1">
         <RoundTimes icon={icon} title={title} settings={settings} />
       </div>
-      <div className="col-span-5">
+      <div className="col-span-6">
         <div>
           <Standings
             key={1}
@@ -34,24 +34,23 @@ export default function Swiss({
             settings={settings}
           />
         </div>
-        <div className="grid grid-cols-1">
-          {pairings
-            .slice(settings.currentRound - 1, settings.currentRound)
-            .map((pairings, key) => (
-              <div key={key} className="mt-7">
-                <MiniPairingsTable
-                  format={pairings}
-                  players={players}
-                  results={results}
-                  indexer={boards}
-                  settings={settings}
-                />
-              </div>
-            ))}
-        </div>
       </div>
-      <div className="col-span-6">
-        <GamesGrid />
+      <div className="col-span-5">
+
+        {pairings
+          .slice(2, 5)
+          .map((pairings, key) => (
+            <div key={key} className="mb-4">
+              <MiniPairingsTable
+                format={pairings}
+                players={players}
+                results={results}
+                indexer={boards}
+                settings={settings}
+              />
+            </div>
+          ))}
+
       </div>
     </div>
   );

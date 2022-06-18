@@ -186,7 +186,7 @@ function ResultCell({
   if (isLive) {
     return (
       <div key={idx} className="px-2 w-12">
-        <span className="text-orange-brand animate-pulse">Live</span>
+        <span className="text-orange-500 animate-pulse">Live</span>
       </div>
     );
   }

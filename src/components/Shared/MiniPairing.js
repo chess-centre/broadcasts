@@ -52,8 +52,11 @@ export const MiniPairingsTable = ({
           </tr>
         </thead>
         <tbody className="bg-slate-700">
-          <tr className="border border-r border-slate-900 row-span-4">
-            <td className="px-1 py-1 border-slate-700"></td>
+          <tr className="border border-r border-slate-900">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td className="px-1 py-1 border-slate-700 text-center text-slate-500">Round { round }</td>
           </tr>
           {pairings.map((p, key) => {
             const [white, black] = results.find((r) => r.round === round)
@@ -97,7 +100,7 @@ export const MiniPairingsTable = ({
                       black === 0.5 ? "½" : black
                     }`
                   ) : isLive ? (
-                    <span className="text-orange-brand animate-pulse">
+                    <span className="text-orange-500 animate-pulse">
                       Live
                     </span>
                   ) : (
