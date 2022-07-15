@@ -27,11 +27,12 @@ const Viewer = () => {
             Welcome to the 1st dedicated, not for profit, chess centre in the UK
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-3 gap-2">
           {players.map(({ entries, section, title, icon }, index) => {
             const resulst = results.find((r) => r.section === section).scores;
             return (
               <RoundRobin
+                key={index}
                 title={title}
                 entries={entries}
                 results={resulst}
@@ -46,7 +47,7 @@ const Viewer = () => {
           <div className=" bg-cool-gray-900 border-2 border-cool-gray-700">
             <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-6">
               <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl font-extrabold text-cool-gray-600 sm:text-2xl">
+                <h2 className="text-3xl font-extrabold text-white sm:text-2xl">
                   Event Information
                 </h2>
               </div>
@@ -87,7 +88,7 @@ const Viewer = () => {
                 </div>
                 <div className="flex flex-col">
                   <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Live Games</dt>
-                  <dd className="order-2 text-2xl font-extrabold text-teal-400 mt-1">chesscentre.online</dd>
+                  <dd className="order-2 text-2xl font-extrabold text-teal-700 mt-1">chesscentre.online</dd>
                 </div>
                 <div className="flex flex-col -mt-6">
                   <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Prize Giving</dt>

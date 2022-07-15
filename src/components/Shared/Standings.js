@@ -5,7 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const Standings = ({ roundByRound, settings }) => {
+export const Standings = ({ roundByRound, settings, showTitle = false }) => {
   const [showOpponents, setShowOpponents] = useState(
     settings.showOpponentPairing
   );
@@ -24,12 +24,13 @@ export const Standings = ({ roundByRound, settings }) => {
             >
               Pos.
             </th>
-            <th
-              scope="col"
-              className="px-1 py-3 text-left text-sm font-medium text-orange-900 uppercase tracking-wider"
-            >
-              Title
-            </th>
+            {showTitle &&
+              <th
+                scope="col"
+                className="px-1 py-3 text-left text-sm font-medium text-orange-900 uppercase tracking-wider"
+              >
+                Title
+              </th>}
             <th
               scope="col"
               className="px-4 sm:px-6 py-3 text-left text-sm font-medium text-orange-900 uppercase tracking-wider"
@@ -57,7 +58,7 @@ export const Standings = ({ roundByRound, settings }) => {
           </tr>
         </thead>
         <tbody className="bg-slate-700 divide-y divide-slate-900">
-          <tr>
+          <tr className="px-1 py-1 border-slate-700">
             <td className="px-1 py-1 border-slate-700"></td>
           </tr>
           {roundByRound.map((data, key) => {
@@ -76,11 +77,12 @@ export const Standings = ({ roundByRound, settings }) => {
                 <td className="border-r border-slate-700 px-1 py-2 text-md whitespace-nowrap text-center text-slate-50">
                   {position}
                 </td>
-                <td className="px-0 py-2 text-md whitespace-nowrap text-center text-slate-50">
-                  <span className="text-yellow-400 font-bold">
-                    {data.title}
-                  </span>
-                </td>
+                {showTitle &&
+                  <td className="px-0 py-2 text-md whitespace-nowrap text-center text-slate-50">
+                    <span className="text-yellow-400 font-bold">
+                      {data.title}
+                    </span>
+                  </td>}
                 <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-md text-white">
                   {data.name}
                 </td>
@@ -89,7 +91,7 @@ export const Standings = ({ roundByRound, settings }) => {
                     {data.rating ? data.rating : "unrated"}
                   </span>
                 </td>
-                <td className="px-4 sm:px-6 py-2 whitespace-nowrap font-medium text-md text-slate-700 border-r border-slate-700 ">
+                <td className="px-4 py-2 whitespace-nowrap font-medium text-md text-slate-700 border-r border-slate-700 ">
                   <div className="flex">
                     {data.rounds
                       .slice(0, settings.currentRound)
@@ -183,17 +185,7 @@ function ResultCell({
       </span>
     );
 
-  if (isLive) {
-    return (
-      <div key={idx} className="px-2 w-12">
-        <span className="text-orange-500 animate-pulse">Live</span>
-      </div>
-    );
-  }
 
-  if (isFutureRound) {
-    return <div key={idx} className="px-2 w-12"></div>;
-  }
 
   if (result === 1) {
     return (
@@ -223,6 +215,18 @@ function ResultCell({
         <OpponentPairing />
       </div>
     );
+  }
+
+  if (isLive) {
+    return (
+      <div key={idx} className="px-2 w-12">
+        <span className="text-orange-500 animate-pulse">Live</span>
+      </div>
+    );
+  }
+
+  if (isFutureRound) {
+    return <div key={idx} className="px-2 w-12"></div>;
   }
 
   return (
