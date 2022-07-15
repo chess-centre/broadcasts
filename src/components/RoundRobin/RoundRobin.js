@@ -62,8 +62,9 @@ export default function Rapidplay({ title, entries, results, settings, icon, boa
         SixPlayerPairings.slice(
           settings.currentRound - 1,
           settings.currentRound
-        ).map((pairings) => (
+        ).map((pairings, key) => (
           <PairingsTable
+            key={key}
             format={pairings}
             players={players}
             results={results}
@@ -75,6 +76,7 @@ export default function Rapidplay({ title, entries, results, settings, icon, boa
       {settings.showAll &&
         SixPlayerPairings.map((pairings, key) => (
           <PairingsTable
+            key={key}
             format={pairings}
             players={players}
             results={results}
