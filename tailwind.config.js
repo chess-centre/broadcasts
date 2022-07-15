@@ -9,6 +9,10 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         display: ['Lexend', ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        'xxxs': '.45rem',
+        'xxs': '.6rem'
+      },
       colors: {
         // BRAND COLORS:
         orange: {

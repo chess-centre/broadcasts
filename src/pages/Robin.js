@@ -1,5 +1,5 @@
 import RoundRobin from "../components/RoundRobin/RoundRobin";
-import data from "../components/RoundRobin/july-2022-meta.json";
+import data from "../components/RoundRobin/meta.json";
 
 const {
   name,
@@ -14,7 +14,7 @@ const Viewer = () => {
   const isLive = settings.roundLive;
 
   return (
-    <div className="bg-cool-gray-700 h-full grid grid-rows-1 grid-flow-col px-5 pt-4 pb-10">
+    <div className="bg-cool-gray-900 h-full grid grid-rows-1 grid-flow-col px-5 pt-4 pb-10">
       <div className="text-center">
         <div className=" bg-cool-gray-900 py-4 relative border-2 border-teal-600 shadow-lg rounded-lg">
           <div>
