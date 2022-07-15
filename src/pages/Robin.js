@@ -1,5 +1,5 @@
 import RoundRobin from "../components/RoundRobin/RoundRobin";
-import data from "../components/RoundRobin/meta.json";
+import data from "../components/RoundRobin/july-2022-meta.json";
 
 const {
   name,

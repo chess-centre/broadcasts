@@ -1,6 +1,6 @@
 {
   "name": "June Rapidplay 2022",
-  "eventId": "9e55455d-0f3e-422c-b1ea-c8e690dbfb0a",
+  "eventId": "a13877a2-2827-4279-8f83-364dcf78b9a6",
   "eventName": "June Rapidplay",
   "date": "2022-06-16",
   "settings": {
@@ -36,7 +36,7 @@
           }
         },
         {
-          "id": 8,
+          "id": 2,
           "memberId": "02082368-677b-432c-95da-7021a9985f1d",
           "name": "Andy Mata",
           "ratingInfo": {
@@ -52,7 +52,7 @@
           }
         },
         {
-          "id": 2,
+          "id": 4,
           "memberId": "1f412825-2ed3-4662-bfb2-8235aa0c7054",
           "name": "Greg Billenness",
           "ratingInfo": {
@@ -60,7 +60,7 @@
           }
         },
         {
-          "id": 4,
+          "id": 5,
           "memberId": "4d7454d1-4d37-495f-ad4f-0bfcd3206cb6",
           "name": "Elliott Barnett",
           "ratingInfo": {
@@ -68,7 +68,7 @@
           }
         },
         {
-          "id": 5,
+          "id": 6,
           "memberId": "d5b08b39-6e67-44b5-97ba-cce63d9e828c",
           "name": "Emlyn Hauber",
           "ratingInfo": {
@@ -76,7 +76,7 @@
           }
         },
         {
-          "id": 6,
+          "id": 7,
           "memberId": "c655db9b-1297-4969-97c1-08c7d7644013",
           "name": "David Halpin",
           "ratingInfo": {
@@ -84,7 +84,7 @@
           }
         },
         {
-          "id": 7,
+          "id": 8,
           "memberId": "3204e4a4-3677-4086-8cbe-56d985084fe6",
           "name": "Peter Procter",
           "ratingInfo": {

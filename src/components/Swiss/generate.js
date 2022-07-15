@@ -1,12 +1,13 @@
-import { generateGames } from "../Events/Shared/ResultsChecker";
-import {
+import { generateGames } from "../Shared/ResultsChecker";
+import data from "./meta.json"
+const {
   eventName,
   date,
   eventId,
   players,
   results,
   pairings,
-} from "../../components/Events/Tables/April/meta.json";
+} = data;
 
 const games = generateGames(pairings, players, results, { eventId, eventName, date });
 
