@@ -21,39 +21,39 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
             <tr>
               <th
                 scope="col"
-                className="px-1 py-3 text-left text-sm font-medium text-orange-900 uppercase tracking-wider"
+                className="px-1 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
               >
                 Pos.
               </th>
               {showTitle && (
                 <th
                   scope="col"
-                  className="px-1 py-3 text-left text-sm font-medium text-orange-900 uppercase tracking-wider"
+                  className="px-1 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
                 >
                   Title
                 </th>
               )}
               <th
                 scope="col"
-                className="px-4 sm:px-6 py-3 text-left text-sm font-medium text-orange-900 uppercase tracking-wider"
+                className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
               >
                 Player
               </th>
               <th
                 scope="col"
-                className="px-4 sm:px-6 py-3 text-center text-sm font-medium text-orange-900 uppercase tracking-wider"
+                className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
               >
                 Rating
               </th>
               <th
                 scope="col"
-                className="px-4 sm:px-6 py-3 text-left text-sm font-medium text-orange-900 uppercase tracking-wider"
+                className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
               >
-                Round by Round
+                Rd by Rd
               </th>
               <th
                 scope="col"
-                className="relative px-6 py-3 text-center text-sm font-medium text-orange-900 uppercase tracking-wider"
+                className="relative px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
               >
                 Total
               </th>
@@ -83,9 +83,15 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
                       </span>
                     </td>
                   )}
-                  <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-md text-white">
-                    {data.name}
-                  </td>
+                  {data.name.includes("stand in") ?
+                    <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-md text-white">
+                      {data.name.replace("stand in", "")} <span className="text-xs text-orange-400">stand in</span>
+                    </td> : <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-md text-white">
+                      {data.name}
+                    </td>
+
+                  }
+
                   <td className="border-r border-slate-700 px-1 py-2 text-md whitespace-nowrap text-center text-white">
                     <span className="text-cyan-400 font-medium">
                       {data.rating ? data.rating : "unrated"}
@@ -153,7 +159,7 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
           )}
         </div>
       </div>
-      <div className="bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border mt-2">{ division }</div>
+      <div className="bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border mt-2">{division}</div>
     </div>
   );
 };
@@ -191,7 +197,7 @@ function ResultCell({
 
   if (result === 1) {
     return (
-      <div key={idx} className="relative px-2 w-12">
+      <div key={idx} className="relative px-2 w-8">
         <PairingColor />
         <span className="text-green-500">{result}</span>
         <OpponentPairing />
@@ -201,7 +207,7 @@ function ResultCell({
 
   if (result === 0.5) {
     return (
-      <div key={idx} className="relative px-2 w-12">
+      <div key={idx} className="relative px-2 w-8">
         <PairingColor />
         <span className="text-cyan-500">½</span>
         <OpponentPairing />
@@ -211,7 +217,7 @@ function ResultCell({
 
   if (result === 0) {
     return (
-      <div key={idx} className="relative px-2 w-12">
+      <div key={idx} className="relative px-2 w-8">
         <PairingColor />
         <span className="text-red-500">{result}</span>
         <OpponentPairing />
@@ -221,18 +227,18 @@ function ResultCell({
 
   if (isLive) {
     return (
-      <div key={idx} className="px-2 w-12">
+      <div key={idx} className="px-2 w-8">
         <span className="text-orange-500 animate-pulse">Live</span>
       </div>
     );
   }
 
   if (isFutureRound) {
-    return <div key={idx} className="px-2 w-12"></div>;
+    return <div key={idx} className="px-2 w-8"></div>;
   }
 
   return (
-    <div key={idx} className="px-2 w-12">
+    <div key={idx} className="px-2 w-8">
       x
     </div>
   );

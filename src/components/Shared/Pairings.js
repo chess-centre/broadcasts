@@ -55,7 +55,7 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
                 </td>
                 <td className="flex-grow-0 max-w-full px-2 pl-4 sm:px-4 py-2 whitespace-nowrap text-center text-md font-medium text-white">
                   {whitePlayer.name ? (
-                    whitePlayer.name
+                    whitePlayer.name.replace("stand in", "")
                   ) : (
                     <span className="text-sx">TBC</span>
                   )}{" "}
@@ -77,7 +77,7 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
                 </td>
                 <td className="flex-grow-0 max-w-full px-2 pl-4 sm:px-4 py-2 whitespace-nowrap text-center text-md font-medium text-white">
                   {blackPlayer.name ? (
-                    blackPlayer.name
+                    blackPlayer.name.replace("stand in", "")
                   ) : (
                     <span className="text-sx">TBC</span>
                   )}{" "}

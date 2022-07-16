@@ -1,5 +1,6 @@
 import RoundRobin from "../components/RoundRobin/RoundRobin";
 import data from "../components/RoundRobin/meta.json";
+import Logo from "../assets/logo.png";
 
 const {
   name,
@@ -11,16 +12,17 @@ const {
 const Viewer = () => {
 
   const isLastRound = settings.currentRound >= settings.totalRounds;
+  const showRoundTimeForRound = settings.showRoundTimeForRound;
   const isLive = settings.roundLive;
 
   return (
     <div className="bg-cool-gray-900 h-full grid grid-rows-1 grid-flow-col px-5 pt-4 pb-10">
       <div className="text-center">
-        <div className=" bg-cool-gray-900 py-4 relative border-2 border-teal-600 shadow-lg rounded-lg">
-          <div>
-            
+        <div className="relative bg-cool-gray-900 py-4 border-2 border-teal-600 shadow-lg rounded-lg">
+          <div className="absolute">
+            <img src={Logo} className="h-20 ml-2 -mt-2" />
           </div>
-          <h2 className="tracking-tight leading-10 text-teal-500 text-3xl sm:leading-none">
+          <h2 className="tracking-tight text-teal-500 text-3xl leading-10 font-bold">
             {name}
           </h2>
           <div className="tracking-tight text-gray-100 text-md leading-none mt-3">
@@ -44,7 +46,7 @@ const Viewer = () => {
           })}
         </div>
         <div className="grid grid-cols-1 mt-4">
-          <div className=" bg-cool-gray-900 border-2 border-cool-gray-700">
+          <div className="bg-cool-gray-500 border-cool-gray-500">
             <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-6">
               <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl font-extrabold text-white sm:text-2xl">
@@ -53,7 +55,16 @@ const Viewer = () => {
               </div>
               <dl className="mt-2 text-center sm:mx-auto sm:grid sm:grid-cols-3 sm:gap-20">
                 <div className="flex flex-col -mt-6">
-                  {!isLastRound && !isLive &&
+                  {
+                    showRoundTimeForRound &&
+                    <>
+                    <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Next Round</dt>
+                    <dd className="order-2 text-5xl font-extrabold text-white">
+                      {settings.nextRoundTime[showRoundTimeForRound]}
+                    </dd>
+                  </>
+                  }
+                  {!isLastRound && !isLive && !showRoundTimeForRound &&
                     <>
                       <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Next Round</dt>
                       <dd className="order-2 text-5xl font-extrabold text-white">
@@ -61,7 +72,7 @@ const Viewer = () => {
                       </dd>
                     </>
                   }
-                  {!isLastRound && isLive &&
+                  {!isLastRound && isLive && !showRoundTimeForRound &&
                     <>
                       <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Next Round</dt>
                       <dd className="order-2 text-5xl font-extrabold text-white">
@@ -69,7 +80,7 @@ const Viewer = () => {
                       </dd>
                     </>
                   }
-                  {isLastRound && isLive &&
+                  {isLastRound && isLive && !showRoundTimeForRound &&
                     <>
                       <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Last Round</dt>
                       <dd className="order-2 text-3xl font-extrabold text-orange-brand">
@@ -77,7 +88,7 @@ const Viewer = () => {
                       </dd>
                     </>
                   }
-                  {isLastRound && !isLive &&
+                  {isLastRound && !isLive && !showRoundTimeForRound &&
                     <>
                       <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Last Round</dt>
                       <dd className="order-2 text-3xl font-extrabold text-gray-600">
@@ -88,7 +99,7 @@ const Viewer = () => {
                 </div>
                 <div className="flex flex-col">
                   <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Live Games</dt>
-                  <dd className="order-2 text-2xl font-extrabold text-teal-700 mt-1">chesscentre.online</dd>
+                  <dd className="order-2 text-2xl font-extrabold text-teal-600 mt-1">chesscentre.online</dd>
                 </div>
                 <div className="flex flex-col -mt-6">
                   <dt className="order-1 mt-2 text-lg leading-6 font-medium text-gray-400">Prize Giving</dt>
