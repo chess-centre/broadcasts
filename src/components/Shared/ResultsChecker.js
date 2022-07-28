@@ -1,23 +1,24 @@
 import Game from "./Game";
 
 
-export const generateGames = (boardPairings, players, results, info) => {
+export const generateGames = (boardPairings, players, results, info, division = 0) => {
 
   console.log("generating games")
 
   return boardPairings.map(({ round, pairings }) => {
 
-    const pairingResults = results[0].scores.find((r) => r.round === round).pairResults;
+    const pairingResults = results[division].scores.find((r) => r.round === round).pairResults;
 
       return pairings.map(([whiteId, blackId], index) => {
 
-        const white = players[0].entries.find(({ id }) => id === whiteId);
-        const black = players[0].entries.find(({ id }) => id === blackId);;
+        const white = players[division].entries.find(({ id }) => id === whiteId);
+        const black = players[division].entries.find(({ id }) => id === blackId);;
         const result = pairingResults[index].join("-");
 
         const game = new Game({
           eventId: info.eventId,
           eventName: info.eventName,
+          division: division + 1,
           round,
           whiteMemberId: white.memberId,
           whiteRating: white.ratingInfo.rating,

@@ -2,6 +2,10 @@ import React from "react";
 import { Standings } from "../Shared/Standings";
 import { PairingsTable } from "../Shared/Pairings";
 import { resultCheck } from "../Shared/ResultsChecker";
+import { gamesJson  } from "./generate";
+
+
+console.log(gamesJson)
 
 const SixPlayerPairings = [
   {

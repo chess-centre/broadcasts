@@ -7,6 +7,7 @@ export default class Game {
       eventId: props.eventId,
       eventName: props.eventName,
       round: props.round,
+      division: props.division,
       whiteMemberId: props.whiteMemberId,
       whiteRating: props.whiteRating ? props.whiteRating : null,
       whiteName: props.whiteName,

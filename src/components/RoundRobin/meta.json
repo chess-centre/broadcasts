@@ -1,5 +1,8 @@
 {
   "name": "July Rapidplay 2022",
+  "eventId": "b8c5d9e4-5b8c-47b6-ab42-b8239931c480",
+  "eventName": "June Rapidplay",
+  "date": "2022-07-17",
   "settings": {
     "enableToggles": false,
     "type": "RoundRobin",
@@ -67,6 +70,7 @@
         },
         {
           "id": 6,
+          "memberId": "47449d84-f98a-406a-ae47-e9d19ff32a84",
           "name": "Paul Butterworth",
           "ratingInfo": {
             "rating": 1747
@@ -82,7 +86,7 @@
         {
             "id": 1,
             "memberId": "1a5cfa53-ff39-462b-b1ec-95c73e4e44f3",
-            "name": "Andy Wainwright stand in",
+            "name": "Andy Wainwright",
             "ratingInfo": {
               "rating": 1744
             }
@@ -113,6 +117,7 @@
         },
         {
           "id": 5,
+          "memberId": "c3230106-f285-40cf-b6fa-95e247e3c1da",
           "name": "Jacob Smith",
           "ratingInfo": {
             "rating": 1481
@@ -176,7 +181,7 @@
         {
           "id": 6,
           "memberId": "7d686b62-383e-4858-b90c-07e5e1bdbe12",
-          "name": "Matt Webb stand in",
+          "name": "Matthew Webb",
           "ratingInfo": {
             "rating": 1905
           }
