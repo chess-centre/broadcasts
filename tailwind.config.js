@@ -15,9 +15,12 @@ module.exports = {
       },
       colors: {
         // BRAND COLORS:
+        yellow: {
+          brand: "#ffd469"
+        },
         orange: {
           brand: "#f0802b",
-          flyer: "#f58436",
+          flyer: "#f0802b",
           50: "#fff8f1",
           100: "#feecdc",
           200: "#fcd9bd",
@@ -30,7 +33,7 @@ module.exports = {
           900: "#771d1d",
         },
         teal: {
-          brand: "#5499ab",
+          brand: "#5699ab",
           50: "#edfafa",
           100: "#d5f5f6",
           200: "#afecef",
@@ -43,7 +46,7 @@ module.exports = {
           900: "#014451",
         },
         blue: {
-          brand: "#022b3d",
+          brand: "#0b2e3f",
           50: "#ebf5ff",
           100: "#e1effe",
           200: "#c3ddfd",

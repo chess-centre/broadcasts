@@ -3,10 +3,6 @@ import { Standings } from "../Shared/Standings";
 import { MiniPairingsTable } from "../Shared/MiniPairing";
 import { resultCheck } from "../Shared/ResultsChecker";
 import ChessGame from "../Viewer/Game";
-import { gamesJson  } from "./generate";
-
-
-console.log(gamesJson)
 
 const addSeeding = (players) =>
   players.map((player, idx) => ({ ...player, seed: idx + 1 }));
@@ -23,7 +19,6 @@ export default function Swiss({
   const players = addSeeding(entries);
   const { roundByRound } = resultCheck(pairings, players, results, settings);
 
-  
 
   return (
     <div className="grid grid-cols-12 gap-3 mt-2">
