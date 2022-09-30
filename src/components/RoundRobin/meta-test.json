@@ -1,0 +1,170 @@
+{
+  "name": "Open Rapidplay 2022",
+  "eventId": "7f9e12a7-bab5-4d3e-b11f-7257befce6ef",
+  "eventName": "Open Rapidplay",
+  "date": "2022-10-08",
+  "settings": {
+    "enableToggles": false,
+    "type": "RoundRobin",
+    "currentRound": 1,
+    "showRoundTimeForRound": 5,
+    "totalRounds": 5,
+    "roundLive": false,
+    "showAll": false,
+    "showOpponentPairing": false,
+    "showPreviousRound": false,
+    "nextRoundTime": {
+      "1": "10:00am",
+      "2": "11:00am",
+      "3": "12:30pm",
+      "4": "1:30pm",
+      "5": "2:30pm"
+    },
+    "prizeGiving": "3:30pm"
+  },
+  "players": [
+    {
+      "section": "one",
+      "title": "Division 1",
+      "icon": "fad fa-chess-king",
+      "entries": [
+        {
+          "id": 1,
+          "memberId": "e23613af-6694-400a-8b85-f71e49702af2",
+          "ratingInfo": {}
+        }
+      ]
+    },
+    {
+      "section": "two",
+      "title": "Division 2",
+      "icon": "fad fa-chess-queen",
+      "entries": []
+    },
+    {
+      "section": "three",
+      "title": "Division 3",
+      "icon": "fad fa-chess-bishop",
+      "entries": []
+    }
+  ],
+  "pairings": [
+    {
+      "round": 1,
+      "pairings": [
+        [1, 6],
+        [2, 5],
+        [3, 4]
+      ]
+    },
+    {
+      "round": 2,
+      "pairings": [
+        [6, 4],
+        [5, 3],
+        [1, 2]
+      ]
+    },
+    {
+      "round": 3,
+      "pairings": [
+        [2, 6],
+        [3, 1],
+        [4, 5]
+      ]
+    },
+    {
+      "round": 4,
+      "pairings": [
+        [6, 5],
+        [1, 4],
+        [2, 3]
+      ]
+    },
+    {
+      "round": 5,
+      "pairings": [
+        [3, 6],
+        [4, 2],
+        [5, 1]
+      ]
+    }
+  ],
+  "results": [
+    {
+      "section": "one",
+      "scores": [
+        {
+          "round": 1,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 2,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 3,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 4,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 5,
+          "pairResults": [[], [], []]
+        }
+      ]
+    },
+    {
+      "section": "two",
+      "scores": [
+        {
+          "round": 1,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 2,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 3,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 4,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 5,
+          "pairResults": [[], [], []]
+        }
+      ]
+    },
+    {
+      "section": "three",
+      "scores": [
+        {
+          "round": 1,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 2,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 3,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 4,
+          "pairResults": [[], [], []]
+        },
+        {
+          "round": 5,
+          "pairResults": [[], [], []]
+        }
+      ]
+    }
+  ]
+}

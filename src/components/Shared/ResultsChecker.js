@@ -67,17 +67,21 @@ export const resultCheck = (boardPairings, players, results, settings) => {
 
   const allRounds = resultBySeed.reduce((player, { seed, result, opponent, color }) => {
     if (!player[seed]) {
+      console.log(player, seed);
       const p = players.find((p) => p.seed === seed);
-      player[seed] = {
-        rounds: [result],
-        seed,
-        opponents: [opponent],
-        colors: [color],
-        total: result || 0,
-        name: p.name,
-        rating: p.ratingInfo.rating,
-        title: p.title ? p.title : "",
-      };
+      if(p) {
+        player[seed] = {
+          rounds: [result],
+          seed,
+          opponents: [opponent],
+          colors: [color],
+          total: result || 0,
+          name: p.name,
+          rating: p.ratingInfo.rating,
+          title: p.title ? p.title : "",
+        };
+      }
+
     } else {    
       player[seed].rounds.push(result);
       player[seed].opponents.push(opponent);

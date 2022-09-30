@@ -1,0 +1,311 @@
+{
+  "name": "July Rapidplay 2022",
+  "eventId": "b8c5d9e4-5b8c-47b6-ab42-b8239931c480",
+  "eventName": "June Rapidplay",
+  "date": "2022-07-17",
+  "settings": {
+    "enableToggles": false,
+    "type": "RoundRobin",
+    "currentRound": 5,
+    "showRoundTimeForRound": 5,
+    "totalRounds": 5,
+    "roundLive": false,
+    "showAll": false,
+    "showOpponentPairing": false,
+    "showPreviousRound": false,
+    "nextRoundTime": {
+      "1": "10:00am",
+      "2": "11:00am",
+      "3": "12:30pm",
+      "4": "1:30pm",
+      "5": "2:30pm"
+    },
+    "prizeGiving": "3:30pm"
+  },
+  "players": [
+    {
+      "section": "one",
+      "title": "Division 1",
+      "icon": "fad fa-chess-king",
+      "entries": [
+        {
+          "id": 1,
+          "memberId": "0f45aab7-096e-4c84-83c8-5b7fb59df94d",
+          "name": "Oleg Cukovs",
+          "ratingInfo": {
+            "rating": 1977
+          }
+        },
+        {
+          "id": 2,
+          "memberId": "e1d11a57-652b-43f4-941f-a9e22c56dfe6",
+          "name": "Zac Cansdale",
+          "ratingInfo": {
+            "rating": 1946
+          }
+        },
+        {
+          "id": 3,
+          "memberId": "18f4bc21-854c-4be7-8be2-0e738e4195e7",
+          "name": "David Barlow",
+          "ratingInfo": {
+            "rating": 1941
+          }
+        },
+        {
+          "id": 4,
+          "memberId": "153e4afd-1921-49d4-817e-ab0e13d5a50a",
+          "name": "George Turner",
+          "ratingInfo": {
+            "rating": 1808
+          }
+        },
+        {
+          "id": 5,
+          "memberId": "c2dc86ba-4681-4eb8-8586-f489fd05cc39",
+          "name": "Kevin Winter",
+          "ratingInfo": {
+            "rating": 1804
+          }
+        },
+        {
+          "id": 6,
+          "memberId": "47449d84-f98a-406a-ae47-e9d19ff32a84",
+          "name": "Paul Butterworth",
+          "ratingInfo": {
+            "rating": 1747
+          }
+        }
+      ]
+    },
+    {
+      "section": "two",
+      "title": "Division 2",
+      "icon": "fad fa-chess-queen",
+      "entries": [
+        {
+            "id": 1,
+            "memberId": "1a5cfa53-ff39-462b-b1ec-95c73e4e44f3",
+            "name": "Andy Wainwright",
+            "ratingInfo": {
+              "rating": 1744
+            }
+          },
+        {
+          "id": 2,
+          "memberId": "f25bd093-4d6d-47bd-8466-14f8c2041730",
+          "name": "John Holliday",
+          "ratingInfo": {
+            "rating": 1641
+          }
+        },
+        {
+          "id": 3,
+          "memberId": "f623246a-96e1-4217-accb-b090042557cf",
+          "name": "John Moxham",
+          "ratingInfo": {
+            "rating": 1513
+          }
+        },
+        {
+          "id": 4,
+          "memberId": "4fb808be-e67e-42b1-9724-f08ef094b7d2",
+          "name": "Shriaansh Ganti",
+          "ratingInfo": {
+            "rating": 1495
+          }
+        },
+        {
+          "id": 5,
+          "memberId": "c3230106-f285-40cf-b6fa-95e247e3c1da",
+          "name": "Jacob Smith",
+          "ratingInfo": {
+            "rating": 1481
+          }
+        },
+        {
+          "id": 6,
+          "memberId": "08ca07e6-5ad9-4655-9032-6ebff7764a0b",
+          "name": "Chris Patrick",
+          "ratingInfo": {
+            "rating": 1466
+          }
+        }
+      ]
+    },
+    {
+      "section": "three",
+      "title": "Division 3",
+      "icon": "fad fa-chess-bishop",
+      "entries": [
+        {
+          "id": 1,
+          "memberId": "88346aed-4d85-4d0a-84f9-8c4034550477",
+          "name": "Hugh Blythe",
+          "ratingInfo": {
+            "rating": 1439
+          }
+        },
+        {
+          "id": 2,
+          "memberId": "4f7097e8-c76b-47a4-acaf-bb09d2ccaf9b",
+          "name": "Steve Collins",
+          "ratingInfo": {
+            "rating": 1392
+          }
+        },
+        {
+          "id": 3,
+          "memberId": "f46e34f3-497d-4a26-bab5-a9d91533d3a3",
+          "name": "Donna Chadwick",
+          "ratingInfo": {
+            "rating": 1380
+          }
+        },
+        {
+          "id": 4,
+          "memberId": "8e921e71-c0d4-4ff9-92a6-2ff8ab292b0e",
+          "name": "Simon Jones",
+          "ratingInfo": {
+            "rating": 1338
+          }
+        },
+        {
+          "id": 5,
+          "memberId": "5372978b-4267-4bb8-b06e-347eb808c63a",
+          "name": "Juris Kirilenkovs",
+          "ratingInfo": {
+            "rating": 1284
+          }
+        },
+        {
+          "id": 6,
+          "memberId": "7d686b62-383e-4858-b90c-07e5e1bdbe12",
+          "name": "Matthew Webb",
+          "ratingInfo": {
+            "rating": 1905
+          }
+        }
+      ]
+    }
+  ],
+  "pairings": [
+    {
+      "round": 1,
+      "pairings": [
+        [1, 6],
+        [2, 5],
+        [3, 4]
+      ]
+    },
+    {
+      "round": 2,
+      "pairings": [
+        [6, 4],
+        [5, 3],
+        [1, 2]
+      ]
+    },
+    {
+      "round": 3,
+      "pairings": [
+        [2, 6],
+        [3, 1],
+        [4, 5]
+      ]
+    },
+    {
+      "round": 4,
+      "pairings": [
+        [6, 5],
+        [1, 4],
+        [2, 3]
+      ]
+    },
+    {
+      "round": 5,
+      "pairings": [
+        [3, 6],
+        [4, 2],
+        [5, 1]
+      ]
+    }
+  ],
+  "results": [
+    {
+      "section": "one",
+      "scores": [
+        {
+          "round": 1,
+          "pairResults": [[1,0], [1,0], [1,0]]
+        },
+        {
+          "round": 2,
+          "pairResults": [[0,1], [0,1], [0.5,0.5]]
+        },
+        {
+          "round": 3,
+          "pairResults": [[1,0], [0,1], [1,0]]
+        },
+        {
+          "round": 4,
+          "pairResults": [[1,0], [0.5,0.5], [1,0]]
+        },
+        {
+          "round": 5,
+          "pairResults": [[0.5,0.5], [0,1], [0,1]]
+        }
+      ]
+    },
+    {
+      "section": "two",
+      "scores": [
+        {
+          "round": 1,
+          "pairResults": [[1,0], [1,0], [0,1]]
+        },
+        {
+          "round": 2,
+          "pairResults": [[1,0], [1,0], [1,0]]
+        },
+        {
+          "round": 3,
+          "pairResults": [[0,1], [0,1], [1,0]]
+        },
+        {
+          "round": 4,
+          "pairResults": [[0,1], [1,0], [1,0]]
+        },
+        {
+          "round": 5,
+          "pairResults": [[1,0], [0,1], [0,1]]
+        }
+      ]
+    },
+    {
+      "section": "three",
+      "scores": [
+        {
+          "round": 1,
+          "pairResults": [[0,1], [0,1], [1,0]]
+        },
+        {
+          "round": 2,
+          "pairResults": [[1,0], [1,0], [1,0]]
+        },
+        {
+          "round": 3,
+          "pairResults": [[0,1], [0.5,0.5], [0,1]]
+        },
+        {
+          "round": 4,
+          "pairResults": [[1,0], [1,0], [1,0]]
+        },
+        {
+          "round": 5,
+          "pairResults": [[0,1], [1,0], [1,0]]
+        }
+      ]
+    }
+  ]
+}

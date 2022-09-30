@@ -20,7 +20,7 @@ const Viewer = () => {
       <div className="text-center">
         <div className="relative bg-cool-gray-900 py-4 border-2 border-teal-600 shadow-lg rounded-lg">
           <div className="absolute">
-            <img src={Logo} className="h-20 ml-2 -mt-2" />
+            <img src={Logo} alt="chess centre" className="h-20 ml-2 -mt-2" />
           </div>
           <h2 className="tracking-tight text-teal-500 text-3xl leading-10 font-bold">
             {name}
@@ -31,13 +31,14 @@ const Viewer = () => {
         </div>
         <div className="grid grid-cols-3 gap-2">
           {players.map(({ entries, section, title, icon }, index) => {
-            const resulst = results.find((r) => r.section === section).scores;
+            const scores = results.find((r) => r.section === section).scores;
+            console.log(scores)
             return (
               <RoundRobin
                 key={index}
                 title={title}
                 entries={entries}
-                results={resulst}
+                results={scores}
                 settings={settings}
                 icon={icon}
                 boards={index}

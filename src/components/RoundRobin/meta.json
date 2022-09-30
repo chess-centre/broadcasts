@@ -1,13 +1,13 @@
 {
-  "name": "July Rapidplay 2022",
-  "eventId": "b8c5d9e4-5b8c-47b6-ab42-b8239931c480",
-  "eventName": "June Rapidplay",
-  "date": "2022-07-17",
+  "name": "Open Rapidplay 2022",
+  "eventId": "ab57f12c-9bdd-40a0-a13e-b3c0ae8c919e",
+  "eventName": "Open Rapidplay",
+  "date": "2022-10-01",
   "settings": {
     "enableToggles": false,
     "type": "RoundRobin",
-    "currentRound": 5,
-    "showRoundTimeForRound": 5,
+    "currentRound": 1,
+    "showRoundTimeForRound": 1,
     "totalRounds": 5,
     "roundLive": false,
     "showAll": false,
@@ -30,51 +30,81 @@
       "entries": [
         {
           "id": 1,
-          "memberId": "0f45aab7-096e-4c84-83c8-5b7fb59df94d",
-          "name": "Oleg Cukovs",
+          "memberId": "658511d7-2fec-4141-95aa-a14e2dc00cdc",
+          "name": "Dariusz Rak",
           "ratingInfo": {
-            "rating": 1977
-          }
+            "rating": 2035,
+            "value": 2035,
+            "sort": 2035,
+            "isPartial": null,
+            "key": "R"
+          },
+          "seed": 1
         },
         {
           "id": 2,
-          "memberId": "e1d11a57-652b-43f4-941f-a9e22c56dfe6",
-          "name": "Zac Cansdale",
+          "memberId": "065e47e9-f924-4097-a27b-781c3782d8d7",
+          "name": "Florian Biermann",
           "ratingInfo": {
-            "rating": 1946
-          }
+            "rating": 2025,
+            "value": 2025,
+            "sort": 2025,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 2
         },
         {
           "id": 3,
-          "memberId": "18f4bc21-854c-4be7-8be2-0e738e4195e7",
-          "name": "David Barlow",
+          "memberId": "802c5f77-d302-48c5-b167-abdc6916cbb0",
+          "name": "Gerald Cuaresma",
           "ratingInfo": {
-            "rating": 1941
-          }
+            "rating": 1980,
+            "value": 1980,
+            "sort": 1980,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 3
         },
         {
           "id": 4,
-          "memberId": "153e4afd-1921-49d4-817e-ab0e13d5a50a",
-          "name": "George Turner",
+          "memberId": "56b1cb60-aff8-4043-8648-907bc45f8901",
+          "name": "Oleg Cukovs",
           "ratingInfo": {
-            "rating": 1808
-          }
+            "rating": 1901,
+            "value": 1901,
+            "sort": 1901,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 4
         },
         {
           "id": 5,
-          "memberId": "c2dc86ba-4681-4eb8-8586-f489fd05cc39",
-          "name": "Kevin Winter",
+          "memberId": "709c54f5-0ad2-4c99-b191-43913c3898d5-free",
+          "name": "James Hall",
           "ratingInfo": {
-            "rating": 1804
-          }
+            "rating": 1816,
+            "value": 1816,
+            "sort": 1816,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 5
         },
         {
           "id": 6,
-          "memberId": "47449d84-f98a-406a-ae47-e9d19ff32a84",
+          "memberId": "794cab26-41af-4fdf-82be-2363482b7127-free",
           "name": "Paul Butterworth",
           "ratingInfo": {
-            "rating": 1747
-          }
+            "rating": 1722,
+            "value": 1722,
+            "sort": 1722,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 6
         }
       ]
     },
@@ -84,52 +114,82 @@
       "icon": "fad fa-chess-queen",
       "entries": [
         {
-            "id": 1,
-            "memberId": "1a5cfa53-ff39-462b-b1ec-95c73e4e44f3",
-            "name": "Andy Wainwright",
-            "ratingInfo": {
-              "rating": 1744
-            }
+          "id": 1,
+          "memberId": "cdca0780-9376-4072-811d-4e5c02fdef9d-free",
+          "name": "Charles Wainwright",
+          "ratingInfo": {
+            "rating": 1407,
+            "value": 1407,
+            "sort": 1407,
+            "isPartial": null,
+            "key": ""
           },
+          "seed": 1
+        },
         {
           "id": 2,
-          "memberId": "f25bd093-4d6d-47bd-8466-14f8c2041730",
-          "name": "John Holliday",
+          "memberId": "54ebe819-d62d-41e8-8076-c3ed9ad338b2-free",
+          "name": "Shriaansh Ganti",
           "ratingInfo": {
-            "rating": 1641
-          }
+            "rating": 1406,
+            "value": 1406,
+            "sort": 1406,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 2
         },
         {
           "id": 3,
-          "memberId": "f623246a-96e1-4217-accb-b090042557cf",
-          "name": "John Moxham",
+          "memberId": "c6bbc5c1-d163-4e92-a39a-bbbddc2e1086",
+          "name": "Sachin Ragu",
           "ratingInfo": {
-            "rating": 1513
-          }
+            "rating": 1387,
+            "value": 1387,
+            "sort": 1387,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 3
         },
         {
           "id": 4,
-          "memberId": "4fb808be-e67e-42b1-9724-f08ef094b7d2",
-          "name": "Shriaansh Ganti",
+          "memberId": "0ac62d61-63d3-402c-8cc3-e82f04625c1d-free",
+          "name": "Caelan Batty",
           "ratingInfo": {
-            "rating": 1495
-          }
+            "rating": 1335,
+            "value": 1335,
+            "sort": 1335,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 4
         },
         {
           "id": 5,
-          "memberId": "c3230106-f285-40cf-b6fa-95e247e3c1da",
-          "name": "Jacob Smith",
+          "memberId": "317ed3f7-f2f3-4765-bf84-57a7f88dd77d",
+          "name": "Juris Kirilenkovs",
           "ratingInfo": {
-            "rating": 1481
-          }
+            "rating": 1274,
+            "value": 1274,
+            "sort": 1274,
+            "isPartial": null,
+            "key": ""
+          },
+          "seed": 5
         },
         {
           "id": 6,
-          "memberId": "08ca07e6-5ad9-4655-9032-6ebff7764a0b",
-          "name": "Chris Patrick",
+          "memberId": "8bb470a7-d235-4e28-9465-9feb2aa00ff1",
+          "name": "Peter Procter",
           "ratingInfo": {
-            "rating": 1466
-          }
+            "rating": 1154,
+            "value": 1154,
+            "sort": 1154,
+            "isPartial": null,
+            "key": "R"
+          },
+          "seed": 6
         }
       ]
     },
@@ -140,51 +200,77 @@
       "entries": [
         {
           "id": 1,
-          "memberId": "88346aed-4d85-4d0a-84f9-8c4034550477",
-          "name": "Hugh Blythe",
+          "memberId": "08eb0102-00a3-40db-8580-b6cf89f38dea",
+          "name": "Dylan Parkinson",
           "ratingInfo": {
-            "rating": 1439
-          }
+            "rating": 828,
+            "value": 828,
+            "sort": 828,
+            "isPartial": null,
+            "key": "R"
+          },
+          "seed": 1
         },
         {
           "id": 2,
-          "memberId": "4f7097e8-c76b-47a4-acaf-bb09d2ccaf9b",
-          "name": "Steve Collins",
+          "memberId": "ef895800-61ba-478a-9050-4f01771439cf",
+          "name": "Albert Biermann",
           "ratingInfo": {
-            "rating": 1392
-          }
+            "rating": 817,
+            "value": 817,
+            "sort": 817,
+            "isPartial": null,
+            "key": "R"
+          },
+          "seed": 2
         },
         {
           "id": 3,
-          "memberId": "f46e34f3-497d-4a26-bab5-a9d91533d3a3",
-          "name": "Donna Chadwick",
+          "memberId": "b73b2570-087a-49f7-984a-a6300187b4ce",
+          "name": "Krzysztof Sikora",
           "ratingInfo": {
-            "rating": 1380
-          }
+            "rating": "unrated",
+            "value": "unrated",
+            "sort": 0,
+            "key": ""
+          },
+          "seed": 3
         },
         {
           "id": 4,
-          "memberId": "8e921e71-c0d4-4ff9-92a6-2ff8ab292b0e",
-          "name": "Simon Jones",
+          "memberId": "0ac62d61-63d3-402c-8cc3-e82f04625c1d",
+          "name": "Eriseld Begaj",
           "ratingInfo": {
-            "rating": 1338
-          }
+            "rating": "unrated",
+            "value": "unrated",
+            "sort": 0,
+            "key": ""
+          },
+          "seed": 4
         },
         {
           "id": 5,
-          "memberId": "5372978b-4267-4bb8-b06e-347eb808c63a",
-          "name": "Juris Kirilenkovs",
+          "memberId": "0ac62d61-63d3-402c-8cc3-e82f04625c1f-free",
+          "name": "Pierre de Beco",
           "ratingInfo": {
-            "rating": 1284
-          }
+            "rating": "unrated",
+            "value": "unrated",
+            "sort": 0,
+            "key": ""
+          },
+          "seed": 5
         },
         {
           "id": 6,
-          "memberId": "7d686b62-383e-4858-b90c-07e5e1bdbe12",
-          "name": "Matthew Webb",
+          "memberId": "7ad3c482-4777-400e-87c6-fc0fbe35a2aa",
+          "name": "Archie Sheen",
           "ratingInfo": {
-            "rating": 1905
-          }
+            "rating": "unrated",
+            "value": "unrated",
+            "sort": 0,
+            "key": ""
+          },
+          "seed": 6
         }
       ]
     }
@@ -237,23 +323,23 @@
       "scores": [
         {
           "round": 1,
-          "pairResults": [[1,0], [1,0], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 2,
-          "pairResults": [[0,1], [0,1], [0.5,0.5]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 3,
-          "pairResults": [[1,0], [0,1], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 4,
-          "pairResults": [[1,0], [0.5,0.5], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 5,
-          "pairResults": [[0.5,0.5], [0,1], [0,1]]
+          "pairResults": [[], [], []]
         }
       ]
     },
@@ -262,23 +348,23 @@
       "scores": [
         {
           "round": 1,
-          "pairResults": [[1,0], [1,0], [0,1]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 2,
-          "pairResults": [[1,0], [1,0], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 3,
-          "pairResults": [[0,1], [0,1], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 4,
-          "pairResults": [[0,1], [1,0], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 5,
-          "pairResults": [[1,0], [0,1], [0,1]]
+          "pairResults": [[], [], []]
         }
       ]
     },
@@ -287,23 +373,23 @@
       "scores": [
         {
           "round": 1,
-          "pairResults": [[0,1], [0,1], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 2,
-          "pairResults": [[1,0], [1,0], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 3,
-          "pairResults": [[0,1], [0.5,0.5], [0,1]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 4,
-          "pairResults": [[1,0], [1,0], [1,0]]
+          "pairResults": [[], [], []]
         },
         {
           "round": 5,
-          "pairResults": [[0,1], [1,0], [1,0]]
+          "pairResults": [[], [], []]
         }
       ]
     }
