@@ -67,7 +67,6 @@ export const resultCheck = (boardPairings, players, results, settings) => {
 
   const allRounds = resultBySeed.reduce((player, { seed, result, opponent, color }) => {
     if (!player[seed]) {
-      console.log(player, seed);
       const p = players.find((p) => p.seed === seed);
       if(p) {
         player[seed] = {
