@@ -14,8 +14,9 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
   );
 
   return (
-    <div>
-      <div className={classNames("border border-slate-800 shadow-lg")}>
+    <div className="mb-2">
+      <div className="block sm:hidden bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border m-2">{division}</div>
+      <div className={classNames("border border-slate-800 shadow-lg overflow-x-auto")}>
         <table className="w-full divide-y divide-slate-900">
           <thead className="bg-orange-500">
             <tr>
@@ -47,13 +48,19 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
               </th>
               <th
                 scope="col"
+                className="block sm:hidden relative px-4 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
+              >
+                Total
+              </th>
+              <th
+                scope="col"
                 className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
               >
                 Rd by Rd
               </th>
               <th
                 scope="col"
-                className="relative px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
+                className="hidden sm:block relative px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
               >
                 Total
               </th>
@@ -67,37 +74,36 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
               return (
                 <tr
                   key={key}
-                  className={
-                    isEven
-                      ? "bg-slate-800 hover:bg-pink-900 hover:opacity-90"
-                      : "bg-slate-900 hover:bg-pink-900 hover:opacity-90"
-                  }
+                  className={classNames(isEven ? "bg-slate-800" : "bg-slate-900", "hover:bg-pink-900 hover:opacity-90")}
                 >
-                  <td className="border-r border-slate-700 px-1 py-2 text-md whitespace-nowrap text-center text-slate-50">
+                  <td className="border-r border-slate-700 px-1 py-2 text-sm sm:text-md whitespace-nowrap text-center text-slate-50">
                     {position}
                   </td>
                   {showTitle && (
-                    <td className="px-0 py-2 text-md whitespace-nowrap text-center text-slate-50">
-                      <span className="text-yellow-400 font-bold">
+                    <td className="px-0 py-2 text-sm sm:text-md whitespace-nowrap text-center text-slate-50">
+                      <span className="text-yellow-400 sm:font-bold">
                         {data.title}
                       </span>
                     </td>
                   )}
                   {data.name.includes("stand in") ?
-                    <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-md text-white">
+                    <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-sm sm:text-md text-white">
                       {data.name.replace("stand in", "")} <span className="text-xs text-orange-400">stand in</span>
-                    </td> : <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-md text-white">
+                    </td> : <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-sm sm:text-md text-white">
                       {data.name}
                     </td>
 
                   }
 
-                  <td className="border-r border-slate-700 px-1 py-2 text-md whitespace-nowrap text-center text-white">
-                    <span className="text-cyan-400 font-medium">
+                  <td className="border-r border-slate-700 px-1 py-2 text-sm sm:text-md whitespace-nowrap text-center text-white">
+                    <span className="text-cyan-400 sm:font-medium">
                       {data.rating ? data.rating : "unrated"}
                     </span>
                   </td>
-                  <td className="px-4 py-2 whitespace-nowrap font-medium text-md text-slate-700 border-r border-slate-700 ">
+                  <td className="block sm:hidden px-4 sm:px-6 py-2 whitespace-nowrap text-center sm:font-bold text-slate-100">
+                    <Total value={data.total} />
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap font-medium text-xs sm:text-md text-slate-700 border-r border-slate-700 ">
                     <div className="flex">
                       {data.rounds
                         .slice(0, settings.currentRound)
@@ -129,7 +135,7 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
                         })}
                     </div>
                   </td>
-                  <td className="px-4 sm:px-6 py-2 whitespace-nowrap text-center font-bold text-slate-100">
+                  <td className="hidden sm:block px-4 sm:px-6 py-2 whitespace-nowrap text-center sm:font-bold text-slate-100">
                     <Total value={data.total} />
                   </td>
                 </tr>
@@ -159,7 +165,7 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
           )}
         </div>
       </div>
-      <div className="bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border mt-2">{division}</div>
+      <div className="hidden sm:block bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border mt-2">{division}</div>
     </div>
   );
 };

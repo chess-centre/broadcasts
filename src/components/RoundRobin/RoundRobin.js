@@ -2,10 +2,8 @@ import React from "react";
 import { Standings } from "../Shared/Standings";
 import { PairingsTable } from "../Shared/Pairings";
 import { resultCheck } from "../Shared/ResultsChecker";
-import { gamesJson  } from "./generate";
+//import { gamesJson  } from "./generate";
 
-
-console.log(gamesJson)
 
 const SixPlayerPairings = [
   {
@@ -59,7 +57,7 @@ export default function Rapidplay({ title, entries, results, settings, icon, boa
   const { roundByRound } = resultCheck(SixPlayerPairings, players, results, settings);
 
   return (
-    <div className="grid grid-cols-1 gap-3 mt-2">
+    <div className="grid grid-cols-1">
       <Standings roundByRound={roundByRound} division={title} icon={icon} settings={settings}></Standings>
 
       {!settings.showAll &&

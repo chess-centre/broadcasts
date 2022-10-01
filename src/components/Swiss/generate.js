@@ -12,6 +12,3 @@ const {
 const games = generateGames(pairings, players, results, { eventId, eventName, date });
 
 export const gamesJson = JSON.stringify(games.flat()); 
-
-console.log("running....");
-console.log(gamesJson);
