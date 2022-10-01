@@ -11,20 +11,7 @@ export default function Home() {
 
         <div className="">
           <img src={logo} className="w-32 mx-auto" alt="Chess Centre" />
-          <h4 className="text-teal-brand font-bold text-4xl"><span className="text-orange-flyer">Ilkley</span> Chess Festival</h4>
-        </div>
-        <div className="grid grid-cols-4 space-x-8 mt-6">
-          <SectionBlock name="Open" bgColor="bg-blue-brand" textColor="text-orange-brand" />
-          <SectionBlock name="Major" bgColor="bg-yellow-brand" textColor="text-blue-brand" />
-          <SectionBlock name="Intermediate" bgColor="bg-orange-brand" textColor="text-blue-brand" />
-          <SectionBlock name="Minor" bgColor="bg-teal-brand" textColor="text-blue-brand" />
-        </div>
-      </div>
-      <div className="text-white text-center">
-        <p className="text-gray-500 text-2xl mb-2">Event Information</p>
-        <div className="grid  grid-cols-2 mx-32 py-6 border border-separate border-cyan-700 rounded-md">
-          <p>Round 4<br />Sunday<br />9:30 AM</p>
-          <p>Round 5<br />Sunday<br />2:15 PM</p>
+          <h4 className="text-teal-brand font-bold text-4xl"><span className="text-orange-flyer italic text-3xl">The</span> Chess Centre</h4>
         </div>
       </div>
       <div className="py-6 text-center">
