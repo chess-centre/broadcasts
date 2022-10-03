@@ -20,6 +20,10 @@ const routes = [
   {
     path: "/robin",
     element: lazy(() => import("./pages/Robin")),
+  },
+  {
+    path: "/create",
+    element: lazy(() => import("./pages/Manager/Create")),
   }
 ];
 

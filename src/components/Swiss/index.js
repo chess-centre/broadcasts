@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import Swiss from "./Swiss";
-import data from "./meta.json";
+import data from "./mata-test.json";
 
 const {
   name,

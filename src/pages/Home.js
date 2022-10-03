@@ -1,42 +1,65 @@
 import logo from "../assets/logo.png";
-import Chesscom from "../assets/chesscom.png";
-import C24 from "../assets/c24.png";
 
 export default function Home() {
-
-  // 
+  //
   return (
-    <div className="flex flex-1 flex-col justify-between  min-h-screen">
-      <div className="mx-auto text-center text-white">
-
+    <div className="min-h-screen text-white text-center">
+      <div className="grid grid-cols-1 mx-auto gap-8">
         <div className="">
           <img src={logo} className="w-32 mx-auto" alt="Chess Centre" />
-          <h4 className="text-teal-brand font-bold text-4xl"><span className="text-orange-flyer italic text-3xl">The</span> Chess Centre</h4>
+          <h4 className="text-teal-brand font-bold text-4xl">
+            <span className="text-orange-flyer italic text-3xl">The</span> Chess
+            Centre
+          </h4>
         </div>
       </div>
-      <div className="py-6 text-center">
-        <p className="text-gray-500 text-lg mb-6">Live Game Broadcast</p>
-        <div className="grid grid-cols-3 text-center">
-          <div></div>
-          <div className="flex text-white">
-            <img className="w-36 m-auto" src={Chesscom} alt="chess.com" />
-            <img className="w-36 m-auto" src={C24} alt="chess24" />
+      <div className="pt-12 sm:pt-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Tournament Manager
+            </h2>
+            <p className="mt-3 text-xl text-gray-500 sm:mt-4">
+              Run a very simple chess event.
+            </p>
           </div>
-          <div></div>
+        </div>
+        <div className="mt-10 pb-12 sm:pb-16">
+          <div className="relative">
+            <div className="absolute inset-0 h-1/2" />
+            <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-4xl">
+                <dl className="rounded-lg bg-gray-800 shadow-inner sm:grid sm:grid-cols-3">
+                  <div className="flex flex-col border-b border-gray-700 p-6 text-center sm:border-0 sm:border-r">
+                    <dt className="order-2 mt-2 text-lg font-medium leading-6 text-gray-400">
+                      Events
+                    </dt>
+                    <dd className="order-1 text-5xl font-bold tracking-tight text-teal-brand">
+                      21
+                    </dd>
+                  </div>
+                  <div className="flex flex-col border-t border-b border-gray-700 p-6 text-center sm:border-0 sm:border-l sm:border-r">
+                    <dt className="order-2 mt-2 text-lg font-medium leading-6 text-orange-400">
+                      In-Progress
+                    </dt>
+                    <dd className="order-1 text-5xl font-bold tracking-tight text-teal-brand">
+                      3
+                    </dd>
+                  </div>
+                  <div className="flex flex-col border-t border-gray-700 p-6 text-center sm:border-0 sm:border-l">
+                    <dt className="order-2 mt-2 text-lg font-medium leading-6 text-green-500">
+                      Completed
+                    </dt>
+                    <dd className="order-1 text-5xl font-bold tracking-tight text-teal-brand">
+                      4
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
-}
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-};
-
-function SectionBlock({ name, textColor, bgColor }) {
-  return (
-    <div className={classNames("px-5 py-10 rounded-md", bgColor, textColor)}>
-      <h1 className="text-4xl font-bold">{name}</h1>
-    </div>
-  )
 }

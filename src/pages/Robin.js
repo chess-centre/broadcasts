@@ -1,5 +1,5 @@
 import RoundRobin from "../components/RoundRobin/RoundRobin";
-import data from "../components/RoundRobin/meta.json";
+import data from "../components/RoundRobin/meta-test.json";
 import Logo from "../assets/logo.png";
 
 const { name, players, results, settings } = data;
