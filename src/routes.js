@@ -14,7 +14,7 @@ const routes = [
     element: lazy(() => import("./pages/Games")),
   },
   {
-    path: "/swiss",
+    path: "/swiss/:eventId",
     element: lazy(() => import("./pages/Swiss")),
   },
   {

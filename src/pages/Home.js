@@ -11,7 +11,7 @@ export default function Home() {
     window.addEventListener('storage', () => {
       // When local storage changes, dump the list to
       // the console.
-      console.log("myEvent", JSON.parse(window.localStorage.getItem('myEvent')));
+      console.log("myEvent", JSON.parse(window.localStorage.getItem('ab57f12c-9bdd-40a0-a13e-b3c0ae8c919e')));
     });
 
   }, [])
