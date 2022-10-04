@@ -1,6 +1,21 @@
+import { useEffect } from "react";
 import logo from "../assets/logo.png";
 
 export default function Home() {
+
+
+
+  useEffect(() => {
+
+
+    window.addEventListener('storage', () => {
+      // When local storage changes, dump the list to
+      // the console.
+      console.log("myEvent", JSON.parse(window.localStorage.getItem('myEvent')));
+    });
+
+  }, [])
+
   //
   return (
     <div className="min-h-screen text-white text-center">

@@ -24,6 +24,10 @@ const routes = [
   {
     path: "/create",
     element: lazy(() => import("./pages/Manager/Create")),
+  },
+  {
+    path: "/update/:eventId",
+    element: lazy(() => import("./pages/Manager/Update")),
   }
 ];
 
