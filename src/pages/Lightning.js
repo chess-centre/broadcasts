@@ -1,5 +1,4 @@
-import React, { createRef, useEffect, useState } from "react";
-import AudioPlayer from "react-h5-audio-player";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import audioFile from "../assets/beep.mp3";
 import Logo from "../assets/logo.png";
@@ -17,12 +16,12 @@ function Lightning() {
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(1);
   const [tableRows, setTableRows] = useState([]);
-  const audioPlayer = createRef();
+  const audioRef = useRef(null);
 
   useEffect(() => {
 
     const play = () => {
-      audioPlayer.current.audio.current.play();
+      audioRef.current.play();
     };
   
     let interval = null;
@@ -54,7 +53,7 @@ function Lightning() {
     return () => {
       clearInterval(interval);
     };
-  }, [isActive, isPaused, delay, time, audioPlayer]);
+  }, [isActive, isPaused, delay, time, audioRef]);
 
   const handleStart = () => {
     setIsActive(true);
@@ -192,9 +191,9 @@ function Lightning() {
           </div>
         </div>
       </div>
-      <div className="hidden"> 
-        <AudioPlayer autoPlay={true}  src={audioFile} ref={audioPlayer} crossOrigin="anonymous" type="audio/mp3" />
-      </div>
+
+      <audio autoPlay ref={audioRef} ><source src={audioFile} crossOrigin="anonymous"></source></audio>
+
     </div>
   );
 }
