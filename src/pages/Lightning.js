@@ -7,9 +7,8 @@ function classNames(...classes) {
 }
 
 function Lightning() {
-  const delay = useRef(5000);
-  const soundUrl = "./beep.wav";
-  const startSoundUrl = "./starting.wav";
+  const delay = useRef(500);
+  const soundUrl = "./beep.mp3";
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(1);
@@ -17,24 +16,21 @@ function Lightning() {
 
   const audioRef = useRef(null);
   const play = () => {
-    const promise = audioRef.current.play();
-    if(promise !== undefined) {
-      promise.then((e) => {
-        console.log("working!", e);
-      })
-      .catch(e => console.log("error", e));
-    }
+    audioRef.current.play();
+    // const promise = 
+    // if(promise !== undefined) {
+    //   promise.then((e) => {
+    //     console.log("working!", e);
+    //   })
+    //   .catch(e => console.log("error", e));
+    // }
   };
 
-  const startAudioRef = useRef(null);
-  const playStart = () => {
-    startAudioRef.current.play();
-  };
 
   useEffect(() => {
     let interval = null;
-    if (time === 10) {
-      delay.current = 10000;
+    if (time === 11) {
+      delay.current = 1000;
     }
 
     if (isActive && isPaused === false) {
@@ -73,11 +69,10 @@ function Lightning() {
   };
 
   const handleReset = () => {
-    playStart()
     setIsActive(false);
     setTime(1);
     setTableRows([]);
-    delay.current = 5000;
+    delay.current = 500;
   };
 
   return (
@@ -200,13 +195,9 @@ function Lightning() {
           <div><img className="h-10 object-center mx-auto" src={Logo} alt="The Chess Centre"></img></div>
         </div>
       </div>
-      <audio crossOrigin="anonymous"
+      <audio crossOrigin="anonymous" streamtype="mp3"
         src={soundUrl}
         ref={audioRef}
-      ></audio>
-      <audio crossOrigin="anonymous"
-        src={startSoundUrl}
-        ref={startAudioRef}
       ></audio>
     </div>
   );
