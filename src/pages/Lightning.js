@@ -21,7 +21,13 @@ function Lightning() {
   useEffect(() => {
 
     const play = () => {
-      audioRef.current.play();
+      try {
+        console.log("playing sound!");
+        audioRef.current.play();
+      } catch (error) {
+        console.log(error);
+      }
+      
     };
   
     let interval = null;
