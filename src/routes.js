@@ -28,6 +28,10 @@ const routes = [
   {
     path: "/update/:eventId",
     element: lazy(() => import("./pages/Manager/Update")),
+  },
+  {
+    path: "/lightning",
+    element: lazy(() => import("./pages/Lightning")),
   }
 ];
 

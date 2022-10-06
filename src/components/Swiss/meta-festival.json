@@ -1,0 +1,3032 @@
+{
+  "name": "Ilkley Chess Festival 2022",
+  "eventId": "d5e7229b-f574-48a1-97af-0e93db241078",
+  "eventName": "Ilkley Chess Festival",
+  "date": "2022-09-16",
+  "settings": {
+        "enableToggles": false,
+        "type": "Swiss",
+        "currentRound": 1,
+        "showRoundTimeForRound": 1,
+        "totalRounds": 5,
+        "roundLive": false,
+        "showAll": false,
+        "showOpponentPairing": false,
+        "showPreviousRound": false,
+        "nextRoundTime": {
+              "1": "10:00am",
+              "2": "11:00am",
+              "3": "12:30pm",
+              "4": "1:30pm",
+              "5": "2:30pm"
+        },
+        "prizeGiving": "3:30pm"
+  },
+  "players": [
+        {
+              "count": 0,
+              "section": "swiss",
+              "title": "Event Schedule",
+              "icon": "fad fa-chess-king",
+              "entries": [
+                    {
+                          "id": 1,
+                          "section": "open",
+                          "memberId": "3fd7873d-17be-4096-93d9-fd06930d8be9",
+                          "name": "Adam Ashton",
+                          "ratingInfo": {
+                                "rating": 2390,
+                                "value": 2390,
+                                "sort": 2390,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 1
+                    },
+                    {
+                          "id": 2,
+                          "section": "open",
+                          "memberId": "712c3400-f45b-499d-a84b-884b738aa768",
+                          "name": "Tim Wall",
+                          "ratingInfo": {
+                                "rating": 2360,
+                                "value": 2360,
+                                "sort": 2360,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 2
+                    },
+                    {
+                          "id": 3,
+                          "section": "open",
+                          "memberId": "4e23071f-727e-43c3-a5b6-2d31ac7c1d45",
+                          "name": "Gediminas Sarakauskas",
+                          "ratingInfo": {
+                                "rating": 2352,
+                                "value": 2352,
+                                "sort": 2352,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 3
+                    },
+                    {
+                          "id": 4,
+                          "section": "open",
+                          "memberId": "43e29c11-3b5b-4a3c-9814-016eaf91fcb0",
+                          "name": "Steven Jones",
+                          "ratingInfo": {
+                                "rating": 2320,
+                                "value": 2320,
+                                "sort": 2320,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 4
+                    },
+                    {
+                          "id": 5,
+                          "section": "open",
+                          "memberId": "0f0d3477-a213-4291-ab45-7c9eb6882995",
+                          "name": "Peter Shaw",
+                          "ratingInfo": {
+                                "rating": 2243,
+                                "value": 2243,
+                                "sort": 2243,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 5
+                    },
+                    {
+                          "id": 6,
+                          "section": "open",
+                          "memberId": "f09e4318-cbb6-47a3-afb9-cb0979cdf076",
+                          "name": "Andrei Ciuravin",
+                          "ratingInfo": {
+                                "rating": 2214,
+                                "value": 2214,
+                                "sort": 2214,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 6
+                    },
+                    {
+                          "id": 7,
+                          "section": "open",
+                          "memberId": "3c249ea1-bbcd-4544-890e-155782c4f9e5",
+                          "name": "Paul Hutchinson",
+                          "ratingInfo": {
+                                "rating": 2184,
+                                "value": 2184,
+                                "sort": 2184,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 7
+                    },
+                    {
+                          "id": 8,
+                          "section": "open",
+                          "memberId": "ce004613-d2d0-4e69-92d6-a910c29e5d47",
+                          "name": "Michael Surtees",
+                          "ratingInfo": {
+                                "rating": 2174,
+                                "value": 2174,
+                                "sort": 2174,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 8
+                    },
+                    {
+                          "id": 9,
+                          "section": "open",
+                          "memberId": "35b69e09-1e6a-4ab4-b3da-89744ea31ec1",
+                          "name": "Peter Ackley",
+                          "ratingInfo": {
+                                "rating": 2160,
+                                "value": 2160,
+                                "sort": 2160,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 9
+                    },
+                    {
+                          "id": 10,
+                          "section": "open",
+                          "memberId": "07d7774a-b39c-42d9-b18a-e0d07b898da4",
+                          "name": "Chris Bak",
+                          "ratingInfo": {
+                                "rating": 2132,
+                                "value": 2132,
+                                "sort": 2132,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 10
+                    },
+                    {
+                          "id": 11,
+                          "section": "open",
+                          "memberId": "80ab9586-2498-47cd-a673-f13b3aaa8a27",
+                          "name": "Lewis Turner",
+                          "ratingInfo": {
+                                "rating": 2120,
+                                "value": 2120,
+                                "sort": 2120,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 11
+                    },
+                    {
+                          "id": 12,
+                          "section": "open",
+                          "memberId": "83326c1a-6908-4fc2-a433-72723d6126dd",
+                          "name": "Bruce Baer",
+                          "ratingInfo": {
+                                "rating": 2087,
+                                "value": 2087,
+                                "sort": 2087,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 12
+                    },
+                    {
+                          "id": 13,
+                          "section": "open",
+                          "memberId": "97d158ea-323f-49f5-85d7-735be10a76b7",
+                          "name": "Mitchell Burke",
+                          "ratingInfo": {
+                                "rating": 2073,
+                                "value": 2073,
+                                "sort": 2073,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 13
+                    },
+                    {
+                          "id": 14,
+                          "section": "open",
+                          "memberId": "e11b465a-d7c1-4049-b426-d2301b5f6463",
+                          "name": "Paul Stanley",
+                          "ratingInfo": {
+                                "rating": "2070",
+                                "value": "2070",
+                                "isPartial": null,
+                                "sort": 2070,
+                                "key": "E"
+                          },
+                          "seed": 14
+                    },
+                    {
+                          "id": 15,
+                          "section": "open",
+                          "memberId": "1324f830-885d-4b49-a0b9-3e189b58cfa8",
+                          "name": "Greg Eagleton",
+                          "ratingInfo": {
+                                "rating": 2063,
+                                "value": 2063,
+                                "sort": 2063,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 15
+                    },
+                    {
+                          "id": 16,
+                          "section": "open",
+                          "memberId": "f66e52fc-eaf4-4d5a-8abf-44de974891d8",
+                          "name": "Leo Keely",
+                          "ratingInfo": {
+                                "rating": 2042,
+                                "value": 2042,
+                                "sort": 2042,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 16
+                    },
+                    {
+                          "id": 17,
+                          "section": "open",
+                          "memberId": "91275715-c4b7-4b9f-9774-d892050883e1",
+                          "name": "Miles Edwards-Wright",
+                          "ratingInfo": {
+                                "rating": 2036,
+                                "value": 2036,
+                                "sort": 2036,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 17
+                    },
+                    {
+                          "id": 18,
+                          "section": "major",
+                          "memberId": "565b4fd6-363c-44ab-a046-5b6d7c307a5e",
+                          "name": "Dariusz Rak",
+                          "ratingInfo": {
+                                "rating": 2035,
+                                "value": 2035,
+                                "sort": 2035,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 18
+                    },
+                    {
+                          "id": 19,
+                          "section": "open",
+                          "memberId": "986ad51e-547b-447c-9e09-e81a0b54e278",
+                          "name": "Rudy Van Kemenade",
+                          "ratingInfo": {
+                                "rating": 2034,
+                                "value": 2034,
+                                "sort": 2034,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 19
+                    },
+                    {
+                          "id": 20,
+                          "section": "major",
+                          "memberId": "fcda4bc8-e9e2-421b-bc60-b63babada51e",
+                          "name": "Nick Burton",
+                          "ratingInfo": {
+                                "rating": 2023,
+                                "value": 2023,
+                                "sort": 2023,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 20
+                    },
+                    {
+                          "id": 21,
+                          "section": "open",
+                          "memberId": "72c60d35-ac7e-4fb0-a1b9-852eba7a8d85",
+                          "name": "Tim Wickens",
+                          "ratingInfo": {
+                                "rating": 2022,
+                                "value": 2022,
+                                "sort": 2022,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 21
+                    },
+                    {
+                          "id": 22,
+                          "section": "open",
+                          "memberId": "ef08664e-36ee-4919-8dd8-b5a98daf5354",
+                          "name": "Andy Hill",
+                          "ratingInfo": {
+                                "rating": 2021,
+                                "value": 2021,
+                                "sort": 2021,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 22
+                    },
+                    {
+                          "id": 23,
+                          "section": "open",
+                          "memberId": "026e7f30-b163-43b9-9820-ba0b850f565a",
+                          "name": "Jim Nicholson",
+                          "ratingInfo": {
+                                "rating": 2020,
+                                "value": 2020,
+                                "sort": 2020,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 23
+                    },
+                    {
+                          "id": 24,
+                          "section": "open",
+                          "memberId": "873bfa83-731a-46be-9d17-09755741aa67",
+                          "name": "Roger De Coverly",
+                          "ratingInfo": {
+                                "rating": 2001,
+                                "value": 2001,
+                                "sort": 2001,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 24
+                    },
+                    {
+                          "id": 25,
+                          "section": "major",
+                          "memberId": "54b34dc2-6ace-4573-bb6e-e86bf4771ab7",
+                          "name": "Jim Vickery",
+                          "ratingInfo": {
+                                "rating": 1990,
+                                "value": 1990,
+                                "sort": 1990,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 25
+                    },
+                    {
+                          "id": 26,
+                          "section": "open",
+                          "memberId": "4a8d2312-d372-4b05-ab20-b142f5dc0449",
+                          "name": "Niamh Bridgeman",
+                          "ratingInfo": {
+                                "rating": 1988,
+                                "value": 1988,
+                                "sort": 1988,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 26
+                    },
+                    {
+                          "id": 27,
+                          "section": "open",
+                          "memberId": "6b5d68d1-4c83-439d-95ed-797b44db5b94",
+                          "name": "Michael Ridge",
+                          "ratingInfo": {
+                                "rating": 1983,
+                                "value": 1983,
+                                "sort": 1983,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 27
+                    },
+                    {
+                          "id": 28,
+                          "section": "open",
+                          "memberId": "967f4d9d-fc86-4bf4-aa1d-aebe8b2b7cd2",
+                          "name": "Tim Hilton",
+                          "ratingInfo": {
+                                "rating": 1980,
+                                "value": 1980,
+                                "sort": 1980,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 28
+                    },
+                    {
+                          "id": 29,
+                          "section": "open",
+                          "memberId": "bf924c01-5e31-44da-9389-7aae57b20a09",
+                          "name": "Jonathan Underwood",
+                          "ratingInfo": {
+                                "rating": 1979,
+                                "value": 1979,
+                                "sort": 1979,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 29
+                    },
+                    {
+                          "id": 30,
+                          "section": "open",
+                          "memberId": "e1d11a57-652b-43f4-941f-a9e22c56dfe6",
+                          "name": "Zac Cansdale",
+                          "ratingInfo": {
+                                "rating": 1974,
+                                "value": 1974,
+                                "sort": 1974,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 30
+                    },
+                    {
+                          "id": 31,
+                          "section": "major",
+                          "memberId": "ec29ebd4-fe0e-431c-b459-670dd1bf3922",
+                          "name": "Bob Newton",
+                          "ratingInfo": {
+                                "rating": 1963,
+                                "value": 1963,
+                                "sort": 1963,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 31
+                    },
+                    {
+                          "id": 32,
+                          "section": "open",
+                          "memberId": "8820ad11-9ad2-4cb0-8ef5-2bc53befda36",
+                          "name": "Damian McCarthy",
+                          "ratingInfo": {
+                                "rating": 1960,
+                                "value": 1960,
+                                "sort": 1960,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 32
+                    },
+                    {
+                          "id": 33,
+                          "section": "major",
+                          "memberId": "6e109109-186c-4412-8598-51ff73ab6deb",
+                          "name": "James Hall",
+                          "ratingInfo": {
+                                "rating": 1957,
+                                "value": 1957,
+                                "sort": 1957,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 33
+                    },
+                    {
+                          "id": 34,
+                          "section": "major",
+                          "memberId": "3c3ebf49-9bc6-4968-a422-f174dc486976",
+                          "name": "Luke Gostelow",
+                          "ratingInfo": {
+                                "rating": 1955,
+                                "value": 1955,
+                                "sort": 1955,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 34
+                    },
+                    {
+                          "id": 35,
+                          "section": "open",
+                          "memberId": "96d78517-adf6-40e5-bc55-5aaed2d7320a",
+                          "name": "Eric Gardiner",
+                          "ratingInfo": {
+                                "rating": 1953,
+                                "value": 1953,
+                                "sort": 1953,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 35
+                    },
+                    {
+                          "id": 36,
+                          "section": "major",
+                          "memberId": "4f4c30be-03ca-43e9-a00e-9fe66a21adca",
+                          "name": "Timothy Spanton",
+                          "ratingInfo": {
+                                "rating": 1952,
+                                "value": 1952,
+                                "sort": 1952,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 36
+                    },
+                    {
+                          "id": 37,
+                          "section": "major",
+                          "memberId": "df814fb3-61cc-485d-8ed3-7cc1664d91f2",
+                          "name": "David Robinson",
+                          "ratingInfo": {
+                                "rating": 1952,
+                                "value": 1952,
+                                "sort": 1952,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 37
+                    },
+                    {
+                          "id": 38,
+                          "section": "major",
+                          "memberId": "fe360748-5a49-4a07-b4d5-7efa2300a75d",
+                          "name": "Neil Coward",
+                          "ratingInfo": {
+                                "rating": 1950,
+                                "value": 1950,
+                                "sort": 1950,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 38
+                    },
+                    {
+                          "id": 39,
+                          "section": "major",
+                          "memberId": "998e6aa2-2171-4771-beb3-affe458517fd",
+                          "name": "Nick Webb",
+                          "ratingInfo": {
+                                "rating": 1931,
+                                "value": 1931,
+                                "sort": 1931,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 39
+                    },
+                    {
+                          "id": 40,
+                          "section": "open",
+                          "memberId": "18f4bc21-854c-4be7-8be2-0e738e4195e7",
+                          "name": "David Barlow",
+                          "ratingInfo": {
+                                "rating": 1928,
+                                "value": 1928,
+                                "sort": 1928,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 40
+                    },
+                    {
+                          "id": 41,
+                          "section": "open",
+                          "memberId": "02082368-677b-432c-95da-7021a9985f1d",
+                          "name": "Andy Mata",
+                          "ratingInfo": {
+                                "rating": 1927,
+                                "value": 1927,
+                                "sort": 1927,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 41
+                    },
+                    {
+                          "id": 42,
+                          "section": "open",
+                          "memberId": "0fd224ce-121c-4e0b-bf5e-f864019e3ecb",
+                          "name": "Peter Redmond",
+                          "ratingInfo": {
+                                "rating": 1923,
+                                "value": 1923,
+                                "sort": 1923,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 42
+                    },
+                    {
+                          "id": 43,
+                          "section": "major",
+                          "memberId": "c0a0fe52-b102-4a1e-bcfe-9ca9ccf448ac",
+                          "name": "Graham Ashcroft",
+                          "ratingInfo": {
+                                "rating": 1916,
+                                "value": 1916,
+                                "sort": 1916,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 43
+                    },
+                    {
+                          "id": 44,
+                          "section": "open",
+                          "memberId": "c3f8c627-a746-4df4-ad4d-dccd2bec7b1c",
+                          "name": "Yaoyao Zhu",
+                          "ratingInfo": {
+                                "rating": 1910,
+                                "value": 1910,
+                                "sort": 1910,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 44
+                    },
+                    {
+                          "id": 45,
+                          "section": "open",
+                          "memberId": "66b8d8f0-3085-4ee5-9dfa-fa2102d1d5e3",
+                          "name": "Michael Bramson",
+                          "ratingInfo": {
+                                "rating": 1903,
+                                "value": 1903,
+                                "sort": 1903,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 45
+                    },
+                    {
+                          "id": 46,
+                          "section": "major",
+                          "memberId": "0fc2ed32-08cc-485b-9baa-e2485546bff9",
+                          "name": "John Cawston",
+                          "ratingInfo": {
+                                "rating": 1901,
+                                "value": 1901,
+                                "sort": 1901,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 46
+                    },
+                    {
+                          "id": 47,
+                          "section": "open",
+                          "memberId": "be2cd6fa-1498-4a54-9787-07144e077434",
+                          "name": "Gerald Cuaresma",
+                          "ratingInfo": {
+                                "rating": 1897,
+                                "value": 1897,
+                                "sort": 1897,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 47
+                    },
+                    {
+                          "id": 48,
+                          "section": "major",
+                          "memberId": "48c71317-ff92-454d-91f6-d71d489de2b4",
+                          "name": "Gary Gillespie",
+                          "ratingInfo": {
+                                "rating": 1895,
+                                "value": 1895,
+                                "sort": 1895,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 48
+                    },
+                    {
+                          "id": 49,
+                          "section": "major",
+                          "memberId": "f76e80c1-0c58-4e3c-85f4-f8c89a19cda0",
+                          "name": "George Ellames",
+                          "ratingInfo": {
+                                "rating": 1894,
+                                "value": 1894,
+                                "sort": 1894,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 49
+                    },
+                    {
+                          "id": 50,
+                          "section": "open",
+                          "memberId": "bf051719-3dcb-4b4e-a69b-d4c41055afc5",
+                          "name": "David Patrick",
+                          "ratingInfo": {
+                                "rating": 1890,
+                                "value": 1890,
+                                "sort": 1890,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 50
+                    },
+                    {
+                          "id": 51,
+                          "section": "major",
+                          "memberId": "e291bf3e-dc04-476c-a054-605a47c53deb",
+                          "name": "Richard Porter",
+                          "ratingInfo": {
+                                "rating": 1885,
+                                "value": 1885,
+                                "sort": 1885,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 51
+                    },
+                    {
+                          "id": 52,
+                          "section": "major",
+                          "memberId": "243d0cb2-be35-431b-aa5e-1d1ac7d33d6f",
+                          "name": "Maksym Larchikov",
+                          "ratingInfo": {
+                                "rating": 1881,
+                                "value": 1881,
+                                "sort": 1881,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 52
+                    },
+                    {
+                          "id": 53,
+                          "section": "major",
+                          "memberId": "4e43fcb2-2434-4483-8f62-2ab954b33367",
+                          "name": "Mark Waterfield",
+                          "ratingInfo": {
+                                "rating": 1869,
+                                "value": 1869,
+                                "sort": 1869,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 53
+                    },
+                    {
+                          "id": 54,
+                          "section": "major",
+                          "memberId": "47b1675f-8bf9-4808-8ec2-637be3129d85",
+                          "name": "David Wells",
+                          "ratingInfo": {
+                                "rating": 1852,
+                                "value": 1852,
+                                "sort": 1852,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 54
+                    },
+                    {
+                          "id": 55,
+                          "section": "major",
+                          "memberId": "5dfdc83f-3425-4320-8b00-c5f5b9d8bcb1",
+                          "name": "Geoffrey Conroy",
+                          "ratingInfo": {
+                                "rating": "1850",
+                                "value": "1850",
+                                "isPartial": null,
+                                "sort": 1850,
+                                "key": "E"
+                          },
+                          "seed": 55
+                    },
+                    {
+                          "id": 56,
+                          "section": "major",
+                          "memberId": "1ca04f26-82d4-436d-9446-542d3ccc7479",
+                          "name": "Paul May",
+                          "ratingInfo": {
+                                "rating": 1838,
+                                "value": 1838,
+                                "sort": 1838,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 56
+                    },
+                    {
+                          "id": 57,
+                          "section": "open",
+                          "memberId": "cd543085-f964-4717-aa57-400e38800109",
+                          "name": "Chris Dossett",
+                          "ratingInfo": {
+                                "rating": 1837,
+                                "value": 1837,
+                                "sort": 1837,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 57
+                    },
+                    {
+                          "id": 58,
+                          "section": "major",
+                          "memberId": "c675137a-d254-489e-b9ef-ee94a3780a69",
+                          "name": "Steve Westmoreland",
+                          "ratingInfo": {
+                                "rating": 1837,
+                                "value": 1837,
+                                "sort": 1837,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 58
+                    },
+                    {
+                          "id": 59,
+                          "section": "minor",
+                          "memberId": "1d74b385-fb73-4603-a873-522492d3e61b",
+                          "name": "Samir Cradock",
+                          "ratingInfo": {
+                                "rating": 1828,
+                                "value": 1828,
+                                "sort": 1828,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 59
+                    },
+                    {
+                          "id": 60,
+                          "section": "open",
+                          "memberId": "d9c21717-8b52-42c4-875a-9a4684d0cec2",
+                          "name": "Richard L Bowman",
+                          "ratingInfo": {
+                                "rating": 1820,
+                                "value": 1820,
+                                "sort": 1820,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 60
+                    },
+                    {
+                          "id": 61,
+                          "section": "intermediate",
+                          "memberId": "9f01abaf-ca6a-422c-a22a-267437c0f335",
+                          "name": "Bien Cuaresma",
+                          "ratingInfo": {
+                                "rating": 1815,
+                                "value": 1815,
+                                "sort": 1815,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 61
+                    },
+                    {
+                          "id": 62,
+                          "section": "open",
+                          "memberId": "74a83cb1-ae5a-452a-8529-f0e06c22b270",
+                          "name": "Thomas Wills",
+                          "ratingInfo": {
+                                "rating": 1814,
+                                "value": 1814,
+                                "sort": 1814,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 62
+                    },
+                    {
+                          "id": 63,
+                          "section": "open",
+                          "memberId": "48f6a7d0-1f2a-4e89-adca-6044fe39d620",
+                          "name": "Kyle Pelling",
+                          "ratingInfo": {
+                                "rating": 1813,
+                                "value": 1813,
+                                "sort": 1813,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 63
+                    },
+                    {
+                          "id": 64,
+                          "section": "major",
+                          "memberId": "7499a91a-e1fe-4844-b051-fa6e91dd7a27",
+                          "name": "Daniel Mcmenamin",
+                          "ratingInfo": {
+                                "rating": 1805,
+                                "value": 1805,
+                                "sort": 1805,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 64
+                    },
+                    {
+                          "id": 65,
+                          "section": "intermediate",
+                          "memberId": "67815766-afb1-4ab9-bb83-9ddf6f7bd0c6",
+                          "name": "Sief Aldin Ahmed Holi Ali",
+                          "ratingInfo": {
+                                "rating": 1798,
+                                "value": 1798,
+                                "sort": 1798,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 65
+                    },
+                    {
+                          "id": 66,
+                          "section": "intermediate",
+                          "memberId": "1b4a1143-e1b4-4b32-b621-44f8120531e4",
+                          "name": "James Annan",
+                          "ratingInfo": {
+                                "rating": 1795,
+                                "value": 1795,
+                                "sort": 1795,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 66
+                    },
+                    {
+                          "id": 67,
+                          "section": "major",
+                          "memberId": "c2ca1226-19e7-4e73-811d-8bfc99b5df9b",
+                          "name": "Gawain Ako",
+                          "ratingInfo": {
+                                "rating": 1790,
+                                "value": 1790,
+                                "sort": 1790,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 67
+                    },
+                    {
+                          "id": 68,
+                          "section": "major",
+                          "memberId": "f18b0735-2131-49b4-ba01-bcaa208e207a",
+                          "name": "Arthur Hibbitt",
+                          "ratingInfo": {
+                                "rating": 1783,
+                                "value": 1783,
+                                "sort": 1783,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 68
+                    },
+                    {
+                          "id": 69,
+                          "section": "intermediate",
+                          "memberId": "73dd2ca9-cbc4-45fa-8594-80a77f632ab1",
+                          "name": "Sai Pavan Telukuntla",
+                          "ratingInfo": {
+                                "rating": 1777,
+                                "value": 1777,
+                                "sort": 1777,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 69
+                    },
+                    {
+                          "id": 70,
+                          "section": "major",
+                          "memberId": "cbf30636-0ea3-420f-bc77-b96c70f722e6",
+                          "name": "Cobus Daneel",
+                          "ratingInfo": {
+                                "rating": 1772,
+                                "value": 1772,
+                                "sort": 1772,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 70
+                    },
+                    {
+                          "id": 71,
+                          "section": "major",
+                          "memberId": "97478a0e-0942-42e0-8010-c9391df8711e",
+                          "name": "Randolph Donahue",
+                          "ratingInfo": {
+                                "rating": 1769,
+                                "value": 1769,
+                                "sort": 1769,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 71
+                    },
+                    {
+                          "id": 72,
+                          "section": "major",
+                          "memberId": "c2dc86ba-4681-4eb8-8586-f489fd05cc39",
+                          "name": "Kevin Winter",
+                          "ratingInfo": {
+                                "rating": 1764,
+                                "value": 1764,
+                                "sort": 1764,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 72
+                    },
+                    {
+                          "id": 73,
+                          "section": "open",
+                          "memberId": "47997fe6-5012-4e53-a27b-870df2ac7c17",
+                          "name": "Joe Varley",
+                          "ratingInfo": {
+                                "rating": 1758,
+                                "value": 1758,
+                                "sort": 1758,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 73
+                    },
+                    {
+                          "id": 74,
+                          "section": "intermediate",
+                          "memberId": "da5889ae-f241-42c1-84bb-8fcf4cc2bffb",
+                          "name": "Paul Salisbury",
+                          "ratingInfo": {
+                                "rating": 1755,
+                                "value": 1755,
+                                "sort": 1755,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 74
+                    },
+                    {
+                          "id": 75,
+                          "section": "major",
+                          "memberId": "47449d84-f98a-406a-ae47-e9d19ff32a84",
+                          "name": "Paul Butterworth",
+                          "ratingInfo": {
+                                "rating": 1751,
+                                "value": 1751,
+                                "sort": 1751,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 75
+                    },
+                    {
+                          "id": 76,
+                          "section": "intermediate",
+                          "memberId": "77783695-7255-4801-97c4-f18b5177e0b7",
+                          "name": "Laurence Tarbuck",
+                          "ratingInfo": {
+                                "rating": 1741,
+                                "value": 1741,
+                                "sort": 1741,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 76
+                    },
+                    {
+                          "id": 77,
+                          "section": "open",
+                          "memberId": "8f0f8c9b-a62e-40f2-b8d6-63aecdecbc17",
+                          "name": "Paul Brencher",
+                          "ratingInfo": {
+                                "rating": 1733,
+                                "value": 1733,
+                                "sort": 1733,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 77
+                    },
+                    {
+                          "id": 78,
+                          "section": "major",
+                          "memberId": "48c5cbac-08d6-46e6-b954-cf204a999652",
+                          "name": "Roger Greatorex",
+                          "ratingInfo": {
+                                "rating": 1729,
+                                "value": 1729,
+                                "sort": 1729,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 78
+                    },
+                    {
+                          "id": 79,
+                          "section": "intermediate",
+                          "memberId": "06ec8b97-820d-44de-8309-d9088213c9d0",
+                          "name": "Paul Jones",
+                          "ratingInfo": {
+                                "rating": 1725,
+                                "value": 1725,
+                                "sort": 1725,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 79
+                    },
+                    {
+                          "id": 80,
+                          "section": "intermediate",
+                          "memberId": "cbfbbefb-864e-40c3-b73e-3c8087d6d99f",
+                          "name": "David Teague",
+                          "ratingInfo": {
+                                "rating": 1724,
+                                "value": 1724,
+                                "sort": 1724,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 80
+                    },
+                    {
+                          "id": 81,
+                          "section": "intermediate",
+                          "memberId": "039b31ff-60c0-4d9b-8c7e-0c0fad8253c7",
+                          "name": "Kieran Dickson",
+                          "ratingInfo": {
+                                "rating": 1724,
+                                "value": 1724,
+                                "sort": 1724,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 81
+                    },
+                    {
+                          "id": 82,
+                          "section": "intermediate",
+                          "memberId": "11f2c68a-f643-4a71-abb1-6091410410e3",
+                          "name": "Duncan Stables",
+                          "ratingInfo": {
+                                "rating": 1723,
+                                "value": 1723,
+                                "sort": 1723,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 82
+                    },
+                    {
+                          "id": 83,
+                          "section": "major",
+                          "memberId": "24fe3904-2f4c-4923-ba04-2b46a0e5ce2f",
+                          "name": "Gary Corcoran",
+                          "ratingInfo": {
+                                "rating": 1722,
+                                "value": 1722,
+                                "sort": 1722,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 83
+                    },
+                    {
+                          "id": 84,
+                          "section": "major",
+                          "memberId": "02f83807-4bee-4dee-a39c-dba972a8eba7",
+                          "name": "Ben Fearnhead",
+                          "ratingInfo": {
+                                "rating": 1718,
+                                "value": 1718,
+                                "sort": 1718,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 84
+                    },
+                    {
+                          "id": 85,
+                          "section": "major",
+                          "memberId": "0c3f12a6-a369-4bcc-82b0-c5d2d7cc8a79",
+                          "name": "Bernard Hare",
+                          "ratingInfo": {
+                                "rating": 1713,
+                                "value": 1713,
+                                "sort": 1713,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 85
+                    },
+                    {
+                          "id": 86,
+                          "section": "major",
+                          "memberId": "cbafee59-66c4-45cb-bad2-db02699840b5",
+                          "name": "David Adam",
+                          "ratingInfo": {
+                                "rating": 1713,
+                                "value": 1713,
+                                "sort": 1713,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 86
+                    },
+                    {
+                          "id": 87,
+                          "section": "intermediate",
+                          "memberId": "0d3725c9-440b-4bcf-ae2b-c6d118e0ed40",
+                          "name": "Kajus Mikalajunas",
+                          "ratingInfo": {
+                                "rating": 1709,
+                                "value": 1709,
+                                "sort": 1709,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 87
+                    },
+                    {
+                          "id": 88,
+                          "section": "intermediate",
+                          "memberId": "c1b95451-db84-4970-86d5-ca6869b88460",
+                          "name": "Titas Lukauskas",
+                          "ratingInfo": {
+                                "rating": 1708,
+                                "value": 1708,
+                                "sort": 1708,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 88
+                    },
+                    {
+                          "id": 89,
+                          "section": "open",
+                          "memberId": "0f666236-ccf4-4f26-9073-74d1edf01b86",
+                          "name": "Martin Gawne",
+                          "ratingInfo": {
+                                "rating": 1706,
+                                "value": 1706,
+                                "sort": 1706,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 89
+                    },
+                    {
+                          "id": 90,
+                          "section": "major",
+                          "memberId": "b08f0708-99c1-48d5-a7ed-3e56de5a832b",
+                          "name": "David Gillespie",
+                          "ratingInfo": {
+                                "rating": 1704,
+                                "value": 1704,
+                                "sort": 1704,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 90
+                    },
+                    {
+                          "id": 91,
+                          "section": "major",
+                          "memberId": "1d79066d-65d8-40e5-97e8-c90a8c496b93",
+                          "name": "Lindsay Pyun",
+                          "ratingInfo": {
+                                "rating": 1703,
+                                "value": 1703,
+                                "sort": 1703,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 91
+                    },
+                    {
+                          "id": 92,
+                          "section": "major",
+                          "memberId": "3964d492-ec8a-4364-80cd-f1e646f9f8d6",
+                          "name": "Michael Ian Connor",
+                          "ratingInfo": {
+                                "rating": 1700,
+                                "value": 1700,
+                                "sort": 1700,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 92
+                    },
+                    {
+                          "id": 93,
+                          "section": "major",
+                          "memberId": "596177be-e60c-4820-96e7-3f798c14ac41",
+                          "name": "Robert Dean",
+                          "ratingInfo": {
+                                "rating": 1688,
+                                "value": 1688,
+                                "sort": 1688,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 93
+                    },
+                    {
+                          "id": 94,
+                          "section": "intermediate",
+                          "memberId": "70268b96-33a4-4c0b-9a6d-4849e1c4d298",
+                          "name": "Neal Fisher",
+                          "ratingInfo": {
+                                "rating": 1686,
+                                "value": 1686,
+                                "sort": 1686,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 94
+                    },
+                    {
+                          "id": 95,
+                          "section": "major",
+                          "memberId": "63a2cca5-4576-436e-8c68-168f806ab39a",
+                          "name": "Joseph Morrison",
+                          "ratingInfo": {
+                                "rating": 1685,
+                                "value": 1685,
+                                "sort": 1685,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 95
+                    },
+                    {
+                          "id": 96,
+                          "section": "intermediate",
+                          "memberId": "2e64e866-67a0-47ae-9591-545063426bb9",
+                          "name": "Michael Maher",
+                          "ratingInfo": {
+                                "rating": 1680,
+                                "value": 1680,
+                                "sort": 1680,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 96
+                    },
+                    {
+                          "id": 97,
+                          "section": "major",
+                          "memberId": "9137ef59-28a4-47e7-b74b-9788a9f653bf",
+                          "name": "Francis Smith",
+                          "ratingInfo": {
+                                "rating": 1679,
+                                "value": 1679,
+                                "sort": 1679,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 97
+                    },
+                    {
+                          "id": 98,
+                          "section": "intermediate",
+                          "memberId": "bd426826-6862-41f7-a819-c5e71803a0a8",
+                          "name": "Lawrence Rhodes",
+                          "ratingInfo": {
+                                "rating": 1678,
+                                "value": 1678,
+                                "sort": 1678,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 98
+                    },
+                    {
+                          "id": 99,
+                          "section": "major",
+                          "memberId": "8bb8782f-de5d-42d9-b2b9-72523a2b336c",
+                          "name": "Vivien Webster",
+                          "ratingInfo": {
+                                "rating": 1670,
+                                "value": 1670,
+                                "sort": 1670,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 99
+                    },
+                    {
+                          "id": 100,
+                          "section": "intermediate",
+                          "memberId": "92920fb3-6204-4221-973a-1517aac4e0be",
+                          "name": "Alex Leggat",
+                          "ratingInfo": {
+                                "rating": 1668,
+                                "value": 1668,
+                                "sort": 1668,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 100
+                    },
+                    {
+                          "id": 101,
+                          "section": "major",
+                          "memberId": "1f412825-2ed3-4662-bfb2-8235aa0c7054",
+                          "name": "Greg Billenness",
+                          "ratingInfo": {
+                                "rating": 1668,
+                                "value": 1668,
+                                "sort": 1668,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 101
+                    },
+                    {
+                          "id": 102,
+                          "section": "intermediate",
+                          "memberId": "37594bd1-f04c-46b5-8529-436b059afe51",
+                          "name": "Barry Edgar",
+                          "ratingInfo": {
+                                "rating": 1665,
+                                "value": 1665,
+                                "sort": 1665,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 102
+                    },
+                    {
+                          "id": 103,
+                          "section": "major",
+                          "memberId": "e6836728-2c9a-4db5-86f6-f019914069a1",
+                          "name": "Zak Tomlinson",
+                          "ratingInfo": {
+                                "rating": 1661,
+                                "value": 1661,
+                                "sort": 1661,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 103
+                    },
+                    {
+                          "id": 104,
+                          "section": "major",
+                          "memberId": "ff2939be-1682-4838-82df-78bc2f596cc8",
+                          "name": "David Boulden",
+                          "ratingInfo": {
+                                "rating": 1656,
+                                "value": 1656,
+                                "sort": 1656,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 104
+                    },
+                    {
+                          "id": 105,
+                          "section": "major",
+                          "memberId": "b94e5673-15c5-46b2-877b-5269b52426d5",
+                          "name": "John Torrance",
+                          "ratingInfo": {
+                                "rating": 1654,
+                                "value": 1654,
+                                "sort": 1654,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 105
+                    },
+                    {
+                          "id": 106,
+                          "section": "intermediate",
+                          "memberId": "3899df7d-c73d-414c-ae0f-cbf5765d4272",
+                          "name": "Paul Fearnhead",
+                          "ratingInfo": {
+                                "rating": 1650,
+                                "value": 1650,
+                                "sort": 1650,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 106
+                    },
+                    {
+                          "id": 107,
+                          "section": "intermediate",
+                          "memberId": "79355e43-fc94-4d87-a72b-70231b75efba",
+                          "name": "Brendan O'Gorman",
+                          "ratingInfo": {
+                                "rating": 1649,
+                                "value": 1649,
+                                "sort": 1649,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 107
+                    },
+                    {
+                          "id": 108,
+                          "section": "major",
+                          "memberId": "a0bf78f1-2926-4d53-9f49-577abff28671",
+                          "name": "Dominic Gallagher",
+                          "ratingInfo": {
+                                "rating": 1642,
+                                "value": 1642,
+                                "sort": 1642,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 108
+                    },
+                    {
+                          "id": 109,
+                          "section": "major",
+                          "memberId": "6da2bd92-db90-4b2f-8929-f9b03f4023fe",
+                          "name": "Bill Tait",
+                          "ratingInfo": {
+                                "rating": 1638,
+                                "value": 1638,
+                                "sort": 1638,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 109
+                    },
+                    {
+                          "id": 110,
+                          "section": "major",
+                          "memberId": "33098b26-c50b-429e-88a3-44692319f5d7",
+                          "name": "Stephen Berkley",
+                          "ratingInfo": {
+                                "rating": 1636,
+                                "value": 1636,
+                                "sort": 1636,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 110
+                    },
+                    {
+                          "id": 111,
+                          "section": "major",
+                          "memberId": "f25bd093-4d6d-47bd-8466-14f8c2041730",
+                          "name": "John Holliday",
+                          "ratingInfo": {
+                                "rating": 1636,
+                                "value": 1636,
+                                "sort": 1636,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 111
+                    },
+                    {
+                          "id": 112,
+                          "section": "major",
+                          "memberId": "2d6e363d-c374-4e81-9b13-5896de32195c",
+                          "name": "Nigel Redmond",
+                          "ratingInfo": {
+                                "rating": 1635,
+                                "value": 1635,
+                                "sort": 1635,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 112
+                    },
+                    {
+                          "id": 113,
+                          "section": "intermediate",
+                          "memberId": "51b07c6c-ec14-46b7-82f6-a590d3ad00e0",
+                          "name": "Rojus Lukauskas",
+                          "ratingInfo": {
+                                "rating": 1624,
+                                "value": 1624,
+                                "sort": 1624,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 113
+                    },
+                    {
+                          "id": 114,
+                          "section": "major",
+                          "memberId": "03bb0ed0-6b52-45fd-aca7-f789988cd7c0",
+                          "name": "Jeremy Butts",
+                          "ratingInfo": {
+                                "rating": 1621,
+                                "value": 1621,
+                                "sort": 1621,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 114
+                    },
+                    {
+                          "id": 115,
+                          "section": "intermediate",
+                          "memberId": "9f2ec1f2-c759-4607-b8a6-3b472aec3261",
+                          "name": "Colin Weller",
+                          "ratingInfo": {
+                                "rating": 1620,
+                                "value": 1620,
+                                "sort": 1620,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 115
+                    },
+                    {
+                          "id": 116,
+                          "section": "intermediate",
+                          "memberId": "07a80478-689a-499c-bd60-bb8f301bed2e",
+                          "name": "David Buckell",
+                          "ratingInfo": {
+                                "rating": 1604,
+                                "value": 1604,
+                                "sort": 1604,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 116
+                    },
+                    {
+                          "id": 117,
+                          "section": "intermediate",
+                          "memberId": "8a31cb9a-c52b-4c44-96e2-61e2963eebef",
+                          "name": "Kate Walker",
+                          "ratingInfo": {
+                                "rating": 1601,
+                                "value": 1601,
+                                "sort": 1601,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 117
+                    },
+                    {
+                          "id": 118,
+                          "section": "major",
+                          "memberId": "36392a75-80b7-473c-9e7a-873cc2dfe46a",
+                          "name": "Paul G Day",
+                          "ratingInfo": {
+                                "rating": 1600,
+                                "value": 1600,
+                                "sort": 1600,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 118
+                    },
+                    {
+                          "id": 119,
+                          "section": "intermediate",
+                          "memberId": "677c21cd-eb7c-45c8-b75a-a32db9bdd227",
+                          "name": "Philippe Radault",
+                          "ratingInfo": {
+                                "rating": 1599,
+                                "value": 1599,
+                                "sort": 1599,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 119
+                    },
+                    {
+                          "id": 120,
+                          "section": "intermediate",
+                          "memberId": "146e174d-75e9-4ad9-bb06-c9376c506c31",
+                          "name": "Christopher Fraser",
+                          "ratingInfo": {
+                                "rating": 1594,
+                                "value": 1594,
+                                "sort": 1594,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 120
+                    },
+                    {
+                          "id": 121,
+                          "section": "intermediate",
+                          "memberId": "4d7454d1-4d37-495f-ad4f-0bfcd3206cb6",
+                          "name": "Elliott Barnett",
+                          "ratingInfo": {
+                                "rating": 1589,
+                                "value": 1589,
+                                "sort": 1589,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 121
+                    },
+                    {
+                          "id": 122,
+                          "section": "intermediate",
+                          "memberId": "d78a5c41-197f-4d01-81e7-1c91d5a782fe",
+                          "name": "Keith Marsh",
+                          "ratingInfo": {
+                                "rating": 1588,
+                                "value": 1588,
+                                "sort": 1588,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 122
+                    },
+                    {
+                          "id": 123,
+                          "section": "intermediate",
+                          "memberId": "0a063f1f-e3d8-49ed-ace4-460d6f68f5f1",
+                          "name": "Steve Harrington",
+                          "ratingInfo": {
+                                "rating": 1587,
+                                "value": 1587,
+                                "sort": 1587,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 123
+                    },
+                    {
+                          "id": 124,
+                          "section": "intermediate",
+                          "memberId": "a5a272ae-bbef-411f-8a0b-0eb0a68b6830",
+                          "name": "Harry Wilson",
+                          "ratingInfo": {
+                                "rating": 1580,
+                                "value": 1580,
+                                "sort": 1580,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 124
+                    },
+                    {
+                          "id": 125,
+                          "section": "intermediate",
+                          "memberId": "ae32f7ae-9c78-4c96-94b4-4f1b4fad5500",
+                          "name": "Callum Whitton",
+                          "ratingInfo": {
+                                "rating": 1578,
+                                "value": 1578,
+                                "sort": 1578,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 125
+                    },
+                    {
+                          "id": 126,
+                          "section": "minor",
+                          "memberId": "c6a1d205-d85e-46d2-88d0-ae75193e3482",
+                          "name": "Oliver Tatlow",
+                          "ratingInfo": {
+                                "rating": 1561,
+                                "value": 1561,
+                                "sort": 1561,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 126
+                    },
+                    {
+                          "id": 127,
+                          "section": "minor",
+                          "memberId": "d85171ad-e483-4a48-bc31-0a765882248f",
+                          "name": "John Tate",
+                          "ratingInfo": {
+                                "rating": 1559,
+                                "value": 1559,
+                                "sort": 1559,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 127
+                    },
+                    {
+                          "id": 128,
+                          "section": "intermediate",
+                          "memberId": "21c8da83-47a4-42c8-9259-47da58fc10b6",
+                          "name": "James Bowmer",
+                          "ratingInfo": {
+                                "rating": 1531,
+                                "value": 1531,
+                                "sort": 1531,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 128
+                    },
+                    {
+                          "id": 129,
+                          "section": "open",
+                          "memberId": "7042156d-9292-4dbd-8709-db3db715c4cc",
+                          "name": "Jiping Li",
+                          "ratingInfo": {
+                                "rating": 1528,
+                                "value": 1528,
+                                "sort": 1528,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 129
+                    },
+                    {
+                          "id": 130,
+                          "section": "minor",
+                          "memberId": "a00209bd-baf4-43dc-9c11-37e59c9b8356",
+                          "name": "Elliot Kent",
+                          "ratingInfo": {
+                                "rating": 1522,
+                                "value": 1522,
+                                "sort": 1522,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 130
+                    },
+                    {
+                          "id": 131,
+                          "section": "intermediate",
+                          "memberId": "c3230106-f285-40cf-b6fa-95e247e3c1da",
+                          "name": "Jacob Smith",
+                          "ratingInfo": {
+                                "rating": 1517,
+                                "value": 1517,
+                                "sort": 1517,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 131
+                    },
+                    {
+                          "id": 132,
+                          "section": "minor",
+                          "memberId": "9aee3710-a6e0-450e-b199-f3592b870ee9",
+                          "name": "Adam Gostelow",
+                          "ratingInfo": {
+                                "rating": 1515,
+                                "value": 1515,
+                                "sort": 1515,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 132
+                    },
+                    {
+                          "id": 133,
+                          "section": "intermediate",
+                          "memberId": "cd028a4d-c2c0-46bb-b068-e22df5aea4d0",
+                          "name": "Richard Finney",
+                          "ratingInfo": {
+                                "rating": 1511,
+                                "value": 1511,
+                                "sort": 1511,
+                                "isPartial": true,
+                                "key": "S"
+                          },
+                          "seed": 133
+                    },
+                    {
+                          "id": 134,
+                          "section": "major",
+                          "memberId": "80661062-4d6c-41e2-9d4b-97fb3dd7a83b",
+                          "name": "Alannah Ashton",
+                          "ratingInfo": {
+                                "rating": 1511,
+                                "value": 1511,
+                                "sort": 1511,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 134
+                    },
+                    {
+                          "id": 135,
+                          "section": "minor",
+                          "memberId": "b81d1a70-9f77-45ab-aace-bddc7e448ceb",
+                          "name": "Modestas Lukauskas",
+                          "ratingInfo": {
+                                "rating": 1502,
+                                "value": 1502,
+                                "sort": 1502,
+                                "isPartial": true,
+                                "key": "S"
+                          },
+                          "seed": 135
+                    },
+                    {
+                          "id": 136,
+                          "section": "minor",
+                          "memberId": "3c7285ec-d7f8-4718-98ae-1584697bc867",
+                          "name": "Jeff Wilson",
+                          "ratingInfo": {
+                                "rating": 1482,
+                                "value": 1482,
+                                "sort": 1482,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 136
+                    },
+                    {
+                          "id": 137,
+                          "section": "minor",
+                          "memberId": "4fb808be-e67e-42b1-9724-f08ef094b7d2",
+                          "name": "Shriaansh Ganti",
+                          "ratingInfo": {
+                                "rating": 1478,
+                                "value": 1478,
+                                "sort": 1478,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 137
+                    },
+                    {
+                          "id": 138,
+                          "section": "intermediate",
+                          "memberId": "83f18905-f3a0-4ad6-81e1-77d6aec73705",
+                          "name": "Patrick Coleman",
+                          "ratingInfo": {
+                                "rating": 1472,
+                                "value": 1472,
+                                "sort": 1472,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 138
+                    },
+                    {
+                          "id": 139,
+                          "section": "intermediate",
+                          "memberId": "da7bf971-fa2d-411c-9a48-e69357fb408e",
+                          "name": "Pietro Convalle",
+                          "ratingInfo": {
+                                "rating": 1467,
+                                "value": 1467,
+                                "sort": 1467,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 139
+                    },
+                    {
+                          "id": 140,
+                          "section": "minor",
+                          "memberId": "304fb2fc-dfa4-4780-8671-fb27c5c25253",
+                          "name": "Nicholas Waite",
+                          "ratingInfo": {
+                                "rating": 1461,
+                                "value": 1461,
+                                "sort": 1461,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 140
+                    },
+                    {
+                          "id": 141,
+                          "section": "minor",
+                          "memberId": "7ed3356f-82e6-456e-b700-3f52f1952e82",
+                          "name": "David Mark Scorer",
+                          "ratingInfo": {
+                                "rating": 1452,
+                                "value": 1452,
+                                "sort": 1452,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 141
+                    },
+                    {
+                          "id": 142,
+                          "section": "intermediate",
+                          "memberId": "08ca07e6-5ad9-4655-9032-6ebff7764a0b",
+                          "name": "Chris Patrick",
+                          "ratingInfo": {
+                                "rating": 1450,
+                                "value": 1450,
+                                "sort": 1450,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 142
+                    },
+                    {
+                          "id": 143,
+                          "section": "major",
+                          "memberId": "12708497-3b34-46a1-8ac8-2ce1177f28bb",
+                          "name": "Paul Wheatley",
+                          "ratingInfo": {
+                                "rating": 1441,
+                                "value": 1441,
+                                "sort": 1441,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 143
+                    },
+                    {
+                          "id": 144,
+                          "section": "minor",
+                          "memberId": "c655db9b-1297-4969-97c1-08c7d7644013",
+                          "name": "David Halpin",
+                          "ratingInfo": {
+                                "rating": 1434,
+                                "value": 1434,
+                                "sort": 1434,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 144
+                    },
+                    {
+                          "id": 145,
+                          "section": "intermediate",
+                          "memberId": "8b717b30-b346-4e9b-80cc-393483ab423d",
+                          "name": "Stephen LeFevre",
+                          "ratingInfo": {
+                                "rating": 1402,
+                                "value": 1402,
+                                "sort": 1402,
+                                "isPartial": true,
+                                "key": "S"
+                          },
+                          "seed": 145
+                    },
+                    {
+                          "id": 146,
+                          "section": "minor",
+                          "memberId": "6b4e8390-84b7-4125-b065-f098f927f974",
+                          "name": "Wilbur Summerson",
+                          "ratingInfo": {
+                                "rating": 1370,
+                                "value": 1370,
+                                "sort": 1370,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 146
+                    },
+                    {
+                          "id": 147,
+                          "section": "minor",
+                          "memberId": "5b8a8795-67c3-4897-988c-34cef7d3d061",
+                          "name": "Sylvan Clarke",
+                          "ratingInfo": {
+                                "rating": 1334,
+                                "value": 1334,
+                                "sort": 1334,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 147
+                    },
+                    {
+                          "id": 148,
+                          "section": "minor",
+                          "memberId": "e8dca7f2-f610-4745-9fbe-a9a093b46d33",
+                          "name": "Peter Hughes",
+                          "ratingInfo": {
+                                "rating": 1315,
+                                "value": 1315,
+                                "sort": 1315,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 148
+                    },
+                    {
+                          "id": 149,
+                          "section": "intermediate",
+                          "memberId": "2025f42d-3c1c-42c6-bc8c-3141d9db0c1a",
+                          "name": "Elinor Gorrell",
+                          "ratingInfo": {
+                                "rating": 1304,
+                                "value": 1304,
+                                "sort": 1304,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 149
+                    },
+                    {
+                          "id": 150,
+                          "section": "minor",
+                          "memberId": "fff6cf9c-cdc6-4980-9232-69f3dd923652",
+                          "name": "Brendan Smith",
+                          "ratingInfo": {
+                                "rating": 1301,
+                                "value": 1301,
+                                "sort": 1301,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 150
+                    },
+                    {
+                          "id": 151,
+                          "section": "minor",
+                          "memberId": "742458ce-792d-4896-9d19-6963736206cb",
+                          "name": "Caelan Batty",
+                          "ratingInfo": {
+                                "rating": 1259,
+                                "value": 1259,
+                                "sort": 1259,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 151
+                    },
+                    {
+                          "id": 152,
+                          "section": "intermediate",
+                          "memberId": "c71fa42a-3777-4181-8d3e-a5eefde25216",
+                          "name": "Ryan Sweeney",
+                          "ratingInfo": {
+                                "rating": 1258,
+                                "value": 1258,
+                                "sort": 1258,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 152
+                    },
+                    {
+                          "id": 153,
+                          "section": "minor",
+                          "memberId": "0bc3158f-1fd3-4355-beaf-1f3fa3b8b176",
+                          "name": "Samesh Chotai",
+                          "ratingInfo": {
+                                "rating": 1229,
+                                "value": 1229,
+                                "sort": 1229,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 153
+                    },
+                    {
+                          "id": 154,
+                          "section": "intermediate",
+                          "memberId": "ad89f70b-8b18-480b-b895-de48e98925f9",
+                          "name": "James Holyhead",
+                          "ratingInfo": {
+                                "rating": 1181,
+                                "value": 1181,
+                                "sort": 1181,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 154
+                    },
+                    {
+                          "id": 155,
+                          "section": "minor",
+                          "memberId": "39803f35-fdf9-482f-bc02-8f884ec2805d",
+                          "name": "Danavir Dhunna",
+                          "ratingInfo": {
+                                "rating": 1137,
+                                "value": 1137,
+                                "sort": 1137,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 155
+                    },
+                    {
+                          "id": 156,
+                          "section": "minor",
+                          "memberId": "917d0281-66a4-4c04-a0eb-491383782ba8",
+                          "name": "Charles Wainwright",
+                          "ratingInfo": {
+                                "rating": 1120,
+                                "value": 1120,
+                                "sort": 1120,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 156
+                    },
+                    {
+                          "id": 157,
+                          "section": "minor",
+                          "memberId": "54d08dd4-d05b-40e7-b0bf-f63ba819e02a",
+                          "name": "Jacob Westmoreland",
+                          "ratingInfo": {
+                                "rating": 1036,
+                                "value": 1036,
+                                "sort": 1036,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 157
+                    },
+                    {
+                          "id": 158,
+                          "section": "minor",
+                          "memberId": "f62d3258-3eed-4315-9452-ddeaf3b47204",
+                          "name": "Edward Green",
+                          "ratingInfo": {
+                                "rating": 991,
+                                "value": 991,
+                                "sort": 991,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 158
+                    },
+                    {
+                          "id": 159,
+                          "section": "minor",
+                          "memberId": "15eedaed-7cf1-441b-8d3d-be26043d0694",
+                          "name": "James Weldon",
+                          "ratingInfo": {
+                                "rating": "unrated",
+                                "value": "unrated",
+                                "sort": 0,
+                                "key": ""
+                          },
+                          "seed": 159
+                    },
+                    {
+                          "id": 160,
+                          "section": "major",
+                          "memberId": "ca9d2f60-bfe5-4e9e-a451-446cc4abc812",
+                          "name": "A Keith Aitchison",
+                          "ratingInfo": {
+                                "rating": "unrated",
+                                "value": "unrated",
+                                "sort": 0,
+                                "key": ""
+                          },
+                          "seed": 160
+                    }
+              ]
+        }
+  ],
+  "pairings": [
+        {
+              "round": 1,
+              "pairings": [
+                    [
+                          1,
+                          81
+                    ],
+                    [
+                          82,
+                          2
+                    ],
+                    [
+                          3,
+                          83
+                    ],
+                    [
+                          84,
+                          4
+                    ],
+                    [
+                          5,
+                          85
+                    ],
+                    [
+                          86,
+                          6
+                    ],
+                    [
+                          7,
+                          87
+                    ],
+                    [
+                          88,
+                          8
+                    ],
+                    [
+                          9,
+                          89
+                    ],
+                    [
+                          90,
+                          10
+                    ],
+                    [
+                          11,
+                          91
+                    ],
+                    [
+                          92,
+                          12
+                    ],
+                    [
+                          13,
+                          93
+                    ],
+                    [
+                          94,
+                          14
+                    ],
+                    [
+                          15,
+                          95
+                    ],
+                    [
+                          96,
+                          16
+                    ],
+                    [
+                          17,
+                          97
+                    ],
+                    [
+                          98,
+                          18
+                    ],
+                    [
+                          19,
+                          99
+                    ],
+                    [
+                          100,
+                          20
+                    ],
+                    [
+                          21,
+                          101
+                    ],
+                    [
+                          102,
+                          22
+                    ],
+                    [
+                          23,
+                          103
+                    ],
+                    [
+                          104,
+                          24
+                    ],
+                    [
+                          25,
+                          105
+                    ],
+                    [
+                          106,
+                          26
+                    ],
+                    [
+                          27,
+                          107
+                    ],
+                    [
+                          108,
+                          28
+                    ],
+                    [
+                          29,
+                          109
+                    ],
+                    [
+                          110,
+                          30
+                    ],
+                    [
+                          31,
+                          111
+                    ],
+                    [
+                          112,
+                          32
+                    ],
+                    [
+                          33,
+                          113
+                    ],
+                    [
+                          114,
+                          34
+                    ],
+                    [
+                          35,
+                          115
+                    ],
+                    [
+                          116,
+                          36
+                    ],
+                    [
+                          37,
+                          117
+                    ],
+                    [
+                          118,
+                          38
+                    ],
+                    [
+                          39,
+                          119
+                    ],
+                    [
+                          120,
+                          40
+                    ],
+                    [
+                          41,
+                          121
+                    ],
+                    [
+                          122,
+                          42
+                    ],
+                    [
+                          43,
+                          123
+                    ],
+                    [
+                          124,
+                          44
+                    ],
+                    [
+                          45,
+                          125
+                    ],
+                    [
+                          126,
+                          46
+                    ],
+                    [
+                          47,
+                          127
+                    ],
+                    [
+                          128,
+                          48
+                    ],
+                    [
+                          49,
+                          129
+                    ],
+                    [
+                          130,
+                          50
+                    ],
+                    [
+                          51,
+                          131
+                    ],
+                    [
+                          132,
+                          52
+                    ],
+                    [
+                          53,
+                          133
+                    ],
+                    [
+                          134,
+                          54
+                    ],
+                    [
+                          55,
+                          135
+                    ],
+                    [
+                          136,
+                          56
+                    ],
+                    [
+                          57,
+                          137
+                    ],
+                    [
+                          138,
+                          58
+                    ],
+                    [
+                          59,
+                          139
+                    ],
+                    [
+                          140,
+                          60
+                    ],
+                    [
+                          61,
+                          141
+                    ],
+                    [
+                          142,
+                          62
+                    ],
+                    [
+                          63,
+                          143
+                    ],
+                    [
+                          144,
+                          64
+                    ],
+                    [
+                          65,
+                          145
+                    ],
+                    [
+                          146,
+                          66
+                    ],
+                    [
+                          67,
+                          147
+                    ],
+                    [
+                          148,
+                          68
+                    ],
+                    [
+                          69,
+                          149
+                    ],
+                    [
+                          150,
+                          70
+                    ],
+                    [
+                          71,
+                          151
+                    ],
+                    [
+                          152,
+                          72
+                    ],
+                    [
+                          73,
+                          153
+                    ],
+                    [
+                          154,
+                          74
+                    ],
+                    [
+                          75,
+                          155
+                    ],
+                    [
+                          156,
+                          76
+                    ],
+                    [
+                          77,
+                          157
+                    ],
+                    [
+                          158,
+                          78
+                    ],
+                    [
+                          79,
+                          159
+                    ],
+                    [
+                          160,
+                          80
+                    ]
+              ]
+        }
+  ],
+  "results": [
+        {
+              "section": "swiss",
+              "scores": [
+                    {
+                          "round": 1,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 2,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 3,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 4,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 5,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    }
+              ]
+        }
+  ]
+}

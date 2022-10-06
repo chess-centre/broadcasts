@@ -21,6 +21,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.0",
+    "use-sound": "^4.0.1",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"

@@ -24,7 +24,7 @@ const Viewer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-4">
           {players.map(({ entries, section, title, icon }, index) => {
             const scores = results.find((r) => r.section === section).scores;
             return (
