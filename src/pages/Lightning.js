@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-import audioFile from "../assets/beep.mp3";
+import audioFile from "../assets/beep-test.mp3";
 import Logo from "../assets/logo.png";
 
 const START_DELAY = 5000;
@@ -19,7 +19,6 @@ function Lightning() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-
     const play = () => {
       try {
         console.log("playing sound!");
@@ -27,9 +26,8 @@ function Lightning() {
       } catch (error) {
         console.log(error);
       }
-      
     };
-  
+
     let interval = null;
     if (time === 11) {
       delay.current = CONTINUED_DELAY;
@@ -129,60 +127,7 @@ function Lightning() {
           seconds
         </p>
         <div className="mt-8 mx-2 overflow-y-auto rounded-md">
-          <table className="min-w-full">
-            <thead className="bg-cyan-600 border-0 border-white">
-              <tr>
-                <th className="py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white">
-                  Moves
-                </th>
-                <th className="px-1 py-1 text-center  text-sm font-semibold text-gray-900 border-0 border-white">
-                  White
-                </th>
-                <th className="px-1 py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white">
-                  Black
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white">
-              {Boolean(tableRows.length) &&
-                tableRows
-                  .map((row, key) => (
-                    <tr key={key}>
-                      <td className="px-1 py-1 text-sm text-pink-600 font-normal">
-                        {key + 1}
-                      </td>
-                      <td
-                        className={classNames(
-                          row.white && "bg-slate-200",
-                          "px-1 py-1 text-sm text-gray-50 border-0 border-white"
-                        )}
-                      >
-                        {row.white && (
-                          <span className="text-green-600">
-                            <i className="fas fa-check-circle"></i>
-                          </span>
-                        )}
-                      </td>
-                      <td
-                        className={classNames(
-                          row.black && "bg-slate-200",
-                          "px-1 py-1 text-sm text-gray-50 border-0 border-white"
-                        )}
-                      >
-                        {row.black && (
-                          <span className="text-green-600">
-                            <i className="fas fa-check-circle"></i>
-                          </span>
-                        )}
-                      </td>
-                    </tr>
-                  ))
-                  .slice(
-                    tableRows.length > 6 ? tableRows.length - 7 : 0,
-                    tableRows.length > 6 ? tableRows.length - 1 : 6
-                  )}
-            </tbody>
-          </table>
+         <TableOfMoves rows={tableRows} />
         </div>
       </div>{" "}
       <div className="relative">
@@ -197,9 +142,9 @@ function Lightning() {
           </div>
         </div>
       </div>
-
-      <audio autoPlay ref={audioRef} ><source src={audioFile} crossOrigin="anonymous"></source></audio>
-
+      <audio autoPlay ref={audioRef}>
+        <source src={audioFile} crossOrigin="anonymous"></source>
+      </audio>
     </div>
   );
 }
@@ -233,6 +178,65 @@ function NotToMove({ color, text }) {
       <i className="fas fa-chess-king-alt"></i>
       <p className="text-base sm:text-2xl">{text}</p>
     </div>
+  );
+}
+
+function TableOfMoves({ rows }) {
+  return (
+    <table className="min-w-full">
+      <thead className="bg-cyan-600 border-0 border-white">
+        <tr>
+          <th className="py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white">
+            Moves
+          </th>
+          <th className="px-1 py-1 text-center  text-sm font-semibold text-gray-900 border-0 border-white">
+            White
+          </th>
+          <th className="px-1 py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white">
+            Black
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white">
+        {Boolean(rows.length) &&
+          rows
+            .map((row, key) => (
+              <tr key={key}>
+                <td className="px-1 py-1 text-sm text-pink-600 font-normal">
+                  {key + 1}
+                </td>
+                <td
+                  className={classNames(
+                    row.white && "bg-slate-200",
+                    "px-1 py-1 text-sm text-gray-50 border-0 border-white"
+                  )}
+                >
+                  {row.white && (
+                    <span className="text-green-600">
+                      <i className="fas fa-check-circle"></i>
+                    </span>
+                  )}
+                </td>
+                <td
+                  className={classNames(
+                    row.black && "bg-slate-200",
+                    "px-1 py-1 text-sm text-gray-50 border-0 border-white"
+                  )}
+                >
+                  {row.black && (
+                    <span className="text-green-600">
+                      <i className="fas fa-check-circle"></i>
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))
+            .slice(
+              rows.length > 6 ? rows.length - 7 : 0,
+              rows.length > 6 ? rows.length - 1 : 6
+            )}
+      </tbody>
+    </table>
   );
 }
 
