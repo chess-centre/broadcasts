@@ -64,7 +64,6 @@ function Lightning() {
     setTableRows([]);
   };
 
-  <i class="fas fa-pause"></i>;
   return (
     <div className="flex flex-col h-screen justify-between">
       <div className="mx-auto sm:mx-60 text-center mt-10 text-white">
@@ -215,7 +214,7 @@ function NotToMove({ color, text }) {
         "text-6xl sm:text-9xl rounded-lg m-2 p-4 sm:m-6 sm:p-10 text-"
       )}
     >
-      <i class="fas fa-chess-king-alt"></i>
+      <i className="fas fa-chess-king-alt"></i>
       <p className="text-base sm:text-2xl">{text}</p>
     </div>
   );
