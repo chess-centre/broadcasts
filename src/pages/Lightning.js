@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-import audioFile from "../assets/beep-test.mp3";
+//import audioFile from "../assets/beep-test.mp3";
 import Logo from "../assets/logo.png";
 
 const START_DELAY = 5000;
@@ -127,7 +127,7 @@ function Lightning() {
           seconds
         </p>
         <div className="mt-8 mx-2 overflow-y-auto rounded-md">
-         <TableOfMoves rows={tableRows} />
+          <TableOfMoves rows={tableRows} />
         </div>
       </div>{" "}
       <div className="relative">
@@ -142,9 +142,11 @@ function Lightning() {
           </div>
         </div>
       </div>
-      <audio controls autoPlay ref={audioRef}>
-        <source src={audioFile} crossOrigin="anonymous"></source>
-      </audio>
+      <div className="text-center mx-auto">
+        <audio controls autoPlay ref={audioRef}>
+          <source src="/beep-test.mp3" crossOrigin="anonymous"></source>
+        </audio>
+      </div>
     </div>
   );
 }
