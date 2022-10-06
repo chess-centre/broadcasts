@@ -16,14 +16,14 @@ function Lightning() {
 
   const audioRef = useRef(null);
   const play = () => {
-    audioRef.current.play();
-    // const promise = 
-    // if(promise !== undefined) {
-    //   promise.then((e) => {
-    //     console.log("working!", e);
-    //   })
-    //   .catch(e => console.log("error", e));
-    // }
+
+    const promise = audioRef.current.play();
+    if(promise !== undefined) {
+      promise.then((e) => {
+        console.log("working!", e);
+      })
+      .catch(e => console.log("error", e));
+    }
   };
 
 
