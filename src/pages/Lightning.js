@@ -1,42 +1,33 @@
 import React, { createRef, useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
-
-import "react-h5-audio-player/lib/styles.css";
 import { useRef } from "react";
 import Logo from "../assets/logo.png";
+
+const START_DELAY = 5000;
+const CONTINUED_DELAY = 10000;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 function Lightning() {
-  const delay = useRef(500);
+  const delay = useRef(START_DELAY);
   const soundUrl = "./beep.mp3";
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(1);
   const [tableRows, setTableRows] = useState([]);
-
-  const x = createRef();
-  //const audioRef = useRef(null);
-  const play = () => {
-    x.current.audio.current.play();
-    // const promise = audioRef.current.play();
-    // if (promise !== undefined) {
-    //   promise
-    //     .then((e) => {
-    //       console.log("working!", e);
-    //     })
-    //     .catch((e) => console.log("error", e));
-    // } else {
-    //   return;
-    // }
-  };
+  const audioPlayer = createRef();
 
   useEffect(() => {
+
+    const play = () => {
+      audioPlayer.current.audio.current.play();
+    };
+  
     let interval = null;
     if (time === 11) {
-      delay.current = 1000;
+      delay.current = CONTINUED_DELAY;
     }
 
     if (isActive && isPaused === false) {
@@ -63,7 +54,7 @@ function Lightning() {
     return () => {
       clearInterval(interval);
     };
-  }, [isActive, isPaused, delay, time]);
+  }, [isActive, isPaused, delay, time, audioPlayer]);
 
   const handleStart = () => {
     setIsActive(true);
@@ -78,10 +69,8 @@ function Lightning() {
     setIsActive(false);
     setTime(1);
     setTableRows([]);
-    delay.current = 500;
+    delay.current = START_DELAY;
   };
-
-  const test = () => {};
 
   return (
     <div className="flex flex-col h-screen justify-between">
@@ -203,14 +192,8 @@ function Lightning() {
           </div>
         </div>
       </div>
-      {/* <audio
-        crossOrigin="anonymous"
-        type="audio/mpeg"
-        src={soundUrl}
-        ref={audioRef}
-      ></audio> */}
-      <div className="hidden">
-        <AudioPlayer src={soundUrl} ref={x} />
+      <div className="hidden"> 
+        <AudioPlayer src={soundUrl} ref={audioPlayer} crossOrigin="anonymous" type="audio/mp3" />
       </div>
     </div>
   );
