@@ -142,7 +142,7 @@ function Lightning() {
           </div>
         </div>
       </div>
-      <audio autoPlay ref={audioRef}>
+      <audio controls autoPlay ref={audioRef}>
         <source src={audioFile} crossOrigin="anonymous"></source>
       </audio>
     </div>
