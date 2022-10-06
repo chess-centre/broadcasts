@@ -193,7 +193,7 @@ function Lightning() {
         </div>
       </div>
       <div className="hidden"> 
-        <AudioPlayer src={soundUrl} ref={audioPlayer} crossOrigin="anonymous" type="audio/mp3" />
+        <AudioPlayer autoPlay={true}  src={soundUrl} ref={audioPlayer} crossOrigin="anonymous" type="audio/mp3" />
       </div>
     </div>
   );
