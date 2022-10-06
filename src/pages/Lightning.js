@@ -144,7 +144,7 @@ function Lightning() {
       </div>
       <div className="text-center mx-auto">
         <audio controls autoPlay ref={audioRef}>
-          <source src="/beep-test.mp3" crossOrigin="anonymous"></source>
+          <source src="https://audio-files-broadcast-app.s3.eu-west-1.amazonaws.com/beep-test.mp3" crossOrigin="anonymous"></source>
         </audio>
       </div>
     </div>
