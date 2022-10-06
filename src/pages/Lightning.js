@@ -11,11 +11,15 @@ function classNames(...classes) {
 function Lightning() {
   const delay = useRef(5000);
   let soundUrl = "./beep.wav";
-  const [play] = useSound(soundUrl, { volume: 0.7 });
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(1);
   const [tableRows, setTableRows] = useState([]);
+
+  const audioRef = useRef(null);
+  const play = () => {
+    audioRef.current.play();
+  };
 
   useEffect(() => {
     let interval = null;
@@ -47,7 +51,7 @@ function Lightning() {
     return () => {
       clearInterval(interval);
     };
-  }, [isActive, isPaused, play, delay, time]);
+  }, [isActive, isPaused, delay, time]);
 
   const handleStart = () => {
     setIsActive(true);
@@ -62,6 +66,7 @@ function Lightning() {
     setIsActive(false);
     setTime(1);
     setTableRows([]);
+    delay.current = 5000;
   };
 
   return (
@@ -184,6 +189,10 @@ function Lightning() {
           <div><img className="h-10 object-center mx-auto" src={Logo} alt="The Chess Centre"></img></div>
         </div>
       </div>
+      <audio
+        src={soundUrl}
+        ref={audioRef}
+      ></audio>
     </div>
   );
 }
