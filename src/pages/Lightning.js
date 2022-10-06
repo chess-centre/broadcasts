@@ -1,6 +1,7 @@
 import React, { createRef, useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import { useRef } from "react";
+import audioFile from "../assets/beep.mp3";
 import Logo from "../assets/logo.png";
 
 const START_DELAY = 5000;
@@ -12,7 +13,6 @@ function classNames(...classes) {
 
 function Lightning() {
   const delay = useRef(START_DELAY);
-  const soundUrl = "./beep.mp3";
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(1);
@@ -193,7 +193,7 @@ function Lightning() {
         </div>
       </div>
       <div className="hidden"> 
-        <AudioPlayer autoPlay={true}  src={soundUrl} ref={audioPlayer} crossOrigin="anonymous" type="audio/mp3" />
+        <AudioPlayer autoPlay={true}  src={audioFile} ref={audioPlayer} crossOrigin="anonymous" type="audio/mp3" />
       </div>
     </div>
   );
