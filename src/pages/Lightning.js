@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-import useSound from "use-sound";
 import Logo from "../assets/logo.png"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
 function Lightning() {
   const delay = useRef(5000);
-  let soundUrl = "./beep.wav";
+  const soundUrl = "./beep.wav";
+  const startSoundUrl = "./starting.wav";
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
   const [time, setTime] = useState(1);
@@ -19,6 +18,11 @@ function Lightning() {
   const audioRef = useRef(null);
   const play = () => {
     audioRef.current.play();
+  };
+
+  const startAudioRef = useRef(null);
+  const playStart = () => {
+    startAudioRef.current.play();
   };
 
   useEffect(() => {
@@ -63,6 +67,7 @@ function Lightning() {
   };
 
   const handleReset = () => {
+    playStart()
     setIsActive(false);
     setTime(1);
     setTableRows([]);
@@ -189,9 +194,13 @@ function Lightning() {
           <div><img className="h-10 object-center mx-auto" src={Logo} alt="The Chess Centre"></img></div>
         </div>
       </div>
-      <audio
+      <audio crossOrigin="anonymous"
         src={soundUrl}
         ref={audioRef}
+      ></audio>
+      <audio crossOrigin="anonymous"
+        src={startSoundUrl}
+        ref={startAudioRef}
       ></audio>
     </div>
   );
