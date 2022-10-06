@@ -130,6 +130,14 @@ function Lightning() {
           <TableOfMoves rows={tableRows} />
         </div>
       </div>{" "}
+      <div className="text-center mx-auto">
+          <audio controls autoPlay ref={audioRef}>
+            <source
+              src="https://audio-files-broadcast-app.s3.eu-west-1.amazonaws.com/beep-test.mp3"
+              crossOrigin="anonymous"
+            ></source>
+          </audio>
+        </div>
       <div className="relative">
         <div className=" text-white justify-center text-center mb-4">
           <p className="text-xs text-gray-500 font-medium">Powered by</p>
@@ -141,11 +149,7 @@ function Lightning() {
             ></img>
           </div>
         </div>
-      </div>
-      <div className="text-center mx-auto">
-        <audio controls autoPlay ref={audioRef}>
-          <source src="https://audio-files-broadcast-app.s3.eu-west-1.amazonaws.com/beep-test.mp3" crossOrigin="anonymous"></source>
-        </audio>
+
       </div>
     </div>
   );
