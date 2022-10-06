@@ -16,13 +16,14 @@ function Lightning() {
 
   const audioRef = useRef(null);
   const play = () => {
-
     const promise = audioRef.current.play();
     if(promise !== undefined) {
       promise.then((e) => {
         console.log("working!", e);
       })
       .catch(e => console.log("error", e));
+    } else {
+      return;
     }
   };
 
@@ -195,7 +196,7 @@ function Lightning() {
           <div><img className="h-10 object-center mx-auto" src={Logo} alt="The Chess Centre"></img></div>
         </div>
       </div>
-      <audio crossOrigin="anonymous" streamtype="mp3"
+      <audio crossOrigin="anonymous" type="audio/mpeg"
         src={soundUrl}
         ref={audioRef}
       ></audio>
