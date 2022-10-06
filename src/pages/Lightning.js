@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
+import AudioPlayer from "react-h5-audio-player";
+
+import "react-h5-audio-player/lib/styles.css";
 import { useRef } from "react";
-import Logo from "../assets/logo.png"
+import Logo from "../assets/logo.png";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -14,19 +17,21 @@ function Lightning() {
   const [time, setTime] = useState(1);
   const [tableRows, setTableRows] = useState([]);
 
-  const audioRef = useRef(null);
+  const x = createRef();
+  //const audioRef = useRef(null);
   const play = () => {
-    const promise = audioRef.current.play();
-    if(promise !== undefined) {
-      promise.then((e) => {
-        console.log("working!", e);
-      })
-      .catch(e => console.log("error", e));
-    } else {
-      return;
-    }
+    x.current.audio.current.play();
+    // const promise = audioRef.current.play();
+    // if (promise !== undefined) {
+    //   promise
+    //     .then((e) => {
+    //       console.log("working!", e);
+    //     })
+    //     .catch((e) => console.log("error", e));
+    // } else {
+    //   return;
+    // }
   };
-
 
   useEffect(() => {
     let interval = null;
@@ -76,13 +81,15 @@ function Lightning() {
     delay.current = 500;
   };
 
+  const test = () => {};
+
   return (
     <div className="flex flex-col h-screen justify-between">
       <div className="mx-auto sm:mx-60 text-center mt-10 text-white">
         {!isActive && isPaused && (
           <button
             type="button"
-            onClick={() => handleStart()}
+            onClick={(e) => handleStart(e)}
             className="inline-flex text-2xl items-center rounded-full border border-transparent bg-pink-600 p-10 text-white shadow-sm hover:bg-pink-700"
           >
             <i className="fas fa-play"></i>
@@ -131,19 +138,13 @@ function Lightning() {
           <table className="min-w-full">
             <thead className="bg-cyan-600 border-0 border-white">
               <tr>
-                <th
-                  className="py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white"
-                >
+                <th className="py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white">
                   Moves
                 </th>
-                <th
-                  className="px-1 py-1 text-center  text-sm font-semibold text-gray-900 border-0 border-white"
-                >
+                <th className="px-1 py-1 text-center  text-sm font-semibold text-gray-900 border-0 border-white">
                   White
                 </th>
-                <th
-                  className="px-1 py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white"
-                >
+                <th className="px-1 py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white">
                   Black
                 </th>
               </tr>
@@ -193,13 +194,24 @@ function Lightning() {
       <div className="relative">
         <div className=" text-white justify-center text-center mb-4">
           <p className="text-xs text-gray-500 font-medium">Powered by</p>
-          <div><img className="h-10 object-center mx-auto" src={Logo} alt="The Chess Centre"></img></div>
+          <div>
+            <img
+              className="h-10 object-center mx-auto"
+              src={Logo}
+              alt="The Chess Centre"
+            ></img>
+          </div>
         </div>
       </div>
-      <audio crossOrigin="anonymous" type="audio/mpeg"
+      {/* <audio
+        crossOrigin="anonymous"
+        type="audio/mpeg"
         src={soundUrl}
         ref={audioRef}
-      ></audio>
+      ></audio> */}
+      <div className="hidden">
+        <AudioPlayer src={soundUrl} ref={x} />
+      </div>
     </div>
   );
 }
