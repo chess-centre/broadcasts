@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-//import audioFile from "../assets/beep-test.mp3";
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 
-const START_DELAY = 5000;
-const CONTINUED_DELAY = 10000;
+const START_DELAY = 5;
+const CONTINUED_DELAY = 10;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 function Lightning() {
+  const navigate = useNavigate();
   const delay = useRef(START_DELAY);
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
@@ -21,7 +22,6 @@ function Lightning() {
   useEffect(() => {
     const play = () => {
       try {
-        console.log("playing sound!");
         audioRef.current.play();
       } catch (error) {
         console.log(error);
@@ -29,6 +29,7 @@ function Lightning() {
     };
 
     let interval = null;
+
     if (time === 11) {
       delay.current = CONTINUED_DELAY;
     }
@@ -37,10 +38,9 @@ function Lightning() {
       interval = setInterval(() => {
         play();
         if (time % 2 !== 0) {
-          setTableRows((rows) => [
-            ...rows,
-            { move: time, white: true, black: false },
-          ]);
+          setTableRows((rows) => {
+            return [...rows, { move: time, white: true, black: false }];
+          });
         } else {
           setTableRows((rows) => {
             const idx = rows.findIndex(({ move }) => move === time - 1);
@@ -50,7 +50,7 @@ function Lightning() {
           });
         }
         setTime((time) => time + 1);
-      }, delay.current);
+      }, delay.current * 1000);
     } else {
       clearInterval(interval);
     }
@@ -76,8 +76,9 @@ function Lightning() {
   };
 
   return (
-    <div className="flex flex-col h-screen justify-between">
-      <div className="mx-auto sm:mx-60 text-center mt-10 text-white">
+    <div className="flex flex-col h-screen justify-between text-white">
+      <div className="mx-auto sm:max-w-2xl text-center mt-10 ">
+        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl mb-4">Lightning <span><i className="fas fa-bolt text-yellow-400"></i></span> Chess</h1>
         {!isActive && isPaused && (
           <button
             type="button"
@@ -107,37 +108,35 @@ function Lightning() {
             <i className="fas fa-sync-alt"></i>
           </button>
         )}
-
-        <div className="grid grid-cols-2 sm:mx-10 text-center mt-10 gap-5">
+        <p className="text-sm font-medium mt-4">
+          Delay <span className="text-pink-600 text-2xl">{delay.current}</span>{" "}
+          seconds
+        </p>
+        <div className="grid grid-cols-2 sm:mx-10 text-center mt-6 gap-5">
           {time % 2 !== 0 ? (
-            <ToMove color="white" text="White's Move" />
+            <ToMove color="white" text="White to move" />
           ) : (
             <NotToMove color="white" text="Panicking..." />
           )}
           {time % 2 === 0 ? (
-            <ToMove color="black" text="Black's Move" />
+            <ToMove color="black" text="Black to move" />
           ) : (
             <NotToMove color="black" text="Panicking..." />
           )}
         </div>
-
-        <p className="text-sm font-medium mt-4">
-          Delay{" "}
-          <span className="text-pink-600 text-2xl">{delay.current / 1000}</span>{" "}
-          seconds
-        </p>
         <div className="mt-8 mx-2 overflow-y-auto rounded-md">
           <TableOfMoves rows={tableRows} />
         </div>
       </div>{" "}
       <div className="text-center mx-auto">
-          <audio controls autoPlay ref={audioRef}>
-            <source
-              src="https://audio-files-broadcast-app.s3.eu-west-1.amazonaws.com/beep-test.mp3"
-              crossOrigin="anonymous"
-            ></source>
-          </audio>
-        </div>
+        <p className="text-sm font-medium text-white mb-2">Test Beep</p>
+        <audio controls autoPlay ref={audioRef}>
+          <source
+            src="https://audio-files-broadcast-app.s3.eu-west-1.amazonaws.com/beep-test.mp3"
+            crossOrigin="anonymous"
+          ></source>
+        </audio>
+      </div>
       <div className="relative">
         <div className=" text-white justify-center text-center mb-4">
           <p className="text-xs text-gray-500 font-medium">Powered by</p>
@@ -145,11 +144,11 @@ function Lightning() {
             <img
               className="h-10 object-center mx-auto"
               src={Logo}
+              onClick={() => navigate("/")}
               alt="The Chess Centre"
             ></img>
           </div>
         </div>
-
       </div>
     </div>
   );
@@ -166,7 +165,7 @@ function ToMove({ color, text }) {
       )}
     >
       <i className="fas fa-chess-king-alt"></i>
-      <p className="text-base sm:text-2xl">{text}</p>
+      <p className="text-base sm:text-2xl tracking-tight">{text}</p>
     </div>
   );
 }

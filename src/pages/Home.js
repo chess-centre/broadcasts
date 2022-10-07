@@ -23,8 +23,8 @@ export default function Home() {
 
   //
   return (
-    <div className="min-h-screen text-white text-center">
-      <div className="grid grid-cols-1 mx-auto gap-8">
+    <div className="min-h-screen text-white text-center mb-10">
+      <div className="grid grid-cols-1 mx-auto gap-8 ">
         <div className="">
           <img src={logo} className="w-32 mx-auto" alt="Chess Centre" />
           <h4 className="text-teal-brand font-bold text-4xl">
@@ -79,18 +79,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div>
+        <div className="gap-4 space-x-6">
           <button
             type="button"
             onClick={()  => navigate("/create")}
-            className="inline-flex items-center rounded-md border border-transparent bg-pink-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+            className="inline-flex items-center rounded-md border border-transparent bg-orange-brand px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
           >
             Create
           </button>
           <button
             type="button"
             onClick={()  => navigate("/lightning")}
-            className="inline-flex items-center rounded-md border border-transparent bg-pink-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+            className="inline-flex items-center rounded-md border border-transparent bg-teal-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
           >
             Lightning
           </button>
