@@ -1,25 +1,30 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 export default function Home() {
 
-
+  const navigate = useNavigate();
 
   useEffect(() => {
-
-
-    window.addEventListener('storage', () => {
+    window.addEventListener("storage", () => {
       // When local storage changes, dump the list to
       // the console.
-      console.log("myEvent", JSON.parse(window.localStorage.getItem('ab57f12c-9bdd-40a0-a13e-b3c0ae8c919e')));
+      console.log(
+        "myEvent",
+        JSON.parse(
+          window.localStorage.getItem("ab57f12c-9bdd-40a0-a13e-b3c0ae8c919e")
+        )
+      );
     });
+  }, []);
 
-  }, [])
+
 
   //
   return (
-    <div className="min-h-screen text-white text-center">
-      <div className="grid grid-cols-1 mx-auto gap-8">
+    <div className="min-h-screen text-white text-center mb-10">
+      <div className="grid grid-cols-1 mx-auto gap-8 ">
         <div className="">
           <img src={logo} className="w-32 mx-auto" alt="Chess Centre" />
           <h4 className="text-teal-brand font-bold text-4xl">
@@ -73,6 +78,22 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="gap-4 space-x-6">
+          <button
+            type="button"
+            onClick={()  => navigate("/create")}
+            className="inline-flex items-center rounded-md border border-transparent bg-orange-brand px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+          >
+            Create
+          </button>
+          <button
+            type="button"
+            onClick={()  => navigate("/lightning")}
+            className="inline-flex items-center rounded-md border border-transparent bg-teal-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+          >
+            Lightning
+          </button>
         </div>
       </div>
     </div>

@@ -32,6 +32,8 @@ const routes = [
   {
     path: "/match",
     element: lazy(() => import("./pages/Match")),
+    path: "/lightning",
+    element: lazy(() => import("./pages/Lightning")),
   }
 ];
 
