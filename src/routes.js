@@ -30,6 +30,8 @@ const routes = [
     element: lazy(() => import("./pages/Manager/Update")),
   },
   {
+    path: "/match",
+    element: lazy(() => import("./pages/Match")),
     path: "/lightning",
     element: lazy(() => import("./pages/Lightning")),
   },

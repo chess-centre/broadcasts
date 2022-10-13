@@ -4,14 +4,14 @@ export const MatchTable = ({
     round,
     whiteOnOdd,
     showRating = true,
-    isLive = true,
+    isLive = false,
   }) => {
     const homeTeam = teams.homeTeam.players;
     const awayTeam = teams.awayTeam.players;
   
     const homeRatingAverage = Math.floor(
       homeTeam.reduce((pre, cur) => (pre += cur.rating), 0) /
-        (homeTeam.length - 1)
+        (homeTeam.length)
     );
     const awayRatingAverage = Math.floor(
       awayTeam.reduce((pre, cur) => (pre += cur.rating), 0) / awayTeam.length
@@ -29,7 +29,7 @@ export const MatchTable = ({
               </th>
               <th className="px-1 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
               <th className="flex-grow-0 w-80 px-2 sm:px-4 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider">
-                The Chess Centre
+                Ilkley Dragons
               </th>
               <th className="px-2 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
               <th className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-orange-900  uppercase tracking-wider">
@@ -38,7 +38,7 @@ export const MatchTable = ({
               <th className="px-2 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
   
               <th className="flex-grow-0 w-80 px-4 sm:px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider">
-                Hammersmith
+                Hull DCA B
               </th>
               <th className="px-1 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
               <th className="px-2 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider">
@@ -87,9 +87,9 @@ export const MatchTable = ({
                   </td>
                   <td className="px-1 py-3 border-r border-slate-700 text-xs">
                     {homeColour === "W" ? (
-                      <i className="fas fa-chess-pawn-alt"></i>
+                      <span>W</span>
                     ) : (
-                      <i className="fas fa-chess-pawn-alt text-black"></i>
+                      <span>B</span>
                     )}
                   </td>
                   <td
@@ -131,9 +131,9 @@ export const MatchTable = ({
                   </td>
                   <td className="px-1 py-3 border-l text-xs border-r border-slate-700">
                     {awayColour === "W" ? (
-                      <i className="fas fa-chess-pawn-alt"></i>
+                      <span>W</span>
                     ) : (
-                      <i className="fas fa-chess-pawn-alt text-black"></i>
+                      <span>B</span>
                     )}
                   </td>
                   <td className="px-1 py-3 border-r border-slate-700 text-xs">
@@ -154,7 +154,7 @@ export const MatchTable = ({
                   Av. {homeRatingAverage}
                 </span>
               </td>
-              <td className="px-4 py-2 text-center text-4xl font-medium text-black border border-slate-900 bg-cyan-brand">
+              <td className="px-4 py-2 text-center text-4xl font-medium text-white border border-slate-900 bg-cyan-brand">
                 {`${homeScore} - ${awayScore}`}
               </td>
               <td>
