@@ -32,6 +32,10 @@ const routes = [
   {
     path: "/lightning",
     element: lazy(() => import("./pages/Lightning")),
+  },
+  {
+    path: "/congress",
+    element: lazy(() => import("./pages/Congress")),
   }
 ];
 
