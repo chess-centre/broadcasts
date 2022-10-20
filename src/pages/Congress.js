@@ -1,8 +1,8 @@
-import RoundRobin from "../components/RoundRobin/RoundRobin";
-import data from "../components/RoundRobin/meta-old.json";
+import Congress from "../components/Congress/Congress";
+import data from "../components/Congress/meta-festival.json";
 import Logo from "../assets/logo.png";
 
-const { name, players, results, settings } = data;
+const { name, players, pairings, results, settings } = data;
 
 const Viewer = () => {
   const isLastRound = settings.currentRound >= settings.totalRounds;
@@ -28,10 +28,11 @@ const Viewer = () => {
           {players.map(({ entries, section, title, icon }, index) => {
             const scores = results.find((r) => r.section === section).scores;
             return (
-              <RoundRobin
+              <Congress
                 key={index}
                 title={title}
                 entries={entries}
+                pairings={pairings[index].sectionPairings}
                 results={scores}
                 settings={settings}
                 icon={icon}
