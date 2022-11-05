@@ -48,7 +48,6 @@ const getPgn = async (path) => {
   console.log(`GET: returning pgn for ${path}`);
   const pgn = await fs.readFile(path, "utf-8").catch(console.error);
   const parsed = parseGame(pgn);
-  console.log(`GET: ${parsed}`);
   return parsed;
 };
 

@@ -5,7 +5,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const Standings = ({ roundByRound, settings, showTitle = false, division }) => {
+export const Standings = ({
+  roundByRound,
+  settings,
+  showTitle = false,
+  division,
+}) => {
   const [showOpponents, setShowOpponents] = useState(
     settings.showOpponentPairing
   );
@@ -15,8 +20,14 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
 
   return (
     <div className="mb-2">
-      <div className="block sm:hidden bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border m-2">{division}</div>
-      <div className={classNames("border border-slate-800 shadow-lg overflow-x-auto")}>
+      <div className="block sm:hidden bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border m-2">
+        {division}
+      </div>
+      <div
+        className={classNames(
+          "border border-slate-800 shadow-lg overflow-x-auto sm:overflow-hidden"
+        )}
+      >
         <table className="w-full divide-y divide-slate-900">
           <thead className="bg-orange-500">
             <tr>
@@ -66,7 +77,7 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
               </th>
             </tr>
           </thead>
-          <tbody className="bg-slate-700 border border-slate-800">
+          <tbody className="bg-slate-700">
             {roundByRound.map((data, key) => {
               const position = key + 1;
               const isEven = key % 2 === 0;
@@ -74,7 +85,10 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
               return (
                 <tr
                   key={key}
-                  className={classNames(isEven ? "bg-slate-800" : "bg-slate-900", "hover:bg-pink-900 hover:opacity-90")}
+                  className={classNames(
+                    isEven ? "bg-slate-800" : "bg-slate-900",
+                    "hover:bg-pink-900 hover:opacity-90"
+                  )}
                 >
                   <td className="border-r border-slate-700 px-1 py-2 text-sm sm:text-md whitespace-nowrap text-center text-slate-50">
                     {position}
@@ -86,14 +100,16 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
                       </span>
                     </td>
                   )}
-                  {data.name.includes("stand in") ?
+                  {data.name.includes("stand in") ? (
                     <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-sm sm:text-md text-white">
-                      {data.name.replace("stand in", "")} <span className="text-xs text-orange-400">stand in</span>
-                    </td> : <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-sm sm:text-md text-white">
+                      {data.name.replace("stand in", "")}{" "}
+                      <span className="text-xs text-orange-400">stand in</span>
+                    </td>
+                  ) : (
+                    <td className="pl-4 text-left px-4 py-2 whitespace-nowrap text-sm sm:text-md text-white">
                       {data.name}
                     </td>
-
-                  }
+                  )}
 
                   <td className="border-r border-slate-700 px-1 py-2 text-sm sm:text-md whitespace-nowrap text-center text-white">
                     <span className="text-cyan-400 sm:font-medium">
@@ -144,8 +160,9 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
           </tbody>
           <tfoot className="border-t border-white"></tfoot>
         </table>
-        <div className="relative border-t-4 border-slate-800">
-          {settings.enableToggles && (
+
+        {settings.enableToggles && (
+          <div className="relative border-t-4 border-slate-800">
             <div className="flex float-right mr-2">
               <div className="my-1 mr-6">
                 <SettingsToggle
@@ -162,10 +179,12 @@ export const Standings = ({ roundByRound, settings, showTitle = false, division 
                 />
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-      <div className="hidden sm:block bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border mt-2">{division}</div>
+      <div className="hidden sm:block bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border mt-2">
+        {division}
+      </div>
     </div>
   );
 };

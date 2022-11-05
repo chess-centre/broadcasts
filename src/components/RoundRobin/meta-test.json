@@ -1,398 +1,617 @@
 {
   "name": "Open Rapidplay 2022",
-  "eventId": "ab57f12c-9bdd-40a0-a13e-b3c0ae8c919e",
+  "eventId": "3b78a78a-abf8-4c69-a290-c40ef1e7e351",
   "eventName": "Open Rapidplay",
-  "date": "2022-10-01",
+  "date": "2022-11-05",
   "settings": {
-    "enableToggles": false,
-    "type": "RoundRobin",
-    "currentRound": 1,
-    "showRoundTimeForRound": 1,
-    "totalRounds": 5,
-    "roundLive": false,
-    "showAll": false,
-    "showOpponentPairing": false,
-    "showPreviousRound": false,
-    "nextRoundTime": {
-      "1": "10:00am",
-      "2": "11:00am",
-      "3": "12:30pm",
-      "4": "1:30pm",
-      "5": "2:30pm"
-    },
-    "prizeGiving": "3:30pm"
+        "enableToggles": false,
+        "type": "RoundRobin",
+        "currentRound": 1,
+        "showRoundTimeForRound": 1,
+        "totalRounds": 5,
+        "roundLive": false,
+        "showAll": false,
+        "showOpponentPairing": false,
+        "showPreviousRound": false,
+        "nextRoundTime": {
+              "1": "10:00am",
+              "2": "11:00am",
+              "3": "12:30pm",
+              "4": "1:30pm",
+              "5": "2:30pm"
+        },
+        "prizeGiving": "3:30pm"
   },
   "players": [
-    {
-      "section": "one",
-      "title": "Division 1",
-      "icon": "fad fa-chess-king",
-      "entries": [
         {
-          "id": 1,
-          "memberId": "565b4fd6-363c-44ab-a046-5b6d7c307a5e",
-          "name": "Dariusz Rak",
-          "ratingInfo": {
-            "rating": 2035,
-            "value": 2035,
-            "sort": 2035,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 1
+              "count": 6,
+              "section": "open",
+              "title": "Division 1",
+              "icon": "fad fa-chess-king",
+              "entries": [
+                    {
+                          "id": 1,
+                          "section": "null",
+                          "memberId": "565b4fd6-363c-44ab-a046-5b6d7c307a5e",
+                          "name": "Dariusz Rak",
+                          "ratingInfo": {
+                                "rating": 2035,
+                                "value": 2035,
+                                "sort": 2035,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 1
+                    },
+                    {
+                          "id": 2,
+                          "section": "null",
+                          "memberId": "fcda4bc8-e9e2-421b-bc60-b63babada51e",
+                          "name": "Nick Burton",
+                          "ratingInfo": {
+                                "rating": 2023,
+                                "value": 2023,
+                                "sort": 2023,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 2
+                    },
+                    {
+                          "id": 3,
+                          "section": "null",
+                          "memberId": "0f45aab7-096e-4c84-83c8-5b7fb59df94d",
+                          "name": "Oleg Cukovs",
+                          "ratingInfo": {
+                                "rating": 1994,
+                                "value": 1994,
+                                "sort": 1994,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 3
+                    },
+                    {
+                          "id": 4,
+                          "section": null,
+                          "memberId": "6e109109-186c-4412-8598-51ff73ab6deb",
+                          "name": "James Hall",
+                          "ratingInfo": {
+                                "rating": 1957,
+                                "value": 1957,
+                                "sort": 1957,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 4
+                    },
+                    {
+                          "id": 5,
+                          "section": null,
+                          "memberId": "02082368-677b-432c-95da-7021a9985f1d",
+                          "name": "Andy Mata",
+                          "ratingInfo": {
+                                "rating": 1927,
+                                "value": 1927,
+                                "sort": 1927,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 5
+                    },
+                    {
+                          "id": 6,
+                          "section": "null",
+                          "memberId": "1f412825-2ed3-4662-bfb2-8235aa0c7054",
+                          "name": "Greg Billenness",
+                          "ratingInfo": {
+                                "rating": 1668,
+                                "value": 1668,
+                                "sort": 1668,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 6
+                    }
+              ]
         },
         {
-          "id": 2,
-          "memberId": "199b1fd6-7daf-4efc-9702-f55e45c1e0ce",
-          "name": "Florian Biermann",
-          "ratingInfo": {
-            "rating": 2034,
-            "value": 2034,
-            "sort": 2034,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 2
+              "count": 6,
+              "section": "major",
+              "title": "Division 2",
+              "icon": "fad fa-chess-queen",
+              "entries": [
+                    {
+                          "id": 1,
+                          "section": "null",
+                          "memberId": "be16fa80-5417-42f8-b4eb-0e7007924cb0",
+                          "name": "Jonathan Mahony",
+                          "ratingInfo": {
+                                "rating": 1653,
+                                "value": 1653,
+                                "sort": 1653,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 1
+                    },
+                    {
+                          "id": 2,
+                          "section": "null",
+                          "memberId": "d85171ad-e483-4a48-bc31-0a765882248f",
+                          "name": "John Tate",
+                          "ratingInfo": {
+                                "rating": 1567,
+                                "value": 1567,
+                                "sort": 1567,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 2
+                    },
+                    {
+                          "id": 3,
+                          "section": "null",
+                          "memberId": "da7bf971-fa2d-411c-9a48-e69357fb408e",
+                          "name": "Pietro Convalle",
+                          "ratingInfo": {
+                                "rating": 1467,
+                                "value": 1467,
+                                "sort": 1467,
+                                "isPartial": null,
+                                "key": "S"
+                          },
+                          "seed": 3
+                    },
+                    {
+                          "id": 4,
+                          "section": null,
+                          "memberId": "08ca07e6-5ad9-4655-9032-6ebff7764a0b",
+                          "name": "Chris Patrick",
+                          "ratingInfo": {
+                                "rating": 1450,
+                                "value": 1450,
+                                "sort": 1450,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 4
+                    },
+                    {
+                          "id": 5,
+                          "section": "null",
+                          "memberId": "8e921e71-c0d4-4ff9-92a6-2ff8ab292b0e",
+                          "name": "Simon Jones",
+                          "ratingInfo": {
+                                "rating": 1321,
+                                "value": 1321,
+                                "sort": 1321,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 5
+                    },
+                    {
+                          "id": 6,
+                          "section": null,
+                          "memberId": "742458ce-792d-4896-9d19-6963736206cb",
+                          "name": "Caelan Batty",
+                          "ratingInfo": {
+                                "rating": 1271,
+                                "value": 1271,
+                                "sort": 1271,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 6
+                    }
+              ]
         },
         {
-          "id": 3,
-          "memberId": "0f45aab7-096e-4c84-83c8-5b7fb59df94d",
-          "name": "Oleg Cukovs",
-          "ratingInfo": {
-            "rating": 1994,
-            "value": 1994,
-            "sort": 1994,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 3
-        },
-        {
-          "id": 4,
-          "memberId": "6e109109-186c-4412-8598-51ff73ab6deb",
-          "name": "James Hall",
-          "ratingInfo": {
-            "rating": 1957,
-            "value": 1957,
-            "sort": 1957,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 4
-        },
-        {
-          "id": 5,
-          "memberId": "7d686b62-383e-4858-b90c-07e5e1bdbe12",
-          "name": "Matthew Webb",
-          "ratingInfo": {
-            "rating": 1913,
-            "value": 1913,
-            "sort": 1913,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 5
-        },
-        {
-          "id": 6,
-          "memberId": "be2cd6fa-1498-4a54-9787-07144e077434",
-          "name": "Gerald Cuaresma",
-          "ratingInfo": {
-            "rating": 1897,
-            "value": 1897,
-            "sort": 1897,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 6
+              "count": 6,
+              "section": "minor",
+              "title": "Division 3",
+              "icon": "fad fa-chess-bishop",
+              "entries": [
+                    {
+                          "id": 1,
+                          "section": "null",
+                          "memberId": "3204e4a4-3677-4086-8cbe-56d985084fe6",
+                          "name": "Peter Procter",
+                          "ratingInfo": {
+                                "rating": 1154,
+                                "value": 1154,
+                                "sort": 1154,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 1
+                    },
+                    {
+                          "id": 2,
+                          "section": null,
+                          "memberId": "26a3bdfe-d276-404f-ade0-258e778b076e",
+                          "name": "Pierre de Beco",
+                          "ratingInfo": {
+                                "rating": "unrated",
+                                "value": "unrated",
+                                "sort": 0,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 2
+                    },
+                    {
+                          "id": 3,
+                          "section": "null",
+                          "memberId": "92d0cf13-58b4-4294-8ad5-3f0354f7e20e",
+                          "name": "Ted Freeman",
+                          "ratingInfo": {
+                                "rating": "unrated",
+                                "value": "unrated",
+                                "sort": 0,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 3
+                    },
+                    {
+                          "id": 4,
+                          "section": "null",
+                          "memberId": "d90f17dc-301f-49e9-899a-71b6a635ab44",
+                          "name": "Krzysztof Sikora",
+                          "ratingInfo": {
+                                "rating": "unrated",
+                                "value": "unrated",
+                                "sort": 0,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 4
+                    },
+                    {
+                          "id": 5,
+                          "section": "null",
+                          "memberId": "c8a048cd-e542-435d-9117-190aee7dedec",
+                          "name": "Peter Galloway",
+                          "ratingInfo": {
+                                "rating": "unrated",
+                                "value": "unrated",
+                                "sort": 0,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 5
+                    },
+                    {
+                          "id": 6,
+                          "section": "null",
+                          "memberId": "dfcf0b7b-cf04-422e-9858-b5a588102f98",
+                          "name": "Angel Monterde",
+                          "ratingInfo": {
+                                "rating": "unrated",
+                                "value": "unrated",
+                                "sort": 0,
+                                "isPartial": null,
+                                "key": ""
+                          },
+                          "seed": 6
+                    }
+              ]
         }
-      ]
-    },
-    {
-      "section": "two",
-      "title": "Division 2",
-      "icon": "fad fa-chess-queen",
-      "entries": [
-        {
-          "id": 1,
-          "memberId": "1a5cfa53-ff39-462b-b1ec-95c73e4e44f3",
-          "name": "Andrew Wainwright",
-          "ratingInfo": {
-            "rating": 1802,
-            "value": 1802,
-            "sort": 1802,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 1
-        },
-        {
-          "id": 2,
-          "memberId": "47449d84-f98a-406a-ae47-e9d19ff32a84",
-          "name": "Paul Butterworth",
-          "ratingInfo": {
-            "rating": 1751,
-            "value": 1751,
-            "sort": 1751,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 2
-        },
-        {
-          "id": 3,
-          "memberId": "4fb808be-e67e-42b1-9724-f08ef094b7d2",
-          "name": "Shriaansh Ganti",
-          "ratingInfo": {
-            "rating": 1478,
-            "value": 1478,
-            "sort": 1478,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 3
-        },
-        {
-          "id": 4,
-          "memberId": "feb8cc1f-0201-49ec-bfa4-5f5ce2dd4fcd",
-          "name": "Sachin Ragu",
-          "ratingInfo": {
-            "rating": 1366,
-            "value": 1366,
-            "sort": 1366,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 4
-        },
-        {
-          "id": 5,
-          "memberId": "5372978b-4267-4bb8-b06e-347eb808c63a",
-          "name": "Juris Kirilenkovs",
-          "ratingInfo": {
-            "rating": 1334,
-            "value": 1334,
-            "sort": 1334,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 5
-        },
-        {
-          "id": 6,
-          "memberId": "742458ce-792d-4896-9d19-6963736206cb",
-          "name": "Caelan Batty",
-          "ratingInfo": {
-            "rating": 1259,
-            "value": 1259,
-            "sort": 1259,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 6
-        }
-      ]
-    },
-    {
-      "section": "three",
-      "title": "Division 3",
-      "icon": "fad fa-chess-bishop",
-      "entries": [
-        {
-          "id": 1,
-          "memberId": "3204e4a4-3677-4086-8cbe-56d985084fe6",
-          "name": "Peter Procter",
-          "ratingInfo": {
-            "rating": 1154,
-            "value": 1154,
-            "sort": 1154,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 1
-        },
-        {
-          "id": 2,
-          "memberId": "a2db6d4c-2173-4938-8046-8a5cbea93137",
-          "name": "Albert Biermann",
-          "ratingInfo": {
-            "rating": 817,
-            "value": 817,
-            "sort": 817,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 2
-        },
-        {
-          "id": 3,
-          "memberId": "60f1f7ca-e308-49fb-9584-dbd5aa9881e1",
-          "name": "Dylan Parkinson",
-          "ratingInfo": {
-            "rating": 801,
-            "value": 801,
-            "sort": 801,
-            "isPartial": null,
-            "key": ""
-          },
-          "seed": 3
-        },
-        {
-          "id": 4,
-          "memberId": "d90f17dc-301f-49e9-899a-71b6a635ab44",
-          "name": "Krzysztof Sikora",
-          "ratingInfo": {
-            "rating": "unrated",
-            "value": "unrated",
-            "sort": 0,
-            "key": ""
-          },
-          "seed": 4
-        },
-        {
-          "id": 5,
-          "memberId": "26a3bdfe-d276-404f-ade0-258e778b076e",
-          "name": "Pierre de Beco",
-          "ratingInfo": {
-            "rating": "unrated",
-            "value": "unrated",
-            "sort": 0,
-            "key": ""
-          },
-          "seed": 5
-        },
-        {
-          "id": 6,
-          "memberId": "fa5db1c7-57b5-4769-8ea1-a9f684ab5113",
-          "name": "Archie Sheen",
-          "ratingInfo": {
-            "rating": "unrated",
-            "value": "unrated",
-            "sort": 0,
-            "key": ""
-          },
-          "seed": 6
-        }
-      ]
-    }
   ],
   "pairings": [
-    {
-      "round": 1,
-      "pairings": [
-        [1, 6],
-        [2, 5],
-        [3, 4]
-      ]
-    },
-    {
-      "round": 2,
-      "pairings": [
-        [6, 4],
-        [5, 3],
-        [1, 2]
-      ]
-    },
-    {
-      "round": 3,
-      "pairings": [
-        [2, 6],
-        [3, 1],
-        [4, 5]
-      ]
-    },
-    {
-      "round": 4,
-      "pairings": [
-        [6, 5],
-        [1, 4],
-        [2, 3]
-      ]
-    },
-    {
-      "round": 5,
-      "pairings": [
-        [3, 6],
-        [4, 2],
-        [5, 1]
-      ]
-    }
+        {
+              "round": 1,
+              "pairings": [
+                    [
+                          1,
+                          6
+                    ],
+                    [
+                          2,
+                          5
+                    ],
+                    [
+                          3,
+                          4
+                    ]
+              ]
+        },
+        {
+              "round": 2,
+              "pairings": [
+                    [
+                          6,
+                          4
+                    ],
+                    [
+                          5,
+                          3
+                    ],
+                    [
+                          1,
+                          2
+                    ]
+              ]
+        },
+        {
+              "round": 3,
+              "pairings": [
+                    [
+                          2,
+                          6
+                    ],
+                    [
+                          3,
+                          1
+                    ],
+                    [
+                          4,
+                          5
+                    ]
+              ]
+        },
+        {
+              "round": 4,
+              "pairings": [
+                    [
+                          6,
+                          5
+                    ],
+                    [
+                          1,
+                          4
+                    ],
+                    [
+                          2,
+                          3
+                    ]
+              ]
+        },
+        {
+              "round": 5,
+              "pairings": [
+                    [
+                          3,
+                          6
+                    ],
+                    [
+                          4,
+                          2
+                    ],
+                    [
+                          5,
+                          1
+                    ]
+              ]
+        }
   ],
   "results": [
-    {
-      "section": "one",
-      "scores": [
         {
-          "round": 1,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
+              "section": "open",
+              "scores": [
+                    {
+                          "round": 1,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 2,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 3,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 4,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 5,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    }
+              ]
         },
         {
-          "round": 2,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
+              "section": "major",
+              "scores": [
+                    {
+                          "round": 1,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 2,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 3,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 4,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 5,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    }
+              ]
         },
         {
-          "round": 3,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 4,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 5,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
+              "section": "minor",
+              "scores": [
+                    {
+                          "round": 1,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 2,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 3,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 4,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    },
+                    {
+                          "round": 5,
+                          "pairResults": [
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                [],
+                                []
+                          ]
+                    }
+              ]
         }
-      ]
-    },
-    {
-      "section": "two",
-      "scores": [
-        {
-          "round": 1,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 2,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 3,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 4,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 5,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        }
-      ]
-    },
-    {
-      "section": "three",
-      "scores": [
-        {
-          "round": 1,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 2,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 3,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 4,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        },
-        {
-          "round": 5,
-          "pairResults": [[], [], [], [], [], [], [], [], []]
-        }
-      ]
-    }
   ]
 }
