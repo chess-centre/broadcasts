@@ -2,8 +2,10 @@ import React from "react";
 import { Standings } from "../Shared/Standings";
 import { PairingsTable } from "../Shared/Pairings";
 import { resultCheck } from "../Shared/ResultsChecker";
-import ChessGame from "../Viewer/Game";
-//import { gamesJson  } from "./generate";
+
+import { gamesJson  } from "./generate";
+
+console.log(gamesJson);
 
 const addSeeding = (players) =>
   players.map((player, idx) => ({ ...player, seed: idx + 1 }));
@@ -29,13 +31,6 @@ export default function Rapidplay({
         icon={icon}
         settings={settings}
       ></Standings>
-
-      {
-        <div className="grid grid-cols-2 space-x-2">
-          <ChessGame round={1} board={1} />
-          <ChessGame round={1} board={2} />
-        </div>
-      }
 
       {!settings.showAll &&
         pairings

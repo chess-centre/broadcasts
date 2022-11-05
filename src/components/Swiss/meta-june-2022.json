@@ -1,0 +1,196 @@
+{
+  "name": "June Rapidplay 2022",
+  "eventId": "a13877a2-2827-4279-8f83-364dcf78b9a6",
+  "eventName": "June Rapidplay",
+  "date": "2022-06-16",
+  "settings": {
+    "type": "Swiss",
+    "currentRound": 5,
+    "totalRounds": 5,
+    "roundLive": false,
+    "showAll": false,
+    "showOpponentPairing": false,
+    "showPairingColors": false,
+    "showPreviousRound": false,
+    "nextRoundTime": {
+      "1": "10:00am",
+      "2": "11:00am",
+      "3": "12:15pm",
+      "4": "1:15pm",
+      "5": "2:15pm"
+    },
+    "prizeGiving": "3:30pm"
+  },
+  "players": [
+    {
+      "section": "swiss",
+      "title": "Event Schedule",
+      "icon": "fad fa-chess-king",
+      "entries": [
+        {
+          "id": 1,
+          "memberId": "0f0d3477-a213-4291-ab45-7c9eb6882995",
+          "name": "Peter Shaw",
+          "ratingInfo": {
+            "rating": 2253
+          }
+        },
+        {
+          "id": 2,
+          "memberId": "02082368-677b-432c-95da-7021a9985f1d",
+          "name": "Andy Mata",
+          "ratingInfo": {
+            "rating": 1841
+          }
+        },
+        {
+          "id": 3,
+          "memberId": "fba30b99-eac5-4e1a-9f21-b4eccae20f61",
+          "name": "Dale Cullum",
+          "ratingInfo": {
+            "rating": 1743
+          }
+        },
+        {
+          "id": 4,
+          "memberId": "1f412825-2ed3-4662-bfb2-8235aa0c7054",
+          "name": "Greg Billenness",
+          "ratingInfo": {
+            "rating": 1619
+          }
+        },
+        {
+          "id": 5,
+          "memberId": "4d7454d1-4d37-495f-ad4f-0bfcd3206cb6",
+          "name": "Elliott Barnett",
+          "ratingInfo": {
+            "rating": 1543
+          }
+        },
+        {
+          "id": 6,
+          "memberId": "d5b08b39-6e67-44b5-97ba-cce63d9e828c",
+          "name": "Emlyn Hauber",
+          "ratingInfo": {
+            "rating": 1399
+          }
+        },
+        {
+          "id": 7,
+          "memberId": "c655db9b-1297-4969-97c1-08c7d7644013",
+          "name": "David Halpin",
+          "ratingInfo": {
+            "rating": 1173
+          }
+        },
+        {
+          "id": 8,
+          "memberId": "3204e4a4-3677-4086-8cbe-56d985084fe6",
+          "name": "Peter Procter",
+          "ratingInfo": {
+            "rating": ""
+          }
+        }
+      ]
+    }
+  ],
+  "pairings": [
+    {
+      "round": 1,
+      "pairings": [
+        [1, 5],
+        [6, 2],
+        [3, 7],
+        [8, 4]
+      ]
+    },
+    {
+      "round": 2,
+      "pairings": [
+        [4,1],
+        [2,3],
+        [7,6],
+        [5,8]
+      ]
+    },
+    {
+      "round": 3,
+      "pairings": [
+        [1,2],
+        [3,5],
+        [6,4],
+        [8,7]
+      ]
+    },
+    {
+      "round": 4,
+      "pairings": [
+        [2,4],
+        [1,3],
+        [5,7],
+        [8,6]
+      ]
+    },
+    {
+      "round": 5,
+      "pairings": [
+        [5,2],
+        [6,1],
+        [3,8],
+        [4,7]
+      ]
+    }
+  ],
+  "results": [
+    {
+      "section": "swiss",
+      "scores": [
+        {
+          "round": 1,
+          "pairResults": [
+            [1,0],
+            [0,1],
+            [1,0],
+            [0,1]
+          ]
+        },
+        {
+          "round": 2,
+          "pairResults": [
+            [0,1],
+            [0.5,0.5],
+            [0.5,0.5],
+            [1,0]
+          ]
+        },
+        {
+          "round": 3,
+          "pairResults": [
+            [0,1],
+            [1,0],
+            [0,1],
+            [0,1]
+          ]
+        },
+        {
+          "round": 4,
+          "pairResults": [
+            [1,0],
+            [1,0],
+            [1,0],
+            [0,1]
+          ]
+        },
+        {
+          "round": 5,
+          "pairResults": [
+            [0,1],
+            [0,1],
+            [1,0],
+            [1,0]
+          ]
+        }
+      ]
+    }
+  ]
+}

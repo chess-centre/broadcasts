@@ -38,14 +38,13 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
           </tr>
         </thead>
         <tbody className="bg-slate-800">
-          <tr className="border border-r border-slate-900">
+          <tr className="border border-r border-slate-900 shadow-inner">
             {/* using colSpan=3 here means the header "VS" doesn't align center with the Round */}
             <td className="px-2 py-3 hidden sm:block"></td>
             <td className="px-2 sm:px-6 py-3"></td>
-            <td className="px-2 py-1 text-center text-xs sm:text-sm font-medium text-slate-100">
-              <span className="hidden sm:block">Round</span> {round}
+            <td colSpan={2} className="px-2 py-1 text-left text-sm sm:text-lg font-medium text-slate-100">
+              <span className="hidden sm:block">Round {round}</span> 
             </td>
-            <td className="px-2"></td>
           </tr>
           {pairings.map((p, key) => {
             const [white, black] = results.find(r => r.round === round).pairResults[key];
@@ -55,14 +54,14 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
             return (
               <tr key={key} className={isEven ? "bg-slate-800" : "bg-slate-900"}>
                 <td className={classNames(isEven ? "bg-slate-800" : "bg-slate-900", 
-                  "px-2 py-3 border-r border-slate-700 text-xs text-white hidden sm:block")}>
+                  "px-2 py-3 text-xs text-white hidden sm:block mt-3")}>
                   {(indexer * 3) + 1 + key}
                 </td>
-                <td className="flex-grow-0 max-w-full px-2 pl-4 sm:px-4 py-2 whitespace-nowrap text-center text-xs sm:text-md sm:font-medium text-white">
+                <td className="flex-grow-0 max-w-full px-2 pl-4 sm:px-4 py-2 whitespace-nowrap text-center text-xs sm:text-lg sm:font-medium text-white border-slate-700 border-l border-r">
                   {whitePlayer.name ? (
                     whitePlayer.name.replace("stand in", "")
                   ) : (
-                    <span className="text-sx">TBC</span>
+                    <span className="text-xs">TBC</span>
                   )}{" "}
                   <br />
                   <span className="text-cyan-400">
@@ -80,7 +79,7 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
                       }`
                     : isLive ? <span className="text-orange-brand animate-pulse">Live</span> : "? - ?"}
                 </td>
-                <td className="flex-grow-0 max-w-full px-2 pl-4 sm:px-4 py-2 whitespace-nowrap text-center text-xs sm:text-md sm:font-medium text-white">
+                <td className="flex-grow-0 max-w-full px-2 pl-4 sm:px-4 py-2 whitespace-nowrap text-center text-xs sm:text-lg sm:font-medium text-white">
                   {blackPlayer.name ? (
                     blackPlayer.name.replace("stand in", "")
                   ) : (

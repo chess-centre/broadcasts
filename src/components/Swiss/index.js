@@ -1,47 +1,46 @@
 import { v4 as uuidv4 } from "uuid";
 import Swiss from "./Swiss";
-import data from "./mata-test.json";
+import data from "./meta.json";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-// const {
-//   name,
-//   players,
-//   results,
-//   settings,
-//   pairings,
-// } = data;
+const {
+  name,
+  players,
+  results,
+  settings,
+  pairings,
+} = data;
 
 export default function SwissPresentationView() {
 
-  const { eventId } = useParams();
+  //const { eventId } = useParams();
+  // const [players, setPlayers] = useState([]);
+  // const [name, setName] = useState("");
+  // const [settings, setSettings] = useState({});
+  // const [pairings, setPairings] = useState([]);
+  // const [results, setResults] = useState([]);
+  // const updateState = event => {
+  //   setPlayers(event.players);
+  //   setSettings(event.settings);
+  //   setPairings(event.pairings);
+  //   setResults(event.results);
+  //   setName(event.eventName);
+  // }
 
-  const [players, setPlayers] = useState([]);
-  const [name, setName] = useState("");
-  const [settings, setSettings] = useState({});
-  const [pairings, setPairings] = useState([]);
-  const [results, setResults] = useState([]);
-  const updateState = event => {
-    setPlayers(event.players);
-    setSettings(event.settings);
-    setPairings(event.pairings);
-    setResults(event.results);
-    setName(event.eventName);
-  }
 
+  // useEffect(() => {
 
-  useEffect(() => {
+  //   const firstLoad = JSON.parse(window.localStorage.getItem(eventId));
+  //   updateState(firstLoad);
 
-    const firstLoad = JSON.parse(window.localStorage.getItem(eventId));
-    updateState(firstLoad);
+  //   window.addEventListener('storage', () => {
+  //     const eventInfo = JSON.parse(window.localStorage.getItem(eventId))
+  //     console.log(eventId, eventInfo);
+  //     updateState(eventInfo);
+  //   });
 
-    window.addEventListener('storage', () => {
-      const eventInfo = JSON.parse(window.localStorage.getItem(eventId))
-      console.log(eventId, eventInfo);
-      updateState(eventInfo);
-    });
-
-  }, [eventId]);
+  // }, [eventId]);
 
 
   return (

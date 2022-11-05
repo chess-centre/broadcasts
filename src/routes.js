@@ -22,6 +22,10 @@ const routes = [
     element: lazy(() => import("./pages/Robin")),
   },
   {
+    path: "/swiss",
+    element: lazy(() => import("./pages/Swiss")),
+  },
+  {
     path: "/create",
     element: lazy(() => import("./pages/Manager/Create")),
   },
