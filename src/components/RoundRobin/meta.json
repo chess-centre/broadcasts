@@ -10,7 +10,7 @@
             "showRoundTimeForRound": 5,
             "totalRounds": 5,
             "roundLive": false,
-            "showAll": false,
+            "showAll": true,
             "showOpponentPairing": false,
             "showPreviousRound": false,
             "nextRoundTime": {
