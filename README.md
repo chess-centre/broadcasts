@@ -45,14 +45,5 @@ The most logical next steps here include:
 4. Document approach and make reusable for other consumers, detatching the `<Results .../>` from the `<Viewer .../>`
 
 
-#### Notes
 
-This is currently in a migration phase, moving `Swiss`, `RoundRobin` and `Match` presentation components from the Chess Centre platform project.
 
-From:
-
-[platform.../chess-centre-app/src/components/Events/Tables](https://github.com/chess-centre/platform/tree/master/chess-centre-app/src/components/Events/Tables)
-
-To:
-
-[this.../master/src/components/Events](https://github.com/chess-centre/broadcasts/tree/master/src/components/Events)
