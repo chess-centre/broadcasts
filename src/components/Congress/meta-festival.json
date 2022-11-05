@@ -4,7 +4,7 @@
   "eventName": "Ilkley Chess Festival",
   "date": "2022-09-16",
   "settings": {
-    "enableToggles": false,
+    "enableToggles": true,
     "type": "Congress",
     "currentRound": 5,
     "showRoundTimeForRound": 1,

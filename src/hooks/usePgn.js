@@ -27,10 +27,13 @@ export const usePGN = () => {
   };
 
   connection.onmessage = (response) => {
-    const game = JSON.parse(response.data);
-
-    if (game) {
-      setGameState(game);
+    try {
+      const game = JSON.parse(response.data);
+      if (game) {
+        setGameState(game);
+      }
+    } catch (error) {
+      console.log("Error");
     }
   };
 

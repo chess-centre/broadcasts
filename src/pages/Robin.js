@@ -1,8 +1,8 @@
 import RoundRobin from "../components/RoundRobin/RoundRobin";
-import data from "../components/RoundRobin/rapid-oct-22.json";
+import data from "../components/RoundRobin/meta.json";
 import Logo from "../assets/logo.png";
 
-const { name, players, results, settings } = data;
+const { name, players, pairings, results, settings } = data;
 
 const Viewer = () => {
   const isLastRound = settings.currentRound >= settings.totalRounds;
@@ -24,13 +24,14 @@ const Viewer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
           {players.map(({ entries, section, title, icon }, index) => {
             const scores = results.find((r) => r.section === section).scores;
             return (
               <RoundRobin
                 key={index}
                 title={title}
+                pairings={pairings}
                 entries={entries}
                 results={scores}
                 settings={settings}
