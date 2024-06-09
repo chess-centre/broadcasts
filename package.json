@@ -14,7 +14,7 @@
     "chess.js": "^0.13.0",
     "chokidar": "^3.5.3",
     "cors": "^2.8.5",
-    "express": "^4.17.3",
+    "express": "^4.19.2",
     "express-ws": "^5.0.2",
     "nodemon": "^2.0.15",
     "pgn-parser": "^2.2.0",
