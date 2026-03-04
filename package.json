@@ -14,6 +14,7 @@
     "chess.js": "^0.13.0",
     "chokidar": "^3.5.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.19.2",
     "express-ws": "^5.0.2",
     "nodemon": "^2.0.15",
@@ -32,7 +33,12 @@
     "server": "nodemon server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "simulate": "node server/simulator.js",
+    "simulate:quick": "node server/simulator.js --quick",
+    "dev": "npm run server & npm run simulate:quick & npm start",
+    "mock": "node scripts/generate-mock.js",
+    "mock:clear": "node scripts/generate-mock.js -- --clear"
   },
   "eslintConfig": {
     "extends": [

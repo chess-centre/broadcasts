@@ -1,51 +1,154 @@
-import { createContext, useContext, useState } from "react";
-const URL = "ws://localhost:8080";
-const connection = new WebSocket(URL);
-export const PGNContext = createContext(connection);
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+} from "react";
 
-export const PGNProvider = (props) => {
-  return (<PGNContext.Provider value={connection}>{props.children}</PGNContext.Provider>)
-};
+const URL = "ws://localhost:8080/games";
 
-export const usePGN = () => {
+const PGNContext = createContext(null);
+
+/**
+ * PGNProvider - owns the single shared WebSocket connection
+ * and the games Map. All consumers share this connection.
+ */
+export const PGNProvider = ({ children }) => {
   const [active, setActive] = useState(false);
-  const [gameState, setGameState] = useState({
-    lastMove: "",
-    gameResult: "",
-    whiteInfo: { name: "", rating: "" },
-    blackInfo: { name: "", rating: "" },
-    whiteClock: "00:00:00",
-    blackClock: "00:00:00",
-    pgn: "",
-  });
+  const [games, setGames] = useState(new Map());
+  const [evals, setEvals] = useState(new Map());
+  const wsRef = useRef(null);
+  const reconnectTimeoutRef = useRef(null);
 
-  const connection = useContext(PGNContext);
+  useEffect(() => {
+    connectWebSocket();
 
-  connection.onopen = () => {
-    console.log("PGN: connection open");
-    setActive(true);
-  };
-
-  connection.onmessage = (response) => {
-    try {
-      const game = JSON.parse(response.data);
-      if (game) {
-        setGameState(game);
+    return () => {
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
       }
+      if (wsRef.current) {
+        wsRef.current.close();
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const connectWebSocket = () => {
+    try {
+      const connection = new WebSocket(URL);
+      wsRef.current = connection;
+
+      connection.onopen = () => {
+        setActive(true);
+        connection.send(
+          JSON.stringify({ type: "subscribe_round", round: 1 }),
+        );
+      };
+
+      connection.onmessage = (response) => {
+        try {
+          const message = JSON.parse(response.data);
+          handleMessage(message);
+        } catch (error) {
+          console.error("Error parsing WebSocket message:", error);
+        }
+      };
+
+      connection.onerror = () => {
+        setActive(false);
+      };
+
+      connection.onclose = () => {
+        setActive(false);
+        reconnectTimeoutRef.current = setTimeout(() => {
+          connectWebSocket();
+        }, 3000);
+      };
     } catch (error) {
-      console.log("Error");
+      console.error("Failed to create WebSocket connection:", error);
     }
   };
 
-  connection.onerror = (error) => {
-    console.log("connection error!");
+  const handleMessage = (message) => {
+    switch (message.type) {
+      case "game_update": {
+        const { board, data } = message;
+        setGames((prev) => {
+          const next = new Map(prev);
+          next.set(board, data);
+          return next;
+        });
+        break;
+      }
+      case "eval_update": {
+        const { board: evalBoard, evaluation, fen } = message;
+        setEvals((prev) => {
+          const next = new Map(prev);
+          next.set(evalBoard, { ...evaluation, fen });
+          return next;
+        });
+        break;
+      }
+      default:
+        break;
+    }
+  };
+
+  const subscribeToRound = (round) => {
+    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+      wsRef.current.send(
+        JSON.stringify({ type: "subscribe_round", round }),
+      );
+    }
+  };
+
+  const value = useMemo(
+    () => ({ active, games, evals, subscribeToRound }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [active, games, evals],
+  );
+
+  return <PGNContext.Provider value={value}>{children}</PGNContext.Provider>;
+};
+
+/**
+ * usePGN - thin context consumer.
+ * Pass boardNumber to get per-board gameState,
+ * or omit to get the full games Map.
+ */
+export const usePGN = (boardNumber = null) => {
+  const context = useContext(PGNContext);
+  if (!context) {
+    throw new Error("usePGN must be used within a PGNProvider");
   }
 
-  const close = () => connection.close();
+  const { active, games, evals, subscribeToRound } = context;
 
-  return {
-    active,
-    gameState,
-    close,
-  };
+  const gameState = useMemo(() => {
+    if (boardNumber != null && games.has(boardNumber)) {
+      return games.get(boardNumber);
+    }
+    return {
+      lastMove: "",
+      gameResult: "",
+      whiteInfo: { name: "", rating: "" },
+      blackInfo: { name: "", rating: "" },
+      whiteClock: "00:00:00",
+      blackClock: "00:00:00",
+      pgn: "",
+      status: "waiting",
+    };
+  }, [boardNumber, games]);
+
+  const evaluation = useMemo(() => {
+    if (boardNumber != null && evals.has(boardNumber)) {
+      return evals.get(boardNumber);
+    }
+    return null;
+  }, [boardNumber, evals]);
+
+  return { active, gameState, evaluation, games, subscribeToRound };
 };

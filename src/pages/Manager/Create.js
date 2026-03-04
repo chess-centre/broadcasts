@@ -20,49 +20,30 @@ export default function Create() {
   };
 
   useEffect(() => {}, []);
-  //
+
   return (
-    <div className="md:gap-6">
-      <div className="min-h-screen text-white text-center">
-        <div className="mt-5 md:col-span-2 md:mt-0 p-10">
+    <div className="max-w-lg mx-auto px-6 py-8">
+      <h1 className="text-lg font-semibold text-gh-text mb-4">Create Event</h1>
+      <div className="bg-gh-surface border border-gh-border rounded-lg overflow-hidden">
+        <div className="p-4 space-y-3">
+          <label className="block text-sm text-gh-textMuted">
+            Paste event JSON
+          </label>
+          <textarea
+            id="event"
+            name="event"
+            rows={6}
+            onChange={(e) => setEvent(e.target.value)}
+            className="w-full bg-gh-bg border border-gh-border text-gh-text rounded-md px-3 py-2 text-sm focus:border-gh-link focus:ring-1 focus:ring-gh-link"
+          />
+        </div>
+        <div className="border-t border-gh-border px-4 py-3 flex justify-end">
           <button
-            type="button"
-            onClick={() => navigate("/")}
-            className="inline-flex items-center rounded-md border border-transparent bg-pink-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+            onClick={() => updateEvent()}
+            className="px-3 py-1.5 text-sm font-medium text-white bg-gh-btnPrimary rounded-md border border-green-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-green-700 transition-colors"
           >
-            Home
+            Save
           </button>
-          <div className="max-w-lg mx-auto mt-4">
-            <div className="shadow sm:overflow-hidden sm:rounded-md">
-              <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
-                <div>
-                  <label
-                    htmlFor="about"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Create Event
-                  </label>
-                  <div className="mt-1">
-                    <textarea
-                      id="event"
-                      name="event"
-                      rows={3}
-                      onChange={(e) => setEvent(e.target.value)}
-                      className="mt-1 block w-full text-black rounded-md border-gray-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                <button
-                  onClick={() => updateEvent()}
-                  className="inline-flex justify-center rounded-md border border-transparent bg-slate-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

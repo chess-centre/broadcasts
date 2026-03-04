@@ -14,6 +14,18 @@ module.exports = {
         'xxs': '.6rem'
       },
       colors: {
+        // GitHub Dark theme
+        gh: {
+          bg: '#0d1117',
+          surface: '#161b22',
+          border: '#30363d',
+          btnPrimary: '#238636',
+          btnDefault: '#21262d',
+          btnDefaultBorder: '#363b42',
+          text: '#c9d1d9',
+          textMuted: '#8b949e',
+          link: '#58a6ff',
+        },
         // BRAND COLORS:
         yellow: {
           brand: "#ffd469"

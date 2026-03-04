@@ -1,3 +1,61 @@
-cg-board {
-  background-color: #067a87;
+/* Make chessground fill its container responsively */
+.board-container {
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.board-container cg-container {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ---- Eval Bar ---- */
+.board-with-eval {
+  display: flex;
+  gap: 0;
+}
+
+.eval-bar-container {
+  width: 22px;
+  min-width: 22px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px 0 0 8px;
+  overflow: hidden;
+}
+
+.eval-bar-black {
+  background-color: #334155;
+  transition: height 0.4s ease-out;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.eval-bar-white {
+  background-color: #e2e8f0;
+  transition: height 0.4s ease-out;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.eval-bar-score {
+  font-size: 9px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  padding: 4px 0;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+
+.eval-bar-score-white {
+  color: #1e293b;
+}
+
+.eval-bar-score-black {
+  color: #cbd5e1;
 }

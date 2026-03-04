@@ -1,0 +1,342 @@
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                     CHESS BROADCAST PLATFORM ARCHITECTURE                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+TESTING MODE (Simulator)
+────────────────────────────────────────────────────────────────────────────────
+
+┌─────────────────┐
+│  npm run        │
+│  simulate:quick │  Generates PGN files with realistic data
+└────────┬────────┘
+         │
+         ▼
+  ┌──────────────────────┐
+  │   Live/round-1/      │  PGN files with clock times
+  │   ├── game-1.pgn     │  Update every 5 seconds
+  │   ├── game-2.pgn     │  [%clk H:MM:SS] comments
+  │   └── game-3.pgn     │
+  └──────────┬───────────┘
+             │
+             │ Chokidar watches for changes
+             │
+             ▼
+      ┌─────────────────────┐
+      │  WebSocket Server   │  Port 8080
+      │  (npm run server)   │  Broadcasts updates
+      └──────────┬──────────┘
+                 │
+                 │ ws://localhost:8080/games
+                 │
+                 ▼
+        ┌────────────────────────┐
+        │   React Application    │  http://localhost:3000/live
+        │   (npm start)          │
+        │                        │
+        │  ┌──────────────────┐  │
+        │  │  usePGN Hook     │  │  WebSocket connection
+        │  └────────┬─────────┘  │
+        │           │             │
+        │  ┌────────▼─────────┐  │
+        │  │  LiveBroadcast   │  │  Main page
+        │  │  Page            │  │
+        │  │                  │  │
+        │  │  ┌──────────┐    │  │
+        │  │  │  Boards  │    │  │  Chess position displays
+        │  │  └──────────┘    │  │
+        │  │                  │  │
+        │  │  ┌──────────┐    │  │
+        │  │  │Leaderboard│   │  │  Live standings
+        │  │  └──────────┘    │  │
+        │  └──────────────────┘  │
+        └────────────────────────┘
+                 │
+                 ▼
+          Browser displays:
+          • Live chess boards
+          • Real-time updates
+          • Live leaderboard
+          • Game statistics
+
+
+PRODUCTION MODE (Real DGT Boards)
+────────────────────────────────────────────────────────────────────────────────
+
+┌────────────────────┐
+│  DGT e-Boards      │  Physical electronic boards
+│  (USB connected)   │
+└─────────┬──────────┘
+          │
+          ▼
+   ┌──────────────────────┐
+   │  DGT LiveChess       │  Detects moves, manages clocks
+   │  Application         │  Generates PGN files
+   └──────────┬───────────┘
+              │
+              │ Saves to configured directory
+              │
+              ▼
+       ┌──────────────────────┐
+       │   Live/round-1/      │  Real game PGN files
+       │   ├── game-1.pgn     │  Updates every few seconds
+       │   ├── game-2.pgn     │  Contains clock times
+       │   └── game-3.pgn     │
+       └──────────┬───────────┘
+                  │
+                  │ (Same flow as testing mode)
+                  │
+                  ▼
+           [WebSocket Server → React App → Browser]
+
+
+DATA FLOW DIAGRAM
+────────────────────────────────────────────────────────────────────────────────
+
+1. FILE GENERATION
+   PGN File Created/Modified
+          ↓
+   Chokidar Detects Change
+          ↓
+   Parse PGN (server/parse-game.js)
+          ↓
+   Extract: players, ratings, moves, clocks, result
+
+2. WEBSOCKET BROADCAST
+   Format Message:
+   {
+     type: "game_update",
+     board: 1,
+     data: {
+       whiteInfo: {...},
+       blackInfo: {...},
+       whiteClock: "1:23:45",
+       blackClock: "1:18:30",
+       pgn: "...",
+       result: "*"
+     }
+   }
+          ↓
+   Broadcast to ALL Connected Clients
+
+3. CLIENT UPDATE
+   React receives message
+          ↓
+   usePGN hook updates state
+          ↓
+   Components re-render:
+   • ChessGame (boards)
+   • LiveLeaderboard (standings)
+          ↓
+   Browser displays updated UI
+
+
+LEADERBOARD CALCULATION
+────────────────────────────────────────────────────────────────────────────────
+
+Game Result    → White Score  Black Score
+"1-0"          → +1.0         +0.0
+"0-1"          → +0.0         +1.0  
+"1/2-1/2"      → +0.5         +0.5
+"*"            → (ongoing, not counted)
+
+Sort by:
+1. Total Score (descending)
+2. Rating (descending, tiebreaker)
+
+
+SIMULATOR INTERNALS
+────────────────────────────────────────────────────────────────────────────────
+
+GameSimulator Class
+┌────────────────────────────────────────────────┐
+│ games = [                                      │
+│   {                                            │
+│     boardNumber: 1,                            │
+│     white: {name, rating},                     │
+│     black: {name, rating},                     │
+│     moves: ["e4", "e5", "Nf3", ...],          │
+│     whiteTimeSeconds: 5380,                    │
+│     blackTimeSeconds: 5395,                    │
+│     status: "ongoing" | "finished"             │
+│   }                                            │
+│ ]                                              │
+└────────────────────────────────────────────────┘
+                 │
+                 │ Every 5 seconds
+                 │
+                 ▼
+┌────────────────────────────────────────────────┐
+│ FOR EACH ongoing game:                         │
+│   1. Add random move                           │
+│   2. Deduct time (5-35s random)                │
+│   3. Add increment                             │
+│   4. Check if game should end                  │
+│   5. Write updated PGN to file                 │
+│   6. (Server detects change automatically)     │
+└────────────────────────────────────────────────┘
+
+
+FILE STRUCTURE
+────────────────────────────────────────────────────────────────────────────────
+
+broadcasts/
+├── server/
+│   ├── server.js          ← WebSocket server + file watching
+│   ├── parse-game.js      ← PGN parser with clock extraction
+│   ├── config.js          ← Environment configuration
+│   ├── simulator.js       ← Live game simulator ★
+│   ├── mock-data.js       ← Test data generation ★
+│   └── pgn-generator.js   ← PGN file creation ★
+│
+├── src/
+│   ├── hooks/
+│   │   └── usePgn.js      ← WebSocket hook (enhanced)
+│   ├── components/
+│   │   ├── Board/Board.js
+│   │   ├── Viewer/Game.js
+│   │   └── Shared/
+│   │       └── LiveLeaderboard.js  ← Real-time standings ★
+│   └── pages/
+│       └── LiveBroadcast.js  ← Main broadcast page ★
+│
+├── scripts/
+│   └── generate-mock.js   ← CLI mock generator ★
+│
+├── Live/                  ← Generated PGN files
+│   └── round-1/
+│       ├── game-1.pgn
+│       └── ...
+│
+├── .env                   ← Configuration
+└── package.json           ← Scripts ★
+
+★ = New or significantly enhanced
+
+
+COMMAND FLOW
+────────────────────────────────────────────────────────────────────────────────
+
+npm run simulate:quick
+     ↓
+node server/simulator.js --quick
+     ↓
+new GameSimulator('./Live', {...})
+     ↓
+initializeGames(4)  → Create 4 game objects
+     ↓
+start()  → setInterval(updateGames, 5000)
+     ↓
+Every 5 seconds:
+  makeMove() → Add move + update clocks
+  updateGameFile() → Write PGN to disk
+     ↓
+Chokidar in server.js detects change
+     ↓
+broadcastGameUpdate() → Send to all WS clients
+     ↓
+React components update → User sees change
+
+
+WEBSOCKET MESSAGE TYPES
+────────────────────────────────────────────────────────────────────────────────
+
+Server → Client:
+┌────────────────────────────────────────────────┐
+│ connected        │ Initial connection ACK      │
+│ game_update      │ Board state changed         │
+│ subscribed       │ Round subscription OK       │
+│ pong             │ Keep-alive response         │
+└────────────────────────────────────────────────┘
+
+Client → Server:
+┌────────────────────────────────────────────────┐
+│ subscribe_round  │ Watch specific round        │
+│ ping             │ Keep-alive check            │
+└────────────────────────────────────────────────┘
+
+
+KEY CONFIGURATION
+────────────────────────────────────────────────────────────────────────────────
+
+.env
+├── DGT_BASE_PATH=./Live     ← Where PGN files are
+├── PORT=8080                 ← WebSocket server port
+└── MAX_BOARDS=20             ← How many boards to track
+
+src/hooks/usePgn.js
+└── URL = "ws://localhost:8080/games"  ← WebSocket connection
+
+server/simulator.js
+├── updateInterval: 5000      ← How often to update (ms)
+└── maxMoves: 30-70          ← Game length range
+
+
+DEVELOPMENT WORKFLOW
+────────────────────────────────────────────────────────────────────────────────
+
+┌────────────────┐   ┌────────────────┐   ┌────────────────┐
+│  Terminal 1    │   │  Terminal 2    │   │  Terminal 3    │
+│                │   │                │   │                │
+│  npm run       │   │  npm run       │   │  npm start     │
+│  simulate:quick│   │  server        │   │                │
+│                │   │                │   │                │
+│  Generates     │   │  Watches       │   │  Serves React  │
+│  moving games  │   │  files & WS    │   │  UI            │
+└────────────────┘   └────────────────┘   └────────────────┘
+         │                   │                     │
+         └───────────────────┴─────────────────────┘
+                             │
+                    Browser shows live UI
+                    http://localhost:3000/live
+
+
+TIMING DIAGRAM
+────────────────────────────────────────────────────────────────────────────────
+
+Time    Simulator              Server                  Client
+────────────────────────────────────────────────────────────────────────────────
+0:00    Initialize games       Watching files          Connected
+        Write initial PGNs     ↓
+        ↓                      Detect files
+                               Broadcast initial       Render boards
+        
+0:05    Make moves             ↓
+        Update PGNs            Detect changes
+        ↓                      Parse PGNs
+                               Broadcast updates       Update UI
+                               ↓                       ↓
+0:10    Make moves             Detect changes          Update UI
+        Update PGNs            Broadcast
+        ↓                      ↓                       ↓
+0:15    Game 1 finishes        Broadcast result        Show result
+        ↓                      ↓                       Update leaderboard
+        
+...     Continue until         Continue broadcasting   Continue updating
+        all games finish
+
+
+TESTING CHECKLIST
+────────────────────────────────────────────────────────────────────────────────
+
+□ npm install          ← Install dependencies
+□ npm run simulate     ← Start simulator (Terminal 1)
+□ npm run server       ← Start server (Terminal 2)
+□ npm start            ← Start app (Terminal 3)
+□ Open browser         ← http://localhost:3000/live
+□ Verify connection    ← Green dot = connected
+□ Watch boards update  ← Should see moves every 5s
+□ Check leaderboard    ← Scores update when games finish
+□ Try different layouts← Grid vs Split
+□ Test with more boards← npm run simulate:quick 8
+□ Check responsiveness ← Resize browser window
+
+Success indicators:
+✓ Console shows "⚡ Update" every 5s
+✓ Server console shows "📤 Broadcast to N clients"
+✓ Browser shows "Connected" (green)
+✓ Boards display player names and ratings
+✓ Clocks count down
+✓ Moves appear
+✓ Leaderboard calculates scores
+```

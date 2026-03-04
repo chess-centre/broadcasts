@@ -9,28 +9,28 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
   return (
     <div className="overflow-x-auto mb-2">
       <table className="w-full divide-y divide-slate-900 table-auto border-slate-900 border shadow-lg">
-        <thead className="bg-cyan-700">
+        <thead className="bg-gh-surface">
           <tr>
             <th
               scope="col"
-              className="hidden sm:block px-1 py-2 text-center text-xs font-medium text-cyan-400 uppercase tracking-wider"
+              className="hidden sm:block px-1 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"
             >Brd.
             </th>
             <th
               scope="col"
-              className="flex-grow-0 w-80 px-2 sm:px-4 py-2 text-center text-xs font-medium text-cyan-400 uppercase tracking-wider"
+              className="flex-grow-0 w-80 px-2 sm:px-4 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"
             >
               White
             </th>
             <th
               scope="col"
-              className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-cyan-400 uppercase tracking-wider"
+              className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"
             >
               Vs
             </th>
             <th
               scope="col"
-              className="flex-grow-0 w-80 px-4 sm:px-6 py-3 text-center text-xs font-medium text-cyan-400 uppercase tracking-wider"
+              className="flex-grow-0 w-80 px-4 sm:px-6 py-3 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"
             >
               Black
             </th>
@@ -65,7 +65,7 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
                     <span className="text-sx">TBC</span>
                   )}{" "}
                   <br />
-                  <span className="text-cyan-400">
+                  <span className="text-gh-textMuted">
                     {whitePlayer.ratingInfo.rating === "blank"
                       ? ""
                       : whitePlayer.ratingInfo.rating
@@ -89,7 +89,7 @@ export const PairingsTable = ({ format, players, results, indexer, settings }) =
                     <span className="text-sx">TBC</span>
                   )}{" "}
                   <br />
-                  <span className="text-cyan-400">
+                  <span className="text-gh-textMuted">
                     {blackPlayer.ratingInfo.rating === "blank" ? (
                       <span className="text-white">Blank</span>
                     ) : blackPlayer.ratingInfo.rating ? (

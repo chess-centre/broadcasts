@@ -132,16 +132,13 @@ const players =
 const Viewer = () => {
 
   return (
-    <div className="bg-cool-gray-900 h-full px-5 pt-4 pb-10">
+    <div className="h-full px-5 pt-4 pb-10">
       <div className="text-center">
-        <div className="sm:relative bg-cool-gray-900 py-4 border-2 border-teal-600 shadow-lg rounded-lg mb-4">
-          <div className="sm:absolute text-center">
-            <img src={Logo} alt="chess centre" className="h-20 sm:ml-2 sm:-mt-2 text-center mx-auto" />
-          </div>
-          <h2 className="sm:tracking-tight text-white sm:text-teal-500 text-lg font-semibold sm:text-3xl sm:leading-10 sm:font-bold">
+        <div className="bg-gh-surface py-4 border border-gh-border shadow-lg rounded-lg mb-4">
+          <h2 className="tracking-tight text-gh-text text-lg font-semibold sm:text-3xl sm:leading-10 sm:font-bold">
             YCA IM Brown Sheild
           </h2>
-          <div className="hidden sm:block sm:tracking-tight text-gray-100 text-md sm:leading-none mt-3">
+          <div className="hidden sm:block tracking-tight text-gh-textMuted text-md sm:leading-none mt-3">
             The Chess Centre welcomes Hull DCA B
           </div>
         </div>

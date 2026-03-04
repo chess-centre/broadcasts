@@ -8,7 +8,7 @@ export default function ThemedSuspense() {
         <p className="mb-10">
           <img className="animate-ping" src={Logo} alt="Loading" />
         </p>
-        <p className="animate-bounce text-cyan-700">
+        <p className="animate-bounce text-gh-textMuted">
           Loading...
         </p>
       </div>

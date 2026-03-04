@@ -10,16 +10,13 @@ const Viewer = () => {
   const isLive = settings.roundLive;
 
   return (
-    <div className="bg-cool-gray-900 h-full px-5 pt-4 pb-10">
+    <div className="h-full px-5 pt-4 pb-10">
       <div className="text-center">
-        <div className="sm:relative bg-cool-gray-900 py-4 border-2 border-teal-600 shadow-lg rounded-lg mb-4">
-          <div className="sm:absolute text-center">
-            <img src={Logo} alt="chess centre" className="h-20 sm:ml-2 sm:-mt-2 text-center mx-auto" />
-          </div>
-          <h2 className="sm:tracking-tight text-white sm:text-teal-500 text-lg font-semibold sm:text-3xl sm:leading-10 sm:font-bold">
+        <div className="bg-gh-surface py-4 border border-gh-border shadow-lg rounded-lg mb-4">
+          <h2 className="tracking-tight text-gh-text text-lg font-semibold sm:text-3xl sm:leading-10 sm:font-bold">
             {name}
           </h2>
-          <div className="hidden sm:block sm:tracking-tight text-gray-100 text-md sm:leading-none mt-3">
+          <div className="hidden sm:block tracking-tight text-gh-textMuted text-md sm:leading-none mt-3">
             Welcome to the 1st dedicated, not for profit, chess centre in the UK
           </div>
         </div>
@@ -43,7 +40,7 @@ const Viewer = () => {
         </div>
 
         <div className="hidden sm:grid grid-cols-1 mt-4">
-          <div className="bg-cool-gray-500 border-cool-gray-500">
+          <div className="bg-gh-surface border border-gh-border rounded-lg">
             <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-6">
               <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl font-extrabold text-white sm:text-2xl">

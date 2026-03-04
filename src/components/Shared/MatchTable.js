@@ -22,26 +22,26 @@ export const MatchTable = ({
     return (
       <div className="inline-block">
         <table className="w-full divide-y divide-slate-900">
-          <thead className="bg-orange-brand">
+          <thead className="bg-gh-surface">
             <tr>
-              <th className="px-2 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider">
+              <th className="px-2 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider">
                 Brd.
               </th>
-              <th className="px-1 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
-              <th className="flex-grow-0 w-80 px-2 sm:px-4 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider">
+              <th className="px-1 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"></th>
+              <th className="flex-grow-0 w-80 px-2 sm:px-4 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider">
                 Ilkley Dragons
               </th>
-              <th className="px-2 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
-              <th className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-orange-900  uppercase tracking-wider">
+              <th className="px-2 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"></th>
+              <th className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-gh-textMuted  uppercase tracking-wider">
                 Vs
               </th>
-              <th className="px-2 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
+              <th className="px-2 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"></th>
   
-              <th className="flex-grow-0 w-80 px-4 sm:px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider">
+              <th className="flex-grow-0 w-80 px-4 sm:px-6 py-3 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider">
                 Hull DCA B
               </th>
-              <th className="px-1 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"></th>
-              <th className="px-2 py-2 text-center text-xs font-medium text-orange-900 uppercase tracking-wider">
+              <th className="px-1 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"></th>
+              <th className="px-2 py-2 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider">
                 Brd.
               </th>
             </tr>
@@ -78,8 +78,8 @@ export const MatchTable = ({
                   key={key}
                   className={
                     isEven
-                      ? "bg-slate-800 hover:bg-pink-900 hover:opacity-90 text-white"
-                      : "bg-slate-900 hover:bg-pink-900 hover:opacity-90 text-white"
+                      ? "bg-slate-800 hover:bg-gh-btnDefault text-white"
+                      : "bg-slate-900 hover:bg-gh-btnDefault text-white"
                   }
                 >
                   <td className="px-1 py-3 border-r border-slate-700 text-xs">
@@ -101,7 +101,7 @@ export const MatchTable = ({
                   >
                     {hPlayer.name}
                   </td>
-                  <td className=" px-2 py-3 border-r text-lg border-slate-700 text-cyan-400">
+                  <td className=" px-2 py-3 border-r text-lg border-slate-700 text-gh-link">
                     {showRating && (hPlayer.rating ? hPlayer.rating : "unrated")}
                   </td>
                   <td className="px-6 py-2 whitespace-nowrap text-center text-md  border-r border-slate-700 ">
@@ -117,7 +117,7 @@ export const MatchTable = ({
                       "? - ?"
                     )}
                   </td>
-                  <td className="px-2 py-3 border-l text-lg border-r text-cyan-400 border-slate-700">
+                  <td className="px-2 py-3 border-l text-lg border-r text-gh-link border-slate-700">
                     {showRating && (aPlayer.rating ? aPlayer.rating : "unrated")}
                   </td>
                   <td

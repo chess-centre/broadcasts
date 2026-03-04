@@ -83,7 +83,7 @@ function Lightning() {
           <button
             type="button"
             onClick={(e) => handleStart(e)}
-            className="inline-flex text-2xl items-center rounded-full border border-transparent bg-pink-600 p-10 text-white shadow-sm hover:bg-pink-700"
+            className="inline-flex text-2xl items-center rounded-full border border-gh-btnDefaultBorder bg-gh-btnDefault shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] p-10 text-white hover:bg-gh-border"
           >
             <i className="fas fa-play"></i>
           </button>
@@ -93,7 +93,7 @@ function Lightning() {
           <button
             type="button"
             onClick={() => handlePauseResume()}
-            className="inline-flex text-2xl items-center rounded-full border border-transparent bg-pink-600 p-10 text-white shadow-sm hover:bg-pink-700"
+            className="inline-flex text-2xl items-center rounded-full border border-gh-btnDefaultBorder bg-gh-btnDefault shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] p-10 text-white hover:bg-gh-border"
           >
             <i className="fas fa-pause"></i>
           </button>
@@ -103,13 +103,13 @@ function Lightning() {
           <button
             type="button"
             onClick={() => handleReset()}
-            className="inline-flex text-2xl items-center rounded-full border border-transparent bg-pink-600 p-10 text-white shadow-sm hover:bg-pink-700"
+            className="inline-flex text-2xl items-center rounded-full border border-gh-btnDefaultBorder bg-gh-btnDefault shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] p-10 text-white hover:bg-gh-border"
           >
             <i className="fas fa-sync-alt"></i>
           </button>
         )}
         <p className="text-sm font-medium mt-4">
-          Delay <span className="text-pink-600 text-2xl">{delay.current}</span>{" "}
+          Delay <span className="text-gh-link text-2xl">{delay.current}</span>{" "}
           seconds
         </p>
         <div className="grid grid-cols-2 sm:mx-10 text-center mt-6 gap-5">
@@ -155,8 +155,8 @@ function Lightning() {
 }
 
 function ToMove({ color, text }) {
-  const white = "text-white bg-cyan-600";
-  const black = "text-black bg-pink-600";
+  const white = "text-white bg-gh-btnPrimary";
+  const black = "text-black bg-gh-btnDefault border border-gh-btnDefaultBorder shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]";
   return (
     <div
       className={classNames(
@@ -189,7 +189,7 @@ function NotToMove({ color, text }) {
 function TableOfMoves({ rows }) {
   return (
     <table className="min-w-full">
-      <thead className="bg-cyan-600 border-0 border-white">
+      <thead className="bg-gh-surface border-0 border-gh-border">
         <tr>
           <th className="py-1 text-center text-sm font-semibold text-gray-900 border-0 border-white">
             Moves
@@ -207,7 +207,7 @@ function TableOfMoves({ rows }) {
           rows
             .map((row, key) => (
               <tr key={key}>
-                <td className="px-1 py-1 text-sm text-pink-600 font-normal">
+                <td className="px-1 py-1 text-sm text-gh-link font-normal">
                   {key + 1}
                 </td>
                 <td

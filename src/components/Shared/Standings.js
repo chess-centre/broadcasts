@@ -20,7 +20,7 @@ export const Standings = ({
 
   return (
     <div className="mb-2">
-      <div className="block sm:hidden bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border m-2">
+      <div className="block sm:hidden bg-gh-surface font-medium text-gh-text uppercase tracking-wider text-2xl border-gh-border border m-2">
         {division}
       </div>
       <div
@@ -29,49 +29,49 @@ export const Standings = ({
         )}
       >
         <table className="w-full divide-y divide-slate-900">
-          <thead className="bg-orange-500">
+          <thead className="bg-gh-surface">
             <tr>
               <th
                 scope="col"
-                className="px-1 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
+                className="px-1 py-3 text-left text-xs font-medium text-gh-textMuted uppercase tracking-wider"
               >
                 Pos.
               </th>
               {showTitle && (
                 <th
                   scope="col"
-                  className="px-1 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
+                  className="px-1 py-3 text-left text-xs font-medium text-gh-textMuted uppercase tracking-wider"
                 >
                   Title
                 </th>
               )}
               <th
                 scope="col"
-                className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
+                className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gh-textMuted uppercase tracking-wider"
               >
                 Player
               </th>
               <th
                 scope="col"
-                className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
+                className="px-4 sm:px-6 py-3 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"
               >
                 Rating
               </th>
               <th
                 scope="col"
-                className="block sm:hidden relative px-4 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
+                className="block sm:hidden relative px-4 py-3 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"
               >
                 Total
               </th>
               <th
                 scope="col"
-                className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-orange-900 uppercase tracking-wider"
+                className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gh-textMuted uppercase tracking-wider"
               >
                 Rd by Rd
               </th>
               <th
                 scope="col"
-                className="hidden sm:block relative px-6 py-3 text-center text-xs font-medium text-orange-900 uppercase tracking-wider"
+                className="hidden sm:block relative px-6 py-3 text-center text-xs font-medium text-gh-textMuted uppercase tracking-wider"
               >
                 Total
               </th>
@@ -87,7 +87,7 @@ export const Standings = ({
                   key={key}
                   className={classNames(
                     isEven ? "bg-slate-800" : "bg-slate-900",
-                    "hover:bg-pink-900 hover:opacity-90"
+                    "hover:bg-gh-btnDefault"
                   )}
                 >
                   <td className="border-r border-slate-700 px-1 py-2 text-sm sm:text-md whitespace-nowrap text-center text-slate-50">
@@ -112,7 +112,7 @@ export const Standings = ({
                   )}
 
                   <td className="border-r border-slate-700 px-1 py-2 text-sm sm:text-md whitespace-nowrap text-center text-white">
-                    <span className="text-cyan-400 sm:font-medium">
+                    <span className="text-gh-link sm:font-medium">
                       {data.rating ? data.rating : "unrated"}
                     </span>
                   </td>
@@ -182,7 +182,7 @@ export const Standings = ({
           </div>
         )}
       </div>
-      <div className="hidden sm:block bg-orange-500 font-medium text-orange-900 uppercase tracking-wider text-2xl border-slate-800 border mt-2">
+      <div className="hidden sm:block bg-gh-surface font-medium text-gh-text uppercase tracking-wider text-2xl border-gh-border border mt-2">
         {division}
       </div>
     </div>

@@ -1,7 +1,10 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ThemedSuspense from "./components/ThemedSuspense";
-import routes from "./routes";
+import Layout from "./components/Layout";
+
+const Home = lazy(() => import("./pages/Home"));
+const LiveBroadcast = lazy(() => import("./pages/LiveBroadcast"));
 const Page404 = lazy(() => import("./pages/Error/404"));
 
 export default function App() {
@@ -9,14 +12,11 @@ export default function App() {
     <BrowserRouter>
       <Suspense fallback={<ThemedSuspense />}>
         <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/live" element={<LiveBroadcast />} />
+          </Route>
           <Route path="*" element={<Page404 />} />
-          {routes.map((route, index) => (
-            <Route
-              key={route.path + index}
-              path={route.path}
-              element={<route.element />}
-            />
-          ))}
         </Routes>
       </Suspense>
     </BrowserRouter>

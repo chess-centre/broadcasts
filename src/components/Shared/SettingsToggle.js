@@ -25,7 +25,7 @@ export default function Settings({ name, setEnabled, enabled }) {
         <span
           aria-hidden="true"
           className={classNames(
-            enabled ? "bg-slate-800 border-2 border-orange-600" : "bg-slate-900",
+            enabled ? "bg-slate-800 border-2 border-green-600" : "bg-slate-900",
             "pointer-events-none absolute h-4 w-8 mx-auto rounded-full transition-colors ease-in-out duration-200"
           )}
         />

@@ -24,8 +24,8 @@ export default function Update() {
   }, [eventId]);
 
   return (
-    <div className="md:grid md:grid-cols-1 md:gap-6 text-white m-20">
-      <div className="mx-20">
+    <div className="max-w-4xl mx-auto px-6 py-8 text-gh-text">
+      <div>
         {eventJson && eventJson.eventId && (
           <>
             <h1>Pairings</h1>
@@ -50,52 +50,52 @@ function PairingTable({ eventId, rounds, players, scores }) {
   };
 
   return (
-    <div className="shadow-lg rounded-md">
+    <div className="bg-gh-surface border border-gh-border rounded-lg overflow-hidden">
       <table className="min-w-full">
-        <thead className="bg-white text-center">
+        <thead className="bg-gh-surface text-center border-b border-gh-border">
           <tr>
             <th
               scope="col"
-              className="px-1 py-1 text-center text-sm font-semibold text-gray-900 sm:pl-6"
+              className="px-1 py-1 text-center text-sm font-semibold text-gh-textMuted sm:pl-6"
             >
               White
             </th>
             <th
               scope="col"
-              className="px-1 py-1 text-center text-sm font-semibold text-gray-900"
+              className="px-1 py-1 text-center text-sm font-semibold text-gh-textMuted"
             >
               Rating
             </th>
             <th
               scope="col"
-              className="px-1 py-1 text-center text-sm font-semibold text-gray-900"
+              className="px-1 py-1 text-center text-sm font-semibold text-gh-textMuted"
             >
               vs
             </th>
             <th
               scope="col"
-              className="px-1 py-1 text-center text-sm font-semibold text-gray-900"
+              className="px-1 py-1 text-center text-sm font-semibold text-gh-textMuted"
             >
               Rating
             </th>
             <th
               scope="col"
-              className="px-1 py-1 text-center text-sm font-semibold text-gray-900 sm:pl-6"
+              className="px-1 py-1 text-center text-sm font-semibold text-gh-textMuted sm:pl-6"
             >
               Black
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white text-center">
+        <tbody className="text-center">
           {rounds.map((round) => {
             const roundNumber = round.round;
             return (
               <Fragment key={round.round}>
-                <tr className="border-t border-gray-200">
+                <tr className="border-t border-gh-border">
                   <th
                     colSpan={5}
                     scope="colgroup"
-                    className="bg-gray-50 px-1 py-1 text-center text-sm font-semibold text-gray-900 sm:px-6"
+                    className="bg-gh-btnDefault px-1 py-1 text-center text-sm font-semibold text-gh-textMuted sm:px-6"
                   >
                     Round {round.round}
                   </th>
@@ -112,18 +112,18 @@ function PairingTable({ eventId, rounds, players, scores }) {
                         key={pairingIdx}
                         className={classNames(
                           pairingIdx === 0
-                            ? "border-gray-300"
-                            : "border-gray-200",
+                            ? "border-gh-border"
+                            : "border-gh-border",
                           "border-t"
                         )}
                       >
-                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gh-text">
                           {white.name}
                         </td>
-                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gh-text">
                           {white.ratingInfo.rating}
                         </td>
-                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gh-text">
                           <PairingResult
                             eventId={eventId}
                             round={roundNumber}
@@ -131,10 +131,10 @@ function PairingTable({ eventId, rounds, players, scores }) {
                             scores={scores}
                           />
                         </td>
-                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gh-text">
                           {black.ratingInfo.rating}
                         </td>
-                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gray-500">
+                        <td className="whitespace-nowrap px-1 py-1 text-sm text-gh-text">
                           {black.name}
                         </td>
                       </tr>
@@ -181,7 +181,7 @@ function PairingResult({ eventId, round, board, scores }) {
         id={`${eventId}-${round}-${board}`}
         onChange={handleSelectChange}
         name="result"
-        className="mt-1 block w-full text-center rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
+        className="mt-1 block w-full text-center rounded-md border-gh-border py-2 pl-3 pr-10 text-base focus:border-teal-500 focus:outline-none focus:ring-teal-500 sm:text-sm"
         defaultValue={scores[round - 1].pairResults[board - 1]}
       >
         <option value="[1,0]">1 - 0</option>
