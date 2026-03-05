@@ -147,6 +147,41 @@ export default function SettingsPanel({ open, onClose }) {
               enabled={settings.showLastMove}
               onChange={(v) => updateSetting("showLastMove", v)}
             />
+            <Toggle
+              label="Opening name"
+              enabled={settings.showOpening}
+              onChange={(v) => updateSetting("showOpening", v)}
+            />
+            <Toggle
+              label="Win probability"
+              enabled={settings.showWinProbability}
+              onChange={(v) => updateSetting("showWinProbability", v)}
+            />
+            <Toggle
+              label="Critical moments"
+              enabled={settings.showCriticalMoments}
+              onChange={(v) => updateSetting("showCriticalMoments", v)}
+            />
+            <Toggle
+              label="Engine lines"
+              enabled={settings.showEngineLines}
+              onChange={(v) => updateSetting("showEngineLines", v)}
+            />
+            <Toggle
+              label="Best move arrow"
+              enabled={settings.showBestMoveArrow}
+              onChange={(v) => updateSetting("showBestMoveArrow", v)}
+            />
+            <Toggle
+              label="Move time chart"
+              enabled={settings.showMoveTimeChart}
+              onChange={(v) => updateSetting("showMoveTimeChart", v)}
+            />
+            <Toggle
+              label="Featured board"
+              enabled={settings.showFeaturedBoard}
+              onChange={(v) => updateSetting("showFeaturedBoard", v)}
+            />
             <div className="flex items-center justify-between py-1.5">
               <span className="text-xs text-slate-300">Animation</span>
               <div className="flex gap-1">
@@ -182,6 +217,31 @@ export default function SettingsPanel({ open, onClose }) {
               label="Rating change (+/-)"
               enabled={settings.showRatingDiff}
               onChange={(v) => updateSetting("showRatingDiff", v)}
+            />
+            <Toggle
+              label="Player avatars"
+              enabled={settings.showAvatars}
+              onChange={(v) => updateSetting("showAvatars", v)}
+            />
+            <Toggle
+              label="Animate clocks"
+              enabled={settings.animateClocks}
+              onChange={(v) => updateSetting("animateClocks", v)}
+            />
+            <Toggle
+              label="Move time spent"
+              enabled={settings.showMoveTime}
+              onChange={(v) => updateSetting("showMoveTime", v)}
+            />
+            <Toggle
+              label="Player accuracy"
+              enabled={settings.showAccuracy}
+              onChange={(v) => updateSetting("showAccuracy", v)}
+            />
+            <Toggle
+              label="Sound effects"
+              enabled={settings.soundEnabled}
+              onChange={(v) => updateSetting("soundEnabled", v)}
             />
 
             {/* Standings */}

@@ -19,6 +19,7 @@ export const PGNProvider = ({ children }) => {
   const [active, setActive] = useState(false);
   const [games, setGames] = useState(new Map());
   const [evals, setEvals] = useState(new Map());
+  const [currentRound, setCurrentRound] = useState(1);
   const wsRef = useRef(null);
   const reconnectTimeoutRef = useRef(null);
 
@@ -87,7 +88,8 @@ export const PGNProvider = ({ children }) => {
         const { board: evalBoard, evaluation, fen } = message;
         setEvals((prev) => {
           const next = new Map(prev);
-          next.set(evalBoard, { ...evaluation, fen });
+          const prevEval = prev.get(evalBoard) || null;
+          next.set(evalBoard, { ...evaluation, fen, prevEval });
           return next;
         });
         break;
@@ -98,6 +100,9 @@ export const PGNProvider = ({ children }) => {
   };
 
   const subscribeToRound = (round) => {
+    setCurrentRound(round);
+    setGames(new Map());
+    setEvals(new Map());
     if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
       wsRef.current.send(
         JSON.stringify({ type: "subscribe_round", round }),
@@ -106,9 +111,9 @@ export const PGNProvider = ({ children }) => {
   };
 
   const value = useMemo(
-    () => ({ active, games, evals, subscribeToRound }),
+    () => ({ active, games, evals, currentRound, subscribeToRound }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [active, games, evals],
+    [active, games, evals, currentRound],
   );
 
   return <PGNContext.Provider value={value}>{children}</PGNContext.Provider>;
@@ -125,7 +130,7 @@ export const usePGN = (boardNumber = null) => {
     throw new Error("usePGN must be used within a PGNProvider");
   }
 
-  const { active, games, evals, subscribeToRound } = context;
+  const { active, games, evals, currentRound, subscribeToRound } = context;
 
   const gameState = useMemo(() => {
     if (boardNumber != null && games.has(boardNumber)) {
@@ -150,5 +155,5 @@ export const usePGN = (boardNumber = null) => {
     return null;
   }, [boardNumber, evals]);
 
-  return { active, gameState, evaluation, games, subscribeToRound };
+  return { active, gameState, evaluation, games, evals, currentRound, subscribeToRound };
 };

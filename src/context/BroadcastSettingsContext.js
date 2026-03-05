@@ -10,11 +10,27 @@ const DEFAULT_SETTINGS = {
   showEvalBar: true,
   showLastMove: true,
   animationSpeed: 300,
+  showOpening: true,
 
   // Player info
   showRatings: true,
   showClocks: true,
   showRatingDiff: false,
+  showAvatars: true,
+  animateClocks: true,
+  showMoveTime: false,
+
+  // Analysis
+  showWinProbability: false,
+  showCriticalMoments: true,
+  showEngineLines: false,
+  showBestMoveArrow: false,
+  showMoveTimeChart: false,
+  showAccuracy: false,
+  soundEnabled: false,
+
+  // Broadcast
+  showFeaturedBoard: true,
 
   // Standings panel
   standingsShowRatings: false,

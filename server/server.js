@@ -17,11 +17,17 @@ const DEBUG = config.broadcast.debug;
 
 // Singletons
 let simulator = null;
-const stockfish = new StockfishService();
+const stockfish = new StockfishService({
+  multiPV: config.engine?.multiPV || 3,
+  depth: config.engine?.depth || 16,
+});
 
 // Store connected clients and their subscriptions
 const clients = new Set();
 const boardWatchers = new Map();
+
+// Track eval history per board for accuracy calculation
+const evalHistory = new Map();
 
 // Configure CORS
 app.use(
@@ -68,12 +74,27 @@ app.post("/api/simulator/start", async (req, res) => {
       return res.json({ ok: false, message: "Simulator already running" });
     }
     const boards = Math.min(Math.max(parseInt(req.body.boards) || 4, 1), 20);
-    const speedMap = { "1": 1000, "2": 3000, "3": 6000 };
-    const speed = speedMap[String(req.body.speed)] || 3000;
+    const speedMap = { "1": "fast", "2": "normal", "3": "slow" };
+    const speed = speedMap[String(req.body.speed)] || "normal";
     const round = Math.max(parseInt(req.body.round) || 1, 1);
     const eventName = req.body.eventName || "Live Broadcast";
 
-    simulator = new GameSimulator("./Live", { round, updateInterval: speed, eventName });
+    // Clean up old watchers and stale PGN files before starting
+    closeAllWatchers();
+    evalHistory.clear();
+    const roundPath = path.join(BASE_PATH, `round-${round}`);
+    try {
+      const existingFiles = await fs.readdir(roundPath);
+      for (const file of existingFiles) {
+        if (file.endsWith(".pgn") && file.includes("game-")) {
+          await fs.unlink(path.join(roundPath, file));
+        }
+      }
+    } catch {
+      // Directory may not exist yet — simulator will create it
+    }
+
+    simulator = new GameSimulator("./Live", { round, speed, eventName });
     await simulator.initializeGames(boards);
     await simulator.start();
 
@@ -157,6 +178,12 @@ app.ws("/games", async (ws, req) => {
     clients.delete(ws);
   });
 });
+
+// Close all file watchers and clear board state
+function closeAllWatchers() {
+  boardWatchers.forEach((watcher) => watcher.close());
+  boardWatchers.clear();
+}
 
 // Initialize board watchers for a specific round
 async function initializeBoardWatchers(round) {
@@ -258,10 +285,21 @@ async function broadcastGameUpdate(round, boardNumber, filePath) {
     if (gameData.fen && stockfish.ready) {
       stockfish.evaluate(boardNumber, gameData.fen).then((evalResult) => {
         if (!evalResult) return;
+
+        // Track eval history for accuracy calculation
+        if (!evalHistory.has(boardNumber)) evalHistory.set(boardNumber, []);
+        const history = evalHistory.get(boardNumber);
+        history.push({
+          fen: gameData.fen,
+          eval: { type: evalResult.type, value: evalResult.value },
+        });
+
+        const accuracy = calculateAccuracy(history);
+
         const evalMsg = JSON.stringify({
           type: "eval_update",
           board: boardNumber,
-          evaluation: evalResult,
+          evaluation: { ...evalResult, ...(accuracy || {}) },
           fen: gameData.fen,
         });
         clients.forEach((client) => {
@@ -274,12 +312,69 @@ async function broadcastGameUpdate(round, boardNumber, filePath) {
   }
 }
 
+/**
+ * Calculate ACPL and accuracy % from eval history.
+ * For each move, loss = max(0, evalBefore - evalAfter) from the moving side's perspective.
+ * Accuracy = max(0, min(100, 100 - ACPL * 0.5))
+ */
+function calculateAccuracy(history) {
+  if (history.length < 3) return null;
+
+  let whiteTotalLoss = 0;
+  let blackTotalLoss = 0;
+  let whiteMoves = 0;
+  let blackMoves = 0;
+
+  for (let i = 1; i < history.length; i++) {
+    const prev = history[i - 1];
+    const curr = history[i];
+
+    // Skip mate evals — they distort ACPL
+    if (prev.eval.type === "mate" || curr.eval.type === "mate") continue;
+
+    // Determine who moved: side to move in prev FEN is who just moved
+    const prevParts = prev.fen ? prev.fen.split(" ") : [];
+    const sideWhoMoved = prevParts[1] || "w";
+
+    // Normalize both evals to white's perspective
+    const prevWhite = sideWhoMoved === "b" ? -prev.eval.value : prev.eval.value;
+    const currParts = curr.fen ? curr.fen.split(" ") : [];
+    const currSide = currParts[1] || "w";
+    const currWhite = currSide === "b" ? -curr.eval.value : curr.eval.value;
+
+    if (sideWhoMoved === "w") {
+      // White moved: loss = how much worse it got for white
+      const loss = Math.max(0, prevWhite - currWhite);
+      whiteTotalLoss += loss;
+      whiteMoves++;
+    } else {
+      // Black moved: loss = how much worse it got for black (= how much better for white)
+      const loss = Math.max(0, currWhite - prevWhite);
+      blackTotalLoss += loss;
+      blackMoves++;
+    }
+  }
+
+  const whiteACPL = whiteMoves > 0 ? Math.round(whiteTotalLoss / whiteMoves) : 0;
+  const blackACPL = blackMoves > 0 ? Math.round(blackTotalLoss / blackMoves) : 0;
+
+  const acplToAccuracy = (acpl) => Math.max(0, Math.min(100, 100 - acpl * 0.5));
+
+  return {
+    whiteAccuracy: Math.round(acplToAccuracy(whiteACPL) * 10) / 10,
+    blackAccuracy: Math.round(acplToAccuracy(blackACPL) * 10) / 10,
+    whiteACPL,
+    blackACPL,
+  };
+}
+
 // Handle client messages
 function handleClientMessage(ws, data) {
   switch (data.type) {
     case "subscribe_round":
       // Client wants to subscribe to a specific round
       const round = data.round;
+      evalHistory.clear();
       initializeBoardWatchers(round);
       ws.send(
         JSON.stringify({
@@ -315,9 +410,7 @@ process.on("SIGINT", () => {
   stockfish.stop();
 
   // Close all file watchers
-  boardWatchers.forEach((watcher) => {
-    watcher.close();
-  });
+  closeAllWatchers();
 
   // Close all client connections
   clients.forEach((client) => {

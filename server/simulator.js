@@ -6,6 +6,18 @@ const mockData = require("./mock-data");
 const famousGames = require("./famous-games");
 const readline = require("readline");
 
+// Speed ranges in milliseconds [min, max]
+const SPEED_RANGES = {
+  fast:   [1000,  10000],
+  normal: [8000,  25000],
+  slow:   [20000, 60000],
+};
+
+function randomDelay(speed) {
+  const [min, max] = SPEED_RANGES[speed] || SPEED_RANGES.normal;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 class GameSimulator {
   constructor(basePath = "./Live", options = {}) {
     this.generator = new PGNGenerator(basePath);
@@ -13,16 +25,16 @@ class GameSimulator {
     this.games = [];
     this.round = options.round || 1;
     this.eventName = options.eventName || "Live Broadcast";
-    this.updateInterval = options.updateInterval || 3000;
-    this.intervalId = null;
+    this.speed = options.speed || "normal";
+    this.boardTimers = new Map(); // boardNumber -> timeout id
     this.running = false;
   }
 
-  async initializeGames(count, options = {}) {
+  async initializeGames(count) {
     console.log(`\nChess Game Simulator\n${"=".repeat(50)}`);
     console.log(`Location: ${this.basePath}/round-${this.round}/`);
     console.log(`Boards: ${count}`);
-    console.log(`Update interval: ${this.updateInterval / 1000}s\n`);
+    console.log(`Speed: ${this.speed} (${SPEED_RANGES[this.speed][0] / 1000}-${SPEED_RANGES[this.speed][1] / 1000}s per move)\n`);
 
     // Pick games from famous games collection, shuffled
     const shuffled = [...famousGames].sort(() => Math.random() - 0.5);
@@ -109,24 +121,39 @@ class GameSimulator {
     }
   }
 
-  async updateGames() {
-    const ongoingGames = this.games.filter((g) => g.status === "ongoing");
+  scheduleBoardMove(game) {
+    if (!this.running || game.status !== "ongoing") return;
 
-    if (ongoingGames.length === 0) {
-      console.log("\nAll games finished!");
-      this.stop();
-      return;
-    }
+    const delay = randomDelay(this.speed);
+    const timerId = setTimeout(async () => {
+      if (!this.running || game.status !== "ongoing") return;
 
-    for (const game of ongoingGames) {
       this.makeMove(game);
       await this.updateGameFile(game);
-    }
 
-    const finished = this.games.filter((g) => g.status === "finished").length;
-    console.log(
-      `[${new Date().toLocaleTimeString()}] ${ongoingGames.length} active, ${finished} finished`,
-    );
+      const ply = game.chess.history().length;
+      const moveNum = Math.ceil(ply / 2);
+      console.log(
+        `[${new Date().toLocaleTimeString()}] Board ${game.boardNumber}: move ${moveNum} (next in ${(delay / 1000).toFixed(1)}s)${game.status === "finished" ? " — FINISHED " + game.result : ""}`,
+      );
+
+      if (game.status === "ongoing") {
+        this.scheduleBoardMove(game);
+      } else {
+        this.boardTimers.delete(game.boardNumber);
+        this.checkAllFinished();
+      }
+    }, delay);
+
+    this.boardTimers.set(game.boardNumber, timerId);
+  }
+
+  checkAllFinished() {
+    const allDone = this.games.every((g) => g.status === "finished");
+    if (allDone) {
+      console.log("\nAll games finished!");
+      this.stop();
+    }
   }
 
   async start() {
@@ -134,17 +161,21 @@ class GameSimulator {
     this.running = true;
     console.log("Starting live simulation...\n");
 
-    this.intervalId = setInterval(async () => {
-      await this.updateGames();
-    }, this.updateInterval);
+    // Schedule each board independently
+    for (const game of this.games) {
+      if (game.status === "ongoing") {
+        this.scheduleBoardMove(game);
+      }
+    }
   }
 
   stop() {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-      this.intervalId = null;
-    }
     this.running = false;
+    // Clear all board timers
+    for (const [, timerId] of this.boardTimers) {
+      clearTimeout(timerId);
+    }
+    this.boardTimers.clear();
     console.log("\nSimulation stopped\n");
   }
 
@@ -171,13 +202,13 @@ async function runInteractive() {
   const boardCount = await question("How many boards? (1-8) [default: 4]: ");
   const boards = Math.min(parseInt(boardCount) || 4, 8);
 
-  const speedInput = await question("Update speed? (1=fast, 2=normal, 3=slow) [default: 2]: ");
-  const speedMap = { 1: 2000, 2: 4000, 3: 8000 };
-  const speed = speedMap[speedInput] || 4000;
+  const speedInput = await question("Speed? (1=fast 1-10s, 2=normal 8-25s, 3=slow 20-60s) [default: 2]: ");
+  const speedMap = { "1": "fast", "2": "normal", "3": "slow" };
+  const speed = speedMap[speedInput] || "normal";
 
   rl.close();
 
-  const simulator = new GameSimulator("./Live", { round: 1, updateInterval: speed });
+  const simulator = new GameSimulator("./Live", { round: 1, speed });
   await simulator.initializeGames(boards);
   await simulator.start();
 
@@ -192,7 +223,7 @@ async function runInteractive() {
 
 async function runQuick(boards = 4) {
   console.clear();
-  const simulator = new GameSimulator("./Live", { round: 1, updateInterval: 3000 });
+  const simulator = new GameSimulator("./Live", { round: 1, speed: "normal" });
   await simulator.initializeGames(Math.min(boards, 8));
   await simulator.start();
 

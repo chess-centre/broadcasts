@@ -1,16 +1,17 @@
 const { spawn } = require("child_process");
 
-const DEPTH = 16;
-
 class StockfishService {
-  constructor() {
+  constructor(options = {}) {
     this.process = null;
     this.ready = false;
     this.queue = []; // [{boardId, fen, resolve}]
     this.processing = false;
     this.currentResolve = null;
     this.currentResult = null;
+    this.currentLines = new Map(); // Map<pvRank, lineData>
     this.buffer = "";
+    this.multiPV = options.multiPV || 3;
+    this.depth = options.depth || 16;
   }
 
   start() {
@@ -63,12 +64,13 @@ class StockfishService {
   handleLine(line) {
     if (line === "uciok") {
       this.ready = true;
-      console.log("Stockfish ready");
+      this.send(`setoption name MultiPV value ${this.multiPV}`);
+      console.log(`Stockfish ready (MultiPV ${this.multiPV}, depth ${this.depth})`);
       this.processNext();
       return;
     }
 
-    // Parse "info depth N ... score cp X" or "score mate X"
+    // Parse info lines: depth, multipv rank, score, and pv moves
     const infoMatch = line.match(
       /^info\s+.*\bdepth\s+(\d+)\b.*\bscore\s+(cp|mate)\s+(-?\d+)/,
     );
@@ -76,18 +78,37 @@ class StockfishService {
       const depth = parseInt(infoMatch[1]);
       const type = infoMatch[2];
       const value = parseInt(infoMatch[3]);
-      this.currentResult = { depth, type, value };
+
+      // Extract multipv rank (defaults to 1 if not present)
+      const pvRankMatch = line.match(/\bmultipv\s+(\d+)/);
+      const pvRank = pvRankMatch ? parseInt(pvRankMatch[1]) : 1;
+
+      // Extract pv move sequence
+      const pvMatch = line.match(/\bpv\s+(.+)$/);
+      const pv = pvMatch ? pvMatch[1].trim().split(/\s+/) : [];
+
+      this.currentLines.set(pvRank, { rank: pvRank, depth, type, value, pv });
+
+      // Line 1 is always the main result (backward compatible)
+      if (pvRank === 1) {
+        this.currentResult = { depth, type, value };
+      }
     }
 
     // "bestmove" signals completion
     if (line.startsWith("bestmove")) {
       const resolve = this.currentResolve;
       const result = this.currentResult;
+      const lines = Array.from(this.currentLines.values()).sort(
+        (a, b) => a.rank - b.rank,
+      );
+
       this.currentResolve = null;
       this.currentResult = null;
+      this.currentLines = new Map();
       this.processing = false;
 
-      if (resolve) resolve(result);
+      if (resolve) resolve(result ? { ...result, lines } : null);
       this.processNext();
     }
   }
@@ -99,15 +120,16 @@ class StockfishService {
     this.processing = true;
     this.currentResolve = resolve;
     this.currentResult = null;
+    this.currentLines = new Map();
 
     this.send("ucinewgame");
     this.send(`position fen ${fen}`);
-    this.send(`go depth ${DEPTH}`);
+    this.send(`go depth ${this.depth}`);
   }
 
   /**
    * Evaluate a FEN position. Returns a Promise that resolves with
-   * {depth, type, value} where type is "cp" or "mate".
+   * {depth, type, value, lines} where type is "cp" or "mate".
    * Deduplicates by boardId — only the latest request per board is kept.
    */
   evaluate(boardId, fen) {

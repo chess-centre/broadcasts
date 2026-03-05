@@ -13,6 +13,10 @@ module.exports = {
     // Watch mode: 'files' for file watching, 'api' for direct WebSocket (future)
     watchMode: process.env.DGT_WATCH_MODE || "files",
   },
+  engine: {
+    multiPV: parseInt(process.env.ENGINE_MULTIPV) || 3,
+    depth: parseInt(process.env.ENGINE_DEPTH) || 16,
+  },
   broadcast: {
     // Maximum number of boards to track simultaneously
     maxBoards: parseInt(process.env.MAX_BOARDS) || 20,

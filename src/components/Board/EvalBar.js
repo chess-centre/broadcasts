@@ -1,33 +1,19 @@
 import { useMemo } from "react";
+import { evalToPercent, formatScore } from "../../utils/eval";
 
-/**
- * Map centipawn score to percentage (0-100) for the white portion.
- * Sigmoid: 0cp→50%, +500cp→~88%, -500cp→~12%, mate→100%/0%.
- */
-function evalToPercent(type, value) {
-  if (type === "mate") return value > 0 ? 100 : 0;
-  return 100 / (1 + Math.exp(-0.004 * value));
-}
-
-function formatScore(type, value) {
-  if (!type) return "";
-  if (type === "mate") return `M${Math.abs(value)}`;
-  const pawns = value / 100;
-  const sign = pawns > 0 ? "+" : "";
-  return `${sign}${pawns.toFixed(1)}`;
-}
-
-export default function EvalBar({ evaluation, fen }) {
-  // Normalize to White's perspective (Stockfish reports from side-to-move)
+export default function EvalBar({ evaluation }) {
   const normalized = useMemo(() => {
     if (!evaluation) return null;
     const { type, value } = evaluation;
-    const evalFen = fen || evaluation.fen;
+    // Always use the FEN the eval was computed for, not the board's current FEN.
+    // Otherwise a game_update (new FEN, side flips) before the next eval_update
+    // causes the normalization to flip the sign and the bar swings wildly.
+    const evalFen = evaluation.fen;
     const parts = evalFen ? evalFen.split(" ") : [];
     const sideToMove = parts[1] || "w";
     const normalizedValue = sideToMove === "b" ? -value : value;
     return { type, value: normalizedValue };
-  }, [evaluation, fen]);
+  }, [evaluation]);
 
   const whitePercent = normalized
     ? evalToPercent(normalized.type, normalized.value)
@@ -41,7 +27,6 @@ export default function EvalBar({ evaluation, fen }) {
 
   return (
     <div className="eval-bar-container">
-      {/* Black portion (top) */}
       <div
         className="eval-bar-black"
         style={{ height: `${100 - whitePercent}%` }}
@@ -52,8 +37,6 @@ export default function EvalBar({ evaluation, fen }) {
           </span>
         )}
       </div>
-
-      {/* White portion (bottom) */}
       <div
         className="eval-bar-white"
         style={{ height: `${whitePercent}%` }}

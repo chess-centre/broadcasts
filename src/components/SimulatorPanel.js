@@ -146,9 +146,9 @@ export default function ConfigDashboard() {
             <div>
               <label className="block text-[10px] uppercase tracking-wider text-gh-textMuted mb-1">Speed</label>
               <select value={speed} onChange={(e) => setSpeed(e.target.value)} disabled={running} className={inputClass + " w-full"}>
-                <option value="1">fast (1s)</option>
-                <option value="2">normal (3s)</option>
-                <option value="3">slow (6s)</option>
+                <option value="1">fast (1-10s)</option>
+                <option value="2">normal (8-25s)</option>
+                <option value="3">slow (20-60s)</option>
               </select>
             </div>
             <div>

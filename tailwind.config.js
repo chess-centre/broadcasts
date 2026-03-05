@@ -9,6 +9,15 @@ module.exports = {
     "bg-blue-400",
     "bg-rose-400",
     "bg-teal-400",
+    // Player avatar colors
+    "bg-blue-600",
+    "bg-emerald-600",
+    "bg-amber-600",
+    "bg-rose-600",
+    "bg-purple-600",
+    "bg-cyan-600",
+    "bg-orange-600",
+    "bg-indigo-600",
   ],
   theme: {
     extend: {

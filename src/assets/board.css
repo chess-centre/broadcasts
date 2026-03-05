@@ -9,6 +9,24 @@
   height: 100% !important;
 }
 
+/* Modal board: size from available height, keep square */
+.board-modal-outer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.board-modal-outer .board-container {
+  aspect-ratio: 1;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
 /* ---- Eval Bar ---- */
 .board-with-eval {
   display: flex;

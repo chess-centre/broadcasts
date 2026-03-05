@@ -5,3 +5,8 @@
 body {
   background-color: #0d1117;
 }
+
+/* Hide header nav in fullscreen broadcast mode */
+.broadcast-fullscreen header {
+  display: none;
+}
