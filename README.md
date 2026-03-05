@@ -2,10 +2,10 @@
 
 Real-time DGT board integration for streaming live chess games.
 
-<img src="./img/example-full-boards.png" />
+<img src="./img/example-full-boards-view.png" />
 
 <!-- screenshot: landing page dashboard -->
-<!-- <img src="./img/dashboard.png" /> -->
+<img src="./img/dashboard.png" />
 
 ---
 
@@ -48,6 +48,7 @@ The landing page (`/`) is a terminal-style control panel with three sections:
 **Server** — connection status, port, connected WebSocket clients, active file watchers, Stockfish engine status, simulator state.
 
 **Simulator** — configure and run simulated games for testing:
+
 - Boards (1–20)
 - Speed (fast 1s / normal 3s / slow 6s)
 - Round number
@@ -62,9 +63,9 @@ All values are fetched live from the server and polled every 3 seconds.
 
 ## Routes
 
-| Route  | Description |
-| ------ | ----------- |
-| `/`    | System dashboard and simulator controls |
+| Route   | Description                                       |
+| ------- | ------------------------------------------------- |
+| `/`     | System dashboard and simulator controls           |
 | `/live` | Live broadcast viewer with boards and leaderboard |
 
 ---
@@ -97,14 +98,14 @@ Set `REACT_APP_SERVER_URL` in `.env` if the server is not on `http://localhost:8
 
 ## REST API
 
-| Method | Endpoint | Description |
-| ------ | -------- | ----------- |
-| `GET` | `/api/config` | Server configuration (DGT, broadcast settings) |
-| `GET` | `/api/status` | Runtime status (clients, watchers, stockfish, simulator) |
-| `POST` | `/api/simulator/start` | Start simulator `{ boards, speed, round, eventName }` |
-| `POST` | `/api/simulator/stop` | Stop simulator |
-| `GET` | `/api/simulator/status` | Simulator game progress |
-| `GET` | `/:round/:board` | Fetch specific game PGN |
+| Method | Endpoint                | Description                                              |
+| ------ | ----------------------- | -------------------------------------------------------- |
+| `GET`  | `/api/config`           | Server configuration (DGT, broadcast settings)           |
+| `GET`  | `/api/status`           | Runtime status (clients, watchers, stockfish, simulator) |
+| `POST` | `/api/simulator/start`  | Start simulator `{ boards, speed, round, eventName }`    |
+| `POST` | `/api/simulator/stop`   | Stop simulator                                           |
+| `GET`  | `/api/simulator/status` | Simulator game progress                                  |
+| `GET`  | `/:round/:board`        | Fetch specific game PGN                                  |
 
 ## WebSocket API
 
