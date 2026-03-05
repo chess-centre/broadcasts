@@ -215,8 +215,7 @@ npm run dev            # Server + simulator + app (all-in-one)
 npm run simulate       # Interactive simulator
 npm run simulate:quick # Quick start with 4 boards
 npm run build          # Production build
-npm run mock           # Generate static mock games
-npm run mock:clear     # Clear and regenerate mocks
+npm run test:server    # Run server unit tests
 ```
 
 ---

@@ -37,8 +37,7 @@
     "simulate": "node server/simulator.js",
     "simulate:quick": "node server/simulator.js --quick",
     "dev": "npm run server & npm run simulate:quick & npm start",
-    "mock": "node scripts/generate-mock.js",
-    "mock:clear": "node scripts/generate-mock.js -- --clear"
+    "test:server": "jest --config server/jest.config.js"
   },
   "eslintConfig": {
     "extends": [

@@ -8,8 +8,6 @@
 npm run simulate:quick      # Start live sim (4 boards)
 npm run simulate:quick 8    # Start live sim (8 boards)
 npm run simulate            # Interactive mode
-npm run mock               # Generate static games
-npm run mock:clear         # Clear and regenerate
 ```
 
 ### Server & App
@@ -76,7 +74,6 @@ broadcasts/
 │   │       └── LiveLeaderboard.js
 │   └── pages/
 │       └── LiveBroadcast.js  # Main page
-├── scripts/            # Utilities
 └── .env               # Configuration
 ```
 
@@ -221,12 +218,9 @@ npm run build              # Build production
 # Testing
 npm run simulate:quick     # Quick sim (4 boards)
 npm run simulate:quick 12  # Many boards
-npm run mock              # Static games
-npm run mock:clear        # Fresh start
 
 # Help
 npm run simulate -- --help # Simulator help
-npm run mock -- --help    # Mock help
 ```
 
 ---
@@ -281,7 +275,7 @@ netstat -ano | findstr :8080  # Windows
 **Old data stuck:**
 
 ```bash
-npm run mock:clear
+rm -rf ./Live
 npm run simulate:quick
 ```
 
