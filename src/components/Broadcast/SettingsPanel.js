@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { useBroadcastSettings } from "../../context/BroadcastSettingsContext";
 
@@ -301,6 +301,72 @@ export default function SettingsPanel({ open, onClose }) {
               </div>
             </div>
 
+            {/* Branding */}
+            <SectionTitle>Branding</SectionTitle>
+            <Toggle
+              label="Show branding"
+              enabled={settings.brandingEnabled}
+              onChange={(v) => updateSetting("brandingEnabled", v)}
+            />
+            {settings.brandingEnabled && (
+              <div className="space-y-2 mt-1">
+                <input
+                  value={settings.brandingEventTitle}
+                  onChange={(e) => updateSetting("brandingEventTitle", e.target.value)}
+                  placeholder="Event title"
+                  className="w-full bg-gh-bg border border-gh-border text-gh-text font-mono text-xs rounded px-2 py-1 focus:border-blue-500 focus:outline-none"
+                />
+                <input
+                  value={settings.brandingSubtitle}
+                  onChange={(e) => updateSetting("brandingSubtitle", e.target.value)}
+                  placeholder="Subtitle"
+                  className="w-full bg-gh-bg border border-gh-border text-gh-text font-mono text-xs rounded px-2 py-1 focus:border-blue-500 focus:outline-none"
+                />
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <input
+                      value={settings.brandingLogoUrl}
+                      onChange={(e) => updateSetting("brandingLogoUrl", e.target.value)}
+                      placeholder="Logo URL"
+                      className="flex-1 bg-gh-bg border border-gh-border text-gh-text font-mono text-xs rounded px-2 py-1 focus:border-blue-500 focus:outline-none"
+                    />
+                    <label className="px-2 py-1 text-[10px] bg-slate-700 text-slate-300 rounded cursor-pointer hover:bg-slate-600 transition-colors">
+                      Upload
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          const reader = new FileReader();
+                          reader.onload = () => updateSetting("brandingLogoUrl", reader.result);
+                          reader.readAsDataURL(file);
+                        }}
+                      />
+                    </label>
+                  </div>
+                  {settings.brandingLogoUrl && (
+                    <div className="mt-1 flex items-center gap-2">
+                      <img src={settings.brandingLogoUrl} alt="" className="h-6 w-auto object-contain rounded" />
+                      <button
+                        onClick={() => updateSetting("brandingLogoUrl", "")}
+                        className="text-[10px] text-red-400 hover:text-red-300"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <input
+                  value={settings.brandingTickerText}
+                  onChange={(e) => updateSetting("brandingTickerText", e.target.value)}
+                  placeholder="Ticker text (scrolling bar)"
+                  className="w-full bg-gh-bg border border-gh-border text-gh-text font-mono text-xs rounded px-2 py-1 focus:border-blue-500 focus:outline-none"
+                />
+              </div>
+            )}
+
             {/* Accent Color */}
             <SectionTitle>Accent Color</SectionTitle>
             <div className="flex gap-2">
@@ -320,9 +386,51 @@ export default function SettingsPanel({ open, onClose }) {
                 />
               ))}
             </div>
+            {/* OBS / Streaming */}
+            <SectionTitle>OBS / Streaming</SectionTitle>
+            <p className="text-[10px] text-slate-500 mb-2">
+              Add these as Browser Sources in OBS:
+            </p>
+            <OBSUrlList />
           </div>
         </div>
       </Transition>
     </>
+  );
+}
+
+function OBSUrlList() {
+  const base = `${window.location.protocol}//${window.location.host}`;
+  const urls = [
+    { label: "Board 1", url: `${base}/obs?type=board&board=1&round=1` },
+    { label: "Featured", url: `${base}/obs?type=featured&round=1` },
+    { label: "Standings", url: `${base}/obs?type=standings&round=1` },
+    { label: "Ticker", url: `${base}/obs?type=ticker&round=1` },
+  ];
+  const [copied, setCopied] = useState(null);
+
+  const handleCopy = async (url, idx) => {
+    await navigator.clipboard.writeText(url);
+    setCopied(idx);
+    setTimeout(() => setCopied(null), 1500);
+  };
+
+  return (
+    <div className="space-y-1">
+      {urls.map((item, i) => (
+        <div key={i} className="flex items-center gap-1.5">
+          <span className="text-[10px] text-slate-400 w-14 flex-shrink-0">{item.label}</span>
+          <span className="text-[10px] text-slate-500 truncate flex-1 font-mono">{item.url}</span>
+          <button
+            onClick={() => handleCopy(item.url, i)}
+            className={`text-[10px] px-1.5 py-0.5 rounded transition-colors flex-shrink-0 ${
+              copied === i ? "text-green-400" : "text-slate-400 hover:text-slate-200 bg-slate-800"
+            }`}
+          >
+            {copied === i ? "\u2713" : "Copy"}
+          </button>
+        </div>
+      ))}
+    </div>
   );
 }

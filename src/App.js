@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 const Home = lazy(() => import("./pages/Home"));
 const LiveBroadcast = lazy(() => import("./pages/LiveBroadcast"));
 const Page404 = lazy(() => import("./pages/Error/404"));
+const OBSWidget = lazy(() => import("./pages/OBSWidget"));
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/live" element={<LiveBroadcast />} />
           </Route>
+          <Route path="/obs" element={<OBSWidget />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Suspense>

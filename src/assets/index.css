@@ -10,3 +10,14 @@ body {
 .broadcast-fullscreen header {
   display: none;
 }
+
+/* Branding ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* OBS widget transparent background */
+.obs-widget-root {
+  background: transparent !important;
+}
