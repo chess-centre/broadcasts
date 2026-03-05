@@ -1,5 +1,14 @@
 import { useMemo } from "react";
 import { usePGN } from "../../hooks/usePgn";
+import { useBroadcastSettings } from "../../context/BroadcastSettingsContext";
+
+const ACCENT_MAP = {
+  green: "bg-green-400",
+  amber: "bg-amber-400",
+  blue: "bg-blue-400",
+  rose: "bg-rose-400",
+  teal: "bg-teal-400",
+};
 
 function surname(fullName) {
   if (!fullName) return "---";
@@ -9,6 +18,7 @@ function surname(fullName) {
 
 export default function LiveLeaderboard() {
   const { games, active } = usePGN();
+  const { settings } = useBroadcastSettings();
 
   const standings = useMemo(() => {
     const playerSet = new Map();
@@ -50,6 +60,8 @@ export default function LiveLeaderboard() {
     });
   }, [games]);
 
+  const accentDot = ACCENT_MAP[settings.accentColor] || ACCENT_MAP.green;
+
   if (standings.length === 0) {
     return (
       <div className="text-xs text-slate-500 px-2 py-4">Waiting for data...</div>
@@ -62,7 +74,7 @@ export default function LiveLeaderboard() {
         <span className="text-xs font-semibold text-gh-textMuted uppercase tracking-wider">
           Standings
         </span>
-        <div className={`h-1.5 w-1.5 rounded-full ${active ? "bg-green-400 animate-pulse" : "bg-red-400"}`} />
+        <div className={`h-1.5 w-1.5 rounded-full ${active ? `${accentDot} animate-pulse` : "bg-red-400"}`} />
       </div>
 
       <div className="divide-y divide-gh-border/30">
@@ -75,6 +87,21 @@ export default function LiveLeaderboard() {
             <span className="text-xs text-slate-200 flex-1 truncate">
               {surname(player.name)}
             </span>
+            {settings.standingsShowRatings && player.rating && (
+              <span className="text-[10px] text-slate-500 tabular-nums">
+                {player.rating}
+              </span>
+            )}
+            {settings.standingsShowRecord && (
+              <span className="text-[10px] text-slate-500 tabular-nums whitespace-nowrap">
+                {player.wins}/{player.draws}/{player.losses}
+              </span>
+            )}
+            {settings.standingsShowPlayed && (
+              <span className="text-[10px] text-slate-500 tabular-nums">
+                {player.played}g
+              </span>
+            )}
             <span className="text-xs font-semibold text-slate-300 w-6 text-right tabular-nums">
               {player.score % 1 === 0 ? player.score : player.score.toFixed(1)}
             </span>

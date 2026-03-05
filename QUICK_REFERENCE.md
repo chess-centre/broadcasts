@@ -202,7 +202,6 @@ updateInterval: 3000; // 3 seconds
 | [SIMULATOR.md](SIMULATOR.md)         | Mock & testing guide   |
 | [DGT_CHECKLIST.md](DGT_CHECKLIST.md) | Tournament checklist   |
 | [DEVELOPMENT.md](DEVELOPMENT.md)     | Developer guide        |
-| [SUMMARY.md](SUMMARY.md)             | Project overview       |
 
 ---
 

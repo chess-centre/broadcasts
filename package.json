@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "simulate": "node server/simulator.js",
     "simulate:quick": "node server/simulator.js --quick",
-    "dev": "npm run server & npm run simulate:quick & npm start",
+    "dev": "concurrently --kill-others -n server,sim,app -c blue,yellow,green \"npm run server\" \"npm run simulate:quick\" \"npm run start\"",
     "test:server": "jest --config server/jest.config.js"
   },
   "eslintConfig": {
@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
+    "concurrently": "^9.2.1",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.0.23"
   }
