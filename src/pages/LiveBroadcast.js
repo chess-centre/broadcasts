@@ -6,6 +6,10 @@ import LiveLeaderboard from "../components/Shared/LiveLeaderboard";
 import Crosstable from "../components/Shared/Crosstable";
 import SettingsPanel from "../components/Broadcast/SettingsPanel";
 import SoundManager from "../components/Broadcast/SoundManager";
+import SpectatorLinkModal from "../components/Broadcast/SpectatorLinkModal";
+import QROverlay from "../components/Broadcast/QROverlay";
+import AutoCycleOverlay from "../components/Broadcast/AutoCycleOverlay";
+import useAutoCycle from "../hooks/useAutoCycle";
 import GameViewerModal from "../components/Viewer/GameViewerModal";
 import useFeaturedBoard from "../hooks/useFeaturedBoard";
 import { downloadAllPgn } from "../utils/export";
@@ -25,10 +29,21 @@ function LiveBroadcastContent() {
   const { settings } = useBroadcastSettings();
   const [sidebarView, setSidebarView] = useState("standings"); // standings | crosstable
   const [showSettings, setShowSettings] = useState(false);
+  const [showQR, setShowQR] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [fullscreen, setFullscreen] = useState(false);
 
   const featuredBoard = useFeaturedBoard(games, evals);
+  const {
+    currentBoard: cycleBoard,
+    showLeaderboard: cycleLeaderboard,
+    isAutoCycling,
+    toggle: toggleAutoCycle,
+    stop: stopAutoCycle,
+  } = useAutoCycle(games, evals, {
+    intervalSeconds: settings.autoCycleInterval,
+    leaderboardEveryN: settings.autoCycleLeaderboardEvery,
+  });
 
   const boardNumbers = Array.from(games.keys()).sort((a, b) => a - b);
   const ongoing = Array.from(games.values()).filter((g) => g.status === "ongoing").length;
@@ -55,6 +70,9 @@ function LiveBroadcastContent() {
       if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
       if (e.key === "f" && !e.ctrlKey && !e.metaKey) {
         toggleFullscreen();
+      }
+      if (e.key === "t" && !e.ctrlKey && !e.metaKey) {
+        toggleAutoCycle();
       }
     };
     const handleFsChange = () => {
@@ -129,6 +147,15 @@ function LiveBroadcastContent() {
               >
                 Crosstable
               </button>
+              {/* TV Mode */}
+              <button
+                onClick={toggleAutoCycle}
+                className={`transition-colors ${isAutoCycling ? "text-green-400" : "text-gh-textMuted hover:text-gh-text"}`}
+                title="Auto-cycle boards (TV mode)"
+              >
+                TV
+              </button>
+
               <span className="text-gh-border">|</span>
 
               {/* Export PGN */}
@@ -139,6 +166,18 @@ function LiveBroadcastContent() {
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+              </button>
+
+              {/* QR Code / Share */}
+              <button
+                onClick={() => setShowQR(true)}
+                className="text-gh-textMuted hover:text-gh-text transition-colors"
+                title="Spectator link & QR code"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 6.75h.75v.75h-.75v-.75zM6.75 16.5h.75v.75h-.75v-.75zM16.5 6.75h.75v.75H16.5v-.75zM13.5 13.5h.75v.75h-.75v-.75zM13.5 19.5h.75v.75h-.75v-.75zM19.5 13.5h.75v.75h-.75v-.75zM19.5 19.5h.75v.75h-.75v-.75zM16.5 16.5h.75v.75H16.5v-.75z" />
                 </svg>
               </button>
 
@@ -211,6 +250,18 @@ function LiveBroadcastContent() {
             Exit fullscreen
           </button>
           <button
+            onClick={toggleAutoCycle}
+            className={`text-xs transition-colors ${isAutoCycling ? "text-green-400" : "text-slate-400 hover:text-white"}`}
+          >
+            {isAutoCycling ? "Stop TV" : "TV"}
+          </button>
+          <button
+            onClick={() => setShowQR((v) => !v)}
+            className={`text-xs transition-colors ${showQR ? "text-green-400" : "text-slate-400 hover:text-white"}`}
+          >
+            QR
+          </button>
+          <button
             onClick={() => setShowSettings(true)}
             className="text-slate-400 hover:text-white transition-colors"
           >
@@ -222,14 +273,29 @@ function LiveBroadcastContent() {
         </div>
       )}
 
+      {/* QR Overlay (fullscreen projection) */}
+      {fullscreen && showQR && <QROverlay />}
+
       {/* Sound Manager */}
       <SoundManager />
+
+      {/* Spectator Link Modal */}
+      <SpectatorLinkModal open={showQR && !fullscreen} onClose={() => setShowQR(false)} />
 
       {/* Settings Panel */}
       <SettingsPanel open={showSettings} onClose={() => setShowSettings(false)} />
 
+      {/* Auto-Cycle Overlay (TV Mode) */}
+      {isAutoCycling && (cycleBoard !== null || cycleLeaderboard) && (
+        <AutoCycleOverlay
+          currentBoard={cycleBoard}
+          showLeaderboard={cycleLeaderboard}
+          onStop={stopAutoCycle}
+        />
+      )}
+
       {/* Game Viewer Modal */}
-      {selectedBoard !== null && (
+      {selectedBoard !== null && !isAutoCycling && (
         <GameViewerModal board={selectedBoard} onClose={() => setSelectedBoard(null)} />
       )}
     </div>

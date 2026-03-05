@@ -1,0 +1,13 @@
+[Event "Live Broadcast"]
+[Site "Chess Centre"]
+[Date "2026.03.05"]
+[Round "1"]
+[White "Anatoly Karpov"]
+[Black "Garry Kasparov"]
+[Result "*"]
+[WhiteElo "2725"]
+[BlackElo "2700"]
+[PlyCount "12"]
+[TimeControl "5400+30"]
+
+1. e4 {[%clk 00:23:23]} c5 {[%clk 00:22:47]} 2. Nf3 {[%clk 00:23:23]} e6 {[%clk 00:22:47]} 3. d4 {[%clk 00:23:23]} cxd4 {[%clk 00:22:47]} 4. Nxd4 {[%clk 00:23:23]} Nc6 {[%clk 00:22:47]} 5. Nb5 {[%clk 00:23:23]} d6 {[%clk 00:22:47]} 6. c4 {[%clk 00:23:23]} Nf6 {[%clk 00:22:47]} *

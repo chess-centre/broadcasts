@@ -10,6 +10,8 @@ const config = require("./config");
 
 const GameSimulator = require("./simulator");
 const StockfishService = require("./stockfish-service");
+const PGNGenerator = require("./pgn-generator");
+const { generatePairings, calculateRounds } = require("./pairing-engine");
 
 const PORT = config.server.port;
 const BASE_PATH = config.dgt.basePath;
@@ -28,6 +30,9 @@ const boardWatchers = new Map();
 
 // Track eval history per board for accuracy calculation
 const evalHistory = new Map();
+
+// Board health: boardNumber -> { board, round, lastUpdate, white, black, status, moveCount }
+const boardHealth = new Map();
 
 // Configure CORS
 app.use(
@@ -59,11 +64,21 @@ app.get("/api/config", (req, res) => {
 });
 
 app.get("/api/status", (req, res) => {
+  const now = Date.now();
+  const boards = Array.from(boardHealth.values()).map((b) => {
+    const elapsed = now - new Date(b.lastUpdate).getTime();
+    let health = "healthy";
+    if (elapsed > 120000) health = "critical";
+    else if (elapsed > 60000) health = "warning";
+    return { ...b, elapsed, health };
+  });
+
   res.json({
     connectedClients: clients.size,
     activeWatchers: boardWatchers.size,
     stockfish: stockfish.ready ? "running" : "stopped",
     simulator: simulator ? (simulator.running ? "running" : "stopped") : "idle",
+    boards,
   });
 });
 
@@ -131,6 +146,83 @@ app.get("/api/simulator/status", (req, res) => {
   res.json({ running: simulator.running, boards: games.length, games });
 });
 
+// --- Tournament API ---
+app.get("/api/tournament", async (req, res) => {
+  try {
+    const tournamentPath = path.join(BASE_PATH, "tournament.json");
+    const data = await fs.readFile(tournamentPath, "utf-8");
+    res.json(JSON.parse(data));
+  } catch {
+    res.json(null);
+  }
+});
+
+app.post("/api/tournament/create", async (req, res) => {
+  try {
+    const { event, date, venue, timeControl, players, format, rounds } = req.body;
+
+    if (!event || !players || players.length < 2) {
+      return res.status(400).json({ ok: false, message: "Event name and at least 2 players required" });
+    }
+
+    const tournament = {
+      event,
+      date: date || new Date().toISOString().split("T")[0],
+      venue: venue || "Chess Centre",
+      timeControl: timeControl || "90+30",
+      players,
+      format: format || "round-robin",
+      rounds: rounds || calculateRounds(format, players.length),
+      createdAt: new Date().toISOString(),
+    };
+
+    // Generate pairings
+    const pairings = generatePairings(tournament);
+    tournament.pairings = pairings;
+
+    // Write tournament.json
+    await fs.mkdir(BASE_PATH, { recursive: true });
+    const tournamentPath = path.join(BASE_PATH, "tournament.json");
+    await fs.writeFile(tournamentPath, JSON.stringify(tournament, null, 2), "utf-8");
+
+    // Create round directories and initial PGN stubs
+    const generator = new PGNGenerator(BASE_PATH);
+    for (let r = 0; r < pairings.length; r++) {
+      const roundPairings = pairings[r];
+      for (let b = 0; b < roundPairings.length; b++) {
+        const pairing = roundPairings[b];
+        const pgn = generator.generatePGN({
+          white: pairing.white,
+          black: pairing.black,
+          result: "*",
+          event: tournament.event,
+          round: (r + 1).toString(),
+          date: tournament.date.replace(/-/g, "."),
+          moves: [],
+          whiteTime: null,
+          blackTime: null,
+        });
+        await generator.writeGameFile(r + 1, b + 1, pgn);
+      }
+    }
+
+    res.json({ ok: true, tournament });
+  } catch (err) {
+    console.error("Tournament create error:", err);
+    res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+app.delete("/api/tournament", async (req, res) => {
+  try {
+    const tournamentPath = path.join(BASE_PATH, "tournament.json");
+    await fs.unlink(tournamentPath);
+    res.json({ ok: true });
+  } catch {
+    res.json({ ok: true });
+  }
+});
+
 // REST API endpoint for fetching specific game
 app.get("/:round(\\d+)/:board(\\d+)", async (req, res) => {
   const { board, round } = req.params;
@@ -183,6 +275,7 @@ app.ws("/games", async (ws, req) => {
 function closeAllWatchers() {
   boardWatchers.forEach((watcher) => watcher.close());
   boardWatchers.clear();
+  boardHealth.clear();
 }
 
 // Initialize board watchers for a specific round
@@ -257,6 +350,17 @@ function watchGameFile(round, boardNumber, filePath) {
 async function broadcastGameUpdate(round, boardNumber, filePath) {
   try {
     const gameData = await getPgn(filePath);
+
+    // Track board health
+    boardHealth.set(boardNumber, {
+      board: boardNumber,
+      round,
+      lastUpdate: new Date().toISOString(),
+      white: gameData.whiteInfo?.name || "Unknown",
+      black: gameData.blackInfo?.name || "Unknown",
+      status: gameData.status || "unknown",
+      moveCount: gameData.moveCount || 0,
+    });
 
     const message = JSON.stringify({
       type: "game_update",

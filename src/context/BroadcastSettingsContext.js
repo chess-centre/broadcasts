@@ -37,6 +37,10 @@ const DEFAULT_SETTINGS = {
   standingsShowRecord: false,
   standingsShowPlayed: false,
 
+  // TV / Kiosk mode
+  autoCycleInterval: 30,
+  autoCycleLeaderboardEvery: 3,
+
   // Accent color
   accentColor: "green",
 };

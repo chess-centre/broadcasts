@@ -2,12 +2,12 @@
 [Site "Chess Centre"]
 [Date "2026.03.05"]
 [Round "1"]
-[White "Fabiano Caruana"]
-[Black "Magnus Carlsen"]
+[White "Ding Liren"]
+[Black "Hikaru Nakamura"]
 [Result "*"]
-[WhiteElo "2822"]
-[BlackElo "2835"]
-[PlyCount "12"]
+[WhiteElo "2805"]
+[BlackElo "2760"]
+[PlyCount "13"]
 [TimeControl "5400+30"]
 
-1. e4 {[%clk 00:12:04]} c5 {[%clk 00:12:27]} 2. Nf3 {[%clk 00:12:04]} Nc6 {[%clk 00:12:27]} 3. Bb5 {[%clk 00:12:04]} g6 {[%clk 00:12:27]} 4. Bxc6 {[%clk 00:12:04]} dxc6 {[%clk 00:12:27]} 5. d3 {[%clk 00:12:04]} Bg7 {[%clk 00:12:27]} 6. O-O {[%clk 00:12:04]} Nf6 {[%clk 00:12:27]} *
+1. d4 {[%clk 01:30:06]} Nf6 {[%clk 01:29:12]} 2. c4 {[%clk 01:30:06]} e6 {[%clk 01:29:12]} 3. Nf3 {[%clk 01:30:06]} d5 {[%clk 01:29:12]} 4. Nc3 {[%clk 01:30:06]} Be7 {[%clk 01:29:12]} 5. Bf4 {[%clk 01:30:06]} O-O {[%clk 01:29:12]} 6. e3 {[%clk 01:30:06]} Nbd7 {[%clk 01:29:12]} 7. c5 {[%clk 01:30:06]} *

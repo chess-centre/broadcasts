@@ -262,6 +262,45 @@ export default function SettingsPanel({ open, onClose }) {
               onChange={(v) => updateSetting("standingsShowPlayed", v)}
             />
 
+            {/* TV / Kiosk Mode */}
+            <SectionTitle>TV / Kiosk Mode</SectionTitle>
+            <div className="flex items-center justify-between py-1.5">
+              <span className="text-xs text-slate-300">Cycle interval</span>
+              <div className="flex gap-1">
+                {[15, 30, 60].map((sec) => (
+                  <button
+                    key={sec}
+                    onClick={() => updateSetting("autoCycleInterval", sec)}
+                    className={`text-[10px] px-2 py-0.5 rounded transition-colors ${
+                      settings.autoCycleInterval === sec
+                        ? "bg-blue-600 text-white"
+                        : "bg-slate-800 text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    {sec}s
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="flex items-center justify-between py-1.5">
+              <span className="text-xs text-slate-300">Standings every</span>
+              <div className="flex gap-1">
+                {[2, 3, 5].map((n) => (
+                  <button
+                    key={n}
+                    onClick={() => updateSetting("autoCycleLeaderboardEvery", n)}
+                    className={`text-[10px] px-2 py-0.5 rounded transition-colors ${
+                      settings.autoCycleLeaderboardEvery === n
+                        ? "bg-blue-600 text-white"
+                        : "bg-slate-800 text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    {n}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Accent Color */}
             <SectionTitle>Accent Color</SectionTitle>
             <div className="flex gap-2">

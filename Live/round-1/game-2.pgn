@@ -2,12 +2,12 @@
 [Site "Chess Centre"]
 [Date "2026.03.05"]
 [Round "1"]
-[White "Fabiano Caruana"]
-[Black "Magnus Carlsen"]
+[White "Paul Morphy"]
+[Black "Duke of Brunswick"]
 [Result "*"]
-[WhiteElo "2822"]
-[BlackElo "2835"]
-[PlyCount "1"]
+[WhiteElo "2700"]
+[BlackElo "2000"]
+[PlyCount "12"]
 [TimeControl "5400+30"]
 
-1. e4 {[%clk 00:14:34]} *
+1. e4 {[%clk 00:12:47]} e5 {[%clk 00:12:18]} 2. Nf3 {[%clk 00:12:47]} d6 {[%clk 00:12:18]} 3. d4 {[%clk 00:12:47]} Bg4 {[%clk 00:12:18]} 4. dxe5 {[%clk 00:12:47]} Bxf3 {[%clk 00:12:18]} 5. Qxf3 {[%clk 00:12:47]} dxe5 {[%clk 00:12:18]} 6. Bc4 {[%clk 00:12:47]} Nf6 {[%clk 00:12:18]} *

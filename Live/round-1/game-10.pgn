@@ -1,0 +1,13 @@
+[Event "Live Broadcast"]
+[Site "Chess Centre"]
+[Date "2026.03.05"]
+[Round "1"]
+[White "Paul Morphy"]
+[Black "Duke of Brunswick"]
+[Result "*"]
+[WhiteElo "2700"]
+[BlackElo "2000"]
+[PlyCount "13"]
+[TimeControl "5400+30"]
+
+1. e4 {[%clk 00:01:00]} e5 {[%clk 00:01:00]} 2. Nf3 {[%clk 00:01:00]} d6 {[%clk 00:01:00]} 3. d4 {[%clk 00:01:00]} Bg4 {[%clk 00:01:00]} 4. dxe5 {[%clk 00:01:00]} Bxf3 {[%clk 00:01:00]} 5. Qxf3 {[%clk 00:01:00]} dxe5 {[%clk 00:01:00]} 6. Bc4 {[%clk 00:01:00]} Nf6 {[%clk 00:01:00]} 7. Qb3 {[%clk 00:01:00]} *

@@ -1,0 +1,13 @@
+[Event "Live Broadcast"]
+[Site "Chess Centre"]
+[Date "2026.03.05"]
+[Round "1"]
+[White "Bobby Fischer"]
+[Black "Boris Spassky"]
+[Result "*"]
+[WhiteElo "2785"]
+[BlackElo "2660"]
+[PlyCount "12"]
+[TimeControl "5400+30"]
+
+1. c4 {[%clk 00:22:44]} e6 {[%clk 00:23:32]} 2. Nf3 {[%clk 00:22:44]} d5 {[%clk 00:23:32]} 3. d4 {[%clk 00:22:44]} Nf6 {[%clk 00:23:32]} 4. Nc3 {[%clk 00:22:44]} Be7 {[%clk 00:23:32]} 5. Bg5 {[%clk 00:22:44]} O-O {[%clk 00:23:32]} 6. e3 {[%clk 00:22:44]} h6 {[%clk 00:23:32]} *

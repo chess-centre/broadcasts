@@ -33,10 +33,13 @@ export default function GameViewerModal({ board, onClose }) {
 
   const isFinished = gameState?.gameResult && !gameState.gameResult.includes("*");
 
-  // Trigger a resize so Chessground recalculates board dimensions after modal opens
+  // Trigger resize events so Chessground recalculates board dimensions after modal transition
   useEffect(() => {
-    const timer = setTimeout(() => window.dispatchEvent(new Event("resize")), 100);
-    return () => clearTimeout(timer);
+    const fire = () => window.dispatchEvent(new Event("resize"));
+    // Fire at multiple points to cover the 250ms scale transition
+    const t1 = setTimeout(fire, 50);
+    const t2 = setTimeout(fire, 300);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
   const navigate = useCallback((idx) => {

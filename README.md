@@ -2,7 +2,7 @@
 
 Real-time DGT board integration for streaming live chess games.
 
-<img src="./img/example-full-boards-view.png" />
+<img src="./img/example-full-boards.png" />
 
 <!-- screenshot: landing page dashboard -->
 <img src="./img/dashboard.png" />

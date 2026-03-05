@@ -2,12 +2,12 @@
 [Site "Chess Centre"]
 [Date "2026.03.05"]
 [Round "1"]
-[White "Paul Morphy"]
-[Black "Duke of Brunswick"]
+[White "Magnus Carlsen"]
+[Black "Viswanathan Anand"]
 [Result "*"]
-[WhiteElo "2700"]
-[BlackElo "2000"]
-[PlyCount "10"]
+[WhiteElo "2882"]
+[BlackElo "2775"]
+[PlyCount "12"]
 [TimeControl "5400+30"]
 
-1. e4 {[%clk 00:13:26]} e5 {[%clk 00:12:21]} 2. Nf3 {[%clk 00:13:26]} d6 {[%clk 00:12:21]} 3. d4 {[%clk 00:13:26]} Bg4 {[%clk 00:12:21]} 4. dxe5 {[%clk 00:13:26]} Bxf3 {[%clk 00:12:21]} 5. Qxf3 {[%clk 00:13:26]} dxe5 {[%clk 00:12:21]} *
+1. d4 {[%clk 01:29:13]} Nf6 {[%clk 01:30:32]} 2. c4 {[%clk 01:29:13]} e6 {[%clk 01:30:32]} 3. Nc3 {[%clk 01:29:13]} Bb4 {[%clk 01:30:32]} 4. f3 {[%clk 01:29:13]} d5 {[%clk 01:30:32]} 5. a3 {[%clk 01:29:13]} Bxc3+ {[%clk 01:30:32]} 6. bxc3 {[%clk 01:29:13]} c5 {[%clk 01:30:32]} *
