@@ -8,7 +8,7 @@ RUN npm install -g pnpm && pnpm install --frozen-lockfile
 COPY packages/protocol/ packages/protocol/
 COPY apps/relay/ apps/relay/
 RUN pnpm --filter @broadcasts/protocol build && pnpm --filter @broadcasts/relay build
-RUN pnpm --filter @broadcasts/relay deploy --prod /app/deployed
+RUN pnpm --filter @broadcasts/relay deploy --prod --legacy /app/deployed
 
 FROM node:20-slim
 WORKDIR /app
