@@ -2,6 +2,7 @@ app = "chess-broadcast-relay"
 primary_region = "lhr"
 
 [build]
+  dockerfile = "apps/relay/Dockerfile"
 
 [http_service]
   internal_port = 3001
