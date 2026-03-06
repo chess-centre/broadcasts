@@ -1,6 +1,8 @@
 {
   "name": "@broadcasts/desktop",
-  "version": "0.1.0",
+  "version": "0.2.3",
+  "description": "Chess Broadcast Desktop App",
+  "author": "Chess Centre <hello@chesscentre.online>",
   "private": true,
   "main": "electron/main.js",
   "homepage": "./",
