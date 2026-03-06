@@ -6,6 +6,7 @@ on:
     paths:
       - 'apps/relay/**'
       - 'packages/protocol/**'
+      - 'Dockerfile'
 
 jobs:
   deploy:
