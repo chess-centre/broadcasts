@@ -1,0 +1,9 @@
+{
+  "extends": "../config/tsconfig.react.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "allowJs": true
+  },
+  "include": ["src"]
+}

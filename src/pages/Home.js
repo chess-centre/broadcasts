@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import ConfigDashboard from "../components/SimulatorPanel";
 import BoardHealthDashboard from "../components/BoardHealthDashboard";
 import TournamentWizard from "../components/Tournament/TournamentWizard";
+import { getServerURL } from "../utils/server-url";
 
-const API = process.env.REACT_APP_SERVER_URL || "http://localhost:8080";
+const API = getServerURL();
 
 export default function Home() {
   const navigate = useNavigate();

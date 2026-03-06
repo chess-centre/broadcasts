@@ -3,8 +3,9 @@ import StepEventInfo from "./StepEventInfo";
 import StepPlayers from "./StepPlayers";
 import StepFormat from "./StepFormat";
 import StepReview from "./StepReview";
+import { getServerURL } from "../../utils/server-url";
 
-const API = process.env.REACT_APP_SERVER_URL || "http://localhost:8080";
+const API = getServerURL();
 
 const STEPS = ["Event", "Players", "Format", "Review"];
 

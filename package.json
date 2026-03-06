@@ -1,51 +1,21 @@
 {
-  "name": "chess-centre-broadcast",
-  "description": "internal DGT broadcast viewer",
+  "name": "chess-broadcast",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@headlessui/react": "^1.5.0",
-    "@mliebelt/pgn-parser": "^1.4.4",
-    "@react-chess/chessground": "^1.3.4",
-    "@tailwindcss/forms": "^0.5.3",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "chess.js": "^0.13.0",
-    "chokidar": "^3.5.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.19.2",
-    "express-ws": "^5.0.2",
-    "nodemon": "^2.0.15",
-    "pgn-parser": "^2.2.0",
-    "qrcode.react": "^4.2.0",
-    "react": "^18.0.0",
-    "react-chessboard": "^1.2.2",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.4.1",
-    "react-scripts": "5.0.0",
-    "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4",
-    "xlsx": "^0.18.5"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "server": "nodemon server/server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "simulate": "node server/simulator.js",
-    "simulate:quick": "node server/simulator.js --quick",
-    "dev": "concurrently --kill-others -n server,app -c blue,green \"npm run server\" \"npm run start\"",
-    "test:server": "jest --config server/jest.config.js"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "dev:desktop": "turbo dev --filter=@broadcasts/desktop",
+    "dev:web": "turbo dev --filter=@broadcasts/web",
+    "dev:relay": "turbo dev --filter=@broadcasts/relay",
+    "typecheck": "turbo typecheck",
+    "lint": "turbo lint",
+    "clean": "turbo clean && rm -rf node_modules"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "devDependencies": {
+    "turbo": "^2.3.0"
   },
+  "packageManager": "pnpm@10.30.3",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -57,11 +27,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.4",
-    "concurrently": "^9.2.1",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.0.23"
   }
 }

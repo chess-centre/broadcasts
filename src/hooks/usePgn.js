@@ -6,8 +6,9 @@ import {
   useRef,
   useMemo,
 } from "react";
+import { getWebSocketURL } from "../utils/server-url";
 
-const URL = "ws://localhost:8080/games";
+const URL = getWebSocketURL();
 
 const PGNContext = createContext(null);
 

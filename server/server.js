@@ -506,22 +506,25 @@ async function getPgn(filePath) {
   return parsed;
 }
 
-// Cleanup on server shutdown
-process.on("SIGINT", () => {
+// Cleanup function for graceful shutdown
+function shutdownServer() {
   console.log("\n🛑 Shutting down server...");
-
-  // Stop Stockfish
   stockfish.stop();
-
-  // Close all file watchers
   closeAllWatchers();
-
-  // Close all client connections
   clients.forEach((client) => {
     client.close();
   });
+}
 
+// Cleanup on server shutdown (standalone mode)
+process.on("SIGINT", () => {
+  shutdownServer();
   process.exit(0);
+});
+
+// Cleanup when Electron app quits
+process.on("exit", () => {
+  shutdownServer();
 });
 
 // Start the server

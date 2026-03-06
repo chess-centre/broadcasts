@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { getServerURL } from "../utils/server-url";
 
-const API = process.env.REACT_APP_SERVER_URL || "http://localhost:8080";
+const API = getServerURL();
 
 function StatusDot({ active, color }) {
   const colors = {
