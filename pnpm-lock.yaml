@@ -35,6 +35,9 @@ importers:
       chess.js:
         specifier: ^0.13.0
         version: 0.13.4
+      chessground:
+        specifier: ^9.2.1
+        version: 9.2.1
       chokidar:
         specifier: ^3.5.3
         version: 3.6.0
@@ -2632,6 +2635,10 @@ packages:
 
   chessground@8.3.5:
     resolution: {integrity: sha512-MnrQ2sO9FfHcPYwALuLCEQujEUWFqaVzfsn02iOBmFkndzpOk+9zn7rlSwksoJKZ5+LcrA0EaWgN+GzB0gzX8A==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+
+  chessground@9.2.1:
+    resolution: {integrity: sha512-KIdxm0zD69e62XRwdnFB0XUNYSzn5HM3pMazRCwpfruRUowFI8y+1OAK5YSyBff29myeV1/4o5Q8T191+Irbog==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   chokidar@3.6.0:
@@ -9904,6 +9911,8 @@ snapshots:
   chess.js@0.13.4: {}
 
   chessground@8.3.5: {}
+
+  chessground@9.2.1: {}
 
   chokidar@3.6.0:
     dependencies:

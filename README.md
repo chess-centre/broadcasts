@@ -1,78 +1,126 @@
-# Chess Broadcast System
+# Chess Broadcast
 
-Real-time DGT board integration for streaming live chess games.
+Real-time DGT board integration for streaming live chess games. Installable desktop app for organisers, cloud relay for internet spectators.
 
 <img src="./img/example-full-boards.png" />
-
-<!-- screenshot: landing page dashboard -->
 <img src="./img/dashboard.png" />
+
+---
+
+## Monorepo Structure
+
+```
+apps/
+  desktop/       Electron app — organiser tool with embedded server
+  web/           Next.js — marketing site + spectator viewer
+  relay/         WebSocket relay — bridges desktop to internet spectators
+
+packages/
+  chess/         Pure TypeScript chess logic (PGN parsing, eval, pairings)
+  protocol/      Shared message types and constants
+  ui/            Shared React components and hooks
+  config/        Shared TypeScript configs
+```
+
+### How It Works
+
+```
+Organiser's Machine                Cloud                    Spectators
+┌──────────────┐      push      ┌──────────┐   subscribe   ┌──────────┐
+│ Desktop App  │ ─────────────> │  Relay   │ <──────────── │ Browser  │
+│ (DGT boards) │  game updates  │ Service  │  game updates │ (web app)│
+└──────────────┘                └──────────┘               └──────────┘
+```
 
 ---
 
 ## Quick Start
 
-```bash
-npm install
-cp .env.example .env
-```
+### Prerequisites
 
-### Development (no DGT boards needed)
+- [Node.js](https://nodejs.org/) 20+
+- [pnpm](https://pnpm.io/) 10+
 
 ```bash
-# Start everything (server + simulator + app)
-npm run dev
-
-# Open http://localhost:3000
+# Install pnpm if you don't have it
+npm install -g pnpm
 ```
 
-The landing page is a system dashboard — configure the simulator, hit **start**, then click **open live view** to watch.
-
-### Production (real DGT boards)
+### Install
 
 ```bash
-# Terminal 1: Start the server
-npm run server
-
-# Terminal 2: Start the app
-npm start
+git clone https://github.com/chess-centre/broadcasts.git
+cd broadcasts
+pnpm install
 ```
 
-Set `DGT_BASE_PATH` in `.env` to your DGT LiveChess PGN output directory.
+### Build Packages
+
+```bash
+pnpm build
+```
+
+### Development
+
+Run individual apps or the full stack:
+
+```bash
+# All apps in parallel
+pnpm dev
+
+# Individual apps
+pnpm dev:desktop    # Electron organiser app
+pnpm dev:web        # Next.js marketing + spectator site
+pnpm dev:relay      # WebSocket relay service
+```
+
+### Desktop App (Electron)
+
+```bash
+cd apps/desktop
+cp .env.example .env    # Configure DGT path, ports, etc.
+pnpm dev                # Starts server + React + Electron
+```
+
+The dashboard is the landing page — configure the simulator, hit **start**, then click **open live view** to watch.
+
+### Marketing Site (Next.js)
+
+```bash
+cd apps/web
+pnpm dev                # http://localhost:3000
+```
+
+### Relay Service
+
+```bash
+cd apps/relay
+pnpm dev                # ws://localhost:3001
+```
 
 ---
 
-## Dashboard
+## Desktop App
 
-The landing page (`/`) is a terminal-style control panel with three sections:
+The Electron app is the organiser's tool. It embeds the Express/WebSocket server — no terminal needed.
 
-**Server** — connection status, port, connected WebSocket clients, active file watchers, Stockfish engine status, simulator state.
+### Routes
 
-**Simulator** — configure and run simulated games for testing:
+| Route  | Description                                       |
+| ------ | ------------------------------------------------- |
+| `/`    | System dashboard and simulator controls            |
+| `/live`| Live broadcast viewer with boards and leaderboard  |
+| `/obs` | OBS browser source widgets                         |
 
-- Boards (1–20)
-- Speed (fast 1s / normal 3s / slow 6s)
-- Round number
-- Event name
-- Live game progress with per-board status
+### Dashboard
 
-**Broadcast** — read-only display of server configuration: max boards, poll interval, debug mode, DGT base path, watch mode, LiveChess API URL.
+The landing page (`/`) is a terminal-style control panel:
 
-All values are fetched live from the server and polled every 3 seconds.
+- **Server** — connection status, port, connected clients, active watchers, Stockfish status, simulator state
+- **Simulator** — boards (1-20), speed, round, event name, live game progress
+- **Broadcast** — max boards, poll interval, debug mode, DGT base path
 
----
-
-## Routes
-
-| Route   | Description                                       |
-| ------- | ------------------------------------------------- |
-| `/`     | System dashboard and simulator controls           |
-| `/live` | Live broadcast viewer with boards and leaderboard |
-
----
-
-## Configuration
-
-### Environment Variables (`.env`)
+### Configuration (`.env`)
 
 ```bash
 # Server
@@ -82,7 +130,7 @@ CORS_ORIGIN=*
 # DGT LiveChess
 DGT_BASE_PATH=C:/Users/user/Desktop/Live
 DGT_API_URL=ws://127.0.0.1:1982/api/v1.0
-DGT_WATCH_MODE=files        # 'files' or 'api'
+DGT_WATCH_MODE=files
 
 # Broadcast
 MAX_BOARDS=20
@@ -90,85 +138,117 @@ POLL_INTERVAL=1000
 DEBUG=false
 ```
 
-### Client
+### Building the Desktop App
 
-Set `REACT_APP_SERVER_URL` in `.env` if the server is not on `http://localhost:8080`.
+```bash
+cd apps/desktop
+pnpm build              # Build React + package Electron installers
+pnpm pack               # Quick pack to directory (testing)
+```
+
+Outputs: `.dmg` (macOS), `.exe` (Windows), `.AppImage` (Linux).
 
 ---
 
-## REST API
+## Spectator Access
+
+### Local Network
+
+Spectators on the same WiFi/LAN connect directly to the desktop app's server:
+
+```
+http://<organiser-ip>:8080
+```
+
+Share via the built-in QR code or spectator link modal.
+
+### Internet (via Relay)
+
+The desktop app pushes game updates to the cloud relay. Spectators visit:
+
+```
+https://your-site.com/watch/<event-id>
+```
+
+No port forwarding or tunnels required.
+
+---
+
+## API Reference
+
+### REST API (Desktop Server)
 
 | Method | Endpoint                | Description                                              |
 | ------ | ----------------------- | -------------------------------------------------------- |
 | `GET`  | `/api/config`           | Server configuration (DGT, broadcast settings)           |
-| `GET`  | `/api/status`           | Runtime status (clients, watchers, stockfish, simulator) |
+| `GET`  | `/api/status`           | Runtime status (clients, watchers, stockfish, simulator)  |
 | `POST` | `/api/simulator/start`  | Start simulator `{ boards, speed, round, eventName }`    |
 | `POST` | `/api/simulator/stop`   | Stop simulator                                           |
 | `GET`  | `/api/simulator/status` | Simulator game progress                                  |
+| `GET`  | `/api/tournament`       | Current tournament metadata                              |
+| `POST` | `/api/tournament/create`| Create tournament with pairings                          |
 | `GET`  | `/:round/:board`        | Fetch specific game PGN                                  |
 
-## WebSocket API
+### WebSocket API (Desktop Server)
 
-Connect to `ws://localhost:8080/games` for real-time game updates.
-
-### Client to Server
+Connect to `ws://localhost:8080/games`.
 
 ```json
+// Client → Server
 { "type": "subscribe_round", "round": 1 }
 { "type": "ping" }
-```
 
-### Server to Client
-
-```json
+// Server → Client
 { "type": "game_update", "round": 1, "board": 3, "data": { ... } }
 { "type": "eval_update", "board": 3, "evaluation": { ... }, "fen": "..." }
 { "type": "connected", "message": "Connected to chess broadcast server" }
 ```
 
+### Relay API
+
+```json
+// Organiser → Relay
+{ "type": "relay_auth", "eventId": "spring-open", "secret": "..." }
+{ "type": "relay_publish", "eventId": "spring-open", "message": { ... } }
+
+// Spectator → Relay
+{ "type": "relay_subscribe", "eventId": "spring-open" }
+```
+
+Health check: `GET /health`
+Active events: `GET /events`
+
 ---
 
-## Architecture
+## Packages
 
-```
-server/
-  server.js          Express + WebSocket server, file watching, Stockfish eval
-  config.js          Environment-based configuration
-  simulator.js       Game simulator using famous games collection
-  pgn-generator.js   PGN file writer
-  parse-game.js      PGN parser (players, clocks, moves, status)
-  stockfish-service.js  Stockfish engine integration
-  famous-games.js    Source games for simulation
-  mock-data.js       Player names, ratings, time controls
+### `@broadcasts/chess`
 
-src/
-  pages/
-    Home.js            System dashboard
-    LiveBroadcast.js   Live broadcast viewer
-  components/
-    SimulatorPanel.js  Config dashboard (server, simulator, broadcast)
-    Layout.js          Minimal terminal-style header
-    Board/Board.js     Chessground board with eval bar
-    Board/EvalBar.js   Position evaluation display
-    Viewer/Game.js     PGN parser and board controller
-    Shared/
-      LiveLeaderboard.js  Auto-calculated standings
-  hooks/
-    usePgn.js          WebSocket connection and game state
-    useDGT.js          Direct DGT WebSocket API (experimental)
-    useInterval.js     Polling helper
+Pure TypeScript chess utilities. No React, no browser APIs.
+
+```ts
+import { parseGame, evalToPercent, generatePairings } from "@broadcasts/chess";
 ```
 
-### Data Flow
+- **parseGame** — PGN parser extracting players, clocks, FEN, result
+- **evalToPercent / formatScore / uciToSan** — engine evaluation utilities
+- **detectCriticalMoment** — blunder/mistake/inaccuracy detection
+- **extractMoveTimes / formatTime** — clock time analysis
+- **generatePairings / calculateRounds** — round-robin and Swiss pairing engine
+- **generateGameEndPost / generateStandingsPost** — social media post generation
 
-```
-Simulator / DGT LiveChess
-  → writes PGN files to Live/round-N/game-N.pgn
-    → Chokidar file watcher detects changes
-      → Server broadcasts via WebSocket
-        → React app updates boards in real-time
-          → Stockfish evaluates positions → eval updates
-```
+### `@broadcasts/protocol`
+
+Shared TypeScript types for all WebSocket messages, game state, and event metadata. Used by desktop, relay, and web apps.
+
+### `@broadcasts/ui`
+
+Shared React hooks for broadcast apps:
+
+- **useInterval** — isomorphic interval hook
+- **useClockCountdown** — client-side clock countdown between server updates
+- **useAutoCycle** — TV/kiosk board rotation with priority scoring
+- **useFeaturedBoard** — selects most interesting game by eval volatility
 
 ---
 
@@ -179,8 +259,6 @@ Simulator / DGT LiveChess
 3. Set output directory to match `DGT_BASE_PATH`
 4. Directory structure: `round-1/game-1.pgn`, `round-1/game-2.pgn`, etc.
 5. Connect boards via USB, assign board numbers, enter player info
-
-### Expected Directory Structure
 
 ```
 Live/
@@ -195,29 +273,44 @@ Live/
 
 ---
 
-## Troubleshooting
+## Deployment
 
-**No games appearing** — Check `DGT_BASE_PATH` matches your PGN directory. Verify folder structure is `round-N/game-N.pgn`. Enable `DEBUG=true` for file watcher logs.
+### Desktop App
 
-**WebSocket not connecting** — Verify server is running on correct port. Check browser console. Ensure firewall allows WebSocket connections.
+Tag a version and push — GitHub Actions builds for all platforms and creates a release:
 
-**Clocks not updating** — DGT LiveChess must include `[%clk H:MM:SS]` comments in PGN output. Enable clock output in DGT settings.
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
 
-**Boards not auto-detecting** — Files must match pattern `game-N.pgn`. Enable `DEBUG=true` to see detection logs.
+Auto-updates are handled via `electron-updater` from GitHub Releases.
+
+### Marketing Site
+
+Deploys to Vercel on push to `master` (changes in `apps/web/` or `packages/`).
+
+### Relay Service
+
+Deploys to Fly.io on push to `master` (changes in `apps/relay/` or `packages/protocol/`).
+
+```bash
+cd apps/relay
+flyctl launch      # First time
+flyctl deploy      # Subsequent deploys
+```
 
 ---
 
-## Scripts
+## Troubleshooting
 
-```bash
-npm start              # React dev server
-npm run server         # Express server with nodemon
-npm run dev            # Server + simulator + app (all-in-one)
-npm run simulate       # Interactive simulator
-npm run simulate:quick # Quick start with 4 boards
-npm run build          # Production build
-npm run test:server    # Run server unit tests
-```
+**No games appearing** — Check `DGT_BASE_PATH` matches your PGN directory. Verify folder structure is `round-N/game-N.pgn`. Enable `DEBUG=true`.
+
+**WebSocket not connecting** — Verify server is running on correct port. Check browser console. Ensure firewall allows WebSocket connections.
+
+**Clocks not updating** — DGT LiveChess must include `[%clk H:MM:SS]` comments in PGN output.
+
+**pnpm install fails** — Ensure you're using pnpm 10+ and Node 20+. Run `pnpm install --no-frozen-lockfile` on first setup.
 
 ---
 
