@@ -3,12 +3,6 @@ import { Transition } from "@headlessui/react";
 import { usePGN } from "../../hooks/usePgn";
 import { generateGameEndPost, generateStandingsPost, generateRoundSummary } from "../../utils/social";
 
-function surname(fullName) {
-  if (!fullName) return "?";
-  const parts = fullName.trim().split(/\s+/);
-  return parts.length > 1 ? parts[parts.length - 1] : fullName;
-}
-
 function PostCard({ text, onCopy }) {
   const [copied, setCopied] = useState(false);
 

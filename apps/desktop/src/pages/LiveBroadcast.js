@@ -87,7 +87,7 @@ function LiveBroadcastContent() {
       window.removeEventListener("keydown", handleKey);
       document.removeEventListener("fullscreenchange", handleFsChange);
     };
-  }, [toggleFullscreen]);
+  }, [toggleFullscreen, toggleAutoCycle]);
 
   // Body class for hiding header in fullscreen
   useEffect(() => {

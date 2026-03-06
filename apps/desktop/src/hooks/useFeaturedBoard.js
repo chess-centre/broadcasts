@@ -52,5 +52,5 @@ export default function useFeaturedBoard(games, evals) {
     });
 
     return bestBoard;
-  }, [games, evals]);
+  }, [games]); // eslint-disable-line react-hooks/exhaustive-deps
 }
