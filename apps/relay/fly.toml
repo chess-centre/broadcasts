@@ -1,22 +1,33 @@
-app = "chess-broadcast-relay"
-primary_region = "lhr"
+# fly.toml app configuration file generated for chess-broadcast-relay-wandering-moon-6562 on 2026-03-06T23:18:47+04:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'chess-broadcast-relay-wandering-moon-6562'
+primary_region = 'lhr'
 
 [build]
-  dockerfile = "apps/relay/Dockerfile"
 
 [http_service]
   internal_port = 3001
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
 
 [[services]]
-  protocol = "tcp"
+  protocol = 'tcp'
   internal_port = 3001
+
   [[services.ports]]
     port = 443
-    handlers = ["tls", "http"]
+    handlers = ['tls', 'http']
+
   [[services.ports]]
     port = 80
-    handlers = ["http"]
+    handlers = ['http']
+
+[[vm]]
+  memory = '1gb'
+  cpus = 1
+  memory_mb = 1024

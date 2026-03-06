@@ -8,12 +8,13 @@ RUN npm install -g pnpm && pnpm install --frozen-lockfile
 COPY packages/protocol/ packages/protocol/
 COPY apps/relay/ apps/relay/
 RUN pnpm --filter @broadcasts/protocol build && pnpm --filter @broadcasts/relay build
+RUN pnpm --filter @broadcasts/relay deploy --prod /app/deployed
 
 FROM node:20-slim
 WORKDIR /app
-COPY --from=builder /app/apps/relay/dist ./dist
-COPY --from=builder /app/apps/relay/package.json ./
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/deployed/node_modules ./node_modules
+COPY --from=builder /app/deployed/dist ./dist
+COPY --from=builder /app/deployed/package.json ./
 ENV PORT=3001
 EXPOSE 3001
 CMD ["node", "dist/index.js"]

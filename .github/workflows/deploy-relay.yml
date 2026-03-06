@@ -16,6 +16,6 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy to Fly.io
-        run: flyctl deploy --remote-only --config apps/relay/fly.toml
+        run: flyctl deploy --remote-only --config apps/relay/fly.toml --dockerfile Dockerfile
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
