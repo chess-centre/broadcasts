@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@mliebelt/pgn-parser": "^1.4.4",
-    "chess.js": "^0.13.0"
+    "chess.js": "^1.4.0"
   },
   "devDependencies": {
     "typescript": "^5.3.0"
