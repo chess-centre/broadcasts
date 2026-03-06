@@ -30,7 +30,8 @@ pnpm-debug.log*
 release/
 
 # stockfish
-public/stockfish/
+**/stockfish/*.wasm
+**/stockfish/*.js
 
 # Live game data
 Live/
