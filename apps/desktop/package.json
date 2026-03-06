@@ -64,6 +64,7 @@
     ]
   },
   "build": {
+    "extends": null,
     "appId": "com.chesscentre.broadcast",
     "productName": "Chess Broadcast",
     "files": [
