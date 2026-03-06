@@ -50,7 +50,7 @@ function createWindow(serverPort) {
   });
 
   if (isDev) {
-    mainWindow.loadURL("http://localhost:3000");
+    mainWindow.loadURL(`http://localhost:${process.env.PORT || 3002}`);
     mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadURL(

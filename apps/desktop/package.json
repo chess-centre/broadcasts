@@ -5,7 +5,7 @@
   "main": "electron/main.js",
   "homepage": "./",
   "scripts": {
-    "dev": "concurrently --kill-others -n server,react,electron -c blue,green,yellow \"node server/server.js\" \"BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "dev": "concurrently --kill-others -n server,react,electron -c blue,green,yellow \"node server/server.js\" \"BROWSER=none PORT=3002 react-scripts start\" \"wait-on http://localhost:3002 && electron .\"",
     "build": "react-scripts build && electron-builder",
     "build:react": "react-scripts build",
     "pack": "react-scripts build && electron-builder --dir",
