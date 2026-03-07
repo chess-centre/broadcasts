@@ -2,29 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg: #0a0a0f;
-  --bg-card: #111118;
-  --bg-elevated: #16161f;
-  --border: #1e1e2a;
-  --border-light: #2a2a3a;
-  --text: #e4e4ef;
-  --text-muted: #8888a0;
-  --text-dim: #55556a;
-  --green: #10b981;
-  --green-glow: rgba(16, 185, 129, 0.3);
-  --green-subtle: rgba(16, 185, 129, 0.08);
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: #0d1117;
+  color: #e6edf3;
   font-family: var(--font-sans, "Inter", system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.15), 0 0 80px rgba(16, 185, 129, 0.05);
+}
+
+.glow-green-lg {
+  box-shadow: 0 0 60px rgba(16, 185, 129, 0.2), 0 0 120px rgba(16, 185, 129, 0.08);
+}
+
+/* Grid pattern background */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(48, 54, 61, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 54, 61, 0.3) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Noise texture overlay */
+.noise {
+  position: relative;
+}
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Screenshot/video mockup styling */
+.app-screenshot {
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #161b22;
+}
+
+.app-screenshot-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #161b22;
+  border-bottom: 1px solid #21262d;
+}
+
+.app-screenshot-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }

@@ -1,0 +1,41 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="228" fill="#0d1117"/>
+  <rect x="4" y="4" width="1016" height="1016" rx="224" stroke="#30363d" stroke-width="8"/>
+
+  <!-- Subtle radial glow -->
+  <circle cx="512" cy="460" r="300" fill="#10b981" opacity="0.06"/>
+
+  <!-- King cross -->
+  <path d="M512 220V320" stroke="#10b981" stroke-width="40" stroke-linecap="round"/>
+  <path d="M462 270H562" stroke="#10b981" stroke-width="40" stroke-linecap="round"/>
+
+  <!-- King body -->
+  <path
+    d="M380 360C380 360 340 440 340 520C340 600 380 640 380 640H644C644 640 684 600 684 520C684 440 644 360 644 360H380Z"
+    fill="#10b981"
+    opacity="0.15"
+    stroke="#10b981"
+    stroke-width="24"
+    stroke-linejoin="round"
+  />
+
+  <!-- King base -->
+  <path
+    d="M360 640H664L700 710H324L360 640Z"
+    fill="#10b981"
+    opacity="0.2"
+    stroke="#10b981"
+    stroke-width="24"
+    stroke-linejoin="round"
+  />
+  <rect x="310" y="710" width="404" height="64" rx="16" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="24"/>
+
+  <!-- Broadcast signal arcs - left -->
+  <path d="M180 800C180 800 100 700 100 512C100 324 180 224 180 224" stroke="#10b981" stroke-width="20" stroke-linecap="round" opacity="0.25"/>
+  <path d="M240 740C240 740 176 660 176 512C176 364 240 284 240 284" stroke="#10b981" stroke-width="20" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Broadcast signal arcs - right -->
+  <path d="M844 224C844 224 924 324 924 512C924 700 844 800 844 800" stroke="#10b981" stroke-width="20" stroke-linecap="round" opacity="0.25"/>
+  <path d="M784 284C784 284 848 364 848 512C848 660 784 740 784 740" stroke="#10b981" stroke-width="20" stroke-linecap="round" opacity="0.4"/>
+</svg>

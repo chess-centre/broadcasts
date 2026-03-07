@@ -87,12 +87,14 @@
     ],
     "mac": {
       "category": "public.app-category.board-games",
+      "icon": "assets/icon.icns",
       "target": [
         "dmg",
         "zip"
       ]
     },
     "win": {
+      "icon": "assets/icon.ico",
       "target": [
         "nsis",
         "portable"
