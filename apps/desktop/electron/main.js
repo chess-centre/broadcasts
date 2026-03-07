@@ -88,7 +88,15 @@ ipcMain.handle("select-dgt-path", async () => {
 });
 
 app.whenReady().then(() => {
-  const port = startEmbeddedServer();
+  let port;
+  if (isDev) {
+    // In dev mode, server is started separately by concurrently
+    const configPath = path.join(__dirname, "..", "server", "config.js");
+    const config = require(configPath);
+    port = config.server.port;
+  } else {
+    port = startEmbeddedServer();
+  }
   createWindow(port);
 
   // Check for updates in production

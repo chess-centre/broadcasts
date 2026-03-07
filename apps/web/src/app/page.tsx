@@ -217,20 +217,14 @@ export default function HomePage() {
                 Chess Broadcast
               </span>
             </div>
-            {/* Placeholder for screenshot/video */}
-            <div className="relative aspect-video bg-surface-raised flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-4">
-                  <Play className="w-8 h-8 text-emerald-400 ml-1" />
-                </div>
-                <p className="text-neutral-500 text-sm">
-                  Demo video coming soon
-                </p>
-                <p className="text-neutral-600 text-xs mt-1">
-                  Add a screenshot or Screen Studio recording here
-                </p>
-              </div>
-            </div>
+            <video
+              className="w-full aspect-video bg-surface-raised"
+              src="/demo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
           </div>
         </div>
       </section>
