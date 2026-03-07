@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LogoMark } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { NetworkAnimation } from "@/components/hero/network-animation";
+import { DataFlowAnimation } from "@/components/hero/data-flow-animation";
 import { ThemeSwitcher } from "@/components/showcase/theme-switcher";
 import { EvalDemo } from "@/components/showcase/eval-demo";
 import { CrosstableDemo } from "@/components/showcase/crosstable-demo";
@@ -53,7 +54,7 @@ export default function HomePage() {
           <Button asChild size="sm">
             <Link href="/download">
               <Download className="w-4 h-4" />
-              Download
+              <span className="hidden sm:inline">Download</span>
             </Link>
           </Button>
         </div>
@@ -85,18 +86,15 @@ export default function HomePage() {
             OPEN SOURCE &middot; FREE FOREVER
           </div>
 
-          <h1 className="text-5xl sm:text-7xl md:text-[6.5rem] font-black tracking-tighter leading-[0.95] mb-8 animate-slide-up">
-            <span className="text-white/90">Every move.</span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.1] mb-8 animate-slide-up">
+            <span className="text-white">Live chess,</span>
             <br />
-            <span className="hero-gradient-text">Every board.</span>
-            <br />
-            <span className="text-white/60">Live.</span>
+            <span className="hero-gradient-text">broadcast everywhere.</span>
           </h1>
 
-          <p className="text-base md:text-lg text-neutral-500 max-w-xl mx-auto mb-10 leading-relaxed font-mono animate-fade-in [animation-delay:200ms] opacity-0">
-            DGT boards &rarr; Stockfish analysis &rarr; spectators worldwide.
-            <br className="hidden md:block" />
-            Real-time chess broadcasting infrastructure.
+          <p className="text-sm md:text-base text-neutral-400 max-w-lg mx-auto mb-10 leading-relaxed animate-fade-in [animation-delay:200ms] opacity-0">
+            Connect DGT boards. Stream moves, clocks, and engine analysis to
+            any browser in real-time. Open source and free.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap animate-fade-in [animation-delay:400ms] opacity-0">
@@ -114,23 +112,18 @@ export default function HomePage() {
             </Button>
           </div>
 
-          {/* Stats with terminal aesthetic */}
-          <div className="flex gap-6 md:gap-12 justify-center mt-16 animate-fade-in [animation-delay:600ms] opacity-0">
+          {/* Stats */}
+          <div className="flex gap-8 md:gap-12 justify-center mt-14 animate-fade-in [animation-delay:600ms] opacity-0">
             {[
-              { value: "20", unit: "boards", label: "simultaneous" },
-              { value: "<100", unit: "ms", label: "latency" },
-              { value: "0", unit: "cost", label: "open source" },
+              { value: "20+", label: "boards" },
+              { value: "<100ms", label: "latency" },
+              { value: "Free", label: "forever" },
             ].map((stat) => (
               <div key={stat.label} className="text-center group">
-                <div className="flex items-baseline justify-center gap-0.5">
-                  <span className="text-2xl md:text-4xl font-black font-mono text-emerald-400 tabular-nums tracking-tight group-hover:text-cyan-400 transition-colors">
-                    {stat.value}
-                  </span>
-                  <span className="text-xs font-mono text-emerald-400/60 group-hover:text-cyan-400/60 transition-colors">
-                    {stat.unit}
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 mt-1 block">
+                <span className="text-lg md:text-2xl font-semibold font-mono text-emerald-400 tabular-nums tracking-tight group-hover:text-cyan-400 transition-colors block">
+                  {stat.value}
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 mt-0.5 block">
                   {stat.label}
                 </span>
               </div>
@@ -140,8 +133,11 @@ export default function HomePage() {
       </section>
 
       {/* Interactive Feature Showcases */}
-      <section id="features" className="py-16 md:py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section id="features" className="py-16 md:py-24 px-6 relative">
+        <div className="absolute inset-0 overflow-hidden">
+          <DataFlowAnimation direction="horizontal" />
+        </div>
+        <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-block text-xs font-mono font-medium text-emerald-400 uppercase tracking-widest px-3 py-1 bg-emerald-500/[0.08] rounded mb-4">
               Features
@@ -157,7 +153,7 @@ export default function HomePage() {
           </div>
 
           {/* Showcase 1: Board Themes & Customisation */}
-          <div className="showcase-card p-8 md:p-10 mb-6">
+          <div className="showcase-card p-5 md:p-10 mb-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-violet-500/[0.1] border border-violet-500/20 flex items-center justify-center">
                 <Palette className="w-5 h-5 text-violet-400" />
@@ -176,12 +172,12 @@ export default function HomePage() {
 
           {/* Showcase 2 + 3: Engine Analysis & Multi-board grid */}
           <div className="grid md:grid-cols-2 gap-6 mb-6">
-            <div className="showcase-card p-8">
+            <div className="showcase-card p-5 md:p-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-emerald-500/[0.1] border border-emerald-500/20 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-emerald-500/[0.1] border border-emerald-500/20 flex items-center justify-center shrink-0">
                   <BarChart3 className="w-5 h-5 text-emerald-400" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-white">
                     Engine Analysis
                   </h3>
@@ -193,12 +189,12 @@ export default function HomePage() {
               <EvalDemo />
             </div>
 
-            <div className="showcase-card p-8">
+            <div className="showcase-card p-5 md:p-8">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/[0.1] border border-blue-500/20 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-blue-500/[0.1] border border-blue-500/20 flex items-center justify-center shrink-0">
                   <Monitor className="w-5 h-5 text-blue-400" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-lg font-semibold text-white">
                     Multi-Board View
                   </h3>
@@ -212,7 +208,7 @@ export default function HomePage() {
           </div>
 
           {/* Showcase 4: Tournament / Crosstable */}
-          <div className="showcase-card p-8 md:p-10 mb-6">
+          <div className="showcase-card p-5 md:p-10 mb-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-amber-500/[0.1] border border-amber-500/20 flex items-center justify-center">
                 <Trophy className="w-5 h-5 text-amber-400" />
@@ -305,6 +301,9 @@ export default function HomePage() {
       {/* How it works */}
       <section id="how-it-works" className="py-16 md:py-24 px-6 relative">
         <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_10%,transparent_70%)] opacity-50" />
+        <div className="absolute inset-0 overflow-hidden">
+          <DataFlowAnimation direction="vertical" />
+        </div>
         <div className="relative max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-block text-xs font-mono font-medium text-emerald-400 uppercase tracking-widest px-3 py-1 bg-emerald-500/[0.08] rounded mb-4">
@@ -348,7 +347,7 @@ export default function HomePage() {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/40" />
               Data Pipeline
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-3 text-neutral-400">
+            <div className="hidden md:flex items-center justify-center gap-3 text-neutral-400">
               <span className="px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.06] text-white/70">DGT Board</span>
               <span className="text-emerald-500/50">&rarr;</span>
               <span className="px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.06] text-white/70">PGN File</span>
@@ -361,6 +360,30 @@ export default function HomePage() {
               <span className="text-cyan-500/50">&rarr;</span>
               <span className="px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.06] text-white/70">Spectators</span>
             </div>
+            {/* Mobile: vertical pipeline */}
+            <div className="flex md:hidden flex-col items-center gap-1.5 text-neutral-400">
+              {[
+                { label: "DGT Board", highlight: false },
+                { label: "PGN File", highlight: false },
+                { label: "Broadcast Server", highlight: "emerald" as const },
+                { label: "Stockfish", highlight: false },
+                { label: "WebSocket", highlight: "cyan" as const },
+                { label: "Spectators", highlight: false },
+              ].map((item, i, arr) => (
+                <div key={item.label} className="flex flex-col items-center">
+                  <span className={`px-3 py-1.5 rounded text-xs ${
+                    item.highlight === "emerald"
+                      ? "bg-emerald-500/[0.06] border border-emerald-500/20 text-emerald-400"
+                      : item.highlight === "cyan"
+                        ? "bg-cyan-500/[0.06] border border-cyan-500/20 text-cyan-400"
+                        : "bg-white/[0.03] border border-white/[0.06] text-white/70"
+                  }`}>{item.label}</span>
+                  {i < arr.length - 1 && (
+                    <span className="text-emerald-500/50 text-[10px] my-0.5">&darr;</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -369,7 +392,7 @@ export default function HomePage() {
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center relative">
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/[0.03] via-cyan-500/[0.04] to-indigo-500/[0.03] rounded-3xl blur-xl" />
-          <div className="relative showcase-card p-12 md:p-16 overflow-hidden">
+          <div className="relative showcase-card p-8 md:p-16 overflow-hidden">
             {/* Corner accents */}
             <div className="absolute top-0 left-0 w-16 h-px bg-gradient-to-r from-emerald-500/40 to-transparent" />
             <div className="absolute top-0 left-0 w-px h-16 bg-gradient-to-b from-emerald-500/40 to-transparent" />

@@ -117,22 +117,22 @@ export function BoardGridDemo() {
               </div>
 
               {/* Info */}
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 overflow-hidden">
                 <div className="flex items-center gap-1 mb-0.5">
-                  <div className="w-2 h-2 rounded-sm bg-white" />
+                  <div className="w-2 h-2 rounded-sm bg-white shrink-0" />
                   <span className="text-[10px] text-white truncate font-medium">
                     {board.white.split(",")[0]}
                   </span>
                 </div>
                 <div className="flex items-center gap-1 mb-1.5">
-                  <div className="w-2 h-2 rounded-sm bg-neutral-700" />
+                  <div className="w-2 h-2 rounded-sm bg-neutral-700 shrink-0" />
                   <span className="text-[10px] text-neutral-400 truncate">
                     {board.black.split(",")[0]}
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1">
                   <span
-                    className={`text-[10px] font-mono font-bold tabular-nums ${
+                    className={`text-[10px] font-mono font-bold tabular-nums shrink-0 ${
                       ev > 0.5
                         ? "text-white"
                         : ev < -0.5
@@ -144,7 +144,7 @@ export function BoardGridDemo() {
                     {ev.toFixed(1)}
                   </span>
                   {isFeatured && (
-                    <span className="text-[8px] font-mono text-blue-400 uppercase tracking-wider">
+                    <span className="text-[7px] font-mono text-blue-400 uppercase tracking-wide truncate">
                       Featured
                     </span>
                   )}
