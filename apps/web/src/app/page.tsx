@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/logo";
 import { Button } from "@/components/ui/button";
+import { NetworkAnimation } from "@/components/hero/network-animation";
 import { ThemeSwitcher } from "@/components/showcase/theme-switcher";
 import { EvalDemo } from "@/components/showcase/eval-demo";
 import { CrosstableDemo } from "@/components/showcase/crosstable-demo";
@@ -59,58 +60,77 @@ export default function HomePage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 px-6">
-        <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,black_10%,transparent_60%)]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-[150px]" />
-        <div className="absolute top-20 right-1/4 w-[400px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[120px]" />
-        <div className="absolute top-40 left-1/4 w-[300px] h-[300px] bg-indigo-500/[0.03] rounded-full blur-[100px]" />
+      <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 px-6 overflow-hidden">
+        {/* Network animation background */}
+        <NetworkAnimation />
+
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_80%_60%_at_50%_30%,black_10%,transparent_70%)]" />
+
+        {/* Glow orbs */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/[0.04] rounded-full blur-[180px]" />
+        <div className="absolute top-10 right-1/3 w-[400px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[140px]" />
+
+        {/* Horizontal scan line */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="hero-scanline" />
+        </div>
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-medium text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full animate-fade-in">
-            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-            Open Source &middot; Free Forever
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-mono font-medium text-emerald-400 bg-emerald-500/[0.06] border border-emerald-500/20 rounded-full animate-fade-in backdrop-blur-sm">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+            </span>
+            OPEN SOURCE &middot; FREE FOREVER
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-[1.05] mb-6 animate-slide-up">
-            Live Chess
+          <h1 className="text-5xl sm:text-7xl md:text-[6.5rem] font-black tracking-tighter leading-[0.95] mb-8 animate-slide-up">
+            <span className="text-white/90">Every move.</span>
             <br />
-            <span className="gradient-text">Broadcasting</span>
+            <span className="hero-gradient-text">Every board.</span>
             <br />
-            Made Simple
+            <span className="text-white/60">Live.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in [animation-delay:200ms] opacity-0">
-            Connect your DGT boards, hit start, and stream every move to
-            spectators worldwide. Engine analysis, live clocks, tournament
-            management &mdash; all in one app.
+          <p className="text-base md:text-lg text-neutral-500 max-w-xl mx-auto mb-10 leading-relaxed font-mono animate-fade-in [animation-delay:200ms] opacity-0">
+            DGT boards &rarr; Stockfish analysis &rarr; spectators worldwide.
+            <br className="hidden md:block" />
+            Real-time chess broadcasting infrastructure.
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap animate-fade-in [animation-delay:400ms] opacity-0">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="hero-btn-glow">
               <Link href="/download">
                 <Download className="w-5 h-5" />
-                Download for Free
+                Download
               </Link>
             </Button>
-            <Button asChild variant="secondary" size="lg">
+            <Button asChild variant="secondary" size="lg" className="backdrop-blur-sm">
               <a href="#demo">
                 <Play className="w-5 h-5" />
-                See it in Action
+                Watch Demo
               </a>
             </Button>
           </div>
 
-          <div className="flex gap-8 md:gap-16 justify-center mt-16 animate-fade-in [animation-delay:600ms] opacity-0">
+          {/* Stats with terminal aesthetic */}
+          <div className="flex gap-6 md:gap-12 justify-center mt-16 animate-fade-in [animation-delay:600ms] opacity-0">
             {[
-              { value: "20", label: "Simultaneous Boards" },
-              { value: "<100ms", label: "Update Latency" },
-              { value: "3", label: "Platforms" },
+              { value: "20", unit: "boards", label: "simultaneous" },
+              { value: "<100", unit: "ms", label: "latency" },
+              { value: "0", unit: "cost", label: "open source" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <span className="block text-2xl md:text-3xl font-bold font-mono text-emerald-400">
-                  {stat.value}
-                </span>
-                <span className="text-xs text-neutral-500 mt-1 block">
+              <div key={stat.label} className="text-center group">
+                <div className="flex items-baseline justify-center gap-0.5">
+                  <span className="text-2xl md:text-4xl font-black font-mono text-emerald-400 tabular-nums tracking-tight group-hover:text-cyan-400 transition-colors">
+                    {stat.value}
+                  </span>
+                  <span className="text-xs font-mono text-emerald-400/60 group-hover:text-cyan-400/60 transition-colors">
+                    {stat.unit}
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 mt-1 block">
                   {stat.label}
                 </span>
               </div>
@@ -127,13 +147,12 @@ export default function HomePage() {
               Features
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
-              Everything you need to
-              <br />
-              <span className="gradient-text">run a broadcast</span>
+              Built for{" "}
+              <span className="hero-gradient-text">the board</span>
             </h2>
-            <p className="text-neutral-400 mt-4 max-w-xl mx-auto">
-              Professional broadcasting tools built for chess organisers.
-              Customisable, real-time, and completely free.
+            <p className="text-neutral-500 mt-4 max-w-xl mx-auto font-mono text-sm">
+              Professional-grade broadcasting tools.
+              Customisable. Real-time. Free.
             </p>
           </div>
 
@@ -256,7 +275,7 @@ export default function HomePage() {
               Demo
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
-              See it in action
+              See it <span className="hero-gradient-text">in action</span>
             </h2>
           </div>
 
@@ -285,7 +304,7 @@ export default function HomePage() {
 
       {/* How it works */}
       <section id="how-it-works" className="py-16 md:py-24 px-6 relative">
-        <div className="absolute inset-0 bg-dots [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_20%,transparent_70%)]" />
+        <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_10%,transparent_70%)] opacity-50" />
         <div className="relative max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-block text-xs font-mono font-medium text-emerald-400 uppercase tracking-widest px-3 py-1 bg-emerald-500/[0.08] rounded mb-4">
@@ -293,31 +312,55 @@ export default function HomePage() {
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
               Three steps to{" "}
-              <span className="gradient-text">go live</span>
+              <span className="hero-gradient-text">go live</span>
             </h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-0">
             {[
-              { num: "01", title: "Download & Launch", desc: "Install for macOS, Windows, or Linux. The broadcast server starts automatically." },
-              { num: "02", title: "Connect Your Boards", desc: "Point to your DGT LiveChess output folder, or create a tournament with the built-in wizard." },
-              { num: "03", title: "Go Live", desc: "Open the live view and share the spectator link. Every browser sees moves in real-time." },
+              { num: "01", title: "Download & Launch", desc: "Install for macOS or Windows. The embedded server starts automatically.", icon: ">" },
+              { num: "02", title: "Connect Your Boards", desc: "Point to your DGT LiveChess output folder, or create a tournament with the built-in wizard.", icon: ">>" },
+              { num: "03", title: "Go Live", desc: "Share the spectator link. Moves, clocks, and engine analysis stream to every browser in real-time.", icon: ">>>" },
             ].map((item, i) => (
-              <div key={item.num} className="flex gap-5 md:gap-6 items-start group">
-                <div className="relative shrink-0">
-                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] text-emerald-400 font-mono font-bold text-sm group-hover:border-emerald-500/30 transition-colors">
+              <div key={item.num} className="flex gap-5 md:gap-6 items-start group relative">
+                <div className="relative shrink-0 flex flex-col items-center">
+                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.02] border border-white/[0.06] text-emerald-400 font-mono font-bold text-sm group-hover:border-emerald-500/40 group-hover:bg-emerald-500/[0.04] transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(52,211,153,0.1)]">
                     {item.num}
                   </span>
                   {i < 2 && (
-                    <div className="absolute top-12 left-1/2 -translate-x-1/2 w-px h-6 bg-gradient-to-b from-white/[0.06] to-transparent" />
+                    <div className="w-px h-8 bg-gradient-to-b from-emerald-500/20 to-transparent mt-1" />
                   )}
                 </div>
-                <div className="pt-2.5">
-                  <h3 className="text-base font-semibold mb-1 text-white">{item.title}</h3>
-                  <p className="text-sm text-neutral-400 leading-relaxed">{item.desc}</p>
+                <div className="pt-2.5 pb-6">
+                  <h3 className="text-base font-semibold mb-1 text-white font-mono flex items-center gap-2">
+                    {item.title}
+                    <span className="text-emerald-500/30 text-xs font-normal hidden md:inline">{item.icon}</span>
+                  </h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Architecture diagram */}
+          <div className="mt-12 p-6 rounded-xl bg-white/[0.01] border border-white/[0.04] font-mono text-xs text-neutral-500">
+            <div className="flex items-center gap-2 mb-3 text-emerald-400/60 text-[10px] uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400/40" />
+              Data Pipeline
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-3 text-neutral-400">
+              <span className="px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.06] text-white/70">DGT Board</span>
+              <span className="text-emerald-500/50">&rarr;</span>
+              <span className="px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.06] text-white/70">PGN File</span>
+              <span className="text-emerald-500/50">&rarr;</span>
+              <span className="px-3 py-1.5 rounded bg-emerald-500/[0.06] border border-emerald-500/20 text-emerald-400">Broadcast Server</span>
+              <span className="text-emerald-500/50">&rarr;</span>
+              <span className="px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.06] text-white/70">Stockfish</span>
+              <span className="text-cyan-500/50">&rarr;</span>
+              <span className="px-3 py-1.5 rounded bg-cyan-500/[0.06] border border-cyan-500/20 text-cyan-400">WebSocket</span>
+              <span className="text-cyan-500/50">&rarr;</span>
+              <span className="px-3 py-1.5 rounded bg-white/[0.03] border border-white/[0.06] text-white/70">Spectators</span>
+            </div>
           </div>
         </div>
       </section>
@@ -326,25 +369,32 @@ export default function HomePage() {
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center relative">
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/[0.03] via-cyan-500/[0.04] to-indigo-500/[0.03] rounded-3xl blur-xl" />
-          <div className="relative showcase-card p-12 md:p-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-              Ready to <span className="gradient-text">broadcast</span>?
+          <div className="relative showcase-card p-12 md:p-16 overflow-hidden">
+            {/* Corner accents */}
+            <div className="absolute top-0 left-0 w-16 h-px bg-gradient-to-r from-emerald-500/40 to-transparent" />
+            <div className="absolute top-0 left-0 w-px h-16 bg-gradient-to-b from-emerald-500/40 to-transparent" />
+            <div className="absolute bottom-0 right-0 w-16 h-px bg-gradient-to-l from-cyan-500/40 to-transparent" />
+            <div className="absolute bottom-0 right-0 w-px h-16 bg-gradient-to-t from-cyan-500/40 to-transparent" />
+
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
+              Ready to <span className="hero-gradient-text">broadcast</span>?
             </h2>
-            <p className="text-neutral-400 mb-8 max-w-md mx-auto">
-              Free, open source, and runs on macOS, Windows, and Linux.
-              Download now and start broadcasting in minutes.
+            <p className="text-neutral-500 mb-8 max-w-md mx-auto font-mono text-sm">
+              Free. Open source. macOS &amp; Windows.
+              <br />
+              Broadcasting in under 60 seconds.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="hero-btn-glow">
                 <Link href="/download">
                   <Download className="w-5 h-5" />
-                  Download for Free
+                  Download
                 </Link>
               </Button>
-              <Button asChild variant="secondary" size="lg">
+              <Button asChild variant="secondary" size="lg" className="backdrop-blur-sm">
                 <a href="https://github.com/chess-centre/broadcasts" target="_blank" rel="noopener noreferrer">
                   <Github className="w-5 h-5" />
-                  View on GitHub
+                  Source Code
                 </a>
               </Button>
             </div>

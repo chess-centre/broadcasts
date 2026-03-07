@@ -109,3 +109,77 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 20%, rgba(255,255,255,0.06) 80%, transparent);
 }
+
+/* Hero gradient text - Tron-like */
+.hero-gradient-text {
+  background: linear-gradient(90deg, #34d399 0%, #22d3ee 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 100%;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Hero scanline */
+.hero-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(52, 211, 153, 0.15) 20%, rgba(34, 211, 238, 0.2) 50%, rgba(52, 211, 153, 0.15) 80%, transparent 100%);
+  animation: scanline 8s linear infinite;
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.1), 0 0 60px rgba(52, 211, 153, 0.05);
+}
+
+@keyframes scanline {
+  0% { top: -2px; }
+  100% { top: 100%; }
+}
+
+/* Hero CTA glow */
+.hero-btn-glow {
+  position: relative;
+}
+.hero-btn-glow::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #34d399, #22d3ee);
+  opacity: 0;
+  z-index: -1;
+  filter: blur(12px);
+  transition: opacity 0.4s;
+}
+.hero-btn-glow:hover::after {
+  opacity: 0.4;
+}
+
+/* Tron-style feature card hover glow */
+.showcase-card {
+  position: relative;
+}
+.showcase-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, rgba(52, 211, 153, 0.1) 50%, transparent 60%);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.6s, background-position 0.6s;
+  pointer-events: none;
+}
+.showcase-card:hover::before {
+  opacity: 1;
+  background-position: 100% 100%;
+}
