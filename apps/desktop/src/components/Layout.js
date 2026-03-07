@@ -5,7 +5,6 @@ const navItems = [
   { to: "/", label: "Home", end: true },
   { to: "/tournament", label: "Tournament" },
   { to: "/live", label: "Live" },
-  { to: "/guide", label: "Guide" },
 ];
 
 export default function Layout() {
@@ -31,6 +30,15 @@ export default function Layout() {
               </NavLink>
             ))}
           </nav>
+          <div className="flex-1" />
+          <NavLink
+            to="/guide"
+            className={({ isActive }) =>
+              `text-[10px] transition-colors ${isActive ? "text-green-400" : "text-gh-textMuted hover:text-gh-text"}`
+            }
+          >
+            ?
+          </NavLink>
         </div>
       </header>
       <main>

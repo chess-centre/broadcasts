@@ -1,9 +1,10 @@
-const { app, BrowserWindow, dialog, ipcMain } = require("electron");
+const { app, BrowserWindow, dialog, ipcMain, screen } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
 const url = require("url");
 
 let mainWindow = null;
+let viewerWindow = null;
 
 const isDev = !app.isPackaged;
 
@@ -42,6 +43,7 @@ function createWindow(serverPort) {
     minWidth: 900,
     minHeight: 600,
     title: "Chess Broadcast",
+    icon: path.join(__dirname, "..", "assets", "icon.ico"),
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       contextIsolation: true,
@@ -76,6 +78,47 @@ ipcMain.handle("get-server-port", () => {
   return config.server.port;
 });
 
+ipcMain.handle("open-viewer-window", () => {
+  if (viewerWindow && !viewerWindow.isDestroyed()) {
+    viewerWindow.focus();
+    return;
+  }
+
+  const displays = screen.getAllDisplays();
+  const external = displays.find((d) => d.id !== screen.getPrimaryDisplay().id);
+  const bounds = external ? external.bounds : screen.getPrimaryDisplay().bounds;
+
+  viewerWindow = new BrowserWindow({
+    x: bounds.x + 50,
+    y: bounds.y + 50,
+    width: Math.min(bounds.width - 100, 1600),
+    height: Math.min(bounds.height - 100, 1000),
+    title: "Live Viewer",
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+      contextIsolation: true,
+      nodeIntegration: false,
+    },
+  });
+
+  if (isDev) {
+    viewerWindow.loadURL(`http://localhost:${process.env.PORT || 3002}#/live`);
+  } else {
+    viewerWindow.loadURL(
+      url.format({
+        pathname: path.join(__dirname, "..", "build", "index.html"),
+        protocol: "file:",
+        slashes: true,
+        hash: "/live",
+      }),
+    );
+  }
+
+  viewerWindow.on("closed", () => {
+    viewerWindow = null;
+  });
+});
+
 ipcMain.handle("select-dgt-path", async () => {
   const result = await dialog.showOpenDialog(mainWindow, {
     properties: ["openDirectory"],
@@ -88,6 +131,11 @@ ipcMain.handle("select-dgt-path", async () => {
 });
 
 app.whenReady().then(() => {
+  // Set dock icon on macOS (in dev the default Electron icon shows otherwise)
+  if (process.platform === "darwin" && app.dock) {
+    app.dock.setIcon(path.join(__dirname, "..", "assets", "icon.png"));
+  }
+
   let port;
   if (isDev) {
     // In dev mode, server is started separately by concurrently
