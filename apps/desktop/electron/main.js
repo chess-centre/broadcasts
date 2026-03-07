@@ -28,6 +28,19 @@ function startEmbeddedServer() {
     ? path.join(__dirname, "..", "server", "config.js")
     : path.join(process.resourcesPath, "server", "config.js");
 
+  // In production, the server lives in extraResources (outside the asar).
+  // Add the asar node_modules to the module search path so the server
+  // can resolve dependencies like express, chokidar, ws, etc.
+  if (!isDev) {
+    const Module = require("module");
+    const asarNodeModules = path.join(
+      process.resourcesPath,
+      "app.asar",
+      "node_modules",
+    );
+    Module.globalPaths.push(asarNodeModules);
+  }
+
   const config = require(configPath);
   const port = config.server.port;
 
@@ -143,7 +156,13 @@ app.whenReady().then(() => {
     const config = require(configPath);
     port = config.server.port;
   } else {
-    port = startEmbeddedServer();
+    try {
+      port = startEmbeddedServer();
+    } catch (err) {
+      console.error("Failed to start embedded server:", err);
+      // Fall back to default port so the window still opens
+      port = 8080;
+    }
   }
   createWindow(port);
 

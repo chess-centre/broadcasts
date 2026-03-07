@@ -2,7 +2,7 @@
 
 ## Overview
 
-Chess Broadcast is a **local-first desktop application**. The Electron app bundles the Express/WebSocket server and React frontend into a single installable package. There is no cloud backend — everything runs on the organiser's machine.
+Chess Broadcast is a **local-first desktop application**. The Electron app bundles the Express/WebSocket server and React frontend into a single installable package. There is no cloud backend required — everything runs on the organiser's machine. An optional cloud relay enables internet spectators.
 
 ```
 +------------------------------------------------------+
@@ -34,65 +34,31 @@ Chess Broadcast is a **local-first desktop application**. The Electron app bundl
 ### Build Pipeline
 
 ```bash
-# Development
-npm run electron:dev       # Full dev environment with hot reload
-
-# Production builds
-npm run electron:build     # Build React + package Electron installers
-npm run electron:pack      # Quick pack to directory (testing)
+cd apps/desktop
+pnpm build              # Build React + package Electron installers
+pnpm pack               # Quick pack to directory (testing)
 ```
 
 ### Platform Outputs
 
 | Platform | Format      | Location            |
 |----------|-------------|---------------------|
-| macOS    | .dmg, .zip  | `dist/Chess Broadcast-x.x.x.dmg` |
-| Windows  | .exe (NSIS) | `dist/Chess Broadcast Setup x.x.x.exe` |
-| Linux    | .AppImage   | `dist/Chess Broadcast-x.x.x.AppImage` |
+| macOS    | .dmg, .zip  | `release/Chess Broadcast-x.x.x.dmg` |
+| Windows  | .exe (NSIS) | `release/Chess Broadcast Setup x.x.x.exe` |
 
-### GitHub Releases (Recommended)
+### GitHub Releases
 
-1. Tag a version: `git tag v0.1.0`
-2. Build for each platform (or use CI)
-3. Upload artifacts to a GitHub Release
-4. The promotional website download buttons link to the latest release
-
-### CI/CD with GitHub Actions
-
-Add `.github/workflows/build.yml` to automate multi-platform builds:
-
-```yaml
-on:
-  push:
-    tags: ['v*']
-
-jobs:
-  build:
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci --legacy-peer-deps
-      - run: npm run electron:build
-      - uses: softprops/action-gh-release@v2
-        with:
-          files: dist/*
-```
+1. Tag a version: `git tag v0.4.0`
+2. Push the tag: `git push origin v0.4.0`
+3. GitHub Actions builds for macOS and Windows and creates a release
+4. The marketing site download buttons link to the latest release
 
 ## Auto-Updates
 
-Use `electron-updater` (included with electron-builder) for seamless updates:
+The app uses `electron-updater` (included with electron-builder) for seamless updates:
 
-1. Install: `npm install electron-updater`
-2. Configure `publish` in `package.json` build config to point to GitHub Releases
-3. Add update check logic to `electron/main.js`
-
-Updates are downloaded in the background and applied on next launch.
+- `publish` in `apps/desktop/package.json` points to GitHub Releases
+- Updates are downloaded in the background and applied on next launch
 
 ## Architecture Decisions
 
@@ -105,7 +71,7 @@ Updates are downloaded in the background and applied on next launch.
 
 ### Why embedded server (not separate process)?
 
-- **No terminal required**: Organisers don't need to run `npm run server`
+- **No terminal required**: Organisers don't need to run commands
 - **Single lifecycle**: Server starts/stops with the app
 - **Port management**: App controls the server port
 - **Simpler updates**: One thing to update, not two
@@ -115,24 +81,14 @@ Updates are downloaded in the background and applied on next launch.
 Spectators connect to the organiser's machine over the local network:
 
 ```
-http://<organiser-ip>:3000/live    (React dev)
-http://<organiser-ip>:8080/games   (WebSocket)
+http://<organiser-ip>:8080
 ```
 
-For the production Electron app, the React frontend is served from the embedded server. Spectators only need the server URL.
-
-**Network requirements:**
-- Organiser and spectators must be on the same network (WiFi/LAN)
-- Port 8080 must be accessible (firewall)
-- QR code feature generates the spectator link automatically
+For the production Electron app, the React frontend is served from the embedded server. Spectators only need the server URL. A QR code feature generates the spectator link automatically.
 
 ### Remote/Internet Spectators
 
-For spectators outside the local network, options include:
-
-1. **Reverse proxy** (ngrok, Cloudflare Tunnel): Expose the local server to the internet
-2. **Cloud relay** (future): WebSocket relay server that the Electron app pushes to
-3. **Static export** (future): Periodic PGN snapshots uploaded to a web server
+The desktop app can push game updates to the cloud relay service (`apps/relay`). Spectators visit the marketing site (`apps/web`) to watch — no port forwarding or tunnels required.
 
 ## Stockfish Bundling
 
@@ -152,23 +108,13 @@ const stockfishPath = app.isPackaged
 
 - **No authentication** by default — anyone on the network can connect
 - For public venues, consider adding a simple shared secret or PIN
-- WebSocket connections are unencrypted (ws://) — fine for LAN, use a tunnel for internet
+- WebSocket connections are unencrypted (ws://) — fine for LAN, use the relay for internet
 - The app does not phone home or collect any data
 
-## Promotional Website Deployment
+## Deployment Summary
 
-The `website/` directory is a static site. Deploy to:
-
-- **GitHub Pages**: Free, automatic with Actions
-- **Netlify/Vercel**: Drag-and-drop or git integration
-- **Custom domain**: Point DNS to your hosting provider
-
-Download links should point to GitHub Releases API:
-```
-https://github.com/<org>/<repo>/releases/latest/download/Chess.Broadcast-x.x.x.dmg
-```
-
-Or use the GitHub API for dynamic "latest" links:
-```
-https://github.com/<org>/<repo>/releases/latest
-```
+| Component | Platform | Trigger |
+|-----------|----------|---------|
+| Desktop App | GitHub Releases | `git tag v*` + push |
+| Marketing Site | Vercel | Push to `master` (changes in `apps/web/` or `packages/`) |
+| Relay Service | Fly.io | Push to `master` (changes in `apps/relay/` or `packages/protocol/`) |
