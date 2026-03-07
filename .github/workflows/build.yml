@@ -16,8 +16,6 @@ jobs:
             platform: mac
           - os: windows-latest
             platform: win
-          - os: ubuntu-latest
-            platform: linux
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -50,8 +48,6 @@ jobs:
             apps/desktop/dist/*.dmg
             apps/desktop/dist/*.zip
             apps/desktop/dist/*.exe
-            apps/desktop/dist/*.AppImage
-            apps/desktop/dist/*.deb
             apps/desktop/dist/*.yml
 
   release:

@@ -1,6 +1,6 @@
 {
   "name": "@broadcasts/desktop",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Chess Broadcast Desktop App",
   "author": "Chess Centre <hello@chesscentre.online>",
   "private": true,
@@ -99,14 +99,6 @@
         "nsis",
         "portable"
       ]
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ],
-      "category": "Game",
-      "artifactName": "${productName}-${version}-${arch}.${ext}"
     },
     "publish": {
       "provider": "github",

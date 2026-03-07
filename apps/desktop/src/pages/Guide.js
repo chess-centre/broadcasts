@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useNetworkInfo from "../hooks/useNetworkInfo";
 import { useWelcomeWizard } from "../components/WelcomeWizard";
 
@@ -115,7 +114,6 @@ function OverviewSection() {
 }
 
 function SetupSection() {
-  const navigate = useNavigate();
   const { reset: resetWelcome } = useWelcomeWizard();
 
   const handleRerunWizard = () => {
