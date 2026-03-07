@@ -5,6 +5,7 @@ const chokidar = require("chokidar");
 const cors = require("cors");
 const fs = require("fs").promises;
 const path = require("path");
+const os = require("os");
 const parseGame = require("./parse-game");
 const config = require("./config");
 
@@ -12,6 +13,8 @@ const GameSimulator = require("./simulator");
 const StockfishService = require("./stockfish-service");
 const PGNGenerator = require("./pgn-generator");
 const { generatePairings, calculateRounds } = require("./pairing-engine");
+
+const WebSocket = require("ws");
 
 const PORT = config.server.port;
 const BASE_PATH = config.dgt.basePath;
@@ -34,6 +37,82 @@ const evalHistory = new Map();
 // Board health: boardNumber -> { board, round, lastUpdate, white, black, status, moveCount }
 const boardHealth = new Map();
 
+// --- Cloud Relay Bridge ---
+let relayWs = null;
+let relayState = { status: "disconnected", eventId: null, secret: null, url: null, error: null };
+let relayReconnectTimer = null;
+
+function connectRelay(url, eventId, secret, eventName) {
+  disconnectRelay();
+  relayState = { status: "connecting", eventId, secret, url, error: null };
+
+  try {
+    relayWs = new WebSocket(url);
+  } catch (err) {
+    relayState = { ...relayState, status: "error", error: err.message };
+    return;
+  }
+
+  relayWs.on("open", () => {
+    console.log(`[relay] Connected to ${url}`);
+    relayWs.send(JSON.stringify({ type: "relay_auth", eventId, secret, eventName }));
+  });
+
+  relayWs.on("message", (raw) => {
+    try {
+      const msg = JSON.parse(raw.toString());
+      if (msg.type === "relay_authed") {
+        relayState = { ...relayState, status: "connected" };
+        console.log(`[relay] Authenticated as organiser for "${eventId}"`);
+      } else if (msg.type === "error") {
+        relayState = { ...relayState, status: "error", error: msg.message };
+        console.error(`[relay] Error: ${msg.message}`);
+      }
+    } catch {}
+  });
+
+  relayWs.on("close", () => {
+    console.log("[relay] Disconnected");
+    const wasConnected = relayState.status === "connected";
+    relayState = { ...relayState, status: "disconnected" };
+    relayWs = null;
+    // Auto-reconnect if we were previously connected (unexpected disconnect)
+    if (wasConnected && relayState.url) {
+      relayReconnectTimer = setTimeout(() => {
+        console.log("[relay] Attempting reconnect...");
+        connectRelay(relayState.url, relayState.eventId, relayState.secret, eventName);
+      }, 5000);
+    }
+  });
+
+  relayWs.on("error", (err) => {
+    console.error(`[relay] WebSocket error: ${err.message}`);
+    relayState = { ...relayState, status: "error", error: err.message };
+  });
+}
+
+function disconnectRelay() {
+  if (relayReconnectTimer) {
+    clearTimeout(relayReconnectTimer);
+    relayReconnectTimer = null;
+  }
+  if (relayWs) {
+    relayWs.close();
+    relayWs = null;
+  }
+  relayState = { status: "disconnected", eventId: null, secret: null, url: null, error: null };
+}
+
+function publishToRelay(message) {
+  if (relayWs && relayWs.readyState === WebSocket.OPEN && relayState.eventId) {
+    relayWs.send(JSON.stringify({
+      type: "relay_publish",
+      eventId: relayState.eventId,
+      message,
+    }));
+  }
+}
+
 // Configure CORS
 app.use(
   cors({
@@ -44,7 +123,22 @@ app.use(
 
 app.use(express.json());
 
-app.get("/favicon.ico", (req, res) => res.status(204));
+// Serve the React build (production SPA for spectators on LAN)
+const buildPath = path.join(__dirname, "..", "build");
+app.use(express.static(buildPath));
+
+// --- LAN IP detection ---
+function getLanIP() {
+  const interfaces = os.networkInterfaces();
+  for (const name of Object.keys(interfaces)) {
+    for (const iface of interfaces[name]) {
+      if (iface.family === "IPv4" && !iface.internal) {
+        return iface.address;
+      }
+    }
+  }
+  return "127.0.0.1";
+}
 
 // --- Config & Status API ---
 app.get("/api/config", (req, res) => {
@@ -60,7 +154,40 @@ app.get("/api/config", (req, res) => {
       pollInterval: config.broadcast.pollInterval,
       debug: config.broadcast.debug,
     },
+    network: {
+      lanIP: getLanIP(),
+      serverURL: `http://${getLanIP()}:${config.server.port}`,
+      spectatorURL: `http://${getLanIP()}:${config.server.port}/live`,
+    },
   });
+});
+
+// Update config values at runtime
+app.patch("/api/config", async (req, res) => {
+  const { dgtPath, relayUrl, serverPort } = req.body;
+  if (dgtPath !== undefined) config.dgt.basePath = dgtPath;
+  if (relayUrl !== undefined) config.relay = { url: relayUrl };
+  if (serverPort !== undefined) config.server.port = serverPort;
+  res.json({ ok: true });
+});
+
+// --- Cloud Relay API ---
+app.get("/api/relay/status", (req, res) => {
+  res.json(relayState);
+});
+
+app.post("/api/relay/connect", (req, res) => {
+  const { url, eventId, secret, eventName } = req.body;
+  if (!url || !eventId || !secret) {
+    return res.status(400).json({ ok: false, message: "url, eventId, and secret are required" });
+  }
+  connectRelay(url, eventId, secret, eventName);
+  res.json({ ok: true });
+});
+
+app.post("/api/relay/disconnect", (req, res) => {
+  disconnectRelay();
+  res.json({ ok: true });
 });
 
 app.get("/api/status", (req, res) => {
@@ -78,6 +205,7 @@ app.get("/api/status", (req, res) => {
     activeWatchers: boardWatchers.size,
     stockfish: stockfish.ready ? "running" : "stopped",
     simulator: simulator ? (simulator.running ? "running" : "stopped") : "idle",
+    relay: relayState.status,
     boards,
   });
 });
@@ -168,7 +296,7 @@ app.post("/api/tournament/create", async (req, res) => {
     const tournament = {
       event,
       date: date || new Date().toISOString().split("T")[0],
-      venue: venue || "Chess Centre",
+      venue: venue || "",
       timeControl: timeControl || "90+30",
       players,
       format: format || "round-robin",
@@ -209,6 +337,38 @@ app.post("/api/tournament/create", async (req, res) => {
     res.json({ ok: true, tournament });
   } catch (err) {
     console.error("Tournament create error:", err);
+    res.status(500).json({ ok: false, message: err.message });
+  }
+});
+
+// Tournament pairings for a specific round
+app.get("/api/tournament/pairings/:round", async (req, res) => {
+  try {
+    const tournamentPath = path.join(BASE_PATH, "tournament.json");
+    const data = JSON.parse(await fs.readFile(tournamentPath, "utf-8"));
+    const round = parseInt(req.params.round) - 1;
+    if (!data.pairings || !data.pairings[round]) {
+      return res.json({ ok: false, pairings: [] });
+    }
+    res.json({ ok: true, round: round + 1, pairings: data.pairings[round] });
+  } catch {
+    res.json({ ok: false, pairings: [] });
+  }
+});
+
+// Tournament results tracking
+app.post("/api/tournament/result", async (req, res) => {
+  try {
+    const { round, board, result } = req.body;
+    const tournamentPath = path.join(BASE_PATH, "tournament.json");
+    const data = JSON.parse(await fs.readFile(tournamentPath, "utf-8"));
+
+    if (!data.results) data.results = {};
+    data.results[`${round}-${board}`] = result;
+
+    await fs.writeFile(tournamentPath, JSON.stringify(data, null, 2), "utf-8");
+    res.json({ ok: true });
+  } catch (err) {
     res.status(500).json({ ok: false, message: err.message });
   }
 });
@@ -370,7 +530,9 @@ async function broadcastGameUpdate(round, boardNumber, filePath) {
       timestamp: new Date().toISOString(),
     });
 
-    // Send to all connected clients
+    const parsed = JSON.parse(message);
+
+    // Send to all connected local clients
     let sentCount = 0;
     clients.forEach((client) => {
       if (client.readyState === 1) {
@@ -379,6 +541,9 @@ async function broadcastGameUpdate(round, boardNumber, filePath) {
         sentCount++;
       }
     });
+
+    // Forward to cloud relay
+    publishToRelay(parsed);
 
     if (DEBUG)
       console.log(
@@ -400,15 +565,19 @@ async function broadcastGameUpdate(round, boardNumber, filePath) {
 
         const accuracy = calculateAccuracy(history);
 
-        const evalMsg = JSON.stringify({
+        const evalParsed = {
           type: "eval_update",
           board: boardNumber,
           evaluation: { ...evalResult, ...(accuracy || {}) },
           fen: gameData.fen,
-        });
+        };
+        const evalMsg = JSON.stringify(evalParsed);
         clients.forEach((client) => {
           if (client.readyState === 1) client.send(evalMsg);
         });
+
+        // Forward eval to cloud relay
+        publishToRelay(evalParsed);
       });
     }
   } catch (error) {
@@ -509,6 +678,7 @@ async function getPgn(filePath) {
 // Cleanup function for graceful shutdown
 function shutdownServer() {
   console.log("\n🛑 Shutting down server...");
+  disconnectRelay();
   stockfish.stop();
   closeAllWatchers();
   clients.forEach((client) => {
@@ -525,6 +695,11 @@ process.on("SIGINT", () => {
 // Cleanup when Electron app quits
 process.on("exit", () => {
   shutdownServer();
+});
+
+// SPA catch-all: serve index.html for any non-API GET request (spectator browsers)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(buildPath, "index.html"));
 });
 
 // Start the server

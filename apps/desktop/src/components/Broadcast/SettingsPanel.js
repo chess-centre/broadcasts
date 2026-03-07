@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { useBroadcastSettings } from "../../context/BroadcastSettingsContext";
+import { getServerURL } from "../../utils/server-url";
 
 const BOARD_THEMES = [
   { id: "brown", label: "Brown", light: "#f0d9b5", dark: "#b58863" },
@@ -400,7 +401,15 @@ export default function SettingsPanel({ open, onClose }) {
 }
 
 function OBSUrlList() {
-  const base = `${window.location.protocol}//${window.location.host}`;
+  const [base, setBase] = useState(`${window.location.protocol}//${window.location.host}`);
+
+  useEffect(() => {
+    fetch(`${getServerURL()}/api/config`)
+      .then((r) => r.json())
+      .then((data) => { if (data?.network?.serverURL) setBase(data.network.serverURL); })
+      .catch(() => {});
+  }, []);
+
   const urls = [
     { label: "Board 1", url: `${base}/obs?type=board&board=1&round=1` },
     { label: "Featured", url: `${base}/obs?type=featured&round=1` },

@@ -52,7 +52,7 @@ export default function StepEventInfo({ data, onChange }) {
           value={data.venue}
           onChange={(e) => onChange({ venue: e.target.value })}
           className={inputClass}
-          placeholder="Chess Centre"
+          placeholder="e.g. Community Hall"
         />
       </div>
     </div>

@@ -16,7 +16,7 @@ function surname(fullName) {
   return parts.length > 1 ? parts[parts.length - 1] : fullName;
 }
 
-export default function LiveLeaderboard() {
+export default function LiveLeaderboard({ compact = false }) {
   const { games, active } = usePGN();
   const { settings } = useBroadcastSettings();
 
@@ -64,45 +64,84 @@ export default function LiveLeaderboard() {
 
   if (standings.length === 0) {
     return (
-      <div className="text-xs text-slate-500 px-2 py-4">Waiting for data...</div>
+      <div className="flex flex-col items-center justify-center py-8 text-center">
+        <div className="w-10 h-10 rounded-lg bg-emerald-500/[0.08] border border-emerald-500/20 flex items-center justify-center mb-3">
+          <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.996.178-1.768.56-2.018 1.258C2.79 6.582 5.156 8.024 8.91 8.653c1.606.269 2.943.1 3.887-.47M18.75 4.236c.996.178 1.768.56 2.018 1.258.442 1.088-1.924 2.53-5.678 3.16-1.606.268-2.943.099-3.887-.471" />
+          </svg>
+        </div>
+        <p className="text-xs text-gh-textMuted">Waiting for game data...</p>
+      </div>
     );
   }
 
   return (
-    <div className="bg-gh-surface rounded-lg border border-gh-border overflow-hidden">
-      <div className="px-3 py-2 border-b border-gh-border flex items-center justify-between">
-        <span className="text-xs font-semibold text-gh-textMuted uppercase tracking-wider">
-          Standings
-        </span>
-        <div className={`h-1.5 w-1.5 rounded-full ${active ? `${accentDot} animate-pulse` : "bg-red-400"}`} />
-      </div>
+    <div className="rounded-lg border border-gh-border bg-white/[0.01] overflow-hidden">
+      {!compact && (
+        <div className="px-4 py-2.5 border-b border-gh-border/50 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.996.178-1.768.56-2.018 1.258C2.79 6.582 5.156 8.024 8.91 8.653c1.606.269 2.943.1 3.887-.47M18.75 4.236c.996.178 1.768.56 2.018 1.258.442 1.088-1.924 2.53-5.678 3.16-1.606.268-2.943.099-3.887-.471" />
+            </svg>
+            <span className="text-xs font-semibold text-gh-textMuted uppercase tracking-wider">
+              Standings
+            </span>
+          </div>
+          <div className={`h-2 w-2 rounded-full ${active ? `${accentDot} animate-pulse` : "bg-red-400"}`} />
+        </div>
+      )}
 
-      <div className="divide-y divide-gh-border/30">
+      <div className="divide-y divide-gh-border/20">
         {standings.map((player, i) => (
           <div
             key={player.name}
-            className="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700/20"
+            className={`flex items-center gap-2.5 px-4 py-2 transition-colors hover:bg-white/[0.03] ${
+              i === 0 ? "bg-emerald-500/[0.03]" : ""
+            }`}
           >
-            <span className="text-xs text-slate-500 w-4 text-right">{i + 1}</span>
-            <span className="text-xs text-slate-200 flex-1 truncate">
+            {/* Rank */}
+            <span className={`text-xs w-5 text-right tabular-nums ${
+              i === 0 ? "text-emerald-400 font-semibold" : "text-gh-textMuted"
+            }`}>
+              {i + 1}
+            </span>
+
+            {/* Medal for top 3 */}
+            {i < 3 && (
+              <span className={`text-xs shrink-0 ${
+                i === 0 ? "text-yellow-400" : i === 1 ? "text-slate-300" : "text-amber-600"
+              }`}>
+                {i === 0 ? "\u25CF" : "\u25CB"}
+              </span>
+            )}
+
+            {/* Player name */}
+            <span className={`text-xs flex-1 truncate ${
+              i === 0 ? "text-emerald-400 font-medium" : "text-gh-text"
+            }`}>
               {surname(player.name)}
             </span>
+
             {settings.standingsShowRatings && player.rating && (
-              <span className="text-[10px] text-slate-500 tabular-nums">
+              <span className="text-[10px] text-gh-textMuted tabular-nums">
                 {player.rating}
               </span>
             )}
             {settings.standingsShowRecord && (
-              <span className="text-[10px] text-slate-500 tabular-nums whitespace-nowrap">
+              <span className="text-[10px] text-gh-textMuted tabular-nums whitespace-nowrap">
                 {player.wins}/{player.draws}/{player.losses}
               </span>
             )}
             {settings.standingsShowPlayed && (
-              <span className="text-[10px] text-slate-500 tabular-nums">
+              <span className="text-[10px] text-gh-textMuted tabular-nums">
                 {player.played}g
               </span>
             )}
-            <span className="text-xs font-semibold text-slate-300 w-6 text-right tabular-nums">
+
+            {/* Score */}
+            <span className={`text-xs w-7 text-right tabular-nums font-semibold ${
+              i === 0 ? "text-emerald-400" : "text-gh-text"
+            }`}>
               {player.score % 1 === 0 ? player.score : player.score.toFixed(1)}
             </span>
           </div>

@@ -57,7 +57,7 @@ describe("PGNGenerator", () => {
     it("includes all standard PGN headers", () => {
       const pgn = generator.generatePGN(baseParams);
       expect(pgn).toContain('[Event "World Championship"]');
-      expect(pgn).toContain('[Site "Chess Centre"]');
+      expect(pgn).toContain('[Site ""]');
       expect(pgn).toContain('[Round "5"]');
       expect(pgn).toContain('[White "Carlsen, Magnus"]');
       expect(pgn).toContain('[Black "Caruana, Fabiano"]');

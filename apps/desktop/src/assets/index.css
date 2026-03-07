@@ -21,3 +21,27 @@ body {
 .obs-widget-root {
   background: transparent !important;
 }
+
+/* Wizard slide-in animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(var(--slide-from, 20px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Marquee animation for OBS ticker preview */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 12s linear infinite;
+}

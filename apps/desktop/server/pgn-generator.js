@@ -49,6 +49,7 @@ class PGNGenerator {
     black,
     result = "*",
     event = "Test Tournament",
+    site = "",
     round = "1",
     date,
     moves,
@@ -60,7 +61,7 @@ class PGNGenerator {
 
     let pgn = "";
     pgn += `[Event "${event}"]\n`;
-    pgn += `[Site "Chess Centre"]\n`;
+    pgn += `[Site "${site || ""}"]\n`;
     pgn += `[Date "${pgnDate}"]\n`;
     pgn += `[Round "${round}"]\n`;
     pgn += `[White "${white.name}"]\n`;

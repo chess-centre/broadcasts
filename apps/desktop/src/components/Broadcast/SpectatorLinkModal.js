@@ -1,10 +1,12 @@
 import { Fragment, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { QRCodeSVG } from "qrcode.react";
+import useNetworkInfo from "../../hooks/useNetworkInfo";
 
 export default function SpectatorLinkModal({ open, onClose }) {
   const [copied, setCopied] = useState(false);
-  const url = window.location.href;
+  const { getBroadcastURL, lanIP } = useNetworkInfo();
+  const url = getBroadcastURL("/live");
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(url);
@@ -60,6 +62,13 @@ export default function SpectatorLinkModal({ open, onClose }) {
                 <QRCodeSVG value={url} size={224} />
               </div>
             </div>
+
+            {/* Network info */}
+            {lanIP && lanIP !== "127.0.0.1" && (
+              <p className="text-[10px] text-emerald-400 text-center mb-2">
+                Reachable on local network ({lanIP})
+              </p>
+            )}
 
             {/* Instruction */}
             <p className="text-[10px] text-gh-textMuted text-center mb-3 uppercase tracking-wider">

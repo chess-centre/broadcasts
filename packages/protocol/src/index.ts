@@ -98,6 +98,7 @@ export interface RelayAuthMessage {
   type: "relay_auth";
   eventId: string;
   secret: string;
+  eventName?: string;
 }
 
 export interface RelayPublishMessage {
