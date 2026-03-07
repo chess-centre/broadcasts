@@ -19,14 +19,27 @@ const accentColors = [
   { name: "Teal", color: "#2dd4bf" },
 ];
 
+const displayOptions = [
+  { key: "evalBar", label: "Evaluation bar" },
+  { key: "bestMove", label: "Best move arrow" },
+  { key: "opening", label: "Opening name" },
+  { key: "clocks", label: "Live clocks" },
+] as const;
+
+type DisplayKey = (typeof displayOptions)[number]["key"];
+
 function MiniBoard({
   light,
   dark,
   accent,
+  showEvalBar,
+  showBestMove,
 }: {
   light: string;
   dark: string;
   accent: string;
+  showEvalBar: boolean;
+  showBestMove: boolean;
 }) {
   const squares = [];
   for (let r = 0; r < 8; r++) {
@@ -45,7 +58,10 @@ function MiniBoard({
   return (
     <div className="relative">
       {/* Eval bar */}
-      <div className="absolute -left-3 top-0 bottom-0 w-2 rounded-full overflow-hidden">
+      <div
+        className="absolute -left-3 top-0 bottom-0 w-2 rounded-full overflow-hidden transition-opacity duration-300"
+        style={{ opacity: showEvalBar ? 1 : 0 }}
+      >
         <div className="h-[35%] bg-[#334155]" />
         <div className="h-[65%] bg-[#e2e8f0]" />
       </div>
@@ -54,26 +70,27 @@ function MiniBoard({
       </div>
       {/* Best move arrow overlay */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-300"
+        style={{ opacity: showBestMove ? 1 : 0 }}
         viewBox="0 0 8 8"
       >
         <defs>
           <marker
             id="arrowhead"
-            markerWidth="3"
+            markerWidth="2.5"
             markerHeight="2"
-            refX="2"
+            refX="0.5"
             refY="1"
             orient="auto"
           >
-            <polygon points="0 0, 3 1, 0 2" fill={accent} opacity="0.8" />
+            <polygon points="0 0, 2.5 1, 0 2" fill={accent} opacity="0.8" />
           </marker>
         </defs>
         <line
           x1="4.5"
-          y1="6.5"
+          y1="6.3"
           x2="4.5"
-          y2="4.5"
+          y2="4.8"
           stroke={accent}
           strokeWidth="0.3"
           opacity="0.6"
@@ -87,8 +104,19 @@ function MiniBoard({
 export function ThemeSwitcher() {
   const [activeTheme, setActiveTheme] = useState(0);
   const [activeAccent, setActiveAccent] = useState(0);
+  const [toggles, setToggles] = useState<Record<DisplayKey, boolean>>({
+    evalBar: true,
+    bestMove: true,
+    opening: true,
+    clocks: true,
+  });
+
   const theme = themes[activeTheme];
   const accent = accentColors[activeAccent];
+
+  function toggle(key: DisplayKey) {
+    setToggles((prev) => ({ ...prev, [key]: !prev[key] }));
+  }
 
   return (
     <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -118,7 +146,10 @@ export function ThemeSwitcher() {
                   </span>
                 </div>
               </div>
-              <span className="font-mono text-xs text-white tabular-nums">
+              <span
+                className="font-mono text-xs text-white tabular-nums transition-opacity duration-300"
+                style={{ opacity: toggles.clocks ? 1 : 0 }}
+              >
                 1:24:07
               </span>
             </div>
@@ -128,6 +159,8 @@ export function ThemeSwitcher() {
                 light={theme.light}
                 dark={theme.dark}
                 accent={accent.color}
+                showEvalBar={toggles.evalBar}
+                showBestMove={toggles.bestMove}
               />
             </div>
 
@@ -148,8 +181,11 @@ export function ThemeSwitcher() {
                 </div>
               </div>
               <span
-                className="font-mono text-xs tabular-nums"
-                style={{ color: accent.color }}
+                className="font-mono text-xs tabular-nums transition-opacity duration-300"
+                style={{
+                  color: accent.color,
+                  opacity: toggles.clocks ? 1 : 0,
+                }}
               >
                 1:18:33
               </span>
@@ -160,7 +196,10 @@ export function ThemeSwitcher() {
               <span className="text-[10px] text-neutral-500 font-mono">
                 Board 1
               </span>
-              <span className="text-[10px] text-neutral-500">
+              <span
+                className="text-[10px] text-neutral-500 transition-opacity duration-300"
+                style={{ opacity: toggles.opening ? 1 : 0 }}
+              >
                 Sicilian Defense
               </span>
               <span className="text-[10px] text-neutral-600 font-mono">
@@ -215,19 +254,26 @@ export function ThemeSwitcher() {
 
         <h4 className="text-sm font-semibold text-white mb-3">Display</h4>
         <div className="space-y-2">
-          {["Evaluation bar", "Best move arrow", "Opening name", "Live clocks"].map(
-            (label) => (
+          {displayOptions.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => toggle(key)}
+              className="flex items-center justify-between py-1 w-full text-left"
+            >
+              <span className="text-xs text-neutral-400">{label}</span>
               <div
-                key={label}
-                className="flex items-center justify-between py-1"
+                className={`w-8 h-[18px] rounded-full relative transition-colors duration-200 ${
+                  toggles[key] ? "bg-emerald-500" : "bg-neutral-700"
+                }`}
               >
-                <span className="text-xs text-neutral-400">{label}</span>
-                <div className="w-8 h-[18px] rounded-full bg-emerald-500 relative">
-                  <div className="absolute right-0.5 top-0.5 w-3.5 h-3.5 rounded-full bg-white transition-all" />
-                </div>
+                <div
+                  className={`absolute top-0.5 w-3.5 h-3.5 rounded-full bg-white transition-all duration-200 ${
+                    toggles[key] ? "right-0.5" : "left-0.5"
+                  }`}
+                />
               </div>
-            )
-          )}
+            </button>
+          ))}
         </div>
       </div>
     </div>

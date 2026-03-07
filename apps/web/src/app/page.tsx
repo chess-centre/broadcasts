@@ -31,11 +31,11 @@ export default function HomePage() {
         <div className="relative max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
           <LogoMark />
           <div className="hidden md:flex items-center gap-8">
-            <a href="#demo" className="text-sm text-neutral-400 hover:text-white transition-colors">
-              Demo
-            </a>
             <a href="#features" className="text-sm text-neutral-400 hover:text-white transition-colors">
               Features
+            </a>
+            <a href="#demo" className="text-sm text-neutral-400 hover:text-white transition-colors">
+              Demo
             </a>
             <a href="#how-it-works" className="text-sm text-neutral-400 hover:text-white transition-colors">
               Setup
@@ -118,41 +118,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Demo Video */}
-      <section id="demo" className="py-16 md:py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="inline-block text-xs font-mono font-medium text-emerald-400 uppercase tracking-widest px-3 py-1 bg-emerald-500/[0.08] rounded mb-4">
-              Demo
-            </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
-              See it in action
-            </h2>
-          </div>
-
-          <div className="app-screenshot glow-green mx-auto max-w-4xl">
-            <div className="app-screenshot-titlebar">
-              <div className="app-screenshot-dot bg-[#ff5f57]" />
-              <div className="app-screenshot-dot bg-[#febc2e]" />
-              <div className="app-screenshot-dot bg-[#28c840]" />
-              <span className="ml-3 text-xs text-neutral-500 font-mono">
-                Chess Broadcast
-              </span>
-            </div>
-            <video
-              className="w-full aspect-video bg-[#0d1117]"
-              src="/demo.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-            />
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider max-w-5xl mx-auto" />
 
       {/* Interactive Feature Showcases */}
       <section id="features" className="py-16 md:py-24 px-6">
@@ -279,6 +244,39 @@ export default function HomePage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Video */}
+      <section id="demo" className="py-16 md:py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="inline-block text-xs font-mono font-medium text-emerald-400 uppercase tracking-widest px-3 py-1 bg-emerald-500/[0.08] rounded mb-4">
+              Demo
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+              See it in action
+            </h2>
+          </div>
+
+          <div className="app-screenshot glow-green mx-auto max-w-4xl">
+            <div className="app-screenshot-titlebar">
+              <div className="app-screenshot-dot bg-[#ff5f57]" />
+              <div className="app-screenshot-dot bg-[#febc2e]" />
+              <div className="app-screenshot-dot bg-[#28c840]" />
+              <span className="ml-3 text-xs text-neutral-500 font-mono">
+                Chess Broadcast
+              </span>
+            </div>
+            <video
+              className="w-full block bg-[#0d1117]"
+              src="/demo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
           </div>
         </div>
       </section>
