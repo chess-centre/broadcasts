@@ -1,114 +1,43 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/logo";
 import { Button } from "@/components/ui/button";
+import { ThemeSwitcher } from "@/components/showcase/theme-switcher";
+import { EvalDemo } from "@/components/showcase/eval-demo";
+import { CrosstableDemo } from "@/components/showcase/crosstable-demo";
+import { BoardGridDemo } from "@/components/showcase/board-grid-demo";
 import {
-  Monitor,
   Radio,
-  Wifi,
   Clock,
   BarChart3,
   Users,
-  Zap,
   Globe,
   Github,
   Download,
-  ChevronRight,
   Play,
   Shield,
   Tv,
+  Palette,
+  Trophy,
+  Zap,
+  Monitor,
 } from "lucide-react";
-
-const features = [
-  {
-    icon: Radio,
-    title: "Real-Time Broadcasting",
-    desc: "Every move broadcasts instantly via WebSocket. Spectators see moves, clocks, and evaluations the moment they happen.",
-  },
-  {
-    icon: Monitor,
-    title: "Up to 20 Boards",
-    desc: "Run a full congress or major event. Every board gets its own live feed, evaluation bar, and clock display.",
-  },
-  {
-    icon: BarChart3,
-    title: "Stockfish Analysis",
-    desc: "Built-in engine evaluations with multi-PV lines, win probability, and per-player accuracy percentages.",
-  },
-  {
-    icon: Globe,
-    title: "Internet Spectators",
-    desc: "Share a link. Anyone in the world can watch the broadcast live in their browser via the cloud relay.",
-  },
-  {
-    icon: Shield,
-    title: "Fully Offline",
-    desc: "Runs entirely on your local machine. No cloud dependency, no internet required for local viewing.",
-  },
-  {
-    icon: Clock,
-    title: "Live Clocks",
-    desc: "DGT clock times displayed with smooth countdown between server updates for accurate time display.",
-  },
-  {
-    icon: Tv,
-    title: "OBS Integration",
-    desc: "Dedicated OBS browser source widgets for individual boards, standings ticker, and leaderboards.",
-  },
-  {
-    icon: Users,
-    title: "Tournament Management",
-    desc: "Round-robin, Swiss, or congress formats with automatic pairings and standings calculation.",
-  },
-  {
-    icon: Zap,
-    title: "Open Source",
-    desc: "MIT licensed. Free forever. No accounts, no subscriptions, no vendor lock-in.",
-  },
-];
-
-const steps = [
-  {
-    num: "01",
-    title: "Download & Launch",
-    desc: "Install the app for macOS, Windows, or Linux. The broadcast server starts automatically — no terminal required.",
-  },
-  {
-    num: "02",
-    title: "Connect Your Boards",
-    desc: "Point to your DGT LiveChess output folder, or create a tournament with the built-in wizard.",
-  },
-  {
-    num: "03",
-    title: "Go Live",
-    desc: 'Click "Open Live View" and share the spectator link. Every connected browser sees moves in real-time.',
-  },
-];
 
 export default function HomePage() {
   return (
     <main className="min-h-screen overflow-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06]">
-        <div className="absolute inset-0 bg-[#0d1117]/80 backdrop-blur-xl" />
+        <div className="absolute inset-0 bg-[#0a0d12]/80 backdrop-blur-xl" />
         <div className="relative max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
           <LogoMark />
           <div className="hidden md:flex items-center gap-8">
-            <a
-              href="#features"
-              className="text-sm text-neutral-400 hover:text-white transition-colors"
-            >
-              Features
-            </a>
-            <a
-              href="#demo"
-              className="text-sm text-neutral-400 hover:text-white transition-colors"
-            >
+            <a href="#demo" className="text-sm text-neutral-400 hover:text-white transition-colors">
               Demo
             </a>
-            <a
-              href="#how-it-works"
-              className="text-sm text-neutral-400 hover:text-white transition-colors"
-            >
+            <a href="#features" className="text-sm text-neutral-400 hover:text-white transition-colors">
+              Features
+            </a>
+            <a href="#how-it-works" className="text-sm text-neutral-400 hover:text-white transition-colors">
               Setup
             </a>
             <a
@@ -130,22 +59,19 @@ export default function HomePage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-32 pb-24 md:pt-44 md:pb-32 px-6">
-        {/* Background effects */}
-        <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,black_10%,transparent_70%)]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/[0.07] rounded-full blur-[120px]" />
+      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 px-6">
+        <div className="absolute inset-0 bg-grid [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,black_10%,transparent_60%)]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-emerald-500/[0.05] rounded-full blur-[150px]" />
+        <div className="absolute top-20 right-1/4 w-[400px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute top-40 left-1/4 w-[300px] h-[300px] bg-indigo-500/[0.03] rounded-full blur-[100px]" />
 
         <div className="relative max-w-4xl mx-auto text-center">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-medium text-emerald-400 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full animate-fade-in">
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
             Open Source &middot; Free Forever
           </div>
 
-          {/* Headline */}
-          <h1
-            className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-[1.05] mb-6 animate-slide-up"
-          >
+          <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-[1.05] mb-6 animate-slide-up">
             Live Chess
             <br />
             <span className="gradient-text">Broadcasting</span>
@@ -155,11 +81,10 @@ export default function HomePage() {
 
           <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in [animation-delay:200ms] opacity-0">
             Connect your DGT boards, hit start, and stream every move to
-            spectators in real-time. No complicated setup. No subscriptions.
-            Just chess.
+            spectators worldwide. Engine analysis, live clocks, tournament
+            management &mdash; all in one app.
           </p>
 
-          {/* CTAs */}
           <div className="flex gap-4 justify-center flex-wrap animate-fade-in [animation-delay:400ms] opacity-0">
             <Button asChild size="lg">
               <Link href="/download">
@@ -175,7 +100,6 @@ export default function HomePage() {
             </Button>
           </div>
 
-          {/* Stats */}
           <div className="flex gap-8 md:gap-16 justify-center mt-16 animate-fade-in [animation-delay:600ms] opacity-0">
             {[
               { value: "20", label: "Simultaneous Boards" },
@@ -195,7 +119,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Demo / Screenshot Section */}
+      {/* Demo Video */}
       <section id="demo" className="py-16 md:py-24 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -207,7 +131,6 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* App window mockup */}
           <div className="app-screenshot glow-green mx-auto max-w-4xl">
             <div className="app-screenshot-titlebar">
               <div className="app-screenshot-dot bg-[#ff5f57]" />
@@ -218,7 +141,7 @@ export default function HomePage() {
               </span>
             </div>
             <video
-              className="w-full aspect-video bg-surface-raised"
+              className="w-full aspect-video bg-[#0d1117]"
               src="/demo.mp4"
               autoPlay
               loop
@@ -229,7 +152,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Features */}
+      <div className="section-divider max-w-5xl mx-auto" />
+
+      {/* Interactive Feature Showcases */}
       <section id="features" className="py-16 md:py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -241,34 +166,128 @@ export default function HomePage() {
               <br />
               <span className="gradient-text">run a broadcast</span>
             </h2>
+            <p className="text-neutral-400 mt-4 max-w-xl mx-auto">
+              Professional broadcasting tools built for chess organisers.
+              Customisable, real-time, and completely free.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="group relative bg-white/[0.02] border border-white/[0.06] rounded-xl p-6 hover:bg-white/[0.04] hover:border-white/[0.1] transition-all duration-300"
-              >
-                <div className="w-10 h-10 rounded-lg bg-emerald-500/[0.08] border border-emerald-500/20 flex items-center justify-center mb-4">
-                  <feature.icon className="w-5 h-5 text-emerald-400" />
-                </div>
-                <h3 className="text-base font-semibold mb-2 text-white">
-                  {feature.title}
+
+          {/* Showcase 1: Board Themes & Customisation */}
+          <div className="showcase-card p-8 md:p-10 mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-violet-500/[0.1] border border-violet-500/20 flex items-center justify-center">
+                <Palette className="w-5 h-5 text-violet-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">
+                  Fully Customisable
                 </h3>
-                <p className="text-sm text-neutral-400 leading-relaxed">
-                  {feature.desc}
+                <p className="text-sm text-neutral-500">
+                  6 board themes, 5 accent colors, and dozens of display options
                 </p>
               </div>
-            ))}
+            </div>
+            <ThemeSwitcher />
+          </div>
+
+          {/* Showcase 2 + 3: Engine Analysis & Multi-board grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="showcase-card p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-emerald-500/[0.1] border border-emerald-500/20 flex items-center justify-center">
+                  <BarChart3 className="w-5 h-5 text-emerald-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">
+                    Engine Analysis
+                  </h3>
+                  <p className="text-sm text-neutral-500">
+                    Stockfish 16 with multi-PV lines
+                  </p>
+                </div>
+              </div>
+              <EvalDemo />
+            </div>
+
+            <div className="showcase-card p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-lg bg-blue-500/[0.1] border border-blue-500/20 flex items-center justify-center">
+                  <Monitor className="w-5 h-5 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">
+                    Multi-Board View
+                  </h3>
+                  <p className="text-sm text-neutral-500">
+                    Up to 20 boards with featured board
+                  </p>
+                </div>
+              </div>
+              <BoardGridDemo />
+            </div>
+          </div>
+
+          {/* Showcase 4: Tournament / Crosstable */}
+          <div className="showcase-card p-8 md:p-10 mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/[0.1] border border-amber-500/20 flex items-center justify-center">
+                <Trophy className="w-5 h-5 text-amber-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">
+                  Tournament Management
+                </h3>
+                <p className="text-sm text-neutral-500">
+                  Live crosstable, standings, and automatic pairings for Round Robin & Swiss
+                </p>
+              </div>
+            </div>
+            <CrosstableDemo />
+          </div>
+
+          {/* Feature grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Radio, title: "Real-Time", desc: "WebSocket broadcasting with sub-100ms latency", color: "emerald" },
+              { icon: Clock, title: "Live Clocks", desc: "DGT clock integration with smooth countdown", color: "cyan" },
+              { icon: Globe, title: "Online Spectators", desc: "Cloud relay lets anyone watch via browser", color: "blue" },
+              { icon: Shield, title: "Fully Offline", desc: "No internet needed for local broadcasts", color: "violet" },
+              { icon: Tv, title: "OBS Integration", desc: "Browser source widgets for streaming", color: "rose" },
+              { icon: Users, title: "Social Posts", desc: "Auto-generated results for social media", color: "amber" },
+              { icon: Zap, title: "Critical Moments", desc: "Blunder and brilliancy detection badges", color: "red" },
+              { icon: Monitor, title: "TV Mode", desc: "Auto-cycling kiosk display for venues", color: "teal" },
+            ].map((feature) => {
+              const colorMap: Record<string, { bg: string; border: string; text: string }> = {
+                emerald: { bg: "bg-emerald-500/[0.08]", border: "border-emerald-500/20", text: "text-emerald-400" },
+                cyan: { bg: "bg-cyan-500/[0.08]", border: "border-cyan-500/20", text: "text-cyan-400" },
+                blue: { bg: "bg-blue-500/[0.08]", border: "border-blue-500/20", text: "text-blue-400" },
+                violet: { bg: "bg-violet-500/[0.08]", border: "border-violet-500/20", text: "text-violet-400" },
+                rose: { bg: "bg-rose-500/[0.08]", border: "border-rose-500/20", text: "text-rose-400" },
+                amber: { bg: "bg-amber-500/[0.08]", border: "border-amber-500/20", text: "text-amber-400" },
+                red: { bg: "bg-red-500/[0.08]", border: "border-red-500/20", text: "text-red-400" },
+                teal: { bg: "bg-teal-500/[0.08]", border: "border-teal-500/20", text: "text-teal-400" },
+              };
+              const c = colorMap[feature.color] || colorMap.emerald;
+
+              return (
+                <div key={feature.title} className="showcase-card p-5">
+                  <div className={`w-9 h-9 rounded-lg ${c.bg} border ${c.border} flex items-center justify-center mb-3`}>
+                    <feature.icon className={`w-4 h-4 ${c.text}`} />
+                  </div>
+                  <h3 className="text-sm font-semibold text-white mb-1">{feature.title}</h3>
+                  <p className="text-xs text-neutral-500 leading-relaxed">{feature.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
+      <div className="section-divider max-w-5xl mx-auto" />
+
       {/* How it works */}
-      <section
-        id="how-it-works"
-        className="py-16 md:py-24 px-6 relative"
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/[0.02] to-transparent" />
+      <section id="how-it-works" className="py-16 md:py-24 px-6 relative">
+        <div className="absolute inset-0 bg-dots [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_20%,transparent_70%)]" />
         <div className="relative max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <span className="inline-block text-xs font-mono font-medium text-emerald-400 uppercase tracking-widest px-3 py-1 bg-emerald-500/[0.08] rounded mb-4">
@@ -279,27 +298,25 @@ export default function HomePage() {
               <span className="gradient-text">go live</span>
             </h2>
           </div>
-          <div className="space-y-8">
-            {steps.map((item, i) => (
-              <div
-                key={item.num}
-                className="flex gap-6 md:gap-8 items-start group"
-              >
+
+          <div className="space-y-6">
+            {[
+              { num: "01", title: "Download & Launch", desc: "Install for macOS, Windows, or Linux. The broadcast server starts automatically." },
+              { num: "02", title: "Connect Your Boards", desc: "Point to your DGT LiveChess output folder, or create a tournament with the built-in wizard." },
+              { num: "03", title: "Go Live", desc: "Open the live view and share the spectator link. Every browser sees moves in real-time." },
+            ].map((item, i) => (
+              <div key={item.num} className="flex gap-5 md:gap-6 items-start group">
                 <div className="relative shrink-0">
-                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-500/[0.08] border border-emerald-500/20 text-emerald-400 font-mono font-bold text-sm">
+                  <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] text-emerald-400 font-mono font-bold text-sm group-hover:border-emerald-500/30 transition-colors">
                     {item.num}
                   </span>
-                  {i < steps.length - 1 && (
-                    <div className="absolute top-12 left-1/2 -translate-x-1/2 w-px h-8 bg-gradient-to-b from-emerald-500/20 to-transparent" />
+                  {i < 2 && (
+                    <div className="absolute top-12 left-1/2 -translate-x-1/2 w-px h-6 bg-gradient-to-b from-white/[0.06] to-transparent" />
                   )}
                 </div>
-                <div className="pt-2">
-                  <h3 className="text-lg font-semibold mb-1.5 text-white">
-                    {item.title}
-                  </h3>
-                  <p className="text-neutral-400 leading-relaxed">
-                    {item.desc}
-                  </p>
+                <div className="pt-2.5">
+                  <h3 className="text-base font-semibold mb-1 text-white">{item.title}</h3>
+                  <p className="text-sm text-neutral-400 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -310,11 +327,10 @@ export default function HomePage() {
       {/* CTA */}
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center relative">
-          <div className="absolute inset-0 bg-emerald-500/[0.04] rounded-3xl blur-xl" />
-          <div className="relative bg-white/[0.02] border border-white/[0.06] rounded-3xl p-12 md:p-16">
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/[0.03] via-cyan-500/[0.04] to-indigo-500/[0.03] rounded-3xl blur-xl" />
+          <div className="relative showcase-card p-12 md:p-16">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-              Ready to{" "}
-              <span className="gradient-text">broadcast</span>?
+              Ready to <span className="gradient-text">broadcast</span>?
             </h2>
             <p className="text-neutral-400 mb-8 max-w-md mx-auto">
               Free, open source, and runs on macOS, Windows, and Linux.
@@ -328,11 +344,7 @@ export default function HomePage() {
                 </Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <a
-                  href="https://github.com/chess-centre/broadcasts"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://github.com/chess-centre/broadcasts" target="_blank" rel="noopener noreferrer">
                   <Github className="w-5 h-5" />
                   View on GitHub
                 </a>
@@ -343,36 +355,21 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/[0.06] py-8 px-6">
+      <footer className="border-t border-white/[0.04] py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
           <div className="flex items-center gap-4">
             <LogoMark />
-            <span className="hidden sm:inline text-neutral-600">|</span>
-            <span>
-              Open source under MIT
-            </span>
+            <span className="hidden sm:inline text-neutral-700">|</span>
+            <span>Open source under MIT</span>
           </div>
           <div className="flex gap-6">
-            <a
-              href="https://github.com/chess-centre/broadcasts"
-              className="hover:text-white transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://github.com/chess-centre/broadcasts" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
-            <Link
-              href="/download"
-              className="hover:text-white transition-colors"
-            >
+            <Link href="/download" className="hover:text-white transition-colors">
               Download
             </Link>
-            <a
-              href="https://chesscentre.online"
-              className="hover:text-white transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://chesscentre.online" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
               The Chess Centre
             </a>
           </div>
